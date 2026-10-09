@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "command": "supervised-prepare",
+  "status": "blocked",
+  "prepared": false,
+  "mode": "supervised",
+  "certified": false,
+  "candidate_sha256": "fbba8cb12cda91acacd33d3a3bc967f905f6c3857639fd4273aaf1a9dd36471f",
+  "evidence_sha256": "691271086c8c7496c7ccd7ba7cc89e76085e010cb2598f9ef451e4584b6263e0",
+  "limitations": [
+    "principal:hook:coverage",
+    "principal:model-effort",
+    "principal:permissions",
+    "principal:tool:databricks",
+    "analyst:hook:coverage",
+    "analyst:model-effort",
+    "analyst:permissions",
+    "analyst:tool:databricks",
+    "impact-analyzer:hook:coverage",
+    "impact-analyzer:permissions",
+    "impact-analyzer:tool:databricks",
+    "planner:hook:coverage",
+    "planner:model-effort",
+    "planner:permissions",
+    "planner:tool:databricks",
+    "developer:hook:coverage",
+    "developer:model-effort",
+    "developer:permissions",
+    "developer:tool:databricks",
+    "tester:hook:coverage",
+    "tester:model-effort",
+    "tester:permissions",
+    "tester:tool:databricks",
+    "auditor:hook:coverage",
+    "auditor:permissions",
+    "auditor:tool:databricks",
+    "verifier:hook:coverage",
+    "verifier:permissions",
+    "verifier:tool:databricks"
+  ],
+  "blocked_required": [
+    "auditor:permissions"
+  ],
+  "strict_certificate": {
+    "schema_version": 1,
+    "command": "desktop-check",
+    "status": "blocked",
+    "certified": false,
+    "desktop_status": "not_checked",
+    "checks": [
+      {
+        "id": "principal:hook:coverage",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "principal:model-effort",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "principal:permissions",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "principal:role",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "principal:skill:harness-hu",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "principal:tool:databricks",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "principal:tool:git",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "principal:tool:local-files",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "analyst:hook:coverage",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "analyst:model-effort",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "analyst:permissions",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "analyst:role",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "analyst:skill:harness-hu",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "analyst:tool:databricks",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "analyst:tool:git",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "analyst:tool:local-files",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "impact-analyzer:hook:coverage",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "impact-analyzer:model-effort",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "role-runtime-probes"
+      },
+      {
+        "id": "impact-analyzer:permissions",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "impact-analyzer:role",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "impact-analyzer:skill:harness-hu",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "impact-analyzer:tool:databricks",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "impact-analyzer:tool:git",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "impact-analyzer:tool:local-files",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "planner:hook:coverage",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "planner:model-effort",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "planner:permissions",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "planner:role",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "planner:skill:harness-hu",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "planner:tool:databricks",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "planner:tool:git",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "planner:tool:local-files",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "developer:hook:coverage",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "developer:model-effort",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "developer:permissions",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "developer:role",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "developer:skill:harness-hu",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "developer:tool:databricks",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "developer:tool:git",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "developer:tool:local-files",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "tester:hook:coverage",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "tester:model-effort",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "tester:permissions",
+        "status": "not_checked",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "tester:role",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "tester:skill:harness-hu",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "tester:tool:databricks",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "tester:tool:git",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "tester:tool:local-files",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "auditor:hook:coverage",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "auditor:model-effort",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "role-runtime-probes"
+      },
+      {
+        "id": "auditor:permissions",
+        "status": "conflict",
+        "required": true,
+        "evidence_ref": "role-runtime-probes"
+      },
+      {
+        "id": "auditor:role",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "auditor:skill:harness-hu",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "auditor:tool:databricks",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "auditor:tool:git",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "auditor:tool:local-files",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "verifier:hook:coverage",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "verifier:model-effort",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "role-runtime-probes"
+      },
+      {
+        "id": "verifier:permissions",
+        "status": "conflict",
+        "required": true,
+        "evidence_ref": "role-runtime-probes"
+      },
+      {
+        "id": "verifier:role",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "verifier:skill:harness-hu",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "verifier:tool:databricks",
+        "status": "not_checked",
+        "required": false,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "verifier:tool:git",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      },
+      {
+        "id": "verifier:tool:local-files",
+        "status": "observed",
+        "required": true,
+        "evidence_ref": "original-role-probes"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "operator-acceptance",
+      "status": "observed"
+    },
+    {
+      "id": "role-discovery",
+      "status": "observed"
+    }
+  ],
+  "candidate_comparison": {
+    "schema_version": 1,
+    "command": "candidate-compare",
+    "status": "ready",
+    "intact": true,
+    "before_sha256": "fbba8cb12cda91acacd33d3a3bc967f905f6c3857639fd4273aaf1a9dd36471f",
+    "after_sha256": "fbba8cb12cda91acacd33d3a3bc967f905f6c3857639fd4273aaf1a9dd36471f",
+    "differences": [],
+    "checks": [],
+    "certified": false,
+    "limitation": "Detects persistent changes within selected scopes; does not prevent writes or detect restored edits."
+  }
+}

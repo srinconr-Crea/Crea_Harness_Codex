@@ -32,15 +32,15 @@
       "depends_on": [
         "01-quality-practices-and-eval-foundation"
       ],
-      "status": "local-implemented-desktop-pending",
-      "implemented": false,
+      "status": "implemented-verified-supervised",
+      "implemented": true,
       "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
-      "exit_criterion": "Configuración concreta revisable y evidencia en Desktop de cada capacidad habilitada; archivos presentes nunca equivalen a certificación.",
+      "exit_criterion": "Preparación supervisada implementada y verificada, matriz de capacidades observadas y limitaciones aceptadas explícitamente, y evidencia de evals con anotación humana; certificación estricta informada separadamente.",
       "capabilities": [
         "desktop-integration",
         "role-tool-catalog"
       ],
-      "evidence": "docs/evidence/desktop-integration.md"
+      "evidence": "docs/evidence/desktop-runtime-2026-10-09/manifest.json"
     },
     {
       "order": 3,
@@ -51,7 +51,7 @@
       ],
       "status": "proposed",
       "implemented": false,
-      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "implementation_gate": "02 implemented and verified for explicitly accepted supervised preparation; strict certification not required to prepare onboarding; failed required capabilities still block their phases",
       "exit_criterion": "Una persona nueva completa el flujo con plantilla o entrevista y recibe configuración trazable sin ampliar permisos por inferencia.",
       "capabilities": [
         "guided-client-onboarding"

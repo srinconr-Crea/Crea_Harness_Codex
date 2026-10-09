@@ -100,3 +100,12 @@ Versión CLI observada 0.162.0-alpha.17.2 no se usa como certificación Desktop.
 El criterio de salida completo no se cumple y 03 no se habilita. Al presentar
 las cinco tareas pendientes, el usuario eligió **conservar el cambio activo
 hasta completar Desktop**. No se archiva. Sync y push están autorizados.
+
+## Actualización posterior: adaptación supervisada
+
+Las afirmaciones anteriores describen la verificación local original. El usuario
+aportó después ejecuciones en Desktop y aprobó el alcance supervisado y la
+anotación humana con defecto de E04 conservado. La verificación vigente es
+[desktop-runtime-2026-10-09/verification.md](desktop-runtime-2026-10-09/verification.md).
+Se conserva el conflicto de sandbox y certificado estricto false; el progreso
+posterior no convierte los antiguos not_run en passed ni altera sus fuentes.

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "project": "02-desktop-roles-and-tool-contracts",
+  "client": "desktop-synthetic",
+  "status": "partial_not_certified",
+  "role_tool": {
+    "availability": "observed",
+    "roles_exposed": [
+      "harness-principal",
+      "harness-analyst",
+      "harness-impact-analyzer",
+      "harness-planner",
+      "harness-developer",
+      "harness-tester",
+      "harness-auditor",
+      "harness-verifier"
+    ],
+    "max_concurrent": 4,
+    "delegation_depth": 0,
+    "assignments_batch_1": "valid",
+    "assignments_batch_2": "valid"
+  },
+  "roles": {
+    "selection_effective": "observed for each spawned role",
+    "model_effort_tool_contract": {
+      "source": "multi_agent_v1__spawn_agent runtime tool definition",
+      "values_for_auditor_verifier_impact_analyzer": "gpt-5.6-luna / medium; role settings cannot be changed",
+      "caller_overrides": "none",
+      "per_agent_self_report": {
+        "auditor": "model and effort not_exposed",
+        "verifier": "family GPT-5 exposed; exact model and effort not_exposed",
+        "impact_analyzer": "model and effort not_exposed"
+      }
+    },
+    "model_effective": "role tool contract exposes gpt-5.6-luna; individual runtime self-report not_exposed",
+    "effort_effective": "role tool contract exposes medium; individual runtime self-report not_exposed",
+    "declared_catalog_model": "gpt-5.6-luna",
+    "declared_catalog_effort": "medium",
+    "auditor_verifier_effective_read_only": "failed_observed_write_allowed",
+    "sandbox_probes": {
+      "auditor": {"path": "evidence/sandbox-probes/auditor-probe.txt", "result": "created", "bytes": 0},
+      "verifier": {"path": "evidence/sandbox-probes/verifier-probe.txt", "result": "created", "bytes": 0}
+    },
+    "developer_tester_write_scope": "evidence/sandbox-probes/<role> only; no probe write performed"
+  },
+  "resources": {
+    "harness_hu": "observed and read",
+    "load_quality": "observed successful in parent with .venv",
+    "quality_version": "0.1.0-design",
+    "load_desktop": "observed successful in parent",
+    "fixture": "fixtures/synthetic-sales.json",
+    "fixture_sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477",
+    "git_status": "No commits yet on main; project files untracked"
+  },
+  "protocol": {
+    "E03_repetitions": 3,
+    "E04_repetitions": 3,
+    "outputs": [
+      "E03-repetition-01.md",
+      "E03-repetition-02.md",
+      "E03-repetition-03.md",
+      "E04-repetition-01.md",
+      "E04-repetition-02.md",
+      "E04-repetition-03.md"
+    ],
+    "expected_criteria_passed_to_agents": false,
+    "human_acceptance_annotation": "required_not_done"
+  },
+  "coverage": {
+    "mcp": "not_checked",
+    "hooks": "not_checked",
+    "production": "not_used",
+    "remote_operations": "not_used",
+    "sandbox_enforcement": "write_allowed_for_auditor_and_verifier"
+  }
+}

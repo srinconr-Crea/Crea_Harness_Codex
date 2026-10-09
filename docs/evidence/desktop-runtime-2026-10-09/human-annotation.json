@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "operator_ref": "user",
+  "source": "explicit_user_reply_in_this_chat",
+  "user_reply": "Acepto con el defecto de E04 documentado",
+  "accepted_for": "supervised_use",
+  "certified": false,
+  "original_outputs": "raw-eval-export.json",
+  "E03": {
+    "repetitions": 3,
+    "E03-C1": [true, true, true],
+    "E03-C2": [true, true, true]
+  },
+  "E04": {
+    "repetition_order": [
+      "01a1224f-be90-71f3-a275-1a5b430ef820",
+      "01a1224f-c04e-7273-a4a6-83939b0ce9ea",
+      "01a1224f-c302-7d40-abe1-e2fd341ba253"
+    ],
+    "E04-C1": [false, false, true],
+    "E04-C2": [true, true, true],
+    "known_defect": "Dos respuestas identifican el consumidor y riesgos de null, pero omiten proponer pruebas explícitas de null.",
+    "accepted_with_known_defect": true,
+    "all_repetitions_passed": false
+  },
+  "limits": [
+    "Anotación basada en revisión de artefactos, sin ejecutar transformación.",
+    "La omisión de E04 sigue siendo defecto; la aceptación supervisada no la corrige.",
+    "No se inventan controles limpios adicionales ni evals holdout reservados."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "change": "02-desktop-roles-and-tool-contracts",
+  "acceptance_mode": "supervised",
+  "implemented": true,
+  "verified": true,
+  "strict_certified": false,
+  "gate_03": "prepared_onboarding_only",
+  "full_suite": {
+    "tests": 262,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 397.925
+  },
+  "adaptation_suite": {
+    "tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 28.94
+  },
+  "additional_regression": "Windows target case alias: RED -> GREEN; included in adaptation suite after full collection",
+  "wheel_smoke": "docs/evidence/desktop-wheel-smoke.json",
+  "schemas_checked": 2,
+  "openspec": {
+    "change_02": "strict valid",
+    "change_03": "strict valid",
+    "main_specs_passed": 9
+  },
+  "review": {
+    "source": "independent_read_only_subagent",
+    "issues": 1,
+    "fixed": 1,
+    "remaining": 0
+  },
+  "human_annotation": "human-annotation.json",
+  "known_limits": [
+    "reviewers can write",
+    "E04-C1 failed in two repetitions",
+    "exact model/effort self-report not exposed",
+    "MCP/hooks not_checked",
+    "hash comparison does not prevent edits"
+  ]
+}

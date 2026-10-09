@@ -3,7 +3,7 @@
 ## Context
 
 Ver [proposal.md](proposal.md) para motivación y alcance. La base 0.1.0 proporciona contratos Pydantic v1, diagnóstico, init create-only y recuperación Windows. No tiene flujo de HU ni roles operativos.
-Dependencia obligatoria: **02-desktop-roles-and-tool-contracts**, implementada y verificada. OpenSpec status comprueba artefactos, no satisface este gate. Los comandos nuevos de este documento son propuestos.
+Dependencia obligatoria: **02-desktop-roles-and-tool-contracts**, implementada y verificada para preparación supervisada con aceptación explícita y evidencia. La certificación estricta completa no es requisito para preparar onboarding; una capacidad fallida sigue bloqueando fases que la exijan. OpenSpec status comprueba artefactos, no satisface este gate. Los comandos nuevos de este documento son propuestos.
 
 ## Goals / Non-Goals
 
@@ -21,7 +21,7 @@ Dependencia obligatoria: **02-desktop-roles-and-tool-contracts**, implementada y
 
 4. El contrato v1 se mantiene. Nuevas selecciones viven en development.yaml y binding de herramientas separado; cualquier migración futura es explícita/versionada.
 
-5. OnboardingRun agrupa etapas preflight, collect, preview, prepare, integrate, certify; fallo no implica rollback total ni reanuda efectos automáticamente.
+5. OnboardingRun agrupa etapas preflight, collect, preview, prepare, integrate, certify; fallo no implica rollback total ni reanuda efectos automáticamente. Preparación supervisada aceptada y certified son resultados separados. Conserva conflict/unsupported/not_checked y motivos del 02; no transforma aceptación del operador en garantía de permisos. Cualquier fase que requiera una capacidad fallida queda blocked.
 
 6. El init v1 bloquea AGENTS personalizado y no se relaja ese contrato. El asistente lo reutiliza solo cuando su plan es aplicable. Para repos personalizados, un adaptador nuevo de preparación compuesta conserva AGENTS existente, crea únicamente recursos ausentes autorizados con las mismas garantías Windows y usa el plan de integración del 02 para las ediciones revisadas. No aplica un OnboardingPlan v1 marcado conflict ni ignora sus precondiciones.
 

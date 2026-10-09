@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "kind": "candidate_snapshot",
+  "client_id": "desktop-synthetic",
+  "checkout_id": "checkout",
+  "target_path": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\desktop-acceptance-fb8b332c705044e7b05abadd35d7d8fb\\client",
+  "target_identity": "b685a610:c0000:123705:1dd5826:2fd13bec",
+  "catalog_sha256": "95b0e7a6f0a0164e0c36a28361f4342ec7a2edd0df9ab928b30384e8c8aa4d11",
+  "evidence_sha256": "691271086c8c7496c7ccd7ba7cc89e76085e010cb2598f9ef451e4584b6263e0",
+  "configuration_sha256": "ebec66e3ab5623dad46a7c1f70b0a99a45a8e1160cac2ff19a09c059abe0c539",
+  "scopes": [
+    "E03-input.json",
+    "E04-input.json",
+    "fixtures"
+  ],
+  "entries": [
+    {
+      "schema_version": 1,
+      "path": "E03-input.json",
+      "kind": "file",
+      "identity": "b685a610:10000:1299a6:1dd5826:2ff6423f",
+      "content_sha256": "6970117f4936c54d8c5fb51501cf094b130ad3d04057d38001edaafbd790614b"
+    },
+    {
+      "schema_version": 1,
+      "path": "E04-input.json",
+      "kind": "file",
+      "identity": "b685a610:10000:1299a7:1dd5826:2ff97aa5",
+      "content_sha256": "77652c9f4aae03e8ec52fe57eb681efd197bff76b2b677eef46ae5ee50b9e7f6"
+    },
+    {
+      "schema_version": 1,
+      "path": "fixtures",
+      "kind": "directory",
+      "identity": "b685a610:10000:1299a4:1dd5826:2ff420b2",
+      "content_sha256": null
+    },
+    {
+      "schema_version": 1,
+      "path": "fixtures/synthetic-sales.json",
+      "kind": "file",
+      "identity": "b685a610:10000:1299a5:1dd5826:2ff420b2",
+      "content_sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477"
+    }
+  ]
+}

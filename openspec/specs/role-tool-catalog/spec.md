@@ -40,4 +40,20 @@ Cada rol SHALL declarar herramientas required/optional y su propósito; configur
 
 #### Scenario: Read-only reviewer
 - **WHEN** la instrucción dice read-only pero permisos efectivos permiten escritura
-- **THEN** no certifica restricción efectiva y exige resolver configuración
+- **THEN** registra conflict y no certifica restricción efectiva; exige resolverla para fases que requieran aislamiento, o aceptación explícita del modo supervisado para fases que lo admitan
+
+### Requirement: Supervised reviewer acceptance
+
+El producto SHALL distinguir prohibición de editar por instrucciones de restricción efectiva del sandbox. Cuando el aislamiento falle, SHALL permitir únicamente revisión supervisada aceptada explícitamente por el operador para un cliente/checkout, catálogo, candidato y versión de evidencia identificados. SHALL comparar contenido y rutas del candidato antes/después, bloquear aceptación ante drift y conservar el conflicto de permisos. MUST NOT presentar esta detección como prevención de escritura ni certificación read-only.
+
+#### Scenario: Supervised review with intact candidate
+- **WHEN** el operador acepta las limitaciones observadas y el candidato permanece intacto tras la revisión
+- **THEN** registra revisión supervisada sin certificar aislamiento ni habilitar fases que lo requieran
+
+#### Scenario: Reviewer changes candidate
+- **WHEN** la comparación detecta cambios, creaciones o eliminaciones en el candidato revisado
+- **THEN** rechaza la aceptación, conserva diferencias/evidencia y no revierte silenciosamente
+
+#### Scenario: Missing or stale operator acceptance
+- **WHEN** falta aceptación o corresponde a otro cliente, checkout, catálogo, candidato o evidencia
+- **THEN** bloquea revisión supervisada hasta obtener aceptación válida

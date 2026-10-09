@@ -19,6 +19,8 @@ import harness_core,harness_local
 from harness_core.desktop import activate_profiles,DesktopCertificate,assess_certificate
 from harness_local.desktop_resources import load_desktop,render_integration
 from harness_local.desktop_integration import preview,apply,recover
+from harness_core.supervised import SupervisedAcceptance,assess_preparation
+from harness_local.supervised import capture,compare
 assert 'site-packages' in harness_local.__file__ and 'site-packages' in harness_core.__file__
 base=Path(sys.argv[1]); target=base/'client'; target.mkdir()
 subprocess.run(['git','init','--initial-branch=develop',str(target)],check=True,capture_output=True)
@@ -44,12 +46,18 @@ assert exit==0 and (target/'AGENTS.md').read_bytes().startswith(original)
 assert (target/'.agents/skills/harness-hu/SKILL.md').exists()
 certificate=DesktopCertificate(schema_version=1,catalog_sha256=selected.sha256,app_version='synthetic-not-observed',engine_version='synthetic-not-observed',account_ref='synthetic',observations=[])
 assert assess_certificate(selected,certificate)['certified'] is False
+(target/'candidate.txt').write_text('synthetic candidate')
+snapshot=capture(target,policy,binding,['candidate.txt'],selected.sha256,certificate)
+assert compare(target,policy,binding,snapshot,certificate)['intact']
+assert not assess_preparation(selected,certificate,snapshot,None)['prepared']
+(target/'candidate.txt').write_text('changed')
+assert compare(target,policy,binding,snapshot,certificate)['status']=='blocked'
 result,exit=recover(target,policy,plan,apply_changes=True)
 assert exit==0 and (target/'AGENTS.md').read_bytes()==original
-for name in ('rolecatalog','toolrequirement','roleassignment','desktopintegrationplan','integrationjournal','desktopcertificate'):
+for name in ('rolecatalog','toolrequirement','roleassignment','desktopintegrationplan','integrationjournal','desktopcertificate','candidatesnapshot','supervisedacceptance'):
  json.loads(files('harness_core').joinpath('schemas/'+name+'.schema.json').read_bytes())
 assert not any(m.startswith(('pyspark','mlflow','databricks')) for m in sys.modules)
-print(json.dumps(dict(checks=10,roles=8,configured_synthetic_profiles=2,schemas=6,desktop='not_checked',agent_execution='not_run',certified=False,global_activation=False)))
+print(json.dumps(dict(checks=15,roles=8,configured_synthetic_profiles=2,schemas=8,desktop='not_checked',agent_execution='not_run',certified=False,global_activation=False)))
 '''
 environment = dict(os.environ)
 environment.pop('PYTHONPATH', None)

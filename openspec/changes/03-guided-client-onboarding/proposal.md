@@ -9,8 +9,8 @@ El CLI actual exige conocer flags y preparar archivos previamente. Una persona n
 - Crear Skill harness-client-onboarding que acepte entrevista o archivo/plantilla y solicite únicamente decisiones faltantes.
 - Añadir configuración de contexto técnico/negocio, selección de roles/herramientas y plan de validación en contratos separados del descriptor v1.
 - Orquestar diagnóstico, preparación e integración Desktop del 02 como etapas registradas con recuperación; reutilizar init solo cuando sea aplicable y usar un contrato compuesto nuevo para instrucciones personalizadas, sin relajar init v1.
-- Emitir informe de onboarding que distinga archivos preparados, Desktop certificado y conectividad remota pendiente.
-- Orden 03. Dependencia de implementación: 02-desktop-roles-and-tool-contracts. Debe estar implementada y verificada antes de aplicar este incremento; la existencia de sus artefactos no satisface esa dependencia.
+- Emitir informe de onboarding que distinga archivos preparados, preparación supervisada aceptada, Desktop certificado y conectividad remota pendiente, conservando limitaciones y bloqueos por capacidad.
+- Orden 03. Dependencia de implementación: 02-desktop-roles-and-tool-contracts. Debe estar implementada y verificada para preparación supervisada, con aceptación explícita de límites y evidencia, antes de aplicar este incremento. No exige certificación estricta completa para preparar onboarding; la existencia de artefactos o una planificación actualizada no satisface esa dependencia.
 - Esta propuesta define capacidades futuras; crear sus artefactos no instala, implementa ni autoriza efectos remotos.
 
 ## Capabilities

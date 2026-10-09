@@ -57,3 +57,15 @@ El producto SHALL ofrecer preview sin editar target, estado, configuración glob
 #### Scenario: Existing export destination
 - **WHEN** el destino de exportación existe o está enlazado
 - **THEN** rechaza sin sobrescribir o redirigir archivos
+
+### Requirement: Preserve supervised limitations
+
+El asistente SHALL admitir la preparación supervisada verificada del 02 como dependencia para onboarding preparado, conservar aceptación ligada a identidad y evidencia, e informar por separado prepared, certified y conectividad pendiente. MUST NOT inferir aislamiento ni certificar por aceptación de límites. SHALL bloquear fases que requieran capacidades conflictivas o no observadas.
+
+#### Scenario: Prepared onboarding with accepted reviewer limitation
+- **WHEN** 02 está implementado/verificado para preparación supervisada y el operador acepta el conflicto de sandbox identificado
+- **THEN** permite onboarding preparado, conserva el conflicto y no afirma certified
+
+#### Scenario: Phase requires failed isolation
+- **WHEN** una fase requiere aislamiento read-only y la evidencia de 02 muestra escritura permitida
+- **THEN** bloquea esa fase aunque onboarding esté preparado y aceptado

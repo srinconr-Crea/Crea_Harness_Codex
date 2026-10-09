@@ -53,3 +53,23 @@ El producto SHALL ofrecer preview sin editar target, estado, configuración glob
 #### Scenario: Existing export destination
 - **WHEN** el destino de exportación existe o está enlazado
 - **THEN** rechaza sin sobrescribir o redirigir archivos
+
+### Requirement: Supervised preparation separate from certification
+
+El producto SHALL emitir un resultado de preparación supervisada separado del certificado estricto, ligado a identidad seleccionada, catálogo y evidencia de versión. SHALL registrar capacidades observadas y conflict/unsupported/not_checked, motivos y aceptación explícita del operador. Preparación supervisada verificada MAY satisfacer la dependencia de onboarding preparado, pero MUST NOT transformar capacidades fallidas en passed ni alterar assess_certificate. Una fase que requiera una capacidad ausente o fallida SHALL permanecer blocked.
+
+#### Scenario: Prepared with accepted sandbox limitation
+- **WHEN** la integración local está verificada y el operador acepta la escritura observada de revisores para uso supervisado
+- **THEN** permite preparación supervisada y conserva certified=false y el conflicto de sandbox en el informe
+
+#### Scenario: Strict certification after supervised preparation
+- **WHEN** se solicita certificación estricta tras aceptar limitaciones
+- **THEN** evalúa las mismas observaciones sin excepciones y no certifica capacidades conflictivas
+
+#### Scenario: Required capability unavailable
+- **WHEN** una fase exige una capacidad conflictiva o no observada
+- **THEN** bloquea esa fase aunque exista preparación supervisada
+
+#### Scenario: Original eval evidence and human annotation
+- **WHEN** se registran E03/E04 para aceptación supervisada
+- **THEN** conserva inputs/outputs originales y procedencia de ejecución, requiere anotación humana y mantiene los resultados negativos sin falsos passed

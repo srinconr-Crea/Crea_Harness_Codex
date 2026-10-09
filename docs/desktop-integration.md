@@ -154,6 +154,13 @@ por caso; controles de falso positivo/defecto omitido con la rúbrica del 01.
 El caso E04 público no es un holdout operativo reservado. Hasta observar y
 anotar, resultados permanecen not_run; archivos no satisfacen el protocolo.
 
-Esta sesión no dispone de selector agent_type para roles personalizados ni
-observación de su configuración efectiva. El usuario dejó esas pruebas
-pendientes: no se cumple todavía el criterio de salida ni se habilita 03.
+La aceptación actual distingue preparación supervisada y certificación estricta.
+El cliente sintético ya aportó ejecuciones de roles y un conflicto de sandbox;
+las llamadas originales y anotación humana están en
+[desktop-runtime-2026-10-09](evidence/desktop-runtime-2026-10-09/verification.md).
+Auditor/verifier pudieron escribir; la restricción read-only no está certificada.
+E04 mantiene el defecto aceptado de pruebas de null omitidas en dos repeticiones.
+
+Uso y límites de los nuevos contratos/comandos de preparación y comparación:
+[revisión supervisada](supervised-review.md). Nunca transformar prepared en
+certified ni habilitar fases con capacidad requerida fallida.

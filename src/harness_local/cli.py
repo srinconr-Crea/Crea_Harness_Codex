@@ -38,6 +38,20 @@ def main(argv=None):
     certificate.add_argument('--catalog')
     certificate.add_argument('--observations')
     certificate.add_argument('--json',action='store_true')
+    for name in ('review-snapshot','review-compare','supervised-prepare'):
+        p=commands.add_parser(name)
+        for field in ('path','policy','binding','catalog','observations'):
+            p.add_argument('--'+field,required=True)
+        p.add_argument('--json',action='store_true')
+        if name=='review-snapshot':
+            p.add_argument('--scope',action='append',required=True)
+            p.add_argument('--out')
+        else:
+            p.add_argument('--snapshot',required=True)
+        if name=='supervised-prepare':
+            p.add_argument('--plan',required=True)
+            p.add_argument('--acceptance')
+            p.add_argument('--require',action='append',default=[])
     for name in ('doctor','init','recover'):
         p=commands.add_parser(name)
         p.add_argument('--path')
@@ -59,11 +73,44 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('init','recover','doctor','integrate','desktop-check') if c in argv),'doctor')
+    command=next((c for c in ('init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command=='integrate':
+        if args.command in ('review-snapshot','review-compare','supervised-prepare'):
+            from . import supervised
+            from harness_core.desktop import RoleCatalog,DesktopCertificate
+            from harness_core.supervised import CandidateSnapshot,SupervisedAcceptance
+            from harness_core.onboarding_plan import load_json,canonical,separate
+            from harness_core.configuration import safe_path,reject_secrets
+            from .windows_fs import PinnedTree
+            catalog=load_json(args.catalog,RoleCatalog)
+            observations=load_json(args.observations,DesktopCertificate)
+            if args.command=='review-snapshot':
+                snapshot=supervised.capture(args.path,args.policy,args.binding,args.scope,catalog.sha256,observations)
+                if args.out:
+                    out=safe_path(args.out)
+                    separate([str(out),str(safe_path(args.path)),str(safe_path(args.policy)),str(safe_path(args.binding)),
+                              str(safe_path(args.catalog)),str(safe_path(args.observations))])
+                    _,config=supervised.selected(args.path,args.policy,args.binding)
+                    separate([str(out),config['binding'].state_dir])
+                    reject_secrets(snapshot.model_dump())
+                    with PinnedTree(out.parent) as tree:
+                        with tree.file(out.name,create=True) as handle:
+                            handle.write(canonical(snapshot.model_dump())+b'\n')
+                result=dict(schema_version=1,command=args.command,status='ready',checks=[],
+                    snapshot=snapshot.model_dump(),candidate_sha256=snapshot.sha256,certified=False)
+            else:
+                snapshot=load_json(args.snapshot,CandidateSnapshot)
+                if catalog.sha256!=snapshot.catalog_sha256:
+                    raise ConfigError('supervised_identity_mismatch')
+                if args.command=='review-compare':
+                    result=supervised.compare(args.path,args.policy,args.binding,snapshot,observations)
+                else:
+                    acceptance=load_json(args.acceptance,SupervisedAcceptance) if args.acceptance else None
+                    result=supervised.prepare(args.path,args.policy,args.binding,args.plan,catalog,observations,snapshot,acceptance,required=args.require)
+            code=1 if result['status']=='blocked' else 0
+        elif args.command=='integrate':
             from . import desktop_integration
             from harness_core.desktop import RoleCatalog
             from harness_core.onboarding_plan import load_json
@@ -121,7 +168,9 @@ def main(argv=None):
                    'recovery_required','application_conflict','confinement_rejected','destination_exists',
                    'write_failed','flush_failed','delete_failed','lock_changed',
                    'integration_drift','integration_identity_mismatch','integration_conflict','integration_policy_blocked',
-                   'model_unavailable','effort_unavailable','integration_failed'}
+                   'model_unavailable','effort_unavailable','integration_failed','integration_not_applied',
+                   'supervised_identity_mismatch','supervised_evidence_mismatch','candidate_changed_during_capture',
+                   'candidate_scope_denied','candidate_too_large'}
         code=1 if error_code in conflicts or isinstance(error,OSError) else 2
         if code==1:
             result['status']='blocked'
