@@ -21,7 +21,7 @@
 - [x] 3.1 Trazar todos los escenarios delta y casos asignados de docs/planning/quality a tests/protocolos y evidencia; comprobar críticos, negativos y not_run/blocked sin falsos passed.
 - [x] 3.2 Ejecutar comprobaciones pertinentes del kit y smoke de recursos instalados; verificar que no cambian contratos v1, clientes ajenos o configuración global.
 
-Evidencia local y límites: [desktop-integration.md](../../../docs/evidence/desktop-integration.md).
+Evidencia local y límites: [desktop-integration.md](../../../../docs/evidence/desktop-integration.md).
 El usuario aprobó adaptar 02 a preparación supervisada. La evidencia Desktop
 muestra selección de roles y escritura permitida de auditor/verifier; la
 certificación estricta sigue fallida. El modo supervisado y comparación del candidato están implementados y probados.

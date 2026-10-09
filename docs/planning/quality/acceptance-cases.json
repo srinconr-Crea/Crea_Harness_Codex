@@ -168,7 +168,7 @@
       "scenario": "Custom instructions",
       "input_condition": "existe AGENTS personalizado",
       "expected_behavior": "presenta integración revisable preservando reglas cliente",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -181,7 +181,7 @@
       "scenario": "Drift before apply",
       "input_condition": "cambia un archivo desde el preview",
       "expected_behavior": "rechaza la edición antes de reemplazarlo",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -194,7 +194,7 @@
       "scenario": "Observed role",
       "input_condition": "Desktop ejecuta el rol/modelo/esfuerzo esperado",
       "expected_behavior": "registra resultado y versión en certificado",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -207,7 +207,7 @@
       "scenario": "Unsupported surface",
       "input_condition": "la app no permite seleccionar un rol o herramienta",
       "expected_behavior": "marca unsupported/not_checked y no declara onboarding certificado",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -220,7 +220,7 @@
       "scenario": "Intact applied file",
       "input_condition": "se solicita recover y coincide identidad/hash aplicados",
       "expected_behavior": "restaura backup validado o retira creación propia",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -233,7 +233,7 @@
       "scenario": "User modification",
       "input_condition": "la persona editó el TOML después de integrar",
       "expected_behavior": "conserva el archivo y registra conflicto",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -246,7 +246,7 @@
       "scenario": "Preview snapshot",
       "input_condition": "se solicita preview sin exportación",
       "expected_behavior": "conserva snapshots y no ejecuta escritura o autenticación",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -259,7 +259,7 @@
       "scenario": "Existing export destination",
       "input_condition": "el destino de exportación existe o está enlazado",
       "expected_behavior": "rechaza sin sobrescribir o redirigir archivos",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/desktop-integration/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -272,7 +272,7 @@
       "scenario": "Small story",
       "input_condition": "la HU tiene análisis acotado",
       "expected_behavior": "el principal puede resolver fases sin lanzar todos los roles",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -285,7 +285,7 @@
       "scenario": "Writer collision",
       "input_condition": "dos assignments del kit incluyen la misma ruta de escritura",
       "expected_behavior": "rechaza el segundo o requiere aislamiento",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -298,7 +298,7 @@
       "scenario": "Available configuration",
       "input_condition": "modelo y esfuerzo superan comprobación Desktop",
       "expected_behavior": "el rol usa esa configuración y conserva evidencia",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -311,7 +311,7 @@
       "scenario": "Unavailable model",
       "input_condition": "el modelo fijado no está disponible",
       "expected_behavior": "bloquea ese rol e informa remedio sin sustituirlo",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -324,7 +324,7 @@
       "scenario": "Missing required tool",
       "input_condition": "falta el conector requerido para esa fase",
       "expected_behavior": "la fase queda blocked sin invocar alternativas no seleccionadas",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -337,7 +337,7 @@
       "scenario": "Read-only reviewer",
       "input_condition": "la instrucción dice read-only pero permisos efectivos permiten escritura",
       "expected_behavior": "no certifica restricción efectiva y exige resolver configuración",
-      "spec_ref": "openspec/changes/02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/specs/role-tool-catalog/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"

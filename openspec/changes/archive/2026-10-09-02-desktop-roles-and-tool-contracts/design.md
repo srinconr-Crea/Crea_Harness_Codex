@@ -71,7 +71,7 @@ Spark/MLflow no son dependencias del runtime básico para cargar catálogos. Los
 ## Adaptación aprobada y evidencia Desktop
 
 El usuario aprobó preparación supervisada el 2026-10-09. Evidencia preservada en
-[desktop-runtime-2026-10-09](../../../docs/evidence/desktop-runtime-2026-10-09/manifest.json):
+[desktop-runtime-2026-10-09](../../../../docs/evidence/desktop-runtime-2026-10-09/manifest.json):
 selección de roles real declarada por el runtime y escritura permitida para auditor/verifier.
 El conflicto no se elimina. Seis outputs originales de E03/E04 conservados; E04
 solo propone tests de null explícitos en una de tres repeticiones. La anotación
