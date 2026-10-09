@@ -6,6 +6,7 @@ from harness_core.configuration import ConfigError
 from . import __version__
 from .diagnostics import Check, doctor
 from .onboarding import preview
+from .application import apply, recover
 
 
 class Parser(argparse.ArgumentParser):
@@ -17,29 +18,55 @@ def main(argv=None):
     if hasattr(sys.stdout,'reconfigure'):
         sys.stdout.reconfigure(encoding='utf-8')
     argv=list(sys.argv[1:] if argv is None else argv)
-    parser=Parser(prog='harness',description='Diagnóstico y preview local, sin onboarding aplicado.')
+    parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
-    for name in ('doctor','init'):
+    for name in ('doctor','init','recover'):
         p=commands.add_parser(name)
         p.add_argument('--path')
         p.add_argument('--policy')
         p.add_argument('--binding')
         p.add_argument('--json',action='store_true')
+        if name in ('init','recover'):
+            modes=p.add_mutually_exclusive_group()
+            modes.add_argument('--dry-run',action='store_true')
+            modes.add_argument('--apply',action='store_true')
+            p.add_argument('--plan')
         if name=='init':
-            p.add_argument('--dry-run',action='store_true')
             p.add_argument('--repo')
             p.add_argument('--base-branch')
-    command='init' if 'init' in argv else 'doctor'
+            p.add_argument('--binding-out')
+            p.add_argument('--checkout-id')
+            p.add_argument('--state-dir')
+            p.add_argument('--databricks-profile')
+            p.add_argument('--plan-out')
+        if name=='recover':
+            p.add_argument('--run')
+    command=next((c for c in ('init','recover','doctor') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
         if args.command=='init':
-            if not args.dry_run:
+            if not args.dry_run and not args.apply:
                 raise ConfigError('apply_not_supported')
-            if not args.path or not args.policy or not args.binding:
+            if not args.path or not args.policy:
                 raise ConfigError('configuration_inputs_required')
-            result,code=preview(args.path,args.policy,args.binding,args.repo,args.base_branch)
+            if args.apply:
+                if not args.plan or any(x is not None for x in (args.binding,args.binding_out,args.checkout_id,
+                        args.state_dir,args.databricks_profile,args.plan_out,args.repo,args.base_branch)):
+                    raise ConfigError('invalid_arguments')
+                result,code=apply(args.path,args.policy,args.plan)
+            else:
+                if args.plan:
+                    raise ConfigError('invalid_arguments')
+                result,code=preview(args.path,args.policy,args.binding,args.repo,args.base_branch,
+                    binding_out=args.binding_out,checkout_id=args.checkout_id,state_dir=args.state_dir,
+                    databricks_profile=args.databricks_profile,plan_out=args.plan_out)
+        elif args.command=='recover':
+            if not args.path or not args.policy or not args.run or not (args.dry_run or args.apply):
+                raise ConfigError('configuration_inputs_required')
+            result,code=recover(args.path,args.policy,args.run,binding_path=args.binding,
+                                plan_path=args.plan,apply_changes=args.apply)
         else:
             result,code=doctor(args.path,args.policy,args.binding)
     except (ConfigError, OSError, UnicodeError) as error:
@@ -47,11 +74,24 @@ def main(argv=None):
         result=dict(schema_version=1,command=command,status='invalid',checks=[vars(Check('input','error',error_code,'Entrada o configuración inválida.'))])
         if isinstance(error,ConfigError) and error.document:
             result['checks'][0].update(document=error.document,fields=error.fields)
-        code=2
+        conflicts={'stale_plan','plan_identity_mismatch','plan_not_applicable','onboarding_locked','lock_owner_unknown',
+                   'recovery_required','application_conflict','confinement_rejected','destination_exists',
+                   'write_failed','flush_failed','delete_failed','lock_changed'}
+        code=1 if error_code in conflicts or isinstance(error,OSError) else 2
+        if code==1:
+            result['status']='blocked'
     if json_mode:
         print(json.dumps(result,ensure_ascii=True,sort_keys=True))
     else:
         print(f"{result['command']}: {result['status']}")
+        if 'applicable' in result:
+            print(f"  Aplicable: {result['applicable']}")
+        plan_hash=result.get('plan_sha256') or result.get('plan',{}).get('plan_sha256')
+        if plan_hash:
+            print(f'  SHA256 plan: {plan_hash}')
+        for field in ('application_status','recovery_status','run_id'):
+            if field in result:
+                print(f'  {field}: {result[field]}')
         if 'identities' in result:
             print('  Identidades: '+json.dumps(result['identities'],ensure_ascii=True,sort_keys=True))
         for name,value in result.get('input_hashes',{}).items():
@@ -67,4 +107,6 @@ def main(argv=None):
                 print(f"    SHA256 propuesta: {action['sha256']}")
             if 'content' in action:
                 print(action['content'])
+        for operation in result.get('operations',[]):
+            print(f"  {operation['state']}: {operation['scope']} {operation['path']}")
     return code

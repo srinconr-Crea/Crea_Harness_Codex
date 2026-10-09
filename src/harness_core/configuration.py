@@ -144,10 +144,10 @@ def normalize_remote(origin):
     return name.lower()
 
 
-def validate_configuration(target, policy_path, binding_path, origin, descriptor=None):
+def validate_configuration(target, policy_path, binding_path, origin, descriptor=None, proposed_binding=None):
     target = safe_path(target)
     policy = load_document(policy_path, Policy)
-    binding = load_document(binding_path, Binding)
+    binding = proposed_binding or load_document(binding_path, Binding)
     descriptor = descriptor or load_document(target / ".harness/client.yaml", Descriptor)
     if len({descriptor.client_id, policy.client_id, binding.client_id}) != 1:
         raise ConfigError("client_mismatch")

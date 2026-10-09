@@ -1,10 +1,6 @@
-# onboarding-preview Specification
+# Spec Delta
 
-## Purpose
-
-Permitir revisar un plan concreto de incorporación de un cliente sobre un checkout existente antes de habilitar escrituras, instalaciones o autenticaciones del futuro onboarding.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Preview-only onboarding command
 
@@ -63,6 +59,8 @@ El preview MUST NOT escribir en target, estado local o configuración global, in
 #### Scenario: Snapshot unchanged
 - **WHEN** se compara el target, configuración global y ubicación de estado antes y después de un preview sin plan-out
 - **THEN** no hay archivos creados/modificados/eliminados ni llamadas remotas realizadas por el comando
+
+## ADDED Requirements
 
 ### Requirement: Proposed developer binding
 

@@ -1,0 +1,31 @@
+{
+  "version": "1.13.2",
+  "license": "MIT",
+  "original_global_unchanged": true,
+  "reproducible": true,
+  "files": {
+    "openspec/config.yaml": "2a791b0ccc50e2c2ebbb3ba28692a4ad0e4b6ab94ed2151375ac404d7056e89a",
+    "openspec/specs/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "openspec/changes/archive/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".agents/skills/.openspec-target": "243b0dc9b847e66c440dca985e10fe0ce9e29c379b018ddd5747ba8948f84cc8",
+    ".agents/skills/openspec-apply-change/SKILL.md": "961dd6b729eb94d47b4c268d03562f08e810bccbb293b9c8b89fad661b2db8a8",
+    ".agents/skills/openspec-archive-change/SKILL.md": "9789f1a007a9ab389b9e2be4abef0d81ceee132af977216b5a06183883b65b20",
+    ".agents/skills/openspec-explore/SKILL.md": "c193717b9e0cfbed076d551e3e28a287589e44e931448826c11416360f6a6970",
+    ".agents/skills/openspec-propose/SKILL.md": "3443a9d952d50fbbcdc553f7fc8923b46f6dc63abdd40d39ae1d86fc90fc97e9",
+    ".agents/skills/openspec-sync-specs/SKILL.md": "dbbb248d82a0c00756d625e83ad2216bdb231cf5bb5e4eb8f63aa4a8a37dbec9",
+    ".agents/skills/openspec-update-change/SKILL.md": "3a12bd7291f599098831a616d936a6565086acc4cf7e8fd308c617a29dc77218",
+    ".agents/skills/openspec-verify-change/SKILL.md": "3b5894bb976f5c259444d0ae1e5f162c91f9a5bf06282baebc45741a6061e841"
+  },
+  "runs": [
+    {
+      "returncode": 0,
+      "stdout": "- Creating OpenSpec structure...\n\u258c OpenSpec structure created\n\nOpenSpec Setup Complete\n\nCreated: Codex\n7 skills in .agents/\nConfig: openspec/config.yaml (schema: spec-driven)\n\nGetting started:\n  Start your first change: $openspec-propose \"your idea\" (Codex CLI or IDE); in the Codex desktop app, select openspec-propose from Skills in the sidebar\n\nNote: 5 more workflows are available (new, continue, ff, bulk-archive, onboard).\nAdd them with `openspec config profile`.\n\nLearn more: https://github.com/Fission-AI/OpenSpec\nFeedback:   https://github.com/Fission-AI/OpenSpec/issues\n\n",
+      "stderr": "- Setting up Codex...\n\u221a Setup complete for Codex\n"
+    },
+    {
+      "returncode": 0,
+      "stdout": "- Creating OpenSpec structure...\n\u258c OpenSpec structure created\n\nOpenSpec Setup Complete\n\nCreated: Codex\n7 skills in .agents/\nConfig: openspec/config.yaml (schema: spec-driven)\n\nGetting started:\n  Start your first change: $openspec-propose \"your idea\" (Codex CLI or IDE); in the Codex desktop app, select openspec-propose from Skills in the sidebar\n\nNote: 5 more workflows are available (new, continue, ff, bulk-archive, onboard).\nAdd them with `openspec config profile`.\n\nLearn more: https://github.com/Fission-AI/OpenSpec\nFeedback:   https://github.com/Fission-AI/OpenSpec/issues\n\n",
+      "stderr": "- Setting up Codex...\n\u221a Setup complete for Codex\n"
+    }
+  ]
+}

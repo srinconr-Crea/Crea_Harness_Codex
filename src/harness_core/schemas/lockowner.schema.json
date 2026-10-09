@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "pid": {
+      "exclusiveMinimum": 0,
+      "title": "Pid",
+      "type": "integer"
+    },
+    "started": {
+      "pattern": "^[0-9]+$",
+      "title": "Started",
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Run Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "pid",
+    "started",
+    "run_id"
+  ],
+  "title": "LockOwner",
+  "type": "object"
+}

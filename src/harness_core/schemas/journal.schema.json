@@ -1,0 +1,161 @@
+{
+  "$defs": {
+    "JournalOperation": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "scope": {
+          "enum": [
+            "target",
+            "binding",
+            "state"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "file",
+            "directory"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "planned",
+            "creating",
+            "created",
+            "failed",
+            "removed",
+            "conflict"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sha256"
+        },
+        "file_identity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "File Identity"
+        }
+      },
+      "required": [
+        "schema_version",
+        "scope",
+        "kind",
+        "path",
+        "state"
+      ],
+      "title": "JournalOperation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "onboarding_journal",
+      "default": "onboarding_journal",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "checkout_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Checkout Id",
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    },
+    "target_path": {
+      "title": "Target Path",
+      "type": "string"
+    },
+    "binding_path": {
+      "title": "Binding Path",
+      "type": "string"
+    },
+    "policy_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Policy Sha256",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "in_progress",
+        "completed",
+        "failed",
+        "recovered",
+        "recovery_conflict"
+      ],
+      "title": "State",
+      "type": "string"
+    },
+    "operations": {
+      "items": {
+        "$ref": "#/$defs/JournalOperation"
+      },
+      "maxItems": 256,
+      "title": "Operations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "checkout_id",
+    "run_id",
+    "plan_sha256",
+    "target_path",
+    "binding_path",
+    "policy_sha256",
+    "state",
+    "operations"
+  ],
+  "title": "Journal",
+  "type": "object"
+}

@@ -20,7 +20,8 @@ harness = "harness_local.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-harness_local = ["compatibility.json", "templates/*.md"]
+harness_core = ["schemas/*.json"]
+harness_local = ["compatibility.json", "templates/*.md", "openspec_kit/manifest.json", "openspec_kit/LICENSE", "openspec_kit/openspec/*.yaml", "openspec_kit/.agents/skills/*/SKILL.md"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

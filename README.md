@@ -1,8 +1,8 @@
 # Crea Harness Codex (Local-Harness)
 
 Kit genérico para desarrollar sobre repositorios de clientes desde Codex Desktop.
-El primer incremento entrega contratos de configuración, diagnóstico local y
-preview de onboarding. Codex mantiene la conversación y las herramientas; este
+El kit entrega contratos, diagnóstico local, preview, aplicación explícita de
+onboarding y recuperación conservadora. Codex mantiene la conversación y las herramientas; este
 paquete no invoca modelos ni sustituye su motor.
 
 ## Instalación de desarrollo (Windows)
@@ -22,7 +22,7 @@ python -m venv .venv
 
 En este proyecto `doctor --path .` puede devolver `partial`: no es un repositorio
 cliente vinculado y las capacidades Desktop/autenticación remota no se comprueban.
-Los recursos genéricos (matriz y plantilla AGENTS) se incluyen en el wheel.
+Los recursos genéricos (matriz, AGENTS, kit OpenSpec y schemas) se incluyen en el wheel.
 
 ## Uso sobre un cliente
 
@@ -36,13 +36,29 @@ portable; la política y el binding son entradas explícitas del operador.
 ```
 
 Las rutas son ejemplos; deben apuntar a archivos validados. Si falta el descriptor,
-agregar `--repo demo/alpha --base-branch develop`. El preview no crea archivos.
-`init` sin `--dry-run` devuelve `apply_not_supported`, código 2.
+agregar `--repo demo/alpha --base-branch develop`. El preview no crea archivos,
+salvo el plan externo solicitado con `--plan-out`. `init` sin `--dry-run` ni
+`--apply` devuelve `apply_not_supported`, código 2.
+
+Para un binding nuevo y una preparación explícita:
+
+```powershell
+harness init --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --binding-out C:/HarnessConfig/alpha-binding.json --checkout-id checkout --state-dir C:/HarnessState/alpha/checkout --dry-run --plan-out C:/HarnessPlans/alpha.json --json
+# Revisar contenido, destinos, hashes y applicable antes de aplicar:
+harness init --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --apply --plan C:/HarnessPlans/alpha.json --json
+# RUN es el run_id devuelto por apply:
+harness recover --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --plan C:/HarnessPlans/alpha.json --run RUN --dry-run --json
+harness recover --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --plan C:/HarnessPlans/alpha.json --run RUN --apply --json
+```
+
+Las carpetas del plan y binding deben existir. La política debe autorizar las
+creaciones: un descriptor ausente bajo `.harness/` protegido bloquea el plan.
+`applicable` indica preparación local permitida; no certifica Desktop ni autenticación.
 
 ## Alcance
 
 - `harness_core`: contratos, lectura segura, integridad y separación de clientes.
-- `harness_local`: sondas de versión, inspección Git/OpenSpec y planes deterministas.
+- `harness_local`: sondas, planes, aplicación Windows, journal y recuperación.
 - `schemas`: JSON Schema generado desde los contratos Pydantic.
 - `tests`: clientes sintéticos y comprobaciones de comportamiento sin conexión remota.
 
@@ -54,6 +70,7 @@ no una firma ni autorización externa.
 
 Ver [configuración](docs/configuracion-clientes.md),
 [operación](docs/operacion-local.md),
+[aplicación y recuperación](docs/onboarding-aplicacion.md),
 [arquitectura](docs/propuesta-harness-local-codex.md) y
 [evidencia](docs/evidence/bootstrap-codex-local-core.md).
 

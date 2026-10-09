@@ -1,0 +1,4 @@
+# Preserve the bytes audited by the pinned upstream resource manifest.
+src/harness_local/openspec_kit/** text eol=lf
+# Keep the upstream license byte-for-byte, including its final blank line.
+src/harness_local/openspec_kit/LICENSE whitespace=-blank-at-eof

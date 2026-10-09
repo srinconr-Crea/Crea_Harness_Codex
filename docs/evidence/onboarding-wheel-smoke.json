@@ -1,0 +1,287 @@
+{
+  "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+  "sha256": "3b17eeb3d7cfc2284ef2c0963ed7fde7289093e7106116f4e295aa9a5215e28c",
+  "clients": [
+    {
+      "client": "alpha",
+      "plan_sha256": "6a71054fdf87f7b01d8fdeed643d3893d006d88873664d2be47a5e2182eb84bb",
+      "application_status": "completed",
+      "recovery_status": "recovered"
+    },
+    {
+      "client": "beta",
+      "plan_sha256": "d9c36569246f7e8a5e0f5bab7c8da72c4baf520ed86e4a6bfa6f1527bcc73706",
+      "application_status": "completed",
+      "recovery_status": "recovered"
+    }
+  ],
+  "checks": [
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "from importlib.resources import files; import json,harness_local; from harness_local.resources import kit; assert 'site-packages' in harness_local.__file__; assert len(kit()[0])==8; from harness_core.onboarding_plan import OnboardingPlan,Journal; assert json.loads(files('harness_core').joinpath('schemas/onboardingplan.schema.json').read_text())==OnboardingPlan.model_json_schema(); assert json.loads(files('harness_core').joinpath('schemas/journal.schema.json').read_text())==Journal.model_json_schema()"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "init",
+        "--initial-branch=develop",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\target"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\target",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/demo/alpha.git"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "init",
+        "--dry-run",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\policy.json",
+        "--binding-out",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\binding.json",
+        "--checkout-id",
+        "checkout",
+        "--state-dir",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\state\\alpha\\checkout",
+        "--repo",
+        "demo/alpha",
+        "--base-branch",
+        "develop",
+        "--plan-out",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\plan.json",
+        "--json"
+      ],
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "init",
+        "--apply",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\policy.json",
+        "--plan",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\plan.json",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "init",
+        "--apply",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\policy.json",
+        "--plan",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\plan.json",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "recover",
+        "--dry-run",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\policy.json",
+        "--plan",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\plan.json",
+        "--run",
+        "cf6c2fc316f842289e5b250a76388be7",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "recover",
+        "--apply",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\policy.json",
+        "--binding",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\alpha\\binding.json",
+        "--run",
+        "cf6c2fc316f842289e5b250a76388be7",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "init",
+        "--initial-branch=develop",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\target"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\target",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/demo/beta.git"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "init",
+        "--dry-run",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\policy.json",
+        "--binding-out",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\binding.json",
+        "--checkout-id",
+        "checkout",
+        "--state-dir",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\state\\beta\\checkout",
+        "--repo",
+        "demo/beta",
+        "--base-branch",
+        "develop",
+        "--plan-out",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\plan.json",
+        "--json"
+      ],
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "init",
+        "--apply",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\policy.json",
+        "--plan",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\plan.json",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "init",
+        "--apply",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\policy.json",
+        "--plan",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\plan.json",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "recover",
+        "--dry-run",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\policy.json",
+        "--plan",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\plan.json",
+        "--run",
+        "b81d3fc000fd4ef682faa072a63fb7dc",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.smoke-venv\\Scripts\\harness.exe",
+        "recover",
+        "--apply",
+        "--path",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\target",
+        "--policy",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\policy.json",
+        "--binding",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\wheel-onboarding-30938e27342b430e91ea1f134a634e7b\\beta\\binding.json",
+        "--run",
+        "b81d3fc000fd4ef682faa072a63fb7dc",
+        "--json"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "wheel_files": [
+    "harness_core/__init__.py",
+    "harness_core/configuration.py",
+    "harness_core/contracts.py",
+    "harness_core/onboarding_plan.py",
+    "harness_core/schemas/binding.schema.json",
+    "harness_core/schemas/descriptor.schema.json",
+    "harness_core/schemas/journal.schema.json",
+    "harness_core/schemas/lockowner.schema.json",
+    "harness_core/schemas/onboardingplan.schema.json",
+    "harness_core/schemas/policy.schema.json",
+    "harness_local/__init__.py",
+    "harness_local/__main__.py",
+    "harness_local/application.py",
+    "harness_local/cli.py",
+    "harness_local/compatibility.json",
+    "harness_local/diagnostics.py",
+    "harness_local/execution_state.py",
+    "harness_local/onboarding.py",
+    "harness_local/resources.py",
+    "harness_local/windows_fs.py",
+    "harness_local/openspec_kit/LICENSE",
+    "harness_local/openspec_kit/manifest.json",
+    "harness_local/openspec_kit/.agents/skills/openspec-apply-change/SKILL.md",
+    "harness_local/openspec_kit/.agents/skills/openspec-archive-change/SKILL.md",
+    "harness_local/openspec_kit/.agents/skills/openspec-explore/SKILL.md",
+    "harness_local/openspec_kit/.agents/skills/openspec-propose/SKILL.md",
+    "harness_local/openspec_kit/.agents/skills/openspec-sync-specs/SKILL.md",
+    "harness_local/openspec_kit/.agents/skills/openspec-update-change/SKILL.md",
+    "harness_local/openspec_kit/.agents/skills/openspec-verify-change/SKILL.md",
+    "harness_local/openspec_kit/openspec/config.yaml",
+    "harness_local/templates/AGENTS.md",
+    "crea_local_harness-0.1.0.dist-info/METADATA",
+    "crea_local_harness-0.1.0.dist-info/WHEEL",
+    "crea_local_harness-0.1.0.dist-info/entry_points.txt",
+    "crea_local_harness-0.1.0.dist-info/top_level.txt",
+    "crea_local_harness-0.1.0.dist-info/RECORD"
+  ]
+}

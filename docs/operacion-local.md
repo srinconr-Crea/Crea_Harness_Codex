@@ -1,4 +1,4 @@
-# Operación del primer incremento
+# Operación local
 
 ## Diagnóstico
 
@@ -56,12 +56,12 @@ requiere datos explícitos; los flags redundantes de un descriptor presente debe
 coincidir. El plan lleva identidad, hashes de entradas, comprobaciones y acciones
 ordenadas, sin fechas ni identificadores aleatorios:
 
-- `proposed`: descriptor o AGENTS que puede revisarse como contenido y SHA-256.
+- `proposed`: descriptor, AGENTS, binding o recursos OpenSpec revisables con contenido y SHA-256.
 - `existing`: conservar el archivo compatible.
 - `conflict`: integrar manualmente AGENTS distinto o artefacto incompatible.
-- `manual`: preparar workflows ausentes, revisar Codex y autenticación futura.
+- `manual`: revisar Codex y autenticación futura.
 
-No aplicar ninguna acción; no escribir target/estado/configuración global. El
+El preview sin `--plan-out` no escribe target/estado/configuración global. El
 estado externo declarado se valida, no se crea. No hay SQLite todavía. La carpeta
 `openspec/` del producto guarda este desarrollo; cada cliente mantiene sus propias
 specs e instrucciones. No copiar conocimiento de un cliente a las plantillas.
@@ -76,7 +76,7 @@ datos, incluidas versiones, remedios y hashes. Mensajes sanitizados.
 | --- | --- |
 | 0 | Sin fallos comprobados; puede haber capacidades pendientes |
 | 1 | Herramienta ausente/incompatible, diagnóstico incompleto o conflicto |
-| 2 | Uso o configuración inválidos; incluye init sin dry-run |
+| 2 | Uso o configuración inválidos; incluye init sin dry-run ni apply |
 
 Estado global `ready`, `partial`, `blocked` o `invalid`. `not_checked` produce
 `partial` cuando no hay fallos, sin transformar lo pendiente en éxito.
@@ -85,6 +85,6 @@ en Desktop requieren pruebas futuras; archivos TOML presentes no bastan.
 
 ## Próximos cambios
 
-Onboarding aplicable, instalador/plugin, gates de HU, validaciones remotas y
-persistencia requieren sus propias propuestas OpenSpec. Este cambio no implementa
+El onboarding explícito y su journal se describen en [aplicación](onboarding-aplicacion.md).
+Instalador/plugin, gates de HU y validaciones remotas requieren propuestas futuras. Este cambio no implementa
 `harness update`, despliegue, agentes ni modificaciones del TOML global.

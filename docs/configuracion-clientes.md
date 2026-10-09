@@ -1,7 +1,7 @@
 # Contratos de configuración, versión 1
 
 Separar tres documentos evita incorporar rutas personales y permisos al repositorio
-portable. El producto no instala ni activa ninguno: únicamente valida o propone.
+portable. El preview valida o propone; apply crea únicamente los ausentes del plan revisado.
 
 | Documento | Ubicación/selección | Responsabilidad |
 | --- | --- | --- |
@@ -43,7 +43,7 @@ max_bytes: 2000000
 
 Las listas son rutas/patrones relativos; no permiten `/`, discos absolutos,
 backslash, `..` ni segmentos vacíos. Los límites son enteros estrictos positivos.
-Estos campos reservan un contrato para futuros gates. Hoy no impiden que Codex
+Estos campos se aplican a las creaciones del onboarding. No impiden que Codex
 edite directamente; las instrucciones AGENTS tampoco conceden permisos.
 
 ## Binding
@@ -86,7 +86,8 @@ universal de secretos. Los errores indican código, contrato y campos afectados
 cuando hay validación de esquema, sin valores completos, stderr ni traceback.
 
 Schemas: `schemas/descriptor.schema.json`, `policy.schema.json`,
-`binding.schema.json`. Se generan desde los modelos; restricciones relacionales,
+`binding.schema.json`, `onboardingplan.schema.json`, `journal.schema.json` y
+`lockowner.schema.json`. Se generan desde los modelos; restricciones relacionales,
 filesystem y reglas Git requieren el validador Python, además del JSON Schema.
 
 Las pruebas verifican fixtures y correspondencia schemas/modelos. Para regenerar:

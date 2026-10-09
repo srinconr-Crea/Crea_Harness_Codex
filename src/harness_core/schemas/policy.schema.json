@@ -1,0 +1,71 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "policy_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Policy Id",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "repository": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Repository",
+      "type": "string"
+    },
+    "base_branch": {
+      "title": "Base Branch",
+      "type": "string"
+    },
+    "branch_prefix": {
+      "title": "Branch Prefix",
+      "type": "string"
+    },
+    "read_only_paths": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Read Only Paths",
+      "type": "array"
+    },
+    "denied_paths": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Denied Paths",
+      "type": "array"
+    },
+    "max_files": {
+      "exclusiveMinimum": 0,
+      "title": "Max Files",
+      "type": "integer"
+    },
+    "max_bytes": {
+      "exclusiveMinimum": 0,
+      "title": "Max Bytes",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy_id",
+    "client_id",
+    "repository",
+    "base_branch",
+    "branch_prefix",
+    "read_only_paths",
+    "denied_paths",
+    "max_files",
+    "max_bytes"
+  ],
+  "title": "Policy",
+  "type": "object"
+}

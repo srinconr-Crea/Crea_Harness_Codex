@@ -1,0 +1,37 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "repository": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Repository",
+      "type": "string"
+    },
+    "base_branch": {
+      "title": "Base Branch",
+      "type": "string"
+    },
+    "openspec_root": {
+      "default": "openspec",
+      "title": "Openspec Root",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "repository",
+    "base_branch"
+  ],
+  "title": "Descriptor",
+  "type": "object"
+}

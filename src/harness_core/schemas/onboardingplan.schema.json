@@ -1,0 +1,255 @@
+{
+  "$defs": {
+    "Binding": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "checkout_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Checkout Id",
+          "type": "string"
+        },
+        "target_path": {
+          "title": "Target Path",
+          "type": "string"
+        },
+        "policy_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Policy Sha256",
+          "type": "string"
+        },
+        "state_dir": {
+          "title": "State Dir",
+          "type": "string"
+        },
+        "databricks_profile": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Databricks Profile"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "checkout_id",
+        "target_path",
+        "policy_sha256",
+        "state_dir"
+      ],
+      "title": "Binding",
+      "type": "object"
+    },
+    "Descriptor": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "repository": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "base_branch": {
+          "title": "Base Branch",
+          "type": "string"
+        },
+        "openspec_root": {
+          "default": "openspec",
+          "title": "Openspec Root",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "repository",
+        "base_branch"
+      ],
+      "title": "Descriptor",
+      "type": "object"
+    },
+    "Operation": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "create_file",
+          "default": "create_file",
+          "title": "Kind",
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "target",
+            "binding"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "content": {
+          "maxLength": 131072,
+          "title": "Content",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "scope",
+        "path",
+        "content",
+        "sha256"
+      ],
+      "title": "Operation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "onboarding_plan",
+      "default": "onboarding_plan",
+      "title": "Kind",
+      "type": "string"
+    },
+    "kit_version": {
+      "const": "0.1.0",
+      "default": "0.1.0",
+      "title": "Kit Version",
+      "type": "string"
+    },
+    "resource_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Resource Manifest Sha256",
+      "type": "string"
+    },
+    "target_path": {
+      "title": "Target Path",
+      "type": "string"
+    },
+    "origin": {
+      "title": "Origin",
+      "type": "string"
+    },
+    "policy_path": {
+      "title": "Policy Path",
+      "type": "string"
+    },
+    "policy_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Policy Sha256",
+      "type": "string"
+    },
+    "binding_path": {
+      "title": "Binding Path",
+      "type": "string"
+    },
+    "binding_mode": {
+      "enum": [
+        "existing",
+        "proposed"
+      ],
+      "title": "Binding Mode",
+      "type": "string"
+    },
+    "binding": {
+      "$ref": "#/$defs/Binding"
+    },
+    "descriptor": {
+      "$ref": "#/$defs/Descriptor"
+    },
+    "input_hashes": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "title": "Input Hashes",
+      "type": "object"
+    },
+    "absent_paths": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Absent Paths",
+      "type": "array"
+    },
+    "applicable": {
+      "title": "Applicable",
+      "type": "boolean"
+    },
+    "operations": {
+      "items": {
+        "$ref": "#/$defs/Operation"
+      },
+      "maxItems": 64,
+      "title": "Operations",
+      "type": "array"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "resource_manifest_sha256",
+    "target_path",
+    "origin",
+    "policy_path",
+    "policy_sha256",
+    "binding_path",
+    "binding_mode",
+    "binding",
+    "descriptor",
+    "input_hashes",
+    "absent_paths",
+    "applicable",
+    "operations",
+    "plan_sha256"
+  ],
+  "title": "OnboardingPlan",
+  "type": "object"
+}
