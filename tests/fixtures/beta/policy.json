@@ -1,0 +1,1 @@
+{"schema_version":1,"policy_id":"pilot","client_id":"beta","repository":"demo/beta","base_branch":"develop","branch_prefix":"feature/","read_only_paths":[".harness/"],"denied_paths":["private/"],"max_files":20,"max_bytes":1000000}

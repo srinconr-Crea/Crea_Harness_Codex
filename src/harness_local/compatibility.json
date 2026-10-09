@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "tools": {
+    "python": {"minimum": [3, 13, 0], "exclusive_maximum": [3, 14, 0]},
+    "git": {"minimum": [2, 0, 0]},
+    "node": {"minimum": [20, 19, 0]},
+    "openspec": {"exact": [1, 13, 2]},
+    "databricks": {"minimum": [0, 292, 0]}
+  },
+  "tested_versions": {"python": "3.13.14", "git": "2.53.0", "node": "24.15.0", "openspec": "1.13.2", "databricks": "1.18.0"}
+}

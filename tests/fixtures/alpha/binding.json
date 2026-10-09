@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "client_id": "alpha",
+  "checkout_id": "checkout",
+  "target_path": "C:/Clientes/alpha",
+  "policy_sha256": "4362c78450804a1ca9f09d93a89030c63daa5375b49a8f9065522847852deec7",
+  "state_dir": "C:/HarnessState/alpha/checkout"
+}

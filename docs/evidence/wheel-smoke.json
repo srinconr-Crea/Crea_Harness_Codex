@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+  "sha256": "12a072a5f4a5e9fba4fba8ed7e7d5eac171615f679e755a5c9d1f1b7a6fcd4ee",
+  "checks": [
+    {
+      "command": [
+        ".smoke-venv\\Scripts\\harness.exe",
+        "--version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        ".smoke-venv\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "harness_local",
+        "--help"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        ".smoke-venv\\Scripts\\harness.exe",
+        "doctor",
+        "--path",
+        ".",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        ".smoke-venv\\Scripts\\harness.exe",
+        "init",
+        "--json"
+      ],
+      "exit_code": 2
+    },
+    {
+      "command": [
+        ".smoke-venv\\Scripts\\harness.exe",
+        "doctor",
+        "--policy",
+        "absent",
+        "--json"
+      ],
+      "exit_code": 2
+    },
+    {
+      "command": [
+        ".smoke-venv\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "from importlib.resources import files; import harness_local; assert 'site-packages' in harness_local.__file__; assert files('harness_local').joinpath('compatibility.json').is_file(); assert files('harness_local').joinpath('templates/AGENTS.md').is_file(); print('installed resources OK')"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "doctor": {
+    "checks": [
+      {
+        "code": "compatible",
+        "id": "python",
+        "message": "Versi\u00f3n local compatible.",
+        "observed_branch": null,
+        "observed_version": "3.13.14",
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "git",
+        "message": "Versi\u00f3n local compatible.",
+        "observed_branch": null,
+        "observed_version": "2.53.0",
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "node",
+        "message": "Versi\u00f3n local compatible.",
+        "observed_branch": null,
+        "observed_version": "24.15.0",
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec",
+        "message": "Versi\u00f3n local compatible.",
+        "observed_branch": null,
+        "observed_version": "1.13.2",
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "databricks",
+        "message": "Versi\u00f3n local compatible.",
+        "observed_branch": null,
+        "observed_version": "1.18.0",
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "git_checkout",
+        "id": "git_checkout",
+        "message": "Checkout Git v\u00e1lido.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "branch_observed",
+        "id": "git_branch",
+        "message": "Rama local observada.",
+        "observed_branch": "master",
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "dirty",
+        "id": "git_status",
+        "message": "Cambios locales presentes.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec_config",
+        "message": "Configuraci\u00f3n OpenSpec inspeccionada.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec-explore",
+        "message": "Metadatos del workflow inspeccionados.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec-propose",
+        "message": "Metadatos del workflow inspeccionados.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec-update-change",
+        "message": "Metadatos del workflow inspeccionados.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec-apply-change",
+        "message": "Metadatos del workflow inspeccionados.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec-verify-change",
+        "message": "Metadatos del workflow inspeccionados.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec-sync-specs",
+        "message": "Metadatos del workflow inspeccionados.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "compatible",
+        "id": "openspec-archive-change",
+        "message": "Metadatos del workflow inspeccionados.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "ready"
+      },
+      {
+        "code": "absent",
+        "id": "codex_files",
+        "message": "Presencia de configuraci\u00f3n observada; requiere revisi\u00f3n en Desktop.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "not_checked"
+      },
+      {
+        "code": "configuration_not_supplied",
+        "id": "client_configuration",
+        "message": "Validaci\u00f3n operativa pendiente.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "not_checked"
+      },
+      {
+        "code": "desktop_not_verified",
+        "id": "desktop_capabilities",
+        "message": "Skills, agentes, modelos y hooks requieren prueba en Desktop.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "not_checked"
+      },
+      {
+        "code": "auth_not_verified",
+        "id": "databricks_auth",
+        "message": "Autenticaci\u00f3n y acceso remoto no comprobados.",
+        "observed_branch": null,
+        "observed_version": null,
+        "remediation": null,
+        "status": "not_checked"
+      }
+    ],
+    "command": "doctor",
+    "schema_version": 1,
+    "status": "partial"
+  },
+  "wheel_files": [
+    "harness_core/__init__.py",
+    "harness_core/configuration.py",
+    "harness_core/contracts.py",
+    "harness_local/__init__.py",
+    "harness_local/__main__.py",
+    "harness_local/cli.py",
+    "harness_local/compatibility.json",
+    "harness_local/diagnostics.py",
+    "harness_local/onboarding.py",
+    "harness_local/templates/AGENTS.md",
+    "crea_local_harness-0.1.0.dist-info/METADATA",
+    "crea_local_harness-0.1.0.dist-info/WHEEL",
+    "crea_local_harness-0.1.0.dist-info/entry_points.txt",
+    "crea_local_harness-0.1.0.dist-info/top_level.txt",
+    "crea_local_harness-0.1.0.dist-info/RECORD"
+  ]
+}

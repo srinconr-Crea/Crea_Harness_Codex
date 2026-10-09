@@ -1,0 +1,58 @@
+schema: spec-driven
+
+context: |
+  Local-Harness es un producto genérico para desarrollo supervisado desde Codex
+  Desktop en Windows. La arquitectura de referencia está documentada en
+  docs/propuesta-harness-local-codex.md. El incremento bootstrap-codex-local-core
+  implementa contratos, diagnóstico local y preview; consultar su evidencia.
+  Las capacidades arquitectónicas posteriores siguen siendo propuestas.
+  Redactar artefactos en español; conservar encabezados estructurales y las
+  palabras SHALL/MUST en inglés según las plantillas OpenSpec.
+  Codex mantiene la conversación, herramientas y delegación. El núcleo Python
+  aporta contratos, validadores y evidencias propias, sin duplicar el motor LLM.
+  Separar producto, repositorios cliente y estado local. No incluir reglas,
+  credenciales ni recursos reales de NaturaPet en el núcleo genérico.
+  Primer incremento: estructura del paquete, descriptor/política/binding de
+  cliente, harness doctor local y harness init --dry-run. El dry-run no instala,
+  clona, autentica, modifica el target ni registra bindings persistentes.
+  Installer/plugin, ejecución remota, gates completos de HU y PR, SQLite,
+  hooks y agentes operativos pertenecen a incrementos posteriores.
+  Las instrucciones y Skills orientan al agente; no son fronteras de seguridad.
+  No prometer control exacto de tokens, contexto interno o costos de Codex.
+  Los cambios de planificación no autorizan aplicar código ni publicar GitHub.
+
+rules:
+  proposal:
+    - Distinguir hechos existentes, nuevas capacidades y exclusiones del incremento.
+    - Nombrar las capacidades nuevas y su impacto en el producto y los clientes.
+  specs:
+    - Usar requisitos observables con SHALL y escenarios WHEN/THEN.
+    - Incluir rechazos, ausencia de herramientas y ausencia de efectos del dry-run.
+  design:
+    - Definir contratos, rutas, entradas, salidas, códigos de error y confianza.
+    - Mantener el producto independiente de configuraciones concretas de clientes.
+  tasks:
+    - Escribir tareas verificables y pruebas de comportamiento, sin marcarlas realizadas.
+    - Limitar la implementación al incremento aprobado, sin instalar ni publicar.
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing

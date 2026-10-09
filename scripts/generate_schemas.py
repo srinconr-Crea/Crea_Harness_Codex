@@ -1,0 +1,11 @@
+"""Regenerar únicamente los schemas del producto desde sus contratos."""
+import json
+from pathlib import Path
+
+from harness_core.contracts import Descriptor, Policy, Binding
+
+root = Path(__file__).resolve().parents[1] / 'schemas'
+root.mkdir(exist_ok=True)
+for model in (Descriptor, Policy, Binding):
+    (root / (model.__name__.lower() + '.schema.json')).write_text(
+        json.dumps(model.model_json_schema(), indent=2) + '\n', encoding='utf-8')
