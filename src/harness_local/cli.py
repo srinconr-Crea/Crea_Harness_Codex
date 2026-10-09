@@ -21,6 +21,23 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    integration=commands.add_parser('integrate')
+    integration.add_argument('--path')
+    integration.add_argument('--policy')
+    integration.add_argument('--binding')
+    integration.add_argument('--catalog')
+    integration.add_argument('--plan')
+    integration.add_argument('--plan-out')
+    integration.add_argument('--json',action='store_true')
+    integration_modes=integration.add_mutually_exclusive_group(required=True)
+    integration_modes.add_argument('--dry-run',action='store_true')
+    integration_modes.add_argument('--apply',action='store_true')
+    integration_modes.add_argument('--recover',action='store_true')
+    integration.add_argument('--recover-apply',action='store_true')
+    certificate=commands.add_parser('desktop-check')
+    certificate.add_argument('--catalog')
+    certificate.add_argument('--observations')
+    certificate.add_argument('--json',action='store_true')
     for name in ('doctor','init','recover'):
         p=commands.add_parser(name)
         p.add_argument('--path')
@@ -42,11 +59,37 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('init','recover','doctor') if c in argv),'doctor')
+    command=next((c for c in ('init','recover','doctor','integrate','desktop-check') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command=='init':
+        if args.command=='integrate':
+            from . import desktop_integration
+            from harness_core.desktop import RoleCatalog
+            from harness_core.onboarding_plan import load_json
+            if not args.path or not args.policy:
+                raise ConfigError('configuration_inputs_required')
+            if args.dry_run:
+                if not args.catalog or not args.binding or args.plan or args.recover_apply:
+                    raise ConfigError('invalid_arguments')
+                catalog=load_json(args.catalog,RoleCatalog)
+                result,code=desktop_integration.preview(args.path,args.policy,args.binding,catalog,plan_out=args.plan_out)
+            elif args.apply:
+                if not args.plan or any((args.catalog,args.binding,args.plan_out,args.recover_apply)):
+                    raise ConfigError('invalid_arguments')
+                result,code=desktop_integration.apply(args.path,args.policy,args.plan)
+            else:
+                if not args.plan or any((args.catalog,args.binding,args.plan_out)):
+                    raise ConfigError('invalid_arguments')
+                result,code=desktop_integration.recover(args.path,args.policy,args.plan,apply_changes=args.recover_apply)
+        elif args.command=='desktop-check':
+            from harness_core.desktop import RoleCatalog,DesktopCertificate,assess_certificate
+            from harness_core.onboarding_plan import load_json
+            if not args.catalog or not args.observations:
+                raise ConfigError('configuration_inputs_required')
+            result=assess_certificate(load_json(args.catalog,RoleCatalog),load_json(args.observations,DesktopCertificate))
+            code=1 if result['status']=='blocked' else 0
+        elif args.command=='init':
             if not args.dry_run and not args.apply:
                 raise ConfigError('apply_not_supported')
             if not args.path or not args.policy:
@@ -76,7 +119,9 @@ def main(argv=None):
             result['checks'][0].update(document=error.document,fields=error.fields)
         conflicts={'stale_plan','plan_identity_mismatch','plan_not_applicable','onboarding_locked','lock_owner_unknown',
                    'recovery_required','application_conflict','confinement_rejected','destination_exists',
-                   'write_failed','flush_failed','delete_failed','lock_changed'}
+                   'write_failed','flush_failed','delete_failed','lock_changed',
+                   'integration_drift','integration_identity_mismatch','integration_conflict','integration_policy_blocked',
+                   'model_unavailable','effort_unavailable','integration_failed'}
         code=1 if error_code in conflicts or isinstance(error,OSError) else 2
         if code==1:
             result['status']='blocked'
@@ -97,7 +142,7 @@ def main(argv=None):
         for name,value in result.get('input_hashes',{}).items():
             print(f'  SHA256 entrada {name}: {value}')
         for check in result['checks']:
-            print(f"  {check['id']}: {check['status']} ({check['code']}) — {check['message']}")
+            print(f"  {check['id']}: {check['status']} ({check.get('code','observation')}) — {check.get('message','Comprobación Desktop declarada.')}")
             for field in ('observed_version','observed_branch','remediation','document','fields'):
                 if check.get(field):
                     print(f'    {field}: {check[field]}')

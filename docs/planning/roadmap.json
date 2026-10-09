@@ -32,14 +32,15 @@
       "depends_on": [
         "01-quality-practices-and-eval-foundation"
       ],
-      "status": "proposed",
+      "status": "local-implemented-desktop-pending",
       "implemented": false,
       "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
       "exit_criterion": "Configuración concreta revisable y evidencia en Desktop de cada capacidad habilitada; archivos presentes nunca equivalen a certificación.",
       "capabilities": [
         "desktop-integration",
         "role-tool-catalog"
-      ]
+      ],
+      "evidence": "docs/evidence/desktop-integration.md"
     },
     {
       "order": 3,

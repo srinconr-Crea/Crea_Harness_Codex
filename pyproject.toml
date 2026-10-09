@@ -21,7 +21,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 harness_core = ["schemas/*.json"]
-harness_local = ["compatibility.json", "templates/*.md", "openspec_kit/manifest.json", "openspec_kit/LICENSE", "openspec_kit/openspec/*.yaml", "openspec_kit/.agents/skills/*/SKILL.md", "quality_kit/**/*", "quality_kit/*.json"]
+harness_local = ["compatibility.json", "templates/*.md", "openspec_kit/manifest.json", "openspec_kit/LICENSE", "openspec_kit/openspec/*.yaml", "openspec_kit/.agents/skills/*/SKILL.md", "quality_kit/**/*", "quality_kit/*.json", "desktop_kit/*.json", "desktop_kit/*.md", "desktop_kit/agents/*.md", "desktop_kit/harness-hu/*.md"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

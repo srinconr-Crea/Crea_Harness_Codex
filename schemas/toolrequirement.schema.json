@@ -1,0 +1,44 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "local",
+        "skill",
+        "mcp",
+        "cli"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "purpose": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Purpose",
+      "type": "string"
+    },
+    "required": {
+      "title": "Required",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "kind",
+    "purpose",
+    "required"
+  ],
+  "title": "ToolRequirement",
+  "type": "object"
+}

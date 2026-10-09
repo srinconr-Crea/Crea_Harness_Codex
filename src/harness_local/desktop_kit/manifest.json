@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "files": {
+    "agents/analyst.md": "f0772c82386804bc9c1db8300adb5f116f9c98c7e4040bc47faf5fc5c9657b4a",
+    "agents/auditor.md": "d958513b565e08d7afba70ed934c12c20f3fbd702c51c0341e092afc1e3f2957",
+    "agents/developer.md": "021879382cebd6e7ba0b51bdd32a41cf20a2d120721007e4ab83f9c625ed7745",
+    "agents/impact-analyzer.md": "66ed943cb9c927929878bcd32fa7de08ed1e7d1498f6e57fd5acc84619f3a798",
+    "agents/planner.md": "c2eb10cb25b8dc6d4326474fad9d96ced7d15e197f9486ade359e93b664e6cb3",
+    "agents/principal.md": "5d916b56643d9aaead2f83039efaa1aa44197e2b9015e689b0570844c8f9865c",
+    "agents/tester.md": "9317e627ff8bb7190d8a8c3863eeacc1d28deb038a7d5621d5766aeadbc8cd11",
+    "agents/verifier.md": "f00537aff8a68b63a81a4be9c9349372e82a00361f1ec461e94daf37dc5c686f",
+    "AGENTS.md": "8ff4fc2da4e3fa6cefec69bc46fd282994709334a75e9d07629537354a8afc1d",
+    "harness-hu/SKILL.md": "347766d08cbd79ad2bfe0aec3ed7a90094a076e70af1184062b14764fc146230",
+    "roles.json": "b884342b5bed5dea9c97357b58f94a53e433e989901fd095f8f9e051a6784bb4"
+  }
+}

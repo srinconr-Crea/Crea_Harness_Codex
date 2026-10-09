@@ -1,0 +1,370 @@
+{
+  "schema_version": 1,
+  "catalog_version": "1.0.0",
+  "practice_pack_version": "0.1.0-design",
+  "max_concurrent": 4,
+  "roles": [
+    {
+      "schema_version": 1,
+      "id": "principal",
+      "responsibility": "Coordina alcance, delegación y presentación a la persona.",
+      "inputs": [
+        "HU y límites autorizados"
+      ],
+      "outputs": [
+        "Decisión de alcance y assignments"
+      ],
+      "write_scope": "assigned-only",
+      "sandbox": "workspace-write",
+      "delegate_when": "Solo cuando impacto o especialización requieren otro rol.",
+      "max_delegation_depth": 1,
+      "tools": [
+        {
+          "schema_version": 1,
+          "id": "local-files",
+          "kind": "local",
+          "purpose": "Leer el contexto seleccionado.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "git",
+          "kind": "cli",
+          "purpose": "Inspeccionar candidato y estado sin efectos remotos.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "databricks",
+          "kind": "mcp",
+          "purpose": "Fases Databricks explícitamente seleccionadas; ausente no se sustituye.",
+          "required": false
+        }
+      ],
+      "practice_ids": [
+        "GEN-01",
+        "GEN-02",
+        "GEN-04"
+      ],
+      "activated": false,
+      "model": null,
+      "effort": null
+    },
+    {
+      "schema_version": 1,
+      "id": "analyst",
+      "responsibility": "Enriquece HU con criterios observables sin inventar reglas cliente.",
+      "inputs": [
+        "HU y contexto seleccionado"
+      ],
+      "outputs": [
+        "Criterios, preguntas y supuestos explícitos"
+      ],
+      "write_scope": "none",
+      "sandbox": "read-only",
+      "delegate_when": "Devuelve al principal; no subdelega.",
+      "max_delegation_depth": 0,
+      "tools": [
+        {
+          "schema_version": 1,
+          "id": "local-files",
+          "kind": "local",
+          "purpose": "Leer el contexto seleccionado.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "git",
+          "kind": "cli",
+          "purpose": "Inspeccionar candidato y estado sin efectos remotos.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "databricks",
+          "kind": "mcp",
+          "purpose": "Fases Databricks explícitamente seleccionadas; ausente no se sustituye.",
+          "required": false
+        }
+      ],
+      "practice_ids": [
+        "GEN-01",
+        "GEN-03"
+      ],
+      "activated": false,
+      "model": null,
+      "effort": null
+    },
+    {
+      "schema_version": 1,
+      "id": "impact-analyzer",
+      "responsibility": "Traza consumidores, grano, null policy y riesgos del cambio.",
+      "inputs": [
+        "Diff y fixture sintético"
+      ],
+      "outputs": [
+        "Rutas afectadas y pruebas necesarias"
+      ],
+      "write_scope": "none",
+      "sandbox": "read-only",
+      "delegate_when": "Devuelve al principal; no subdelega.",
+      "max_delegation_depth": 0,
+      "tools": [
+        {
+          "schema_version": 1,
+          "id": "local-files",
+          "kind": "local",
+          "purpose": "Leer el contexto seleccionado.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "git",
+          "kind": "cli",
+          "purpose": "Inspeccionar candidato y estado sin efectos remotos.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "databricks",
+          "kind": "mcp",
+          "purpose": "Fases Databricks explícitamente seleccionadas; ausente no se sustituye.",
+          "required": false
+        }
+      ],
+      "practice_ids": [
+        "GEN-01",
+        "GEN-03",
+        "SQL-01"
+      ],
+      "activated": false,
+      "model": null,
+      "effort": null
+    },
+    {
+      "schema_version": 1,
+      "id": "planner",
+      "responsibility": "Descompone alcance en tareas y verificaciones revisables.",
+      "inputs": [
+        "HU enriquecida e impacto"
+      ],
+      "outputs": [
+        "Plan con rutas, ownership y pruebas"
+      ],
+      "write_scope": "none",
+      "sandbox": "read-only",
+      "delegate_when": "Devuelve al principal; no subdelega.",
+      "max_delegation_depth": 0,
+      "tools": [
+        {
+          "schema_version": 1,
+          "id": "local-files",
+          "kind": "local",
+          "purpose": "Leer el contexto seleccionado.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "git",
+          "kind": "cli",
+          "purpose": "Inspeccionar candidato y estado sin efectos remotos.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "databricks",
+          "kind": "mcp",
+          "purpose": "Fases Databricks explícitamente seleccionadas; ausente no se sustituye.",
+          "required": false
+        }
+      ],
+      "practice_ids": [
+        "GEN-01",
+        "GEN-02"
+      ],
+      "activated": false,
+      "model": null,
+      "effort": null
+    },
+    {
+      "schema_version": 1,
+      "id": "developer",
+      "responsibility": "Implementa tareas en las rutas asignadas como único escritor.",
+      "inputs": [
+        "Tarea, plan y assignment"
+      ],
+      "outputs": [
+        "Candidato y evidencia de pruebas"
+      ],
+      "write_scope": "assigned-only",
+      "sandbox": "workspace-write",
+      "delegate_when": "Solicita al principal revisión independiente; no subdelega.",
+      "max_delegation_depth": 0,
+      "tools": [
+        {
+          "schema_version": 1,
+          "id": "local-files",
+          "kind": "local",
+          "purpose": "Leer el contexto seleccionado.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "git",
+          "kind": "cli",
+          "purpose": "Inspeccionar candidato y estado sin efectos remotos.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "databricks",
+          "kind": "mcp",
+          "purpose": "Fases Databricks explícitamente seleccionadas; ausente no se sustituye.",
+          "required": false
+        }
+      ],
+      "practice_ids": [
+        "GEN-02",
+        "GEN-04"
+      ],
+      "activated": false,
+      "model": null,
+      "effort": null
+    },
+    {
+      "schema_version": 1,
+      "id": "tester",
+      "responsibility": "Ejecuta controles negativos y limpios sobre fixtures autorizados.",
+      "inputs": [
+        "Candidato y criterios"
+      ],
+      "outputs": [
+        "Resultados, defectos y controles limpios"
+      ],
+      "write_scope": "assigned-only",
+      "sandbox": "workspace-write",
+      "delegate_when": "Solo escribe tests asignados; devuelve al principal.",
+      "max_delegation_depth": 0,
+      "tools": [
+        {
+          "schema_version": 1,
+          "id": "local-files",
+          "kind": "local",
+          "purpose": "Leer el contexto seleccionado.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "git",
+          "kind": "cli",
+          "purpose": "Inspeccionar candidato y estado sin efectos remotos.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "databricks",
+          "kind": "mcp",
+          "purpose": "Fases Databricks explícitamente seleccionadas; ausente no se sustituye.",
+          "required": false
+        }
+      ],
+      "practice_ids": [
+        "GEN-03",
+        "GEN-04"
+      ],
+      "activated": false,
+      "model": null,
+      "effort": null
+    },
+    {
+      "schema_version": 1,
+      "id": "auditor",
+      "responsibility": "Revisa candidato sin editarlo y calibra hallazgos verificables.",
+      "inputs": [
+        "Candidato inmutable y contrato"
+      ],
+      "outputs": [
+        "Hallazgos con evidencia y prioridad"
+      ],
+      "write_scope": "none",
+      "sandbox": "read-only",
+      "delegate_when": "Devuelve al principal; no edita ni subdelega.",
+      "max_delegation_depth": 0,
+      "tools": [
+        {
+          "schema_version": 1,
+          "id": "local-files",
+          "kind": "local",
+          "purpose": "Leer el contexto seleccionado.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "git",
+          "kind": "cli",
+          "purpose": "Inspeccionar candidato y estado sin efectos remotos.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "databricks",
+          "kind": "mcp",
+          "purpose": "Fases Databricks explícitamente seleccionadas; ausente no se sustituye.",
+          "required": false
+        }
+      ],
+      "practice_ids": [
+        "GEN-01",
+        "GEN-04"
+      ],
+      "activated": false,
+      "model": null,
+      "effort": null
+    },
+    {
+      "schema_version": 1,
+      "id": "verifier",
+      "responsibility": "Contrasta requisitos, escenarios y evidencia sin editar candidato.",
+      "inputs": [
+        "Specs, candidato y evidencia"
+      ],
+      "outputs": [
+        "Completitud, corrección, coherencia y checks pendientes"
+      ],
+      "write_scope": "none",
+      "sandbox": "read-only",
+      "delegate_when": "Devuelve al principal; no edita ni subdelega.",
+      "max_delegation_depth": 0,
+      "tools": [
+        {
+          "schema_version": 1,
+          "id": "local-files",
+          "kind": "local",
+          "purpose": "Leer el contexto seleccionado.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "git",
+          "kind": "cli",
+          "purpose": "Inspeccionar candidato y estado sin efectos remotos.",
+          "required": true
+        },
+        {
+          "schema_version": 1,
+          "id": "databricks",
+          "kind": "mcp",
+          "purpose": "Fases Databricks explícitamente seleccionadas; ausente no se sustituye.",
+          "required": false
+        }
+      ],
+      "practice_ids": [
+        "GEN-01",
+        "GEN-04"
+      ],
+      "activated": false,
+      "model": null,
+      "effort": null
+    }
+  ]
+}

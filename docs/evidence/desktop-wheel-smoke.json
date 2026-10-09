@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "5e83906c0c7bd058be85885b140416eaac57a5df93ea42aba3f15796153c7b19",
+  "installed_isolated": true,
+  "exit_code": 0,
+  "smoke": {
+    "checks": 10,
+    "roles": 8,
+    "configured_synthetic_profiles": 2,
+    "schemas": 6,
+    "desktop": "not_checked",
+    "agent_execution": "not_run",
+    "certified": false,
+    "global_activation": false
+  }
+}

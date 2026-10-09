@@ -5,6 +5,10 @@ El kit entrega contratos, diagnóstico local, preview, aplicación explícita de
 onboarding y recuperación conservadora. Codex mantiene la conversación y las herramientas; este
 paquete no invoca modelos ni sustituye su motor.
 
+El incremento 02 añade [integración revisable de roles Desktop](docs/desktop-integration.md)
+con preview/apply/recover propios y comprobación conservadora de observaciones.
+Las pruebas manuales Desktop siguen pendientes; archivos instalados no certifican la app.
+
 ## Instalación de desarrollo (Windows)
 
 Requiere Python 3.13. Git, Node, OpenSpec y Databricks CLI se preparan por separado;

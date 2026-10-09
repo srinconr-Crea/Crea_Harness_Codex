@@ -1,0 +1,112 @@
+{
+  "$defs": {
+    "IntegrationRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "file",
+            "directory"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "identity": {
+          "title": "Identity",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "prepared",
+            "applied",
+            "recovered",
+            "conflict"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "path",
+        "kind",
+        "identity",
+        "state"
+      ],
+      "title": "IntegrationRecord",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "desktop_integration_journal",
+      "default": "desktop_integration_journal",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "checkout_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Checkout Id",
+      "type": "string"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    },
+    "target_identity": {
+      "title": "Target Identity",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "prepared",
+        "applied",
+        "failed",
+        "recovered",
+        "conflict"
+      ],
+      "title": "State",
+      "type": "string"
+    },
+    "records": {
+      "items": {
+        "$ref": "#/$defs/IntegrationRecord"
+      },
+      "maxItems": 64,
+      "title": "Records",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "checkout_id",
+    "plan_sha256",
+    "target_identity",
+    "state",
+    "records"
+  ],
+  "title": "IntegrationJournal",
+  "type": "object"
+}

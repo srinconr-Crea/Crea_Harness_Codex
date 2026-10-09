@@ -1,0 +1,52 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "role": {
+      "enum": [
+        "principal",
+        "analyst",
+        "impact-analyzer",
+        "planner",
+        "developer",
+        "tester",
+        "auditor",
+        "verifier"
+      ],
+      "title": "Role",
+      "type": "string"
+    },
+    "write_paths": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 64,
+      "title": "Write Paths",
+      "type": "array"
+    },
+    "isolation": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Isolation",
+      "type": "string"
+    },
+    "delegation_depth": {
+      "default": 0,
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Delegation Depth",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "role",
+    "write_paths",
+    "isolation"
+  ],
+  "title": "RoleAssignment",
+  "type": "object"
+}

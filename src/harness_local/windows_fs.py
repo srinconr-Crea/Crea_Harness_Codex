@@ -44,6 +44,8 @@ def api():
     kernel.ReadFile.argtypes = [w.HANDLE, c.c_void_p, w.DWORD, c.POINTER(w.DWORD), c.c_void_p]
     kernel.WriteFile.argtypes = kernel.ReadFile.argtypes
     kernel.FlushFileBuffers.argtypes = [w.HANDLE]
+    kernel.SetFilePointerEx.argtypes = [w.HANDLE, c.c_longlong, c.c_void_p, w.DWORD]
+    kernel.SetEndOfFile.argtypes = [w.HANDLE]
     kernel.SetFileInformationByHandle.argtypes = [w.HANDLE, c.c_int, c.c_void_p, w.DWORD]
     kernel.GetFinalPathNameByHandleW.argtypes = [w.HANDLE, w.LPWSTR, w.DWORD, w.DWORD]
     nt.NtCreateFile.argtypes = [c.POINTER(w.HANDLE), w.DWORD, c.POINTER(ObjectAttributes),
@@ -106,6 +108,20 @@ class Handle:
         if not self.kernel.SetFileInformationByHandle(self.raw, 4, c.byref(flag), c.sizeof(flag)):
             raise ConfigError('delete_failed')
 
+    def replace_bytes(self, data):
+        """Edit the same exclusive file object after an external backup is durable.
+
+        This is not an atomic transaction. Interrupted writes are detected by
+        the integration journal and require explicit conservative recovery.
+        """
+        if not self.kernel.SetFilePointerEx(self.raw, 0, None, 0):
+            raise ConfigError('write_failed')
+        self.write(data)
+        if not self.kernel.SetEndOfFile(self.raw):
+            raise ConfigError('write_failed')
+        if not self.kernel.FlushFileBuffers(self.raw):
+            raise ConfigError('flush_failed')
+
 
 class PinnedTree:
     def __init__(self, root):
@@ -130,7 +146,7 @@ class PinnedTree:
             self.__exit__()
             raise
 
-    def _open(self, parent, name, directory=False, create=False, delete=False):
+    def _open(self, parent, name, directory=False, create=False, delete=False, editable=False):
         from harness_core.onboarding_plan import destination_path
         destination_path(name)
         text = c.create_unicode_buffer(name)
@@ -142,6 +158,8 @@ class PinnedTree:
         access = 0x100081 if directory else (0x40100081 if create else 0x100081)
         if delete:
             access |= 0x10000
+        if editable:
+            access |= 0x40000000
         options = 0x00200000 | 0x20 | (1 if directory else 0x40)
         result = self.nt.NtCreateFile(c.byref(raw), access, c.byref(attrs), c.byref(status), None,
                                      0, 3 if directory else 1, 2 if create else 1, options, None, 0)
@@ -177,7 +195,12 @@ class PinnedTree:
             yield handle
 
     @contextmanager
-    def entry(self, relative, directory=False, create=False, delete=False):
+    def editable_file(self, relative, delete=False):
+        with self.entry(relative, editable=True, delete=delete) as handle:
+            yield handle
+
+    @contextmanager
+    def entry(self, relative, directory=False, create=False, delete=False, editable=False):
         from harness_core.onboarding_plan import destination_path
         destination_path(relative)
         current = self.base
@@ -187,7 +210,7 @@ class PinnedTree:
             for name in parts[:-1]:
                 current = self._open(current, name, directory=True)
                 with_handles.append(current)
-            with self._open(current, parts[-1], directory=directory, create=create, delete=delete) as handle:
+            with self._open(current, parts[-1], directory=directory, create=create, delete=delete, editable=editable) as handle:
                 yield handle
         finally:
             for handle in reversed(with_handles):
