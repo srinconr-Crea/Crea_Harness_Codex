@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "change": "01-quality-practices-and-eval-foundation",
+  "tasks_complete": 9,
+  "tasks_total": 9,
+  "requirements_verified": 6,
+  "scenarios_verified": 12,
+  "pytest": {
+    "passed": 215,
+    "failed": 0,
+    "sandbox": false
+  },
+  "quality_tests": 36,
+  "onboarding_wheel_checks": 15,
+  "agent_evals": "not_run",
+  "upstream_activation": false,
+  "staged_resource_blobs_verified": 231,
+  "issues": [],
+  "evidence": "docs/evidence/quality-foundation.md"
+}

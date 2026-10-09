@@ -77,3 +77,14 @@ Ver [configuración](docs/configuracion-clientes.md),
 La base versión 0.1.0 mantiene sus specs en `openspec/specs/`. El primer cambio
 está cerrado en
 `openspec/changes/archive/2026-10-09-bootstrap-codex-local-core/`.
+
+El onboarding aplicado también está cerrado en
+`openspec/changes/archive/2026-10-09-apply-client-onboarding/`.
+El [roadmap de ocho incrementos](docs/planning/roadmap.md) propone onboarding
+guiado, roles/herramientas Desktop, flujo de HU, validación Databricks,
+observabilidad/evals, historias/PR y distribución. Son capacidades pendientes,
+no comandos disponibles. Los [casos de calidad](docs/planning/quality/README.md)
+conservan definiciones not_run; su carga e integridad se verifican en 01. Las Skills oficiales descargadas se
+conservan como [snapshot de referencia](resources/vendor/README.md).
+
+El cambio `01-quality-practices-and-eval-foundation` entrega la [API de calidad](docs/quality-foundation.md), schemas, composición por cliente y recursos verificados dentro del wheel. Los casos de agente siguen `not_run`; los incrementos 02–08 permanecen pendientes. Ver [evidencia](docs/evidence/quality-foundation.md).

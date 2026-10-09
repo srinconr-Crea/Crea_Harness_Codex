@@ -29,7 +29,9 @@ wheel=root/'dist/crea_local_harness-0.1.0-py3-none-any.whl'
 from zipfile import ZipFile
 with ZipFile(wheel) as archive:
     names=archive.namelist()
-    assert not any('/fixtures/' in x or 'client.yaml' in x for x in names)
+    assert {name for name in names if '/fixtures/' in name} == {
+        'harness_local/quality_kit/fixtures/synthetic-sales.json'}
+    assert not any('client.yaml' in name for name in names)
 result={'schema_version':1,'wheel':wheel.name,'sha256':hashlib.sha256(wheel.read_bytes()).hexdigest(),
         'checks':results,'doctor':doctor,'wheel_files':names}
 destination=root/'docs/evidence/wheel-smoke.json'

@@ -1,0 +1,595 @@
+{
+  "//": "GENERATED FILE: DO NOT EDIT. Run `python3 scripts/skills.py generate` to regenerate.",
+  "skills": {
+    "databricks-agent-bricks": {
+      "description": "Create Agent Bricks: Knowledge Assistants (KA) for document Q&A and Supervisor Agents for multi-agent orchestration (MAS).",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-knowledge-assistants.md",
+        "references/2-supervisor-agents.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-ai-functions": {
+      "description": "Use Databricks built-in AI Functions (ai_classify, ai_extract, ai_summarize, ai_mask, ai_translate, ai_fix_grammar, ai_gen, ai_analyze_sentiment, ai_similarity, ai_parse_document, ai_prep_search, a...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-task-functions.md",
+        "references/2-ai-query.md",
+        "references/3-ai-forecast.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.2.0"
+    },
+    "databricks-ai-runtime": {
+      "description": "Databricks AI Runtime, the `databricks air` CLI commands for submitting and managing GPU training workloads on Databricks serverless compute. Use for: writing and submitting `databricks air` workload YAML, passing hyperparameters and secrets, checking run status, listing/cancelling runs, streaming a run's logs and watching its progress, custom Docker image setup, and environment configuration.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "docker-images.md"
+      ],
+      "repo_dir": "experimental",
+      "version": "0.2.0"
+    },
+    "databricks-aibi-dashboards": {
+      "description": "Create Databricks AI/BI dashboards. Must use when creating, updating, or deploying Lakeview dashboards as Databricks Dashboard have a unique json structure. CRITICAL: You MUST test ALL SQL queries...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-widget-specifications.md",
+        "references/2-advanced-widget-specifications.md",
+        "references/3-filters.md",
+        "references/4-examples.md",
+        "references/5-troubleshooting.md",
+        "references/6-custom-visualizations.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.2.1"
+    },
+    "databricks-app-design": {
+      "description": "Design the UX of custom-code Databricks Apps (AppKit/React) data screens \u2014 KPI/overview pages, reports, charts, tables, and Genie/chat data assistants \u2014 mapped to concrete AppKit components.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/appkit-cheatsheet.md",
+        "references/dashboard-patterns.md",
+        "references/genie-ai-trust.md",
+        "references/ibcs-notation.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-apps": {
+      "description": "Build apps on Databricks Apps platform.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/appkit/agents.md",
+        "references/appkit/appkit-sdk.md",
+        "references/appkit/custom-endpoints.md",
+        "references/appkit/files.md",
+        "references/appkit/frontend.md",
+        "references/appkit/genie.md",
+        "references/appkit/jobs.md",
+        "references/appkit/lakebase.md",
+        "references/appkit/metric-views.md",
+        "references/appkit/model-serving.md",
+        "references/appkit/overview.md",
+        "references/appkit/proto-contracts.md",
+        "references/appkit/proto-first.md",
+        "references/appkit/sql-queries.md",
+        "references/other-frameworks.md",
+        "references/platform-guide.md",
+        "references/testing.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.3"
+    },
+    "databricks-apps-python": {
+      "description": "Python backend for Databricks Apps \u2014 FastAPI (default), Flask, Dash, Streamlit, Gradio, Reflex. **Default for a new Databricks App is `databricks-apps` (AppKit \u2014 Node/TypeScript/React) \u2014 reach for...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "examples/fm-minimal-chat.py",
+        "examples/fm-parallel-calls.py",
+        "examples/fm-structured-outputs.py",
+        "examples/llm_config.py",
+        "references/1-authorization.md",
+        "references/2-app-resources.md",
+        "references/3-frameworks.md",
+        "references/4-deployment.md",
+        "references/5-lakebase.md",
+        "references/6-cli-approach.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-core": {
+      "description": "Databricks CLI operations and the parent/entry-point skill for Databricks CLI use: authentication, profile selection, and bundles.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "databricks-cli-auth.md",
+        "databricks-cli-install.md",
+        "manual-data-exploration.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-dabs": {
+      "description": "Create, configure, validate, deploy, run, and manage Declarative Automation Bundles (DABs, formerly Databricks Asset Bundles).",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/alerts.md",
+        "references/bundle-structure.md",
+        "references/deploy-and-run.md",
+        "references/resource-permissions.md",
+        "references/sdp-pipelines.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.0.1"
+    },
+    "databricks-data-discovery": {
+      "description": "Discover, explore, and query Databricks data via Genie \u2014 the CLI equivalent of the Genie One MCP. MUST be invoked whenever the user asks to find or locate data ('what tables are in X', 'where does...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-dbsql": {
+      "description": "Databricks SQL (DBSQL) advanced features and SQL warehouse capabilities. This skill MUST be invoked when the user mentions: \"DBSQL\", \"Databricks SQL\", \"SQL warehouse\", \"SQL scripting\", \"stored proc...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/ai-functions.md",
+        "references/best-practices.md",
+        "references/geospatial-collations.md",
+        "references/materialized-views-pipes.md",
+        "references/sql-scripting.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-docs": {
+      "description": "Databricks documentation reference via llms.txt index.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-execution-compute": {
+      "description": "Execute code and manage compute on Databricks: run Python/Scala/SQL/R via serverless, classic, or interactive clusters, and create/resize/delete clusters and SQL warehouses.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-databricks-connect.md",
+        "references/2-serverless-job.md",
+        "references/3-interactive-cluster.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-genie-agents": {
+      "description": "Create, manage, and query Databricks Genie Agents \u2014 curated, per-data natural-language agents (formerly Genie Spaces): build, export/import, migrate across workspaces, and ask questions of a *speci...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/create-genie-agent.md",
+        "references/diagnose-genie-agent.md",
+        "references/genie-agent-cicd.md",
+        "references/optimize-genie-agent.md",
+        "references/query-genie-agent.md",
+        "references/serialized-space.md",
+        "references/uc-persistence.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-iceberg": {
+      "description": "Apache Iceberg tables on Databricks \u2014 Managed Iceberg tables, External Iceberg Reads (fka Uniform), Compatibility Mode, Iceberg REST Catalog (IRC), Iceberg v3, Snowflake interop, PyIceberg, OSS Spa...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-managed-iceberg-tables.md",
+        "references/2-uniform-and-compatibility.md",
+        "references/3-iceberg-rest-catalog.md",
+        "references/4-snowflake-interop.md",
+        "references/5-external-engine-interop.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-jobs": {
+      "description": "Develop and deploy Lakeflow Jobs on Databricks via DABs, Python SDK, or the CLI.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/examples.md",
+        "references/notifications-monitoring.md",
+        "references/task-types.md",
+        "references/triggers-schedules.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.2.0"
+    },
+    "databricks-lakebase": {
+      "description": "Databricks Lakebase Postgres: projects, scaling, connectivity, Lakebase synced tables, and Data API.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/computes-and-scaling.md",
+        "references/connectivity.md",
+        "references/lakehouse-sync.md",
+        "references/medallion-from-cdc.md",
+        "references/off-platform.md",
+        "references/pgvector.md",
+        "references/synced-tables.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-lakeflow-connect": {
+      "description": "Build managed ingestion pipelines into Databricks using Lakeflow Connect.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-saas-connectors.md",
+        "references/2-database-connectors.md",
+        "references/4-ingestion-decision-tree.md",
+        "references/5-troubleshooting-and-monitoring.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-metric-views": {
+      "description": "Unity Catalog metric views: define, create, query, and manage governed business metrics in YAML.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/create-patterns.md",
+        "references/metric-view-advisor.md",
+        "references/query-patterns.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-ml-training": {
+      "description": "Train ML models on Databricks. Use for: classification/regression/deep-learning (XGBoost, scikit-learn, LightGBM, PyTorch) with Optuna, @prod/@challenger aliases, batch scoring (spark_udf for plain...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/custom-pyfunc.md",
+        "references/feature-store.md",
+        "references/feature-views.md",
+        "references/genai-agents.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-mlflow-evaluation": {
+      "description": "MLflow 3 GenAI agent evaluation.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/CRITICAL-interfaces.md",
+        "references/GOTCHAS.md",
+        "references/patterns-context-optimization.md",
+        "references/patterns-datasets.md",
+        "references/patterns-evaluation.md",
+        "references/patterns-judge-alignment.md",
+        "references/patterns-prompt-optimization.md",
+        "references/patterns-scorers.md",
+        "references/patterns-trace-analysis.md",
+        "references/patterns-trace-ingestion.md",
+        "references/user-journeys.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-model-serving": {
+      "description": "Databricks Model Serving endpoint lifecycle and ops.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/off-platform-streaming.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.4.0"
+    },
+    "databricks-pipelines": {
+      "description": "Develop Lakeflow Spark Declarative Pipelines (formerly Delta Live Tables) on Databricks.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-project-initialization-with-dab.md",
+        "references/2-rapid-iteration-with-cli.md",
+        "references/auto-cdc-python.md",
+        "references/auto-cdc-sql.md",
+        "references/auto-loader-python.md",
+        "references/auto-loader-sql.md",
+        "references/dlt-migration.md",
+        "references/expectations-python.md",
+        "references/expectations-sql.md",
+        "references/foreach-batch-sink-python.md",
+        "references/kafka.md",
+        "references/materialized-view-python.md",
+        "references/materialized-view-sql.md",
+        "references/options-avro.md",
+        "references/options-csv.md",
+        "references/options-json.md",
+        "references/options-orc.md",
+        "references/options-parquet.md",
+        "references/options-text.md",
+        "references/options-xml.md",
+        "references/performance.md",
+        "references/pipeline-configuration.md",
+        "references/python-basics.md",
+        "references/real-time-mode.md",
+        "references/scd-2-querying.md",
+        "references/sink-python.md",
+        "references/sql-basics.md",
+        "references/streaming-patterns.md",
+        "references/streaming-table-python.md",
+        "references/streaming-table-sql.md",
+        "references/temporary-view-python.md",
+        "references/temporary-view-sql.md",
+        "references/view-sql.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.3.0"
+    },
+    "databricks-python-sdk": {
+      "description": "Databricks development guidance including Python SDK, Databricks Connect, CLI, and REST API.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "examples/1-authentication.py",
+        "examples/2-clusters-and-jobs.py",
+        "examples/3-sql-and-warehouses.py",
+        "examples/4-unity-catalog.py",
+        "examples/5-serving-and-vector-search.py",
+        "references/doc-index.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-serverless": {
+      "description": "Serverless compute for Databricks jobs, Lakeflow pipelines and Declarative Automation Bundles (DABs), with STANDARD or PERFORMANCE_OPTIMIZED and classic only where serverless cannot run the workload.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg"
+      ],
+      "repo_dir": "skills",
+      "version": "0.3.2"
+    },
+    "databricks-serverless-migration": {
+      "description": "Migrate Databricks workloads from classic compute to serverless compute.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/code-patterns.md",
+        "references/compatibility-checks.md",
+        "references/configuration-guide.md",
+        "references/failure-reporting.md",
+        "references/install-in-databricks-genie-code.md",
+        "references/jar-migration.md",
+        "references/mlflow-uc-patterns.md",
+        "references/multi-source-enumeration.md",
+        "references/networking-and-security.md",
+        "references/streaming-migration.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-setup-local": {
+      "description": "Previews, provisions, or diagnoses a uv-managed local Python .venv with `databricks environments setup-local`.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/examples.md",
+        "references/json-output.md",
+        "references/troubleshooting.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-spark-structured-streaming": {
+      "description": "Comprehensive guide to Spark Structured Streaming for production workloads.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/checkpoint-best-practices.md",
+        "references/kafka-streaming.md",
+        "references/lakebase-sink-python.md",
+        "references/merge-operations.md",
+        "references/multi-sink-writes.md",
+        "references/real-time-mode.md",
+        "references/stateful-operations.md",
+        "references/stream-static-joins.md",
+        "references/stream-stream-joins.md",
+        "references/streaming-best-practices.md",
+        "references/trigger-and-cost-optimization.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-synthetic-data-gen": {
+      "description": "Generate realistic synthetic data using Spark + Faker (strongly recommended). Supports serverless execution, multiple output formats (Parquet/JSON/CSV/Delta), and scales from thousands to millions...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-data-patterns.md",
+        "references/2-troubleshooting.md",
+        "scripts/generate_synthetic_data.py"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-unity-catalog": {
+      "description": "Unity Catalog governance, access control, and observability. Use to grant or revoke access (GRANT/REVOKE), reason about the privilege model and ownership, set up row-level security and column masks...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-access-control.md",
+        "references/2-external-locations.md",
+        "references/3-securables-ddl.md",
+        "references/4-fine-grained-access.md",
+        "references/5-system-tables.md",
+        "references/6-volumes.md",
+        "references/7-data-profiling.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.3.0"
+    },
+    "databricks-unity-gateway": {
+      "description": "Use when querying or calling pay-per-token foundation models, or when creating, updating, listing, or querying Unity Gateway (also called Unity AI Gateway) services, including model provider servic...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/account-access.md",
+        "references/budgets.md",
+        "references/mcp-services.md",
+        "references/model-provider-services.md",
+        "references/model-services.md",
+        "references/model-serving-migration.md",
+        "references/permissions.md",
+        "references/querying.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-unstructured-pdf-generation": {
+      "description": "Build RAG / unstructured-document evaluation datasets and demo documents (e.g. for Knowledge Assistant) on Databricks: generate synthetic PDFs locally, upload to Unity Catalog volumes, and pair eac...",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "scripts/pdf_generator.py"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-vector-search": {
+      "description": "Databricks Vector Search endpoints and indexes for RAG and semantic search; covers index types, search modes, end-to-end RAG patterns",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/end-to-end-rag.md",
+        "references/index-types.md",
+        "references/search-modes.md",
+        "references/troubleshooting-and-operations.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "databricks-zerobus-ingest": {
+      "description": "Build Zerobus Ingest clients for near real-time data ingestion into Databricks Delta tables via gRPC.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/1-setup-and-authentication.md",
+        "references/2-python-client.md",
+        "references/3-multilanguage-clients.md",
+        "references/4-protobuf-schema.md",
+        "references/5-operations-and-limits.md"
+      ],
+      "repo_dir": "skills",
+      "version": "0.1.0"
+    },
+    "spark-python-data-source": {
+      "description": "Build custom Python data sources for Apache Spark using the PySpark DataSource API \u2014 batch and streaming readers/writers for external systems. Use this skill whenever someone wants to connect Spark to an external system (database, API, message queue, custom protocol), build a Spark connector or plugin in Python, implement a DataSourceReader or DataSourceWriter, pull data from or push data to a system via Spark, or work with the PySpark DataSource API in any way. Even if they just say \"read from X in Spark\" or \"write DataFrame to Y\" and there's no native connector, this skill applies.",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/databricks.png",
+        "assets/databricks.svg",
+        "references/authentication-patterns.md",
+        "references/error-handling.md",
+        "references/implementation-template.md",
+        "references/partitioning-patterns.md",
+        "references/production-patterns.md",
+        "references/streaming-patterns.md",
+        "references/testing-patterns.md",
+        "references/type-conversion.md"
+      ],
+      "repo_dir": "experimental",
+      "version": "0.1.0"
+    }
+  },
+  "version": "2"
+}

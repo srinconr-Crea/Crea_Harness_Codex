@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0-design",
+  "purpose": "Design-resource integrity, not execution evidence",
+  "files": [
+    {
+      "path": "acceptance-cases.json",
+      "bytes": 51982,
+      "sha256": "54929e42d324623ce0e9b6fd8bce2344bf26451461ac5afd14649546f637b66f"
+    },
+    {
+      "path": "eval-cases.json",
+      "bytes": 29620,
+      "sha256": "77f4df1387f2dc1c6f03f10297c253e5a675c6f234399ee672bb281f83351386"
+    },
+    {
+      "path": "fixtures/synthetic-sales.json",
+      "bytes": 1482,
+      "sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477"
+    },
+    {
+      "path": "practices.json",
+      "bytes": 17575,
+      "sha256": "a3cc1a42fd53d36d57cbe960ce15807fad7827fe4598c10408d52109dbadce11"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5267,
+      "sha256": "e0036ad210c53da0ae63b5ab255426767761a518d5b9fe02e37115bf536f2319"
+    },
+    {
+      "path": "test-cases.json",
+      "bytes": 11360,
+      "sha256": "00e271d726fb9e03081be7b71e1e58622a29786fbdae5fd460a53158c4f62849"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "scope": "Planning artifacts and resource integrity only",
+  "practices": 32,
+  "test_cases": 24,
+  "eval_cases": 24,
+  "eval_checks": 48,
+  "acceptance_cases": 81,
+  "roles": [
+    "analyst",
+    "auditor",
+    "developer",
+    "impact-analyzer",
+    "planner",
+    "principal",
+    "tester",
+    "verifier"
+  ],
+  "vendor_skills": 9,
+  "vendor_files_verified": 110,
+  "fixture_oracle": {
+    "total": "30.00",
+    "naive_join_rows": 5,
+    "naive_join_total": "40.00"
+  },
+  "errors": [],
+  "runtime_tests_executed": false,
+  "agent_evals_executed": false
+}

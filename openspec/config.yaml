@@ -5,16 +5,26 @@ context: |
   Desktop en Windows. La arquitectura de referencia está documentada en
   docs/propuesta-harness-local-codex.md. El incremento bootstrap-codex-local-core
   implementa contratos, diagnóstico local y preview; consultar su evidencia.
-  Las capacidades arquitectónicas posteriores siguen siendo propuestas.
+  apply-client-onboarding añade init apply/export, journal/lock Windows y
+  recuperación conservadora; ambos cambios están archivados y verificados.
+  La revisión del 9 de octubre define ocho cambios numerados y dependientes
+  en docs/planning/roadmap.md: calidad/evals, roles/herramientas Desktop,
+  onboarding guiado, HU/gates, validación Databricks, observabilidad/evals,
+  historias/PR y piloto/distribución. El incremento 01 implementa contratos y recursos de calidad; 02–08 siguen pendientes.
+  docs/planning/quality contiene catálogos/fixtures de diseño not_run.
+  resources/vendor contiene Skills oficiales fijadas por commit/hash,
+  con licencia/NOTICE conservados, empaquetadas como datos pasivos por 01, sin instalación ni activación global.
   Redactar artefactos en español; conservar encabezados estructurales y las
   palabras SHALL/MUST en inglés según las plantillas OpenSpec.
   Codex mantiene la conversación, herramientas y delegación. El núcleo Python
   aporta contratos, validadores y evidencias propias, sin duplicar el motor LLM.
   Separar producto, repositorios cliente y estado local. No incluir reglas,
   credenciales ni recursos reales de NaturaPet en el núcleo genérico.
-  Primer incremento: estructura del paquete, descriptor/política/binding de
+  Baseline implementada: estructura del paquete, descriptor/política/binding de
   cliente, harness doctor local y harness init --dry-run. El dry-run no instala,
   clona, autentica, modifica el target ni registra bindings persistentes.
+  init apply solo crea recursos ausentes autorizados; integración de AGENTS
+  personalizado/TOML requiere contratos separados en nuevos incrementos.
   Installer/plugin, ejecución remota, gates completos de HU y PR, SQLite,
   hooks y agentes operativos pertenecen a incrementos posteriores.
   Las instrucciones y Skills orientan al agente; no son fronteras de seguridad.

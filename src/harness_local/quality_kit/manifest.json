@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "files": [
+    {
+      "path": "eval-cases.json",
+      "bytes": 29620,
+      "sha256": "77f4df1387f2dc1c6f03f10297c253e5a675c6f234399ee672bb281f83351386"
+    },
+    {
+      "path": "fixtures/synthetic-sales.json",
+      "bytes": 1482,
+      "sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477"
+    },
+    {
+      "path": "practices.json",
+      "bytes": 17575,
+      "sha256": "a3cc1a42fd53d36d57cbe960ce15807fad7827fe4598c10408d52109dbadce11"
+    },
+    {
+      "path": "test-cases.json",
+      "bytes": 11360,
+      "sha256": "00e271d726fb9e03081be7b71e1e58622a29786fbdae5fd460a53158c4f62849"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/LICENSE",
+      "bytes": 3789,
+      "sha256": "df8afbfd34830a45f85dff044550a913a3355be1c61ab756417e7670cb48fa1c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/manifest.json",
+      "bytes": 23500,
+      "sha256": "039cb540d96fdca0025113f33908c9f15448319a91a1d37e8cd958e4e61b5b2c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/NOTICE",
+      "bytes": 174,
+      "sha256": "0c4c03b0de159e6308cfbb17a96c708b742e3c85887e9debb84dcd270315371e"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/README.md",
+      "bytes": 16265,
+      "sha256": "a9bf017790e8dd25b51576656418875ea564b09156342094c0a52f55abece99e"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-core/agents/openai.yaml",
+      "bytes": 289,
+      "sha256": "8c6cc7d4ea613427f5c460357f6dda4c6de340fdf1fa0077ebfefb7afe8b82be"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-core/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-core/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-core/databricks-cli-auth.md",
+      "bytes": 17243,
+      "sha256": "d30d52889e183b35f957b0ae62e0c2d22b33ad4c2f6dfa87f5aefc66edeacfac"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-core/databricks-cli-install.md",
+      "bytes": 9137,
+      "sha256": "e96ba3cdba8c5aa7192cd9fcde4e5a1395d8636f3675c7416e1bc89e82ef85fa"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-core/manual-data-exploration.md",
+      "bytes": 13240,
+      "sha256": "511fbd3bd703eef9898835d7136d1bbadf6764ef19b5d430c4261a49adfae57f"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-core/SKILL.md",
+      "bytes": 7750,
+      "sha256": "688ac41f1044c392c1c2de2fe49426cdf8b8e19763c85fe926945c143fea2551"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/agents/openai.yaml",
+      "bytes": 392,
+      "sha256": "52f6b4aa18c3b2b0e51ee0f2bc5c5013926d88b72774059969cc4d2db749aef9"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/references/alerts.md",
+      "bytes": 2885,
+      "sha256": "3f56a627099be135e15606fe9bb5d84b8fa935195b9a4f99b53dd8a132ab616e"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/references/bundle-structure.md",
+      "bytes": 9718,
+      "sha256": "ab134ed8c627ef304b4ead0d577f60d4d6ce2fda5c2681b8e3c4b4a8cf32ccfd"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/references/deploy-and-run.md",
+      "bytes": 4115,
+      "sha256": "b82229e9ab4eff73ab2c8a8073170aa6305c9ca6d986e4838761e0c66c6bf491"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/references/resource-permissions.md",
+      "bytes": 1767,
+      "sha256": "8bd92af4b51a21822b417782817bd5e196b9916473d1c206c99fa7f18008c601"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/references/sdp-pipelines.md",
+      "bytes": 1160,
+      "sha256": "3f10ba4c10a318f80c2365e0538355e1800e509bc9cecc00eab8073a13f0dfa6"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dabs/SKILL.md",
+      "bytes": 4701,
+      "sha256": "1e79d460dd49b7eafcb24a470d37274c79731e83220d76b5272b30d486b1f55c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/agents/openai.yaml",
+      "bytes": 638,
+      "sha256": "5a3ea80e8f020d1223ffc3eae2a9d46678650405344ca82e18cd6a708d3a5c37"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/references/ai-functions.md",
+      "bytes": 44694,
+      "sha256": "8ddd07806374bbef75dbd941f08ce23385610a950ba135b536679832c58e1469"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/references/best-practices.md",
+      "bytes": 23174,
+      "sha256": "fabd6fa7457fe06373fd9c26925dcd3f104cf4eead870c80cda50d9f51deebfe"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/references/geospatial-collations.md",
+      "bytes": 28721,
+      "sha256": "23579de0add0babf26cc98a326a4825e392d1ee9b2785d3b2fcb8d60c8f3453d"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/references/materialized-views-pipes.md",
+      "bytes": 23144,
+      "sha256": "c19da7c7c10f5f9544e07ae55b47360f9d609c586f99a5c406c6ebfb851983c7"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/references/sql-scripting.md",
+      "bytes": 28320,
+      "sha256": "7275ea7a6cf953fb8ea846240792e5353d4b0128bc789ea984789135d9caf737"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-dbsql/SKILL.md",
+      "bytes": 11002,
+      "sha256": "7d58a08aac3ec601478332de9eb2d3146ab64ac0e1007b97cacaf29229ac4c6a"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-docs/agents/openai.yaml",
+      "bytes": 328,
+      "sha256": "b68655e9829abc722577110fa492f88f5845b8b6cefe03489270e351e1de0623"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-docs/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-docs/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-docs/SKILL.md",
+      "bytes": 2884,
+      "sha256": "0040fae239c29888e71cacf6751cee6a8bc834337d24af3814feeca84a0cac08"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-jobs/agents/openai.yaml",
+      "bytes": 298,
+      "sha256": "61e879cea71a422e32a5a27b06ea43705db0264cb99e92b62bb8db77f0a5d865"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-jobs/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-jobs/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-jobs/references/examples.md",
+      "bytes": 19343,
+      "sha256": "9312338bc1d2c0c576c7ca95fb4b6b3faf5ff668b48c789d1027846ecf8847a2"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-jobs/references/notifications-monitoring.md",
+      "bytes": 12985,
+      "sha256": "742b3be99d863d601e3d4a70ccd94abef7fc3aa0f2a6b6c92940c0d8d563065c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-jobs/references/task-types.md",
+      "bytes": 14257,
+      "sha256": "681f49dc36436d3d3a7e4fa781b393375e1da3c0eaa4013abf906a534d5df9a0"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-jobs/references/triggers-schedules.md",
+      "bytes": 11082,
+      "sha256": "95c46b401f9b2bfbb1ab92a129b4250d70fae0568e19d144ce63bb2ed298f7a5"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-jobs/SKILL.md",
+      "bytes": 12372,
+      "sha256": "5293473c510665bf7393ea1d0a8d1d9297ed06bf94bb56ce6f4488bfd1e2cd32"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/agents/openai.yaml",
+      "bytes": 310,
+      "sha256": "0661fdd860772285921771d77421e6483808ee49a4ed71c02108bbc899817509"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/CRITICAL-interfaces.md",
+      "bytes": 13137,
+      "sha256": "b94c59313e6d57d0c20a330a973cd880063d0bfd2985e72123cfac431d7b942e"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/GOTCHAS.md",
+      "bytes": 26424,
+      "sha256": "7a6f39735cbf8f11c5b34a206298b566d4640f38fbb11414ab63e288d0d895c3"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-context-optimization.md",
+      "bytes": 10421,
+      "sha256": "0e3e39f76af60ebba3f7749bf7872ab97f51cabe3dfeeaf82b4b57b870b90391"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-datasets.md",
+      "bytes": 22240,
+      "sha256": "b826abdb5679329af0fe5e1feae7ed0e1d2a8a27c2d0139425b7b5401b6f9ec6"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-evaluation.md",
+      "bytes": 16414,
+      "sha256": "3d12ebacdaedca00c88ad67483354d7e098e92e4a80434f3a594f89413b9f1bc"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-judge-alignment.md",
+      "bytes": 13503,
+      "sha256": "5acac05e44235d5a44a174738647b174e404e7bb289d5e571178ee4a4912d6de"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-prompt-optimization.md",
+      "bytes": 7073,
+      "sha256": "53cb491a8684bad1494d9d03eb67781307f7e3ac3c82969a7e88d38accb3ca57"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-scorers.md",
+      "bytes": 23361,
+      "sha256": "1fa6f9edf556c6be6108b01a0576f86ca99c3b3d326c8a27fab940950292bd71"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-trace-analysis.md",
+      "bytes": 26869,
+      "sha256": "5abef7e0be5fdc2c1bac089874a01915935c27442cce62bbcffca7fcc85a08bc"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-trace-ingestion.md",
+      "bytes": 22458,
+      "sha256": "cd92c3de3c12f30e4660aa77eca0a61685beef2fde386379f5d82f5c633e8862"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/user-journeys.md",
+      "bytes": 24580,
+      "sha256": "b863fc18f6aeb477a6aab8d56d82a1f4e94a6209a3220f13d0a74e68be1ab750"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/SKILL.md",
+      "bytes": 10751,
+      "sha256": "c7ef1bc3b826bd37cc6c72ba76f3c327d78aa95615f7c10945cf1d7574a36375"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/agents/openai.yaml",
+      "bytes": 300,
+      "sha256": "92845e3f025be5b77b93904fa2b84e1a47636ab92c07e67c29760088b97cdb2a"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/1-project-initialization-with-dab.md",
+      "bytes": 9701,
+      "sha256": "d080281f838bfed735cbca3dc65ebdde9aef7deec1b5f078889acc863541201c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/2-rapid-iteration-with-cli.md",
+      "bytes": 7558,
+      "sha256": "35fb333be5ff59074d06721e715c8f8735c831fa9ceae7261a4ca62f18282eca"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/auto-cdc-python.md",
+      "bytes": 5418,
+      "sha256": "706ea8429907e20c884b3592fc15b6ea292bf3780ebd6fb0f30d4907570181ad"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/auto-cdc-sql.md",
+      "bytes": 8756,
+      "sha256": "92791778c9232a1cbb6bebd6bd2d0d8e1d4ea3cff8388c573a771a6d4e165463"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/auto-loader-python.md",
+      "bytes": 3894,
+      "sha256": "bcbec4e207b1853eb390187e4f1dfb90a4ca7ea2d60ef9e635edf6454dfa47b9"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/auto-loader-sql.md",
+      "bytes": 2156,
+      "sha256": "994d58003a265665188add4482511a74f6c1477e4b537bf7cefbbf2976efc98d"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/dlt-migration.md",
+      "bytes": 6160,
+      "sha256": "d1d391027604a69845369d0249ffd15ea69b49af5626c2b3202a8b782ece0bd2"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/expectations-python.md",
+      "bytes": 2915,
+      "sha256": "e6a08671d4935f294ce1ef37314135b5b582f8d925bedbabf8c130bc3e330775"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/expectations-sql.md",
+      "bytes": 3516,
+      "sha256": "dbb60f0105dc4ee5d1241b20d0a63bc23acc18e400bbc84bf2394a8c5ae485b8"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/foreach-batch-sink-python.md",
+      "bytes": 3228,
+      "sha256": "4d8997147638d4f9d98ffcab541683f01b74fdf5046a32c2165724a30178c9f0"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/kafka.md",
+      "bytes": 5939,
+      "sha256": "8d0ef922204e7696d92a09ffc3e2b7549805804783353ff9bd935cf52dd5dddf"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/materialized-view-python.md",
+      "bytes": 3567,
+      "sha256": "e48950d7ef177a9bd73e42460bcf1b9ac8e9bbac54bd77bb405122e1f2fb7a2f"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/materialized-view-sql.md",
+      "bytes": 3906,
+      "sha256": "7ed43c0ec8b4b3e52f54573cce1b1e41986f5f39ac3f259e1792719b8ea4c9a7"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-avro.md",
+      "bytes": 261,
+      "sha256": "6cf08ede4bf63f3b4ed8c40b78349c50a94555cbcc7c142bc2ab57d79e674af0"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-csv.md",
+      "bytes": 1462,
+      "sha256": "a83023ad7a3dcfdf05a834dfd6a5264f2e4f1b1621e14376d51c8c7415173a17"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-json.md",
+      "bytes": 1297,
+      "sha256": "5ed3f7f87f2575cc8de545121349359edc805e42d2b6c1adf5f13fb3c96d75b2"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-orc.md",
+      "bytes": 100,
+      "sha256": "24494531ba6bed21ac14e14ec858b416238d9c9dfba7b8f82db6c0683d03c098"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-parquet.md",
+      "bytes": 264,
+      "sha256": "9d99fd3d517e7d1f211711c3655330f9385c0aa722e7cd9580e436d450ec75ea"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-text.md",
+      "bytes": 143,
+      "sha256": "1a2f1a9b501eb18bf5e53d8c38561e0388a9605fce8044fb1e6b496efa288424"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-xml.md",
+      "bytes": 1102,
+      "sha256": "dea7b75eb14924f0f9470883a3e1c6afb57364a07662d8721323b0221edd5f71"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/performance.md",
+      "bytes": 8663,
+      "sha256": "f325bb5016cc0ff53022518ac0d4f540e9f368968e7c90506974f6eb9ef9de40"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/pipeline-configuration.md",
+      "bytes": 12134,
+      "sha256": "3935d6ec6c710082a384088d894d85aa3e05e7290c9534fcbda6dfe79eff58c6"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/python-basics.md",
+      "bytes": 2869,
+      "sha256": "b63977d8a211b6a52943f95ba2cb3fa21da4f0f9902443d14d08b5b9df995eef"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/real-time-mode.md",
+      "bytes": 12160,
+      "sha256": "e813eef62df6a96bcde6bd82563e93b28901ff30eed362427f9f0b2da3fcacbf"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/scd-2-querying.md",
+      "bytes": 6048,
+      "sha256": "4b03412d3cd433007888d78be4cea6c6716b373ee850368c0e75fa3237db643a"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/sink-python.md",
+      "bytes": 3029,
+      "sha256": "c9fa865c949a02f5a15eb899420939ba74a9435d01ed3d6e48d430be625b1826"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/sql-basics.md",
+      "bytes": 3271,
+      "sha256": "954962cc88d584bea0b18820bcf0e95e728297b11885329d2bd6d8dbd87cbcf5"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/streaming-patterns.md",
+      "bytes": 10352,
+      "sha256": "e37b637aa120fd06df0b37e0f87d54d68b3734301e174841ff571d81587d01ff"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/streaming-table-python.md",
+      "bytes": 5533,
+      "sha256": "1a4c80e1a30119f4035b229e0855fffcfcfecd4383c6bccec828cbb3be39417a"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/streaming-table-sql.md",
+      "bytes": 5636,
+      "sha256": "3d5f4edb340f555a54fc61cf4deed56b758a1644c067fae53e9fb312f78e9100"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/temporary-view-python.md",
+      "bytes": 1525,
+      "sha256": "ff718fa8c331f488076e3b3becd9d33fec5122e6c750bc610f3d4b2bfc709b4c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/temporary-view-sql.md",
+      "bytes": 1809,
+      "sha256": "a4f1f32e3af5e50533df47b0d7bb3f1fccc36e4c8fd80fc6f760b23127641762"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/references/view-sql.md",
+      "bytes": 1358,
+      "sha256": "ee9e52dbc25a8180f34fc60aa959c9a98a38e1a88d6b5f810b6df9af93364fca"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-pipelines/SKILL.md",
+      "bytes": 34860,
+      "sha256": "bfc8dcff6ba5af2b117fca10b489e176ac3a04abf7dc26e409d5d894ce0a3b52"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/agents/openai.yaml",
+      "bytes": 416,
+      "sha256": "666ddb456954f7d3fd5ab50b848c75e76604baf1cecc89fa3218d42b71e58e29"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/1-authentication.py",
+      "bytes": 2923,
+      "sha256": "ad778285c49886cf505abbf091ee434d18cbbe45632091e401f8b35f14a0f066"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/2-clusters-and-jobs.py",
+      "bytes": 5789,
+      "sha256": "931662715e02fdaba72e651893126e98ed6cf87f318c76134aba9a517261fccd"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/3-sql-and-warehouses.py",
+      "bytes": 5777,
+      "sha256": "24133cded7984b791332c36f4aaa305c33a599f92ed7b7cc6ddddb28fb043768"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/4-unity-catalog.py",
+      "bytes": 6229,
+      "sha256": "1855dffce8f7d4f903a4d645ad061a13cbc40e3c7641aa6f8f96cc887077c851"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/5-serving-and-vector-search.py",
+      "bytes": 7171,
+      "sha256": "22c579acb5ddd314068c7f3ba3e4a4f1deeaf260a33bf51acaceea6d99147631"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/references/doc-index.md",
+      "bytes": 14701,
+      "sha256": "02d4141e18b407e62b64d254241abb78389221654ab9bd51c43a532da77b290e"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-python-sdk/SKILL.md",
+      "bytes": 18204,
+      "sha256": "1cf3702fd174d316e6fc8f836a3dfe2bad74595ce64352b6ae04128694aa240a"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/agents/openai.yaml",
+      "bytes": 644,
+      "sha256": "d3826f2fb3cc6b6bc1cc4a445b1614cce0dfd21343980f4768c1437cad58d53c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/assets/databricks.png",
+      "bytes": 15366,
+      "sha256": "06873c31ebda49d6ec5a730749c3dd1d0a140495f235cb1c0256cb2a3d1de850"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/assets/databricks.svg",
+      "bytes": 582,
+      "sha256": "00e528e4d5e665dbb5784e3d028b74ecf74405e5ff5a9c75a4d8661f05bda91c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/references/1-data-patterns.md",
+      "bytes": 5891,
+      "sha256": "35ee7c4b76a6ec9cc3bf5704b51084b135fbd6c53d9d21f3b5f8bff4e20415b3"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/references/2-troubleshooting.md",
+      "bytes": 9615,
+      "sha256": "a684675504f65722f59c96454a6f4181ed92eb9dacf7c7ba2b26db5352fa318e"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/scripts/generate_synthetic_data.py",
+      "bytes": 11339,
+      "sha256": "ab6a29e050ca626d28f08d4872901031cc0ae0ad2774fe78878c34dc20d9033c"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/SKILL.md",
+      "bytes": 12918,
+      "sha256": "d15491624bdc0be2069c31352bcf571d9b9f15355ba3fc4e315cfde2b54abd3e"
+    },
+    {
+      "path": "vendor/databricks-agent-skills/SOURCE.json",
+      "bytes": 42341,
+      "sha256": "cf904ccf799d6136aca98ffdf4970aac45cf17af14fe5d24eecd63ec5382fdb1"
+    }
+  ]
+}

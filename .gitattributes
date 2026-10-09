@@ -2,3 +2,8 @@
 src/harness_local/openspec_kit/** text eol=lf
 # Keep the upstream license byte-for-byte, including its final blank line.
 src/harness_local/openspec_kit/LICENSE whitespace=-blank-at-eof
+# Integrity manifests use original bytes on every checkout, including Windows.
+resources/vendor/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+src/harness_local/quality_kit/** -text whitespace=cr-at-eol
+src/harness_local/quality_kit/vendor/** whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+docs/planning/quality/** -text whitespace=cr-at-eol

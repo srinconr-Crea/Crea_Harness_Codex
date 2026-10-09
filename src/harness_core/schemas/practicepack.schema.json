@@ -1,0 +1,185 @@
+{
+  "$defs": {
+    "PracticeRule": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "technology": {
+          "enum": [
+            "general",
+            "sql",
+            "python",
+            "notebook",
+            "pyspark",
+            "yaml-dabs",
+            "cicd",
+            "harness"
+          ],
+          "title": "Technology",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "required",
+            "advisory"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        },
+        "applicability": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Applicability",
+          "type": "string"
+        },
+        "evidence": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "origin": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Origin",
+          "type": "string"
+        },
+        "execution_status": {
+          "const": "not_run",
+          "default": "not_run",
+          "title": "Execution Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "technology",
+        "severity",
+        "statement",
+        "applicability",
+        "evidence",
+        "source_refs",
+        "origin"
+      ],
+      "title": "PracticeRule",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "kind": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Kind",
+          "type": "string"
+        },
+        "scope": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Scope",
+          "type": "string"
+        },
+        "retrieved_on": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "title": "Retrieved On",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "url",
+        "kind",
+        "scope",
+        "retrieved_on"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "pack_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Pack Id",
+      "type": "string"
+    },
+    "version": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "released"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    },
+    "rules": {
+      "items": {
+        "$ref": "#/$defs/PracticeRule"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "title": "Rules",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "pack_id",
+    "version",
+    "status",
+    "sources",
+    "rules"
+  ],
+  "title": "PracticePack",
+  "type": "object"
+}

@@ -11,7 +11,7 @@ requires-python = ">=3.13,<3.14"
 dependencies = ["pydantic>=2,<3", "PyYAML>=6,<7"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<10", "build>=1,<2"]
+dev = ["pytest>=8,<10", "build>=1,<2", "jsonschema>=4,<5"]
 
 [project.scripts]
 harness = "harness_local.cli:main"
@@ -21,7 +21,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 harness_core = ["schemas/*.json"]
-harness_local = ["compatibility.json", "templates/*.md", "openspec_kit/manifest.json", "openspec_kit/LICENSE", "openspec_kit/openspec/*.yaml", "openspec_kit/.agents/skills/*/SKILL.md"]
+harness_local = ["compatibility.json", "templates/*.md", "openspec_kit/manifest.json", "openspec_kit/LICENSE", "openspec_kit/openspec/*.yaml", "openspec_kit/.agents/skills/*/SKILL.md", "quality_kit/**/*", "quality_kit/*.json"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

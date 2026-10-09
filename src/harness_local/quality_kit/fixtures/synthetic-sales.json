@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "fixture_id": "synthetic-sales-v1",
+  "status": "design",
+  "currency": "COP",
+  "timezone": "UTC",
+  "orders": [
+    {
+      "order_id": 1,
+      "customer_id": "A",
+      "amount": "10.00",
+      "event_time": "2026-01-01T00:00:00Z"
+    },
+    {
+      "order_id": 2,
+      "customer_id": "B",
+      "amount": "20.00",
+      "event_time": "2026-01-01T01:00:00Z"
+    },
+    {
+      "order_id": 3,
+      "customer_id": "A",
+      "amount": null,
+      "event_time": "2026-01-02T00:00:00Z"
+    }
+  ],
+  "customers_unique": [
+    {
+      "customer_id": "A",
+      "segment": "retail"
+    },
+    {
+      "customer_id": "B",
+      "segment": "retail"
+    }
+  ],
+  "customers_duplicate": [
+    {
+      "customer_id": "A",
+      "segment": "retail"
+    },
+    {
+      "customer_id": "A",
+      "segment": "retail"
+    },
+    {
+      "customer_id": "B",
+      "segment": "retail"
+    }
+  ],
+  "contract": {
+    "grain": "one row per order_id",
+    "amount_type": "decimal(18,2)",
+    "null_amount": "exclude from monetary sum; preserve row for join cardinality",
+    "sum_non_null": "30.00",
+    "rows": 3,
+    "duplicate_dimension_policy": "reject ambiguous keys before join",
+    "sort_order": "unspecified"
+  },
+  "approval_fixture": {
+    "revision": 1,
+    "approved_revision": 1,
+    "candidate": "synthetic-candidate-a",
+    "evidence_candidate": "synthetic-candidate-a",
+    "evidence_status": "passed",
+    "evidence_mode": "fixture-only-not-real"
+  }
+}

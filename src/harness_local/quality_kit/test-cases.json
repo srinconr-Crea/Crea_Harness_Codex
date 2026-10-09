@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "catalog_id": "harness-development-tests",
+  "version": "0.1.0-design",
+  "status": "not_run",
+  "fixture_ref": "fixtures/synthetic-sales.json",
+  "cases": [
+    {
+      "id": "T01",
+      "technology": "sql",
+      "operation": "join_unique",
+      "input": "orders + customers_unique",
+      "expected": "rows=3; sum_non_null=30.00",
+      "source_rules": [
+        "SQL-01"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "authorized-databricks-runtime",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T02",
+      "technology": "sql",
+      "operation": "join_duplicate",
+      "input": "orders + customers_duplicate",
+      "expected": "reject duplicate dimension keys; naive join would produce rows=5 and sum=40.00",
+      "source_rules": [
+        "SQL-01"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "authorized-databricks-runtime",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T03",
+      "technology": "sql",
+      "operation": "null_decimal",
+      "input": "orders.amount decimal(18,2); null excluded",
+      "expected": "sum=30.00; non_null_count=2; row_count=3",
+      "source_rules": [
+        "SQL-02"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "authorized-databricks-runtime",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T04",
+      "technology": "sql",
+      "operation": "empty_input",
+      "input": "orders=[]; no customers",
+      "expected": "rows=0; monetary sum=0.00 per case contract",
+      "source_rules": [
+        "SQL-02"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "authorized-databricks-runtime",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T05",
+      "technology": "python",
+      "operation": "rounding_contract",
+      "input": "values=['0.10','0.20']; exact decimal sum",
+      "expected": "result='0.30'; no binary floating error",
+      "source_rules": [
+        "PY-01"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T06",
+      "technology": "python",
+      "operation": "io_failure",
+      "input": "fake adapter raises timeout before result",
+      "expected": "failure classified; no success receipt",
+      "source_rules": [
+        "PY-02"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T07",
+      "technology": "notebook",
+      "operation": "clean_session",
+      "input": "cells: use clean_df before later assignment",
+      "expected": "fresh run fails undefined variable; corrected notebook computes 30.00",
+      "source_rules": [
+        "NB-03"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "authorized-databricks-runtime",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T08",
+      "technology": "notebook",
+      "operation": "parameter_isolation",
+      "input": "target=sandbox; default notebook points to prod",
+      "expected": "reject inconsistent resource; zero remote writes",
+      "source_rules": [
+        "NB-04"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "authorized-databricks-runtime",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T09",
+      "technology": "pyspark",
+      "operation": "schema_rows",
+      "input": "orders input with decimal schema and explicit nullable amount",
+      "expected": "matching rows/schema incl nullability; ordering ignored",
+      "source_rules": [
+        "SP-01"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-spark-worker",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T10",
+      "technology": "pyspark",
+      "operation": "rerun_idempotency",
+      "input": "run same order IDs twice into synthetic upsert target",
+      "expected": "final rows=3; final sum=30.00; no duplicates",
+      "source_rules": [
+        "SP-05"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-spark-worker",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T11",
+      "technology": "pyspark",
+      "operation": "unbounded_driver",
+      "input": "input contract maximum 100M rows; code=df.collect()",
+      "expected": "flag unbounded materialization; do not collect fixture at scale",
+      "source_rules": [
+        "SP-03"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-spark-worker",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T12",
+      "technology": "yaml-dabs",
+      "operation": "relative_resource",
+      "input": "resource file resources/job.yml refers ../src/job.py; fixture path exists",
+      "expected": "resolve to bundle src/job.py; missing path rejected",
+      "source_rules": [
+        "YML-02"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": false,
+      "status": "not_run"
+    },
+    {
+      "id": "T13",
+      "technology": "yaml-dabs",
+      "operation": "target_mismatch",
+      "input": "selected dev; resolved catalog=prod_real",
+      "expected": "reject remote execution; no deploy",
+      "source_rules": [
+        "YML-01"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T14",
+      "technology": "cicd",
+      "operation": "failed_tests_gate",
+      "input": "test job fails; deploy job condition always()",
+      "expected": "reject promotion; deployment must depend on test success",
+      "source_rules": [
+        "CI-02"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T15",
+      "technology": "harness",
+      "operation": "policy_cross_client",
+      "input": "alpha descriptor with beta binding",
+      "expected": "reject client mismatch; snapshots unchanged",
+      "source_rules": [
+        "GEN-03"
+      ],
+      "implementation_change": "03-guided-client-onboarding",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T16",
+      "technology": "harness",
+      "operation": "stale_approval",
+      "input": "approval_fixture; revision=2 approved_revision=1",
+      "expected": "implementation gate rejects stale approval",
+      "source_rules": [
+        "GEN-02"
+      ],
+      "implementation_change": "04-hu-lifecycle-and-development-gates",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T17",
+      "technology": "harness",
+      "operation": "stale_candidate",
+      "input": "approval_fixture; candidate=synthetic-candidate-b evidence_candidate=synthetic-candidate-a",
+      "expected": "validation/publication gate blocks stale evidence",
+      "source_rules": [
+        "GEN-02"
+      ],
+      "implementation_change": "04-hu-lifecycle-and-development-gates",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T18",
+      "technology": "harness",
+      "operation": "test_not_run",
+      "input": "required evidence_status=not_run",
+      "expected": "candidate blocked; no publication",
+      "source_rules": [
+        "GEN-04"
+      ],
+      "implementation_change": "05-databricks-validation-and-evidence",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T19",
+      "technology": "harness",
+      "operation": "usage_unavailable",
+      "input": "only account quota exposed; no attributable token source",
+      "expected": "input/output/cached tokens and cost_usd=null; reason=unavailable",
+      "source_rules": [
+        "GEN-04"
+      ],
+      "implementation_change": "06-observability-and-agent-evals",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T20",
+      "technology": "harness",
+      "operation": "pr_response_lost",
+      "input": "provider fixture created PR=17 but client received timeout",
+      "expected": "reconcile PR=17; no second create; same receipt",
+      "source_rules": [
+        "CI-05"
+      ],
+      "implementation_change": "07-story-and-pr-integrations",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T21",
+      "technology": "harness",
+      "operation": "integration_drift",
+      "input": "AGENTS old_hash changed between preview and apply",
+      "expected": "reject before replacement; preserve custom instructions",
+      "source_rules": [
+        "GEN-02"
+      ],
+      "implementation_change": "02-desktop-roles-and-tool-contracts",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T22",
+      "technology": "harness",
+      "operation": "update_personalization",
+      "input": "local agent TOML differs from installed_hash",
+      "expected": "conflict; preserve local file and external state",
+      "source_rules": [
+        "GEN-02"
+      ],
+      "implementation_change": "08-pilot-and-reproducible-distribution",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T23",
+      "technology": "harness",
+      "operation": "tampered_vendor",
+      "input": "change one byte of upstream SKILL.md",
+      "expected": "integrity rejects package; no activation",
+      "source_rules": [
+        "GEN-02"
+      ],
+      "implementation_change": "01-quality-practices-and-eval-foundation",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    },
+    {
+      "id": "T24",
+      "technology": "harness",
+      "operation": "desktop_not_certified",
+      "input": "files exist; only CLI smoke available",
+      "expected": "desktop=not_checked; do not certify Desktop",
+      "source_rules": [
+        "GEN-04"
+      ],
+      "implementation_change": "02-desktop-roles-and-tool-contracts",
+      "execution_mode": "isolated-local-or-provider-fixture",
+      "critical": true,
+      "status": "not_run"
+    }
+  ]
+}

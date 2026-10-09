@@ -69,7 +69,8 @@ with ZipFile(wheel) as archive:
     names = archive.namelist()
     assert len([name for name in names if 'openspec_kit/' in name and name.endswith('SKILL.md')]) == 7
     assert 'harness_core/schemas/onboardingplan.schema.json' in names
-    assert not any('/fixtures/' in name for name in names)
+    assert {name for name in names if '/fixtures/' in name} == {
+        'harness_local/quality_kit/fixtures/synthetic-sales.json'}
 result = dict(wheel=wheel.name, sha256=hashlib.sha256(wheel.read_bytes()).hexdigest(),
               clients=clients, checks=checks, wheel_files=names)
 (root / 'docs/evidence/onboarding-wheel-smoke.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')

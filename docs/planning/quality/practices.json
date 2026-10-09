@@ -1,0 +1,510 @@
+{
+  "schema_version": 1,
+  "pack_id": "harness-databricks-development",
+  "version": "0.1.0-design",
+  "status": "draft",
+  "sources": [
+    {
+      "id": "ms-notebooks",
+      "url": "https://learn.microsoft.com/es-es/azure/databricks/notebooks/best-practices",
+      "kind": "official-documentation",
+      "scope": "Notebooks: control de versiones, lógica compartida y pruebas.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "db-best-practices",
+      "url": "https://docs.databricks.com/aws/en/getting-started/best-practices",
+      "kind": "official-index",
+      "scope": "Índice de prácticas; no constituye por sí solo una prueba o receta universal.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "db-testing",
+      "url": "https://docs.databricks.com/aws/en/notebooks/testing",
+      "kind": "official-documentation",
+      "scope": "Separar funciones comprobables y pruebas de notebook.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "spark-testing",
+      "url": "https://spark.apache.org/docs/latest/api/python/getting_started/testing_pyspark.html",
+      "kind": "official-documentation",
+      "scope": "Comparación de DataFrames/esquemas; API debe verificarse en versión Spark seleccionada.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "db-cicd",
+      "url": "https://docs.databricks.com/aws/en/dev-tools/ci-cd/flows",
+      "kind": "official-documentation",
+      "scope": "Código/configuración versionados, pruebas, ambientes separados, IaC e identidad de CI.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "db-bundles",
+      "url": "https://docs.databricks.com/aws/en/dev-tools/bundles/faqs",
+      "kind": "official-documentation",
+      "scope": "Targets, variables, validación y separación de despliegue.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "db-query-profile",
+      "url": "https://docs.databricks.com/aws/en/sql/user/queries/query-profile",
+      "kind": "official-documentation",
+      "scope": "Diagnóstico de operadores, filas y costos para optimización medida.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "db-skills",
+      "url": "https://github.com/databricks/databricks-agent-skills/tree/ba45d10df7413de14c32937bbd584aeee17d22a2",
+      "kind": "official-repository",
+      "scope": "Snapshot íntegro de nueve Skills, referencias y licencia Databricks.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "medium-sql",
+      "url": "https://medium.com/@avinash.narala6814/best-practices-for-writing-efficient-sql-queries-in-databricks-ea5c8d30d29b",
+      "kind": "secondary-user-reference",
+      "scope": "Revisada como referencia aportada. No se usa como autoridad normativa; consejos contrastados con fuentes oficiales.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "openai-roles",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+      "kind": "official-documentation",
+      "scope": "Configuración por rol/modelo/esfuerzo; disponibilidad y permisos efectivos deben probarse en Desktop.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "openai-customization",
+      "url": "https://learn.chatgpt.com/docs/customization/overview",
+      "kind": "official-documentation",
+      "scope": "Responsabilidades de AGENTS, Skills, MCP y subagentes.",
+      "retrieved_on": "2026-10-09"
+    },
+    {
+      "id": "harness-design",
+      "url": "docs/propuesta-harness-local-codex.md",
+      "kind": "project-design",
+      "scope": "Reglas propias del harness, gates, evidencia, oráculos y alcance sintético.",
+      "retrieved_on": "2026-10-09"
+    }
+  ],
+  "rules": [
+    {
+      "id": "GEN-01",
+      "technology": "general",
+      "severity": "required",
+      "statement": "Declarar criterios, grano de datos y entradas/salidas antes de implementar.",
+      "applicability": "Cada transformación de datos",
+      "evidence": "Criterios y contrato revisados",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "GEN-02",
+      "technology": "general",
+      "severity": "required",
+      "statement": "Vincular pruebas y revisión al candidato y configuración efectivos.",
+      "applicability": "Toda HU",
+      "evidence": "Hashes de candidato/plan/kit y evidencia",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "GEN-03",
+      "technology": "general",
+      "severity": "required",
+      "statement": "Usar fixtures sintéticos y recursos autorizados; separar datos cliente del kit.",
+      "applicability": "Tests y evals del harness",
+      "evidence": "Dataset/hash, identidad y recursos del run",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "GEN-04",
+      "technology": "general",
+      "severity": "required",
+      "statement": "Registrar prueba omitida/bloqueada; nunca tratarla como aprobada.",
+      "applicability": "Prueba requerida no ejecutada",
+      "evidence": "Estado y motivo explícitos",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SQL-01",
+      "technology": "sql",
+      "severity": "required",
+      "statement": "Comprobar cardinalidad y grano de joins con claves duplicadas y huérfanas.",
+      "applicability": "Cambios de join/agregación",
+      "evidence": "Resultado esperado independiente y conteos",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SQL-02",
+      "technology": "sql",
+      "severity": "required",
+      "statement": "Definir tratamiento de null, decimales, fechas y zona horaria.",
+      "applicability": "Métricas y transformaciones SQL",
+      "evidence": "Casos de borde con contrato explícito",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SQL-03",
+      "technology": "sql",
+      "severity": "advisory",
+      "statement": "Seleccionar columnas y predicados pertinentes; comprobar su efecto en el plan.",
+      "applicability": "Consultas con objetivo de rendimiento",
+      "evidence": "Plan/perfil y comparación de baseline",
+      "source_refs": [
+        "db-query-profile"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SQL-04",
+      "technology": "sql",
+      "severity": "required",
+      "statement": "No afirmar mejora sin misma carga, runtime y condiciones comparables.",
+      "applicability": "Cambios de optimización SQL",
+      "evidence": "Perfil/tiempos y equivalencia semántica",
+      "source_refs": [
+        "db-query-profile"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SQL-05",
+      "technology": "sql",
+      "severity": "advisory",
+      "statement": "Evaluar hints, cache y layout según diagnóstico; conservar semántica.",
+      "applicability": "Sugerencia de ajuste físico",
+      "evidence": "Justificación y medición por escenario",
+      "source_refs": [
+        "db-query-profile"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SQL-06",
+      "technology": "sql",
+      "severity": "required",
+      "statement": "Validar semántica Databricks/Delta en runtime compatible cuando el cambio lo exige.",
+      "applicability": "MERGE, scripting o comportamiento específico",
+      "evidence": "Prueba runtime y versión elegida",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PY-01",
+      "technology": "python",
+      "severity": "required",
+      "statement": "Extraer lógica comprobable en funciones con entradas/salidas explícitas.",
+      "applicability": "Lógica compartida o notebook",
+      "evidence": "Tests de función sin ejecución del notebook",
+      "source_refs": [
+        "db-testing"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PY-02",
+      "technology": "python",
+      "severity": "required",
+      "statement": "Propagar o clasificar errores; no silenciarlos reportando éxito.",
+      "applicability": "Manejo de fallos",
+      "evidence": "Prueba negativa con error esperado",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PY-03",
+      "technology": "python",
+      "severity": "required",
+      "statement": "Fijar dependencias/runtime y comprobar importación en entorno aislado.",
+      "applicability": "Paquetes o cambios de dependencias",
+      "evidence": "Manifiesto y smoke de importación",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PY-04",
+      "technology": "python",
+      "severity": "required",
+      "statement": "Separar efectos I/O de lógica y probar fronteras con dobles de servicio.",
+      "applicability": "Código con clientes remotos",
+      "evidence": "Contrato de adapter y pruebas de fallo",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "NB-01",
+      "technology": "notebook",
+      "severity": "required",
+      "statement": "Versionar notebook y lógica compartida; preservar formato de exportación.",
+      "applicability": "Notebooks cliente",
+      "evidence": "Diff y parse/export comprobados",
+      "source_refs": [
+        "ms-notebooks"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "NB-02",
+      "technology": "notebook",
+      "severity": "required",
+      "statement": "Separar orquestación de transformaciones reutilizables.",
+      "applicability": "Notebook con lógica de negocio",
+      "evidence": "Funciones y pruebas independientes",
+      "source_refs": [
+        "ms-notebooks"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "NB-03",
+      "technology": "notebook",
+      "severity": "required",
+      "statement": "Verificar ejecución desde sesión limpia con parámetros explícitos.",
+      "applicability": "Notebook ejecutable cambiado",
+      "evidence": "Run fresco y ausencia de estado oculto",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "NB-04",
+      "technology": "notebook",
+      "severity": "required",
+      "statement": "Ejecutar prueba de notebook/job en sandbox cuando la aceptación requiere integración.",
+      "applicability": "HU con integración notebook",
+      "evidence": "Evidencia job sintético y parámetros",
+      "source_refs": [
+        "db-testing"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SP-01",
+      "technology": "pyspark",
+      "severity": "required",
+      "statement": "Comparar esquema y filas con tolerancias, orden y nullability declarados.",
+      "applicability": "Transformaciones DataFrame",
+      "evidence": "Oráculo y API compatible con Spark seleccionado",
+      "source_refs": [
+        "spark-testing"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SP-02",
+      "technology": "pyspark",
+      "severity": "required",
+      "statement": "Probar datasets vacíos, nulls, duplicados y orden aleatorio.",
+      "applicability": "Transformación de datos",
+      "evidence": "Casos sintéticos y resultados esperados",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SP-03",
+      "technology": "pyspark",
+      "severity": "advisory",
+      "statement": "Preferir operaciones distribuidas; justificar collect/toPandas sobre volúmenes acotados.",
+      "applicability": "Materialización en driver",
+      "evidence": "Estimación de tamaño, contrato y perfil",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SP-04",
+      "technology": "pyspark",
+      "severity": "advisory",
+      "statement": "Considerar funciones nativas antes de UDF, sin alterar semántica.",
+      "applicability": "Nueva UDF o cambio de rendimiento",
+      "evidence": "Equivalencia y benchmark si se cambia",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "SP-05",
+      "technology": "pyspark",
+      "severity": "required",
+      "statement": "Demostrar estabilidad al reprocesar según contrato del pipeline.",
+      "applicability": "Carga incremental o upsert",
+      "evidence": "Dos ejecuciones y estado final esperado",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "YML-01",
+      "technology": "yaml-dabs",
+      "severity": "required",
+      "statement": "Separar targets y parametrizar recursos dependientes del entorno.",
+      "applicability": "Configuración bundle",
+      "evidence": "Resolución de variables por target",
+      "source_refs": [
+        "db-bundles"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "YML-02",
+      "technology": "yaml-dabs",
+      "severity": "required",
+      "statement": "Validar paths relativos desde el archivo que los declara y recursos referenciados.",
+      "applicability": "Recursos YAML/includes",
+      "evidence": "Resolución confinada de rutas y referencias",
+      "source_refs": [
+        "db-skills"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "YML-03",
+      "technology": "yaml-dabs",
+      "severity": "required",
+      "statement": "Distinguir parse YAML offline de bundle validate potencialmente remoto.",
+      "applicability": "Validación de bundle",
+      "evidence": "Comando, target/perfil, alcance y resultado",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "YML-04",
+      "technology": "yaml-dabs",
+      "severity": "required",
+      "statement": "Conservar comentarios/personalizaciones; revisar cada cambio de identidad/permisos.",
+      "applicability": "Edición YAML cliente",
+      "evidence": "Diff revisado y plan de permisos",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "CI-01",
+      "technology": "cicd",
+      "severity": "required",
+      "statement": "Versionar código, config y artefactos; relacionar validación con commit.",
+      "applicability": "Pipelines CI/CD",
+      "evidence": "Commit y hashes de artefactos",
+      "source_refs": [
+        "db-cicd"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "CI-02",
+      "technology": "cicd",
+      "severity": "required",
+      "statement": "Separar pruebas, validación y despliegue con condiciones de promoción.",
+      "applicability": "Pipeline con deploy",
+      "evidence": "Dependencias de jobs y rechazo ante tests fallidos",
+      "source_refs": [
+        "db-cicd"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "CI-03",
+      "technology": "cicd",
+      "severity": "required",
+      "statement": "Seleccionar identidad limitada y preferir federación donde sea compatible.",
+      "applicability": "Autenticación CI Databricks",
+      "evidence": "Configuración de identidad sin secretos persistidos",
+      "source_refs": [
+        "db-cicd"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "CI-04",
+      "technology": "cicd",
+      "severity": "required",
+      "statement": "Aislar ambientes y comprobar destino antes de efectos remotos.",
+      "applicability": "Validación/despliegue remoto",
+      "evidence": "Target/host/identidad y política efectivos",
+      "source_refs": [
+        "db-cicd"
+      ],
+      "origin": "official-source-adaptation",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "CI-05",
+      "technology": "cicd",
+      "severity": "required",
+      "statement": "Distinguir PR preparado/publicado de merge o despliegue completado.",
+      "applicability": "Cierre de HU",
+      "evidence": "Receipt de operación autorizada",
+      "source_refs": [
+        "harness-design"
+      ],
+      "origin": "harness-design",
+      "execution_status": "not_run"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-09",
+  "status": "incremental-implementation",
+  "baseline": [
+    "bootstrap-codex-local-core",
+    "apply-client-onboarding"
+  ],
+  "changes": [
+    {
+      "order": 1,
+      "id": "01-quality-practices-and-eval-foundation",
+      "title": "Paquete de buenas prácticas y catálogo de evaluación",
+      "depends_on": [
+        "bootstrap-codex-local-core",
+        "apply-client-onboarding"
+      ],
+      "status": "implemented-verified",
+      "implemented": true,
+      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "exit_criterion": "Catálogos cargables, íntegros y trazables; ningún recurso activa herramientas o produce resultados ficticios.",
+      "capabilities": [
+        "development-practice-pack",
+        "evaluation-catalog"
+      ],
+      "evidence": "docs/evidence/quality-foundation.md"
+    },
+    {
+      "order": 2,
+      "id": "02-desktop-roles-and-tool-contracts",
+      "title": "Integración Desktop, roles y herramientas",
+      "depends_on": [
+        "01-quality-practices-and-eval-foundation"
+      ],
+      "status": "proposed",
+      "implemented": false,
+      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "exit_criterion": "Configuración concreta revisable y evidencia en Desktop de cada capacidad habilitada; archivos presentes nunca equivalen a certificación.",
+      "capabilities": [
+        "desktop-integration",
+        "role-tool-catalog"
+      ]
+    },
+    {
+      "order": 3,
+      "id": "03-guided-client-onboarding",
+      "title": "Onboarding conversacional y configuración del cliente",
+      "depends_on": [
+        "02-desktop-roles-and-tool-contracts"
+      ],
+      "status": "proposed",
+      "implemented": false,
+      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "exit_criterion": "Una persona nueva completa el flujo con plantilla o entrevista y recibe configuración trazable sin ampliar permisos por inferencia.",
+      "capabilities": [
+        "guided-client-onboarding"
+      ]
+    },
+    {
+      "order": 4,
+      "id": "04-hu-lifecycle-and-development-gates",
+      "title": "Flujo de HU, estado y controles de desarrollo",
+      "depends_on": [
+        "03-guided-client-onboarding"
+      ],
+      "status": "proposed",
+      "implemented": false,
+      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "exit_criterion": "Cada transición queda registrada y los gates rechazan alcance, aprobación o evidencia incorrectos; no se publican cambios todavía.",
+      "capabilities": [
+        "hu-lifecycle"
+      ]
+    },
+    {
+      "order": 5,
+      "id": "05-databricks-validation-and-evidence",
+      "title": "Pruebas Databricks y evidencia del candidato",
+      "depends_on": [
+        "04-hu-lifecycle-and-development-gates"
+      ],
+      "status": "proposed",
+      "implemented": false,
+      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "exit_criterion": "Evidencia determinista y remota genuina donde se exige, ligada al candidato; sin credenciales o runtime disponibles se registra bloqueo.",
+      "capabilities": [
+        "candidate-validation"
+      ]
+    },
+    {
+      "order": 6,
+      "id": "06-observability-and-agent-evals",
+      "title": "Observabilidad y ejecución de evals de agentes",
+      "depends_on": [
+        "05-databricks-validation-and-evidence"
+      ],
+      "status": "proposed",
+      "implemented": false,
+      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "exit_criterion": "Evals ejecutados con trazabilidad y gate reproducible; tokens/costos desconocidos se mantienen null con motivo.",
+      "capabilities": [
+        "development-observability",
+        "agent-evaluation"
+      ]
+    },
+    {
+      "order": 7,
+      "id": "07-story-and-pr-integrations",
+      "title": "Integraciones de historias y publicación de PR",
+      "depends_on": [
+        "06-observability-and-agent-evals"
+      ],
+      "status": "proposed",
+      "implemented": false,
+      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "exit_criterion": "HU de fuente trazable a PR draft autorizado con evidencia; repetir o reanudar no duplica publicación.",
+      "capabilities": [
+        "story-pr-integration"
+      ]
+    },
+    {
+      "order": 8,
+      "id": "08-pilot-and-reproducible-distribution",
+      "title": "Piloto completo y distribución reproducible",
+      "depends_on": [
+        "07-story-and-pr-integrations"
+      ],
+      "status": "proposed",
+      "implemented": false,
+      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "exit_criterion": "Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones.",
+      "capabilities": [
+        "pilot-certification",
+        "harness-distribution"
+      ]
+    }
+  ]
+}

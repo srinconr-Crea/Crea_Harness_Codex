@@ -1,0 +1,240 @@
+{
+  "$defs": {
+    "EvalCase": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "role": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Role",
+          "type": "string"
+        },
+        "task": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Task",
+          "type": "string"
+        },
+        "input": {
+          "additionalProperties": true,
+          "title": "Input",
+          "type": "object"
+        },
+        "expected": {
+          "$ref": "#/$defs/EvalExpected"
+        },
+        "split": {
+          "enum": [
+            "golden",
+            "holdout"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "source_rules": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Source Rules",
+          "type": "array"
+        },
+        "implementation_change": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Implementation Change",
+          "type": "string"
+        },
+        "execution_mode": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Execution Mode",
+          "type": "string"
+        },
+        "status": {
+          "const": "not_run",
+          "title": "Status",
+          "type": "string"
+        },
+        "observed_output": {
+          "title": "Observed Output",
+          "type": "null"
+        },
+        "scores": {
+          "title": "Scores",
+          "type": "null"
+        }
+      },
+      "required": [
+        "id",
+        "role",
+        "task",
+        "input",
+        "expected",
+        "split",
+        "source_rules",
+        "implementation_change",
+        "execution_mode",
+        "status",
+        "observed_output",
+        "scores"
+      ],
+      "title": "EvalCase",
+      "type": "object"
+    },
+    "EvalCheck": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "critical": {
+          "title": "Critical",
+          "type": "boolean"
+        },
+        "scorer": {
+          "maxLength": 16384,
+          "minLength": 1,
+          "title": "Scorer",
+          "type": "string"
+        },
+        "human_annotation_required": {
+          "title": "Human Annotation Required",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "description",
+        "critical",
+        "scorer",
+        "human_annotation_required"
+      ],
+      "title": "EvalCheck",
+      "type": "object"
+    },
+    "EvalExpected": {
+      "additionalProperties": false,
+      "properties": {
+        "known_defects": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 256,
+          "title": "Known Defects",
+          "type": "array"
+        },
+        "checks": {
+          "items": {
+            "$ref": "#/$defs/EvalCheck"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Checks",
+          "type": "array"
+        }
+      },
+      "required": [
+        "known_defects",
+        "checks"
+      ],
+      "title": "EvalExpected",
+      "type": "object"
+    },
+    "PromotionGate": {
+      "additionalProperties": false,
+      "properties": {
+        "critical_check_pass_rate": {
+          "const": 1,
+          "title": "Critical Check Pass Rate",
+          "type": "integer"
+        },
+        "noncritical_check_pass_rate_min": {
+          "maximum": 1,
+          "minimum": 0.9,
+          "title": "Noncritical Check Pass Rate Min",
+          "type": "number"
+        },
+        "blocked_or_not_run_is_pass": {
+          "const": false,
+          "title": "Blocked Or Not Run Is Pass",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "critical_check_pass_rate",
+        "noncritical_check_pass_rate_min",
+        "blocked_or_not_run_is_pass"
+      ],
+      "title": "PromotionGate",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "catalog_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Catalog Id",
+      "type": "string"
+    },
+    "version": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    },
+    "status": {
+      "const": "not_run",
+      "title": "Status",
+      "type": "string"
+    },
+    "default_repetitions": {
+      "maximum": 100,
+      "minimum": 3,
+      "title": "Default Repetitions",
+      "type": "integer"
+    },
+    "promotion_gate": {
+      "$ref": "#/$defs/PromotionGate"
+    },
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/EvalCase"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "title": "Cases",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "version",
+    "status",
+    "default_repetitions",
+    "promotion_gate",
+    "cases"
+  ],
+  "title": "EvalCatalog",
+  "type": "object"
+}

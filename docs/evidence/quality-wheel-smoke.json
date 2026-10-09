@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "2196b1e6e67def65a1d1729ba2c0b6e313ba52e152e32934767e2bc19001c5b8",
+  "installed_isolated": true,
+  "exit_code": 0,
+  "checks": {
+    "rules": 32,
+    "tests": 24,
+    "evals": 24,
+    "dataset_sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477",
+    "manifest_sha256": "a09cea35d3ea5cea60a0de4a08a8ec511b1c9879ccdda09a7fb461ebc77b99ab",
+    "upstream_commit": "ba45d10df7413de14c32937bbd584aeee17d22a2",
+    "license": "Databricks License",
+    "agent_execution": "not_run",
+    "activation": false
+  }
+}

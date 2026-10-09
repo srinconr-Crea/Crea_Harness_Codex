@@ -1,0 +1,86 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "technology": {
+      "enum": [
+        "general",
+        "sql",
+        "python",
+        "notebook",
+        "pyspark",
+        "yaml-dabs",
+        "cicd",
+        "harness"
+      ],
+      "title": "Technology",
+      "type": "string"
+    },
+    "operation": {
+      "maxLength": 16384,
+      "minLength": 1,
+      "title": "Operation",
+      "type": "string"
+    },
+    "input": {
+      "maxLength": 16384,
+      "minLength": 1,
+      "title": "Input",
+      "type": "string"
+    },
+    "expected": {
+      "maxLength": 16384,
+      "minLength": 1,
+      "title": "Expected",
+      "type": "string"
+    },
+    "source_rules": {
+      "items": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+        "type": "string"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "title": "Source Rules",
+      "type": "array"
+    },
+    "implementation_change": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Implementation Change",
+      "type": "string"
+    },
+    "execution_mode": {
+      "maxLength": 16384,
+      "minLength": 1,
+      "title": "Execution Mode",
+      "type": "string"
+    },
+    "critical": {
+      "title": "Critical",
+      "type": "boolean"
+    },
+    "status": {
+      "const": "not_run",
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "technology",
+    "operation",
+    "input",
+    "expected",
+    "source_rules",
+    "implementation_change",
+    "execution_mode",
+    "critical",
+    "status"
+  ],
+  "title": "TestCase",
+  "type": "object"
+}
