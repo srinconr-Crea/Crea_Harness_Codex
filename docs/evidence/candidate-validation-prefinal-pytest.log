@@ -1,0 +1,557 @@
+................................................F....................... [ 18%]
+....................................................................F... [ 36%]
+........................................................................ [ 54%]
+........................................................................ [ 72%]
+...............................................................FF.....F. [ 90%]
+..F..FFFFFFFFFFF.FFFFFFFFFFF.........                                    [100%]
+================================== FAILURES ===================================
+_____ test_interrupted_recovery_resumes_persisted_recovered_records[True] _____
+
+client = {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/c95dea720cee402f8c0b03...ocal-Harness/.test-data/c95dea720cee402f8c0b03f620a92659/binding.json'), 'origin': 'https://github.com/demo/alpha.git'}
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/c95dea720cee402f8c0b03f620a92659')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002253FF16060>
+persist_first = True
+
+    @pytest.mark.parametrize('persist_first', [True, False])
+    def test_interrupted_recovery_resumes_persisted_recovered_records(client, scratch, monkeypatch, persist_first):
+        import harness_local.desktop_integration as module
+        (client['target'] / 'AGENTS.md').write_text('original rules')
+        path, _ = exported(client, scratch)
+        apply(client['target'], client['policy'], path)
+        persist = module.persist
+        def interrupted(path, journal):
+            if persist_first:
+                persist(path, journal)
+            if any(r.state == 'recovered' for r in journal.records):
+                raise OSError('synthetic interruption')
+        monkeypatch.setattr(module, 'persist', interrupted)
+        with pytest.raises(OSError):
+            recover(client['target'], client['policy'], path, apply_changes=True)
+        monkeypatch.setattr(module, 'persist', persist)
+        result, code = recover(client['target'], client['policy'], path, apply_changes=True)
+>       assert code == 0 and result['recovery_status'] == 'recovered'
+E       AssertionError: assert (0 == 0 and 'already_recovered' == 'recovered'
+E         
+E         - recovered
+E         + already_recovered)
+
+tests\test_desktop.py:298: AssertionError
+________________ test_git_status_never_executes_client_filter _________________
+
+client = {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/c6b31e6d48b54d65bdca7d...ocal-Harness/.test-data/c6b31e6d48b54d65bdca7d4f6dc0919e/binding.json'), 'origin': 'https://github.com/demo/alpha.git'}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002253EF2E270>
+
+    def test_git_status_never_executes_client_filter(client,monkeypatch):
+        p=client['target']
+        marker=p.parent/'filter-executed'
+        script=p/'filter.py'
+        script.write_text('from pathlib import Path\nPath('+repr(str(marker))+').touch()\nimport sys\nsys.stdout.write(sys.stdin.read())\n')
+        (p/'.gitattributes').write_text('tracked.txt filter=evil\n')
+        (p/'tracked.txt').write_text('before\n')
+        # Stage before registering the malicious driver.
+        subprocess.run(['git','-C',str(p),'add','.'],check=True,capture_output=True)
+        subprocess.run(['git','-C',str(p),'-c','user.name=Fixture','-c','user.email=fixture@example.invalid',
+                        'commit','-m','fixture'],check=True,capture_output=True)
+        command='"'+sys.executable+'" "'+str(script)+'"'
+        subprocess.run(['git','-C',str(p),'config','filter.evil.clean',command],check=True)
+        (p/'tracked.txt').write_text('after!\n')
+        import os,time
+        stamp=time.time()+5
+        os.utime(p/'tracked.txt',(stamp,stamp))
+        subprocess.run(['git','-C',str(p),'hash-object','--path=tracked.txt','tracked.txt'],check=True,capture_output=True)
+>       assert marker.exists(), 'Control positivo: Git debe ejecutar el filtro de la fixture'
+E       AssertionError: Control positivo: Git debe ejecutar el filtro de la fixture
+E       assert False
+E        +  where False = exists()
+E        +    where exists = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/c6b31e6d48b54d65bdca7d4f6dc0919e/filter-executed').exists
+
+tests\test_local.py:173: AssertionError
+_______________ test_yaml_offline_and_python_parse_are_only_l0 ________________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/5ac43651e35840589b9abd32fea36dea')
+
+        assert api().validation_gate(p,[])['status']=='blocked'
+    
+    
+    def test_yaml_offline_and_python_parse_are_only_l0(scratch):
+>       from harness_local.validation import static_check
+E       AssertionError: assert ('blocked' == 'passed'
+E         
+E         - passed
+E         + blocked)
+
+tests\test_validation.py:101: AssertionError
+___________ test_static_controls_driver_cicd_and_relative_resources ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/5ef58a17ea234aa5af8852969ef928d5')
+
+        assert static_check(p,r,b'def invalid(:\n',filename='x.py').status=='failed'
+    
+    
+>   def test_static_controls_driver_cicd_and_relative_resources(scratch):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert 'blocked' == 'failed'
+E     
+E     - failed
+E     + blocked
+
+tests\test_validation.py:110: AssertionError
+__________ test_validation_cli_selection_static_and_missing_sandbox ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/a8a92ac2f1974dd4ac2af83895c1ac59')
+capsys = <_pytest.capture.CaptureFixture object at 0x00000225449A2A80>
+
+    def test_validation_cli_selection_static_and_missing_sandbox(scratch,capsys):
+        value=dict(schema_version=1,client_id='alpha',run_id='run1',attempt=1,candidate_sha256='a'*64,
+            plan_revision=1,technologies=['python'],impacts=['logic'])
+        code,result=run(scratch,capsys,'plan',value)
+        assert code==0 and result['command']=='validate'
+        p=api().ValidationPlan.model_validate(result['plan']); r=request(p)
+        source=scratch/'total.py'; source.write_text('def total(xs): return sum(xs)\n')
+        code,result=run(scratch,capsys,'static',dict(schema_version=1,plan=p.model_dump(),request=r.model_dump(),source_path=str(source)))
+>       assert code==0 and result['evidence']['status']=='passed'
+E       assert (1 == 0)
+
+tests\test_validation_cli.py:22: AssertionError
+_____________ test_sql_parser_error_is_failed_sanitized_evidence ______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002253FFF1390>
+
+    def test_sql_parser_error_is_failed_sanitized_evidence(monkeypatch):
+        from harness_local.validation import static_check
+        class SqlglotError(Exception): pass
+        def parse(*args,**kwargs): raise SqlglotError('SELECT customer-private-content')
+        monkeypatch.setitem(sys.modules,'sqlglot',SimpleNamespace(parse=parse,errors=SimpleNamespace(SqlglotError=SqlglotError)))
+        p=plan('sql'); e=static_check(p,request(p),b'SELECT invalid',filename='file.sql')
+>       assert e.status=='failed' and e.reason=='sql_parse_failed'
+E       AssertionError: assert ('blocked' == 'failed'
+E         
+E         - failed
+E         + blocked)
+
+tests\test_validation_regressions.py:16: AssertionError
+___________________ test_static_source_hash_mismatch_blocks ___________________
+
+    def test_static_source_hash_mismatch_blocks():
+        from harness_local.validation import static_check
+        p=plan(); r=request(p,source_sha256='0'*64)
+>       assert static_check(p,r,b'pass',filename='x.py').reason=='source_hash_mismatch'
+E       AssertionError: assert 'static_tool_mismatch' == 'source_hash_mismatch'
+E         
+E         - source_hash_mismatch
+E         + static_tool_mismatch
+
+tests\test_validation_regressions.py:39: AssertionError
+___________________ test_remote_selected_sandbox_and_result ___________________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/615586331b134e2d91618c500f1de352')
+
+    
+    def test_remote_selected_sandbox_and_result(scratch):
+>       e=execute(scratch)
+E       AssertionError: assert ('blocked' == 'passed'
+E         
+E         - passed
+E         + blocked)
+
+tests\test_validation_remote.py:61: AssertionError
+_ test_wrong_preflight_has_zero_remote_writes[host-https://other.example.invalid] _
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/e29e8148a5bc4e4396ff6d24e92b430b')
+field = 'host', value = 'https://other.example.invalid'
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+_________ test_wrong_preflight_has_zero_remote_writes[profile-other] __________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/62eb82afaf0b4ffc97f9398f32b4c668')
+field = 'profile', value = 'other'
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+_____ test_wrong_preflight_has_zero_remote_writes[caller_identity-other] ______
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/b4fd117d3a4146abb0df33c588bac460')
+field = 'caller_identity', value = 'other'
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+____ test_wrong_preflight_has_zero_remote_writes[execution_identity-other] ____
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/909bcf9703a545738586bbb578ecc1a1')
+field = 'execution_identity', value = 'other'
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+_________ test_wrong_preflight_has_zero_remote_writes[runtime-other] __________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/0c0d26d5f2be4c39ba11f1f22d64cdd6')
+field = 'runtime', value = 'other'
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+____________ test_wrong_preflight_has_zero_remote_writes[job_id-8] ____________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/26ae33aa1a3243e1b22dc7a87ba01eba')
+field = 'job_id', value = 8
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+_ test_wrong_preflight_has_zero_remote_writes[volume-/Volumes/other/test/fixtures] _
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/73e23ab789704b088df13b7688162ef6')
+field = 'volume', value = '/Volumes/other/test/fixtures'
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+________ test_wrong_preflight_has_zero_remote_writes[resources-value7] ________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/e90b0f06d7864afe9023cc853b7c7eae')
+field = 'resources', value = ['/Workspace/prod']
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+_ test_wrong_preflight_has_zero_remote_writes[job_settings_sha256-0000000000000000000000000000000000000000000000000000000000000000] _
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/2234c4c2c3e942f88a97e3aea99dcf08')
+field = 'job_settings_sha256'
+value = '0000000000000000000000000000000000000000000000000000000000000000'
+
+    
+    @pytest.mark.parametrize('field,value',[('host','https://other.example.invalid'),('profile','other'),
+        ('caller_identity','other'),('execution_identity','other'),('runtime','other'),('job_id',8),
+        ('volume','/Volumes/other/test/fixtures'),('resources',['/Workspace/prod']),('job_settings_sha256','0'*64)])
+    def test_wrong_preflight_has_zero_remote_writes(scratch,field,value):
+        s=ServiceDouble(); original=s.preflight
+        s.preflight=lambda t: original(t)|{field:value}
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'sandbox_identity_mismatch'
+E         
+E         - sandbox_identity_mismatch
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:71: AssertionError
+_____________ test_lost_submit_reconciles_across_process_restart ______________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/5c5a9fefa13445ab8279e836887f9b3e')
+
+    
+    def test_lost_submit_reconciles_across_process_restart(scratch):
+        s=ServiceDouble(); s.lost=True
+>       e=execute(scratch,s)
+E       AssertionError: assert ('blocked' == 'blocked'
+E         
+E           blocked and 'sandbox_command_mismatch' == 'remote_recon...tion_required'
+E         
+E         - remote_reconciliation_required
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:88: AssertionError
+_______________ test_polling_limit_then_resume_without_resubmit _______________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/542b922adc8146e99914412623267bd8')
+
+    
+    def test_polling_limit_then_resume_without_resubmit(scratch):
+        s=ServiceDouble(); s.busy=True
+>       e=execute(scratch,s)
+E       AssertionError: assert ('sandbox_command_mismatch' == 'remote_poll_limit'
+E         
+E         - remote_poll_limit
+E         + sandbox_command_mismatch)
+
+tests\test_validation_remote.py:98: AssertionError
+__________ test_cross_identity_or_hash_never_receives_success[bad0] ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/b8c7962b1481476abe62dc7b9cf681a8')
+bad = {'result_sha256': '0000000000000000000000000000000000000000000000000000000000000000'}
+
+    
+    @pytest.mark.parametrize('bad',[
+        {'result_sha256':'0'*64},{'job_id':8},{'remote_run_id':12},{'runtime':'different'},
+        {'execution_identity':'other'},{'data_sha256':'0'*64},{'request':{'client_id':'beta'}}])
+    def test_cross_identity_or_hash_never_receives_success(scratch,bad):
+>       s=ServiceDouble(); s.mismatch=bad
+E       AssertionError: assert 'blocked' == 'failed'
+E         
+E         - failed
+E         + blocked
+
+tests\test_validation_remote.py:108: AssertionError
+__________ test_cross_identity_or_hash_never_receives_success[bad1] ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/c251283283ad499b897f44cf36cbb36e')
+bad = {'job_id': 8}
+
+    
+    @pytest.mark.parametrize('bad',[
+        {'result_sha256':'0'*64},{'job_id':8},{'remote_run_id':12},{'runtime':'different'},
+        {'execution_identity':'other'},{'data_sha256':'0'*64},{'request':{'client_id':'beta'}}])
+    def test_cross_identity_or_hash_never_receives_success(scratch,bad):
+>       s=ServiceDouble(); s.mismatch=bad
+E       AssertionError: assert 'blocked' == 'failed'
+E         
+E         - failed
+E         + blocked
+
+tests\test_validation_remote.py:108: AssertionError
+__________ test_cross_identity_or_hash_never_receives_success[bad2] ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/b26ed268d09e45eb9136d9dc32f4f39d')
+bad = {'remote_run_id': 12}
+
+    
+    @pytest.mark.parametrize('bad',[
+        {'result_sha256':'0'*64},{'job_id':8},{'remote_run_id':12},{'runtime':'different'},
+        {'execution_identity':'other'},{'data_sha256':'0'*64},{'request':{'client_id':'beta'}}])
+    def test_cross_identity_or_hash_never_receives_success(scratch,bad):
+>       s=ServiceDouble(); s.mismatch=bad
+E       AssertionError: assert 'blocked' == 'failed'
+E         
+E         - failed
+E         + blocked
+
+tests\test_validation_remote.py:108: AssertionError
+__________ test_cross_identity_or_hash_never_receives_success[bad3] ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/894f1ceeed804faf827c00f1c869d135')
+bad = {'runtime': 'different'}
+
+    
+    @pytest.mark.parametrize('bad',[
+        {'result_sha256':'0'*64},{'job_id':8},{'remote_run_id':12},{'runtime':'different'},
+        {'execution_identity':'other'},{'data_sha256':'0'*64},{'request':{'client_id':'beta'}}])
+    def test_cross_identity_or_hash_never_receives_success(scratch,bad):
+>       s=ServiceDouble(); s.mismatch=bad
+E       AssertionError: assert 'blocked' == 'failed'
+E         
+E         - failed
+E         + blocked
+
+tests\test_validation_remote.py:108: AssertionError
+__________ test_cross_identity_or_hash_never_receives_success[bad4] ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/02833f2d4131462c8f1f07420ace0b7e')
+bad = {'execution_identity': 'other'}
+
+    
+    @pytest.mark.parametrize('bad',[
+        {'result_sha256':'0'*64},{'job_id':8},{'remote_run_id':12},{'runtime':'different'},
+        {'execution_identity':'other'},{'data_sha256':'0'*64},{'request':{'client_id':'beta'}}])
+    def test_cross_identity_or_hash_never_receives_success(scratch,bad):
+>       s=ServiceDouble(); s.mismatch=bad
+E       AssertionError: assert 'blocked' == 'failed'
+E         
+E         - failed
+E         + blocked
+
+tests\test_validation_remote.py:108: AssertionError
+__________ test_cross_identity_or_hash_never_receives_success[bad5] ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/f1f4cac9e8b941c18459089386486db6')
+bad = {'data_sha256': '0000000000000000000000000000000000000000000000000000000000000000'}
+
+    
+    @pytest.mark.parametrize('bad',[
+        {'result_sha256':'0'*64},{'job_id':8},{'remote_run_id':12},{'runtime':'different'},
+        {'execution_identity':'other'},{'data_sha256':'0'*64},{'request':{'client_id':'beta'}}])
+    def test_cross_identity_or_hash_never_receives_success(scratch,bad):
+>       s=ServiceDouble(); s.mismatch=bad
+E       AssertionError: assert 'blocked' == 'failed'
+E         
+E         - failed
+E         + blocked
+
+tests\test_validation_remote.py:108: AssertionError
+__________ test_cross_identity_or_hash_never_receives_success[bad6] ___________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/aefcd0d60ace4af9bcdb17af27c8d7ce')
+bad = {'request': {'client_id': 'beta'}}
+
+    
+    @pytest.mark.parametrize('bad',[
+        {'result_sha256':'0'*64},{'job_id':8},{'remote_run_id':12},{'runtime':'different'},
+        {'execution_identity':'other'},{'data_sha256':'0'*64},{'request':{'client_id':'beta'}}])
+    def test_cross_identity_or_hash_never_receives_success(scratch,bad):
+>       s=ServiceDouble(); s.mismatch=bad
+E       AssertionError: assert 'blocked' == 'failed'
+E         
+E         - failed
+E         + blocked
+
+tests\test_validation_remote.py:108: AssertionError
+________ test_same_key_cannot_be_reused_for_changed_request_or_oracle _________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/c834fdb10c254ea7a0f7d4ab652f6780')
+
+    
+    def test_same_key_cannot_be_reused_for_changed_request_or_oracle(scratch):
+        from harness_core.configuration import ConfigError
+        execute(scratch)
+        p=plan('sql',impacts=['delta']); t=target()
+        r=request(p,'delta-semantic',runtime=t.runtime,data_sha256='0'*64,
+>           runtime_sha256=sha(t.runtime.encode()),tool_sha256=t.notebook_sha256,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            command=['databricks','jobs','run-now',str(t.job_id),'--profile',t.profile])
+E       Failed: DID NOT RAISE ConfigError
+
+tests\test_validation_remote.py:117: Failed
+____________________ test_ambiguous_lookup_never_resubmits ____________________
+
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/fa8172442a2549b0863f4973e82ff826')
+
+            RemoteValidator(scratch/'validation.sqlite',ServiceDouble()).run(p,r,t,mode='delta',expected={'rows':4})
+    
+    
+    def test_ambiguous_lookup_never_resubmits(scratch):
+>       s=ServiceDouble(); s.lost=True
+E       AssertionError: assert 'sandbox_command_mismatch' == 'remote_recon...tion_required'
+E         
+E         - remote_reconciliation_required
+E         + sandbox_command_mismatch
+
+tests\test_validation_remote.py:129: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_desktop.py::test_interrupted_recovery_resumes_persisted_recovered_records[True]
+FAILED tests/test_local.py::test_git_status_never_executes_client_filter - As...
+FAILED tests/test_validation.py::test_yaml_offline_and_python_parse_are_only_l0
+FAILED tests/test_validation.py::test_static_controls_driver_cicd_and_relative_resources
+FAILED tests/test_validation_cli.py::test_validation_cli_selection_static_and_missing_sandbox
+FAILED tests/test_validation_regressions.py::test_sql_parser_error_is_failed_sanitized_evidence
+FAILED tests/test_validation_regressions.py::test_static_source_hash_mismatch_blocks
+FAILED tests/test_validation_remote.py::test_remote_selected_sandbox_and_result
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[host-https://other.example.invalid]
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[profile-other]
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[caller_identity-other]
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[execution_identity-other]
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[runtime-other]
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[job_id-8]
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[volume-/Volumes/other/test/fixtures]
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[resources-value7]
+FAILED tests/test_validation_remote.py::test_wrong_preflight_has_zero_remote_writes[job_settings_sha256-0000000000000000000000000000000000000000000000000000000000000000]
+FAILED tests/test_validation_remote.py::test_lost_submit_reconciles_across_process_restart
+FAILED tests/test_validation_remote.py::test_polling_limit_then_resume_without_resubmit
+FAILED tests/test_validation_remote.py::test_cross_identity_or_hash_never_receives_success[bad0]
+FAILED tests/test_validation_remote.py::test_cross_identity_or_hash_never_receives_success[bad1]
+FAILED tests/test_validation_remote.py::test_cross_identity_or_hash_never_receives_success[bad2]
+FAILED tests/test_validation_remote.py::test_cross_identity_or_hash_never_receives_success[bad3]
+FAILED tests/test_validation_remote.py::test_cross_identity_or_hash_never_receives_success[bad4]
+FAILED tests/test_validation_remote.py::test_cross_identity_or_hash_never_receives_success[bad5]
+FAILED tests/test_validation_remote.py::test_cross_identity_or_hash_never_receives_success[bad6]
+FAILED tests/test_validation_remote.py::test_same_key_cannot_be_reused_for_changed_request_or_oracle
+FAILED tests/test_validation_remote.py::test_ambiguous_lookup_never_resubmits
+28 failed, 369 passed in 752.42s (0:12:32)

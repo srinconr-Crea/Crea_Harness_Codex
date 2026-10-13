@@ -1,0 +1,7 @@
+Processing .\dist\crea_local_harness-0.1.0-py3-none-any.whl
+Installing collected packages: crea-local-harness
+  Attempting uninstall: crea-local-harness
+    Found existing installation: crea-local-harness 0.1.0
+    Uninstalling crea-local-harness-0.1.0:
+      Successfully uninstalled crea-local-harness-0.1.0
+Successfully installed crea-local-harness-0.1.0

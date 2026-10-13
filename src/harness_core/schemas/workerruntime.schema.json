@@ -1,0 +1,66 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "image": {
+      "pattern": "^[a-zA-Z0-9./:_-]+@sha256:[0-9a-f]{64}$",
+      "title": "Image",
+      "type": "string"
+    },
+    "runtime": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Runtime",
+      "type": "string"
+    },
+    "python_version": {
+      "pattern": "^3\\.\\d+\\.\\d+$",
+      "title": "Python Version",
+      "type": "string"
+    },
+    "spark_version": {
+      "anyOf": [
+        {
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Spark Version"
+    },
+    "authorized": {
+      "title": "Authorized",
+      "type": "boolean"
+    },
+    "timeout_seconds": {
+      "default": 30,
+      "maximum": 300,
+      "minimum": 1,
+      "title": "Timeout Seconds",
+      "type": "integer"
+    },
+    "memory_mb": {
+      "default": 512,
+      "maximum": 8192,
+      "minimum": 128,
+      "title": "Memory Mb",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "image",
+    "runtime",
+    "python_version",
+    "authorized"
+  ],
+  "title": "WorkerRuntime",
+  "type": "object"
+}

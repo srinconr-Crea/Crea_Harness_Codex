@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "image": "python@sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "runtime": "python-3.13",
+  "python_version": "3.13.7",
+  "spark_version": null,
+  "authorized": false,
+  "timeout_seconds": 30,
+  "memory_mb": 512
+}

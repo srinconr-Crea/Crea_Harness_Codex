@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "path": "python_total.py",
+      "sha256": "aa7eb687dd3d39a63d6c67a9f8b5506999c275413827d5734e3d163b1e1853f4",
+      "bytes": 219
+    },
+    {
+      "path": "spark_total.py",
+      "sha256": "80a8b93037872750da4def387a21cc4a0775d4f8906cbbfb2cc2f9050d0deb47",
+      "bytes": 646
+    },
+    {
+      "path": "spark_worker.py",
+      "sha256": "7596baf1824f19bee3e7f638a4812f0cd6028c6c9bce5d1e2d6259da94a01325",
+      "bytes": 1079
+    },
+    {
+      "path": "synthetic_notebook.py",
+      "sha256": "f9a2b2dd4229929bbb1acfc87db637068c45dd53ae0fc48c62da327764de462a",
+      "bytes": 5765
+    }
+  ]
+}

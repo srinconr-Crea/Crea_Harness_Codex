@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "change": "05-databricks-validation-and-evidence",
+  "date": "2026-10-13",
+  "timezone": "America/Bogota",
+  "baseline_commit": "bf7fd93",
+  "dependency": {
+    "change": "04-hu-lifecycle-and-development-gates",
+    "commit": "bf7fd93",
+    "version": "0.1.0",
+    "verified": true
+  },
+  "suite": {
+    "status": "passed",
+    "passed": 398,
+    "seconds": 777.97,
+    "log": "candidate-validation-pytest.log",
+    "sha256": "68970e02bef490597a66649d4e7e55e9ea19120751bca1c8c049812eb837a17e"
+  },
+  "prefinal_suite": {
+    "passed": 369,
+    "failed": 28,
+    "disposition": "26 concurrent edit mismatches; sandbox Git positive control and isolated recovery retry; retained log"
+  },
+  "installed_wheel": {
+    "schema_version": 1,
+    "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "8620c6cc9d0d6d6ecab02df49beedaafa15c42433be242e7910ab9272d659436",
+    "installed_isolated": true,
+    "exit_code": 0,
+    "smoke": {
+      "contracts": 5,
+      "passive_templates": 4,
+      "missing_evidence": "blocked",
+      "remote_smoke": "blocked",
+      "global_activation": false
+    }
+  },
+  "remote_smoke": {
+    "status": "blocked",
+    "reason": "sandbox_not_selected",
+    "genuine_remote_execution": false,
+    "user_selected": true
+  },
+  "container_spark": {
+    "status": "blocked",
+    "reason": "worker_runtime_absent"
+  },
+  "agent_evals": {
+    "E07": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null
+    },
+    "E09": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null
+    },
+    "E10": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null
+    },
+    "E11": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null
+    },
+    "E12": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null
+    }
+  },
+  "verification": {
+    "tasks": "10/10",
+    "requirements": "4/4",
+    "scenarios": "8/8",
+    "completeness": "passed",
+    "correctness": "passed",
+    "coherence": "passed",
+    "strict_validation_exit_code": 0,
+    "main_spec_sync": "exact",
+    "global_activation": false,
+    "v1_contracts_changed": false
+  },
+  "next_increment": {
+    "name": "06-observability-and-agent-evals",
+    "implementation_enabled": true,
+    "remote_capabilities_remain_blocked": true
+  }
+}

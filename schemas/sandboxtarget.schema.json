@@ -1,0 +1,133 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "profile": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Profile",
+      "type": "string"
+    },
+    "host": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Host",
+      "type": "string"
+    },
+    "caller_identity": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Caller Identity",
+      "type": "string"
+    },
+    "execution_identity": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Execution Identity",
+      "type": "string"
+    },
+    "job_id": {
+      "minimum": 1,
+      "title": "Job Id",
+      "type": "integer"
+    },
+    "task_key": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Task Key",
+      "type": "string"
+    },
+    "runtime": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Runtime",
+      "type": "string"
+    },
+    "volume": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Volume",
+      "type": "string"
+    },
+    "resources": {
+      "items": {
+        "maxLength": 4096,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "title": "Resources",
+      "type": "array"
+    },
+    "modes": {
+      "items": {
+        "enum": [
+          "sql",
+          "notebook",
+          "delta",
+          "job",
+          "bundle"
+        ],
+        "type": "string"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "title": "Modes",
+      "type": "array"
+    },
+    "job_settings_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Job Settings Sha256",
+      "type": "string"
+    },
+    "notebook_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Notebook Sha256",
+      "type": "string"
+    },
+    "authorized": {
+      "title": "Authorized",
+      "type": "boolean"
+    },
+    "synthetic": {
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "max_polls": {
+      "default": 5,
+      "maximum": 60,
+      "minimum": 1,
+      "title": "Max Polls",
+      "type": "integer"
+    },
+    "poll_seconds": {
+      "default": 1,
+      "maximum": 30,
+      "minimum": 0,
+      "title": "Poll Seconds",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "profile",
+    "host",
+    "caller_identity",
+    "execution_identity",
+    "job_id",
+    "task_key",
+    "runtime",
+    "volume",
+    "resources",
+    "modes",
+    "job_settings_sha256",
+    "notebook_sha256",
+    "authorized",
+    "synthetic"
+  ],
+  "title": "SandboxTarget",
+  "type": "object"
+}
