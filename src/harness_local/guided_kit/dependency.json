@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "change": "02-desktop-roles-and-tool-contracts",
+  "status": "verified-supervised",
+  "kit_version": "0.1.0",
+  "implementation_commit": "3963ac2",
+  "archive_commit": "d175d84",
+  "strict_certified": false,
+  "evidence": {
+    "docs/evidence/desktop-runtime-2026-10-09/verification.md": "997475ac78b69213491afdaf19e2c099fe1076fcbdb417f35e37a6088bbd26f5",
+    "docs/evidence/desktop-runtime-2026-10-09/human-annotation.json": "f60b4326c1b595f9e79f890b6bc2a5307de9d7e74e635033124361fad16d544e",
+    "docs/evidence/desktop-runtime-2026-10-09/supervised-verification.json": "478e489845da5e91fcab262bb82b20e1e19133313090c5d7282ecb4b94216894"
+  }
+}

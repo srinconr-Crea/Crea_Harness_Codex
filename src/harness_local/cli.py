@@ -21,6 +21,16 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    onboard=commands.add_parser('onboard')
+    for field in ('config','plan','plan-out','evidence'):
+        onboard.add_argument('--'+field)
+    onboard.add_argument('--stage',choices=('prepare','integrate','certify'))
+    onboard.add_argument('--json',action='store_true')
+    onboard.add_argument('--recover-apply',action='store_true')
+    onboard_modes=onboard.add_mutually_exclusive_group(required=True)
+    onboard_modes.add_argument('--dry-run',action='store_true')
+    onboard_modes.add_argument('--apply',action='store_true')
+    onboard_modes.add_argument('--recover',action='store_true')
     integration=commands.add_parser('integrate')
     integration.add_argument('--path')
     integration.add_argument('--policy')
@@ -73,11 +83,31 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+    command=next((c for c in ('onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command in ('review-snapshot','review-compare','supervised-prepare'):
+        if args.command=='onboard':
+            from . import guided_onboarding as guided
+            from harness_core.guided import QuestionnaireDraft,CertificationInput,sanitize
+            from harness_core.configuration import load_document
+            if args.dry_run:
+                if not args.config or any((args.plan,args.stage,args.evidence,args.recover_apply)):
+                    raise ConfigError('invalid_arguments')
+                raw=load_document(args.config); sanitize(raw)
+                draft=guided.parse(QuestionnaireDraft,raw)
+                result,code=guided.preview(draft,plan_out=args.plan_out)
+            elif args.apply:
+                if not args.plan or not args.stage or any((args.config,args.plan_out,args.recover_apply)):
+                    raise ConfigError('invalid_arguments')
+                if (args.stage=='certify') != bool(args.evidence): raise ConfigError('invalid_arguments')
+                evidence=guided.parse(CertificationInput,load_document(args.evidence)) if args.evidence else None
+                result,code=guided.apply(args.plan,stage=args.stage,evidence=evidence)
+            else:
+                if not args.plan or args.stage not in ('prepare','integrate') or any((args.config,args.plan_out,args.evidence)):
+                    raise ConfigError('invalid_arguments')
+                result,code=guided.recover(args.plan,stage=args.stage,apply_changes=args.recover_apply)
+        elif args.command in ('review-snapshot','review-compare','supervised-prepare'):
             from . import supervised
             from harness_core.desktop import RoleCatalog,DesktopCertificate
             from harness_core.supervised import CandidateSnapshot,SupervisedAcceptance
@@ -171,6 +201,8 @@ def main(argv=None):
                    'model_unavailable','effort_unavailable','integration_failed','integration_not_applied',
                    'supervised_identity_mismatch','supervised_evidence_mismatch','candidate_changed_during_capture',
                    'candidate_scope_denied','candidate_too_large'}
+        conflicts.update({'guided_prepare_required','guided_role_mismatch','guided_dependency_pending','guided_resource_drift',
+                          'guided_recover_integration_first','guided_new_preview_required'})
         code=1 if error_code in conflicts or isinstance(error,OSError) else 2
         if code==1:
             result['status']='blocked'
@@ -186,6 +218,11 @@ def main(argv=None):
         for field in ('application_status','recovery_status','run_id'):
             if field in result:
                 print(f'  {field}: {result[field]}')
+        if result['command']=='onboard':
+            for field in ('prepared','supervised_preparation_accepted','certified','remote_not_checked'):
+                if field in result: print(f'  {field}: {result[field]}')
+            for question in result.get('questions',[]):
+                print(f"  Decisión requerida: {question['field']} ({question['reason']})")
         if 'identities' in result:
             print('  Identidades: '+json.dumps(result['identities'],ensure_ascii=True,sort_keys=True))
         for name,value in result.get('input_hashes',{}).items():

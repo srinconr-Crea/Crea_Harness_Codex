@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "kind": "questionnaire_draft",
+  "answers": {
+    "target_path": {
+      "schema_version": 1,
+      "value": null,
+      "status": "unknown",
+      "source": "user",
+      "confirmed": false
+    },
+    "policy_path": {
+      "schema_version": 1,
+      "value": null,
+      "status": "unknown",
+      "source": "user",
+      "confirmed": false
+    },
+    "binding_path": {
+      "schema_version": 1,
+      "value": null,
+      "status": "unknown",
+      "source": "user",
+      "confirmed": false
+    },
+    "development": {
+      "schema_version": 1,
+      "value": null,
+      "status": "unknown",
+      "source": "user",
+      "confirmed": false
+    },
+    "tool_binding": {
+      "schema_version": 1,
+      "value": null,
+      "status": "unknown",
+      "source": "user",
+      "confirmed": false
+    },
+    "catalog": {
+      "schema_version": 1,
+      "value": null,
+      "status": "unknown",
+      "source": "user",
+      "confirmed": false
+    }
+  }
+}

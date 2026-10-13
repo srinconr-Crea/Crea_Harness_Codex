@@ -1,0 +1,427 @@
+{
+  "$defs": {
+    "CandidateEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "file",
+            "directory",
+            "absent"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Identity"
+        },
+        "content_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Content Sha256"
+        }
+      },
+      "required": [
+        "schema_version",
+        "path",
+        "kind",
+        "identity",
+        "content_sha256"
+      ],
+      "title": "CandidateEntry",
+      "type": "object"
+    },
+    "CandidateSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "candidate_snapshot",
+          "default": "candidate_snapshot",
+          "title": "Kind",
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "checkout_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Checkout Id",
+          "type": "string"
+        },
+        "target_path": {
+          "title": "Target Path",
+          "type": "string"
+        },
+        "target_identity": {
+          "title": "Target Identity",
+          "type": "string"
+        },
+        "catalog_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Catalog Sha256",
+          "type": "string"
+        },
+        "evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Evidence Sha256",
+          "type": "string"
+        },
+        "configuration_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Configuration Sha256",
+          "type": "string"
+        },
+        "scopes": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Scopes",
+          "type": "array"
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/$defs/CandidateEntry"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Entries",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "checkout_id",
+        "target_path",
+        "target_identity",
+        "catalog_sha256",
+        "evidence_sha256",
+        "configuration_sha256",
+        "scopes",
+        "entries"
+      ],
+      "title": "CandidateSnapshot",
+      "type": "object"
+    },
+    "DesktopCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "desktop_certificate",
+          "default": "desktop_certificate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "catalog_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Catalog Sha256",
+          "type": "string"
+        },
+        "app_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "App Version",
+          "type": "string"
+        },
+        "engine_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Engine Version",
+          "type": "string"
+        },
+        "account_ref": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Account Ref",
+          "type": "string"
+        },
+        "observations": {
+          "items": {
+            "$ref": "#/$defs/DesktopObservation"
+          },
+          "maxItems": 256,
+          "title": "Observations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "catalog_sha256",
+        "app_version",
+        "engine_version",
+        "account_ref",
+        "observations"
+      ],
+      "title": "DesktopCertificate",
+      "type": "object"
+    },
+    "DesktopObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "role": {
+          "enum": [
+            "principal",
+            "analyst",
+            "impact-analyzer",
+            "planner",
+            "developer",
+            "tester",
+            "auditor",
+            "verifier"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "surface": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Surface",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "observed",
+            "unsupported",
+            "not_checked",
+            "unavailable",
+            "conflict"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source": {
+          "default": "desktop",
+          "enum": [
+            "desktop",
+            "cli",
+            "files"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Evidence Ref",
+          "type": "string"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "effort": {
+          "anyOf": [
+            {
+              "enum": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effort"
+        },
+        "effective_sandbox": {
+          "anyOf": [
+            {
+              "enum": [
+                "read-only",
+                "workspace-write",
+                "unrestricted"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effective Sandbox"
+        }
+      },
+      "required": [
+        "schema_version",
+        "role",
+        "surface",
+        "status",
+        "evidence_ref"
+      ],
+      "title": "DesktopObservation",
+      "type": "object"
+    },
+    "SupervisedAcceptance": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "supervised_acceptance",
+          "default": "supervised_acceptance",
+          "title": "Kind",
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "checkout_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Checkout Id",
+          "type": "string"
+        },
+        "catalog_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Catalog Sha256",
+          "type": "string"
+        },
+        "candidate_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Candidate Sha256",
+          "type": "string"
+        },
+        "evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Evidence Sha256",
+          "type": "string"
+        },
+        "operator_ref": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Operator Ref",
+          "type": "string"
+        },
+        "accepted": {
+          "title": "Accepted",
+          "type": "boolean"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 256,
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "checkout_id",
+        "catalog_sha256",
+        "candidate_sha256",
+        "evidence_sha256",
+        "operator_ref",
+        "accepted",
+        "limitations"
+      ],
+      "title": "SupervisedAcceptance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "onboarding_certification_input",
+      "default": "onboarding_certification_input",
+      "title": "Kind",
+      "type": "string"
+    },
+    "certificate": {
+      "$ref": "#/$defs/DesktopCertificate"
+    },
+    "snapshot": {
+      "$ref": "#/$defs/CandidateSnapshot"
+    },
+    "acceptance": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SupervisedAcceptance"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "required_capabilities": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Capabilities",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "certificate",
+    "snapshot",
+    "acceptance",
+    "required_capabilities"
+  ],
+  "title": "CertificationInput",
+  "type": "object"
+}

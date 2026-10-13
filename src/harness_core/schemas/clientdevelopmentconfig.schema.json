@@ -1,0 +1,103 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "client_development_config",
+      "default": "client_development_config",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "stack": {
+      "items": {
+        "maxLength": 4096,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 64,
+      "title": "Stack",
+      "type": "array"
+    },
+    "conventions": {
+      "items": {
+        "maxLength": 4096,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 64,
+      "title": "Conventions",
+      "type": "array"
+    },
+    "business_rules": {
+      "items": {
+        "maxLength": 4096,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 64,
+      "title": "Business Rules",
+      "type": "array"
+    },
+    "roles": {
+      "items": {
+        "enum": [
+          "principal",
+          "analyst",
+          "impact-analyzer",
+          "planner",
+          "developer",
+          "tester",
+          "auditor",
+          "verifier"
+        ],
+        "type": "string"
+      },
+      "maxItems": 8,
+      "minItems": 1,
+      "title": "Roles",
+      "type": "array"
+    },
+    "validations": {
+      "items": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "title": "Validations",
+      "type": "array"
+    },
+    "sources": {
+      "additionalProperties": {
+        "enum": [
+          "user",
+          "template",
+          "local"
+        ],
+        "type": "string"
+      },
+      "title": "Sources",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "stack",
+    "conventions",
+    "business_rules",
+    "roles",
+    "validations",
+    "sources"
+  ],
+  "title": "ClientDevelopmentConfig",
+  "type": "object"
+}

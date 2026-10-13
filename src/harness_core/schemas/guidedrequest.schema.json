@@ -1,0 +1,549 @@
+{
+  "$defs": {
+    "ClientDevelopmentConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "client_development_config",
+          "default": "client_development_config",
+          "title": "Kind",
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "stack": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Stack",
+          "type": "array"
+        },
+        "conventions": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Conventions",
+          "type": "array"
+        },
+        "business_rules": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Business Rules",
+          "type": "array"
+        },
+        "roles": {
+          "items": {
+            "enum": [
+              "principal",
+              "analyst",
+              "impact-analyzer",
+              "planner",
+              "developer",
+              "tester",
+              "auditor",
+              "verifier"
+            ],
+            "type": "string"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Roles",
+          "type": "array"
+        },
+        "validations": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Validations",
+          "type": "array"
+        },
+        "sources": {
+          "additionalProperties": {
+            "enum": [
+              "user",
+              "template",
+              "local"
+            ],
+            "type": "string"
+          },
+          "title": "Sources",
+          "type": "object"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "stack",
+        "conventions",
+        "business_rules",
+        "roles",
+        "validations",
+        "sources"
+      ],
+      "title": "ClientDevelopmentConfig",
+      "type": "object"
+    },
+    "ClientToolBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "client_tool_binding",
+          "default": "client_tool_binding",
+          "title": "Kind",
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "checkout_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Checkout Id",
+          "type": "string"
+        },
+        "tools": {
+          "items": {
+            "$ref": "#/$defs/ToolConnection"
+          },
+          "maxItems": 64,
+          "title": "Tools",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "checkout_id",
+        "tools"
+      ],
+      "title": "ClientToolBinding",
+      "type": "object"
+    },
+    "RoleCatalog": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "catalog_version": {
+          "const": "1.0.0",
+          "default": "1.0.0",
+          "title": "Catalog Version",
+          "type": "string"
+        },
+        "practice_pack_version": {
+          "title": "Practice Pack Version",
+          "type": "string"
+        },
+        "max_concurrent": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Max Concurrent",
+          "type": "integer"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/$defs/RoleProfile"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "title": "Roles",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "practice_pack_version",
+        "max_concurrent",
+        "roles"
+      ],
+      "title": "RoleCatalog",
+      "type": "object"
+    },
+    "RoleProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "enum": [
+            "principal",
+            "analyst",
+            "impact-analyzer",
+            "planner",
+            "developer",
+            "tester",
+            "auditor",
+            "verifier"
+          ],
+          "title": "Id",
+          "type": "string"
+        },
+        "responsibility": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Responsibility",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "outputs": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "write_scope": {
+          "enum": [
+            "assigned-only",
+            "none"
+          ],
+          "title": "Write Scope",
+          "type": "string"
+        },
+        "sandbox": {
+          "enum": [
+            "read-only",
+            "workspace-write"
+          ],
+          "title": "Sandbox",
+          "type": "string"
+        },
+        "delegate_when": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Delegate When",
+          "type": "string"
+        },
+        "max_delegation_depth": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Max Delegation Depth",
+          "type": "integer"
+        },
+        "tools": {
+          "items": {
+            "$ref": "#/$defs/ToolRequirement"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Tools",
+          "type": "array"
+        },
+        "practice_ids": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Practice Ids",
+          "type": "array"
+        },
+        "activated": {
+          "default": false,
+          "title": "Activated",
+          "type": "boolean"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "effort": {
+          "anyOf": [
+            {
+              "enum": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effort"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "responsibility",
+        "inputs",
+        "outputs",
+        "write_scope",
+        "sandbox",
+        "delegate_when",
+        "max_delegation_depth",
+        "tools",
+        "practice_ids"
+      ],
+      "title": "RoleProfile",
+      "type": "object"
+    },
+    "ToolConnection": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "local",
+            "cli",
+            "mcp",
+            "skill"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "connection_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Connection Ref"
+        },
+        "status": {
+          "enum": [
+            "declared",
+            "unavailable",
+            "not_checked"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "kind",
+        "connection_ref",
+        "status"
+      ],
+      "title": "ToolConnection",
+      "type": "object"
+    },
+    "ToolRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "local",
+            "skill",
+            "mcp",
+            "cli"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Purpose",
+          "type": "string"
+        },
+        "required": {
+          "title": "Required",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "kind",
+        "purpose",
+        "required"
+      ],
+      "title": "ToolRequirement",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "guided_request",
+      "default": "guided_request",
+      "title": "Kind",
+      "type": "string"
+    },
+    "target_path": {
+      "title": "Target Path",
+      "type": "string"
+    },
+    "policy_path": {
+      "title": "Policy Path",
+      "type": "string"
+    },
+    "binding_path": {
+      "title": "Binding Path",
+      "type": "string"
+    },
+    "binding_mode": {
+      "default": "existing",
+      "enum": [
+        "existing",
+        "proposed"
+      ],
+      "title": "Binding Mode",
+      "type": "string"
+    },
+    "repository": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository"
+    },
+    "base_branch": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Base Branch"
+    },
+    "state_dir": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "State Dir"
+    },
+    "development_policy_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Development Policy Path"
+    },
+    "development": {
+      "$ref": "#/$defs/ClientDevelopmentConfig"
+    },
+    "tool_binding": {
+      "$ref": "#/$defs/ClientToolBinding"
+    },
+    "catalog": {
+      "$ref": "#/$defs/RoleCatalog"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_path",
+    "policy_path",
+    "binding_path",
+    "development",
+    "tool_binding",
+    "catalog"
+  ],
+  "title": "GuidedRequest",
+  "type": "object"
+}

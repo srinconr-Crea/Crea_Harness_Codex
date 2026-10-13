@@ -7,7 +7,10 @@ paquete no invoca modelos ni sustituye su motor.
 
 El incremento 02 añade [integración revisable de roles Desktop](docs/desktop-integration.md)
 con preview/apply/recover propios y comprobación conservadora de observaciones.
-Las pruebas manuales Desktop siguen pendientes; archivos instalados no certifican la app.
+La preparación supervisada de 02 está verificada con límites aceptados; la
+certificación estricta sigue pendiente. El incremento 03 añade
+[onboarding guiado por plantilla o entrevista](docs/guided-client-onboarding.md),
+preview compuesto y aplicación/recuperación explícita por etapa.
 
 ## Instalación de desarrollo (Windows)
 
@@ -67,8 +70,10 @@ creaciones: un descriptor ausente bajo `.harness/` protegido bloquea el plan.
 - `tests`: clientes sintéticos y comprobaciones de comportamiento sin conexión remota.
 
 Los límites de la política todavía no son controles de edición de Codex. No hay
-SQLite, instalador/plugin, registro persistente de HUs, agentes personalizados,
-hooks operativos ni ejecución Databricks en este incremento. Tampoco se altera
+SQLite, instalador/plugin, registro persistente de HUs,
+hooks operativos ni ejecución Databricks en este incremento. Las plantillas de
+roles y su configuración local revisada están disponibles; el kit no ejecuta agentes.
+Tampoco se altera
 la configuración global de Codex. El hash de política comprueba integridad,
 no una firma ni autorización externa.
 
@@ -86,8 +91,9 @@ El onboarding aplicado también está cerrado en
 `openspec/changes/archive/2026-10-09-apply-client-onboarding/`.
 El [roadmap de ocho incrementos](docs/planning/roadmap.md) propone onboarding
 guiado, roles/herramientas Desktop, flujo de HU, validación Databricks,
-observabilidad/evals, historias/PR y distribución. Son capacidades pendientes,
-no comandos disponibles. Los [casos de calidad](docs/planning/quality/README.md)
+observabilidad/evals, historias/PR y distribución. 01–03 entregan calidad, roles
+supervisados y onboarding preparado; 04–08 siguen pendientes.
+Los [casos de calidad](docs/planning/quality/README.md)
 conservan definiciones not_run; su carga e integridad se verifican en 01. Las Skills oficiales descargadas se
 conservan como [snapshot de referencia](resources/vendor/README.md).
 
