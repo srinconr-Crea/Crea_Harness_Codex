@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "files": {
+    "provider.json": "a334325a1a2c9c0ad650891abfddf978152b3584cb7cf3764a081b4d15dcf233",
+    "stories.json": "6368b9c6690e80b8eb6bab516a4dc3edeb5c309d133bf52cecb6c56d64c6d8b5",
+    "preview.json": "ee1741ac331a1fb19c46e1076564d1ab75825ff29bb7b46ce59bd2c652c4fd19",
+    "harness-story-pr/SKILL.md": "fac5a4e1c176131fd7a0c9f6de8afecdbe00c70dd95f931a4d99cdc978176f68"
+  },
+  "passive": true,
+  "global_activation": false
+}

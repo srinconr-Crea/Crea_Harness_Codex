@@ -1,5 +1,6 @@
 import argparse
 import json
+import sqlite3
 import sys
 
 from harness_core.configuration import ConfigError
@@ -21,6 +22,17 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    story=commands.add_parser('story')
+    story.add_argument('action',choices=('read','bind'))
+    for field in ('provider','source','input','path','policy','binding'):
+        story.add_argument('--'+field)
+    story.add_argument('--json',action='store_true')
+    pr=commands.add_parser('pr')
+    pr.add_argument('action',choices=('preview','publish','reconcile'))
+    pr.add_argument('--input',required=True)
+    for field in ('path','policy','binding','provider','out'):
+        pr.add_argument('--'+field)
+    pr.add_argument('--json',action='store_true')
     evaluation=commands.add_parser('eval')
     evaluation.add_argument('action',choices=('validate','run','report'))
     evaluation.add_argument('--input',required=True)
@@ -103,11 +115,54 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+    command=next((c for c in ('story','pr','eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command in ('eval','usage'):
+        if args.command=='story':
+            from harness_core.configuration import load_document
+            from harness_core.story import ProviderBinding,StoryPlanBinding
+            from .story_providers import select_provider
+            if args.action=='read':
+                if not args.provider or not args.source or any((args.input,args.path,args.policy,args.binding)): raise ConfigError('invalid_arguments')
+                provider_binding=load_document(args.provider,ProviderBinding)
+                provider=select_provider(provider_binding)
+                snapshot=provider.read_story(provider_binding,args.source)
+                result=dict(schema_version=1,command='story',status='ready',checks=[],snapshot=snapshot.model_dump(),
+                    simulated=provider.simulated,certified=False,publication_allowed=False)
+            else:
+                if not all((args.input,args.path,args.policy,args.binding)) or any((args.provider,args.source)): raise ConfigError('invalid_arguments')
+                from .hu import HuService
+                from .publication import bind_story
+                result=bind_story(HuService(args.path,args.policy,args.binding),load_document(args.input,StoryPlanBinding))
+            code=0
+        elif args.command=='pr':
+            from .publication import PublicationRequest,PublicationService,preview as pr_preview,candidate_gate,parse
+            from harness_core.configuration import load_document,safe_path
+            from harness_core.story import ProviderBinding
+            from harness_core.onboarding_plan import separate
+            request=parse(PublicationRequest,load_document(args.input))
+            if args.action=='preview':
+                if args.out and not args.path: raise ConfigError('publication_target_required')
+                protected=[p for p in (args.policy,args.binding,args.provider,args.input) if p]
+                if args.binding:
+                    from harness_core.contracts import Binding
+                    protected.append(load_document(args.binding,Binding).state_dir)
+                result=pr_preview(request.intent,request.authorization,request.evaluation,export=args.out,target=args.path,protected=protected)
+                code=0
+            else:
+                if not all((args.path,args.policy,args.binding,args.provider)) or args.out: raise ConfigError('invalid_arguments')
+                from .hu import HuService
+                from .story_providers import select_provider
+                hu_service=HuService(args.path,args.policy,args.binding)
+                separate([str(safe_path(args.provider)),str(hu_service.target),str(hu_service.state)])
+                provider_binding=load_document(args.provider,ProviderBinding)
+                provider=select_provider(provider_binding,target=hu_service.target)
+                if provider.simulated: raise ConfigError('publication_fixture_read_only')
+                result=PublicationService(provider_binding,provider,hu_service.state,
+                    candidate_check=lambda i:candidate_gate(hu_service,i)).publish(request.intent,request.authorization,request.evaluation)
+                code=0 if result['status']=='published' else 1
+        elif args.command in ('eval','usage'):
             from .observability_service import load_input, usage_report
             value=load_input(args.input)
             if args.command=='eval':
@@ -232,8 +287,8 @@ def main(argv=None):
                                 plan_path=args.plan,apply_changes=args.apply)
         else:
             result,code=doctor(args.path,args.policy,args.binding)
-    except (ConfigError, OSError, UnicodeError) as error:
-        error_code=error.code if isinstance(error,ConfigError) else 'local_read_error'
+    except (ConfigError, OSError, UnicodeError, sqlite3.Error) as error:
+        error_code=error.code if isinstance(error,ConfigError) else 'local_state_error' if isinstance(error,sqlite3.Error) else 'local_read_error'
         result=dict(schema_version=1,command=command,status='invalid',checks=[vars(Check('input','error',error_code,'Entrada o configuración inválida.'))])
         if isinstance(error,ConfigError) and error.document:
             result['checks'][0].update(document=error.document,fields=error.fields)
@@ -250,7 +305,11 @@ def main(argv=None):
             'hu_state_version','hu_operation_conflict','hu_story_exists','hu_clean_base_required','hu_candidate_too_large'})
         conflicts.update({'validation_operation_conflict','validation_journal_version','validation_journal_conflict',
             'validation_journal_unavailable','remote_service_unavailable'})
-        code=1 if error_code in conflicts or isinstance(error,OSError) else 2
+        conflicts.update({'provider_tool_missing','provider_mcp_unavailable','provider_unavailable','provider_repository_mismatch',
+            'provider_story_mismatch','provider_story_invalid','provider_capability_missing','publication_fixture_read_only'})
+        conflicts.update({'story_plan_approval_required','story_plan_binding_mismatch','story_plan_binding_immutable',
+            'story_source_conflict','story_source_version','context_changed'})
+        code=1 if error_code in conflicts or isinstance(error,(OSError,sqlite3.Error)) else 2
         if code==1:
             result['status']='blocked'
     if json_mode:

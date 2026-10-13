@@ -1,0 +1,292 @@
+...F
+================================== FAILURES ===================================
+_______________________ test_cli_json_and_invalid_flags _______________________
+
+client = {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/73e7f8f3d08148c3b14ac2...ocal-Harness/.test-data/73e7f8f3d08148c3b14ac286e5bb8393/binding.json'), 'origin': 'https://github.com/demo/alpha.git'}
+capsys = <_pytest.capture.CaptureFixture object at 0x00000266C9FAB0E0>
+
+    def test_cli_json_and_invalid_flags(client,capsys):
+        assert main(['init','--json'])==2
+        assert json.loads(capsys.readouterr().out)['checks'][0]['code']=='apply_not_supported'
+        assert main(['doctor','--json','--policy',str(client['policy'])])==2
+        assert json.loads(capsys.readouterr().out)['status']=='invalid'
+>       assert main(['init','--dry-run','--json','--path',str(client['target'].parent/'absent'),
+                     '--policy',str(client['policy']),'--binding',str(client['binding'])])==2
+
+tests\test_local.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+argv = ['init', '--dry-run', '--json', '--path', 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\73e7f8f3d08148c3b14ac286e5bb8393\\absent', '--policy', ...]
+
+    def main(argv=None):
+        if hasattr(sys.stdout,'reconfigure'):
+            sys.stdout.reconfigure(encoding='utf-8')
+        argv=list(sys.argv[1:] if argv is None else argv)
+        parser=Parser(prog='harness',description='Diagn�stico, preparaci�n local expl�cita y recuperaci�n.')
+        parser.add_argument('--version',action='version',version=__version__)
+        commands=parser.add_subparsers(dest='command',required=True)
+        story=commands.add_parser('story')
+        story.add_argument('action',choices=('read','bind'))
+        for field in ('provider','source','input','path','policy','binding'):
+            story.add_argument('--'+field)
+        story.add_argument('--json',action='store_true')
+        pr=commands.add_parser('pr')
+        pr.add_argument('action',choices=('preview','publish','reconcile'))
+        pr.add_argument('--input',required=True)
+        for field in ('path','policy','binding','provider','out'):
+            pr.add_argument('--'+field)
+        pr.add_argument('--json',action='store_true')
+        evaluation=commands.add_parser('eval')
+        evaluation.add_argument('action',choices=('validate','run','report'))
+        evaluation.add_argument('--input',required=True)
+        evaluation.add_argument('--json',action='store_true')
+        usage=commands.add_parser('usage')
+        usage.add_argument('action',choices=('report',))
+        usage.add_argument('--input',required=True)
+        usage.add_argument('--json',action='store_true')
+        validation=commands.add_parser('validate')
+        validation.add_argument('action',choices=('plan','static','worker','remote','bundle','gate','attach'))
+        validation.add_argument('--input',required=True)
+        validation.add_argument('--json',action='store_true')
+        hu=commands.add_parser('hu')
+        hu.add_argument('action',choices=('start','plan','approve','candidate','status','transition','evidence',
+            'assign','correct','block','resume','handoff','worktree','attempt'))
+        for field in ('path','policy','binding','story'):
+            hu.add_argument('--'+field,required=True)
+        hu.add_argument('--operation')
+        hu.add_argument('--input')
+        hu.add_argument('--json',action='store_true')
+        onboard=commands.add_parser('onboard')
+        for field in ('config','plan','plan-out','evidence'):
+            onboard.add_argument('--'+field)
+        onboard.add_argument('--stage',choices=('prepare','integrate','certify'))
+        onboard.add_argument('--json',action='store_true')
+        onboard.add_argument('--recover-apply',action='store_true')
+        onboard_modes=onboard.add_mutually_exclusive_group(required=True)
+        onboard_modes.add_argument('--dry-run',action='store_true')
+        onboard_modes.add_argument('--apply',action='store_true')
+        onboard_modes.add_argument('--recover',action='store_true')
+        integration=commands.add_parser('integrate')
+        integration.add_argument('--path')
+        integration.add_argument('--policy')
+        integration.add_argument('--binding')
+        integration.add_argument('--catalog')
+        integration.add_argument('--plan')
+        integration.add_argument('--plan-out')
+        integration.add_argument('--json',action='store_true')
+        integration_modes=integration.add_mutually_exclusive_group(required=True)
+        integration_modes.add_argument('--dry-run',action='store_true')
+        integration_modes.add_argument('--apply',action='store_true')
+        integration_modes.add_argument('--recover',action='store_true')
+        integration.add_argument('--recover-apply',action='store_true')
+        certificate=commands.add_parser('desktop-check')
+        certificate.add_argument('--catalog')
+        certificate.add_argument('--observations')
+        certificate.add_argument('--json',action='store_true')
+        for name in ('review-snapshot','review-compare','supervised-prepare'):
+            p=commands.add_parser(name)
+            for field in ('path','policy','binding','catalog','observations'):
+                p.add_argument('--'+field,required=True)
+            p.add_argument('--json',action='store_true')
+            if name=='review-snapshot':
+                p.add_argument('--scope',action='append',required=True)
+                p.add_argument('--out')
+            else:
+                p.add_argument('--snapshot',required=True)
+            if name=='supervised-prepare':
+                p.add_argument('--plan',required=True)
+                p.add_argument('--acceptance')
+                p.add_argument('--require',action='append',default=[])
+        for name in ('doctor','init','recover'):
+            p=commands.add_parser(name)
+            p.add_argument('--path')
+            p.add_argument('--policy')
+            p.add_argument('--binding')
+            p.add_argument('--json',action='store_true')
+            if name in ('init','recover'):
+                modes=p.add_mutually_exclusive_group()
+                modes.add_argument('--dry-run',action='store_true')
+                modes.add_argument('--apply',action='store_true')
+                p.add_argument('--plan')
+            if name=='init':
+                p.add_argument('--repo')
+                p.add_argument('--base-branch')
+                p.add_argument('--binding-out')
+                p.add_argument('--checkout-id')
+                p.add_argument('--state-dir')
+                p.add_argument('--databricks-profile')
+                p.add_argument('--plan-out')
+            if name=='recover':
+                p.add_argument('--run')
+        command=next((c for c in ('story','pr','eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+        json_mode='--json' in argv
+        try:
+            args=parser.parse_args(argv)
+            if args.command=='story':
+                from harness_core.configuration import load_document
+                from harness_core.story import ProviderBinding,StoryPlanBinding
+                from .story_providers import select_provider
+                if args.action=='read':
+                    if not args.provider or not args.source or any((args.input,args.path,args.policy,args.binding)): raise ConfigError('invalid_arguments')
+                    provider_binding=load_document(args.provider,ProviderBinding)
+                    provider=select_provider(provider_binding)
+                    snapshot=provider.read_story(provider_binding,args.source)
+                    result=dict(schema_version=1,command='story',status='ready',checks=[],snapshot=snapshot.model_dump(),
+                        simulated=provider.simulated,certified=False,publication_allowed=False)
+                else:
+                    if not all((args.input,args.path,args.policy,args.binding)) or any((args.provider,args.source)): raise ConfigError('invalid_arguments')
+                    from .hu import HuService
+                    from .publication import bind_story
+                    result=bind_story(HuService(args.path,args.policy,args.binding),load_document(args.input,StoryPlanBinding))
+                code=0
+            elif args.command=='pr':
+                from .publication import PublicationRequest,PublicationService,preview,candidate_gate,parse
+                from harness_core.configuration import load_document,safe_path
+                from harness_core.story import ProviderBinding
+                from harness_core.onboarding_plan import separate
+                request=parse(PublicationRequest,load_document(args.input))
+                if args.action=='preview':
+                    if args.out and not args.path: raise ConfigError('publication_target_required')
+                    protected=[p for p in (args.policy,args.binding,args.provider,args.input) if p]
+                    if args.binding:
+                        from harness_core.contracts import Binding
+                        protected.append(load_document(args.binding,Binding).state_dir)
+                    result=preview(request.intent,request.authorization,request.evaluation,export=args.out,target=args.path,protected=protected)
+                    code=0
+                else:
+                    if not all((args.path,args.policy,args.binding,args.provider)) or args.out: raise ConfigError('invalid_arguments')
+                    from .hu import HuService
+                    from .story_providers import select_provider
+                    hu_service=HuService(args.path,args.policy,args.binding)
+                    separate([str(safe_path(args.provider)),str(hu_service.target),str(hu_service.state)])
+                    provider_binding=load_document(args.provider,ProviderBinding)
+                    provider=select_provider(provider_binding,target=hu_service.target)
+                    if provider.simulated: raise ConfigError('publication_fixture_read_only')
+                    result=PublicationService(provider_binding,provider,hu_service.state,
+                        candidate_check=lambda i:candidate_gate(hu_service,i)).publish(request.intent,request.authorization,request.evaluation)
+                    code=0 if result['status']=='published' else 1
+            elif args.command in ('eval','usage'):
+                from .observability_service import load_input, usage_report
+                value=load_input(args.input)
+                if args.command=='eval':
+                    from .evaluation_service import dispatch
+                    result,code=dispatch(args.action,value)
+                else:
+                    result,code=usage_report(value),0
+            elif args.command=='validate':
+                from .validation_service import dispatch
+                from harness_core.configuration import load_document
+                result,code=dispatch(args.action,load_document(args.input))
+            elif args.command=='hu':
+                from .hu import HuService
+                from harness_core.configuration import load_document
+                if args.action=='status':
+                    if args.input or args.operation: raise ConfigError('invalid_arguments')
+                    payload=None
+                else:
+                    if not args.input or not args.operation: raise ConfigError('invalid_arguments')
+                    payload=load_document(args.input)
+                result=HuService(args.path,args.policy,args.binding).run(args.action,args.story,args.operation,payload)
+                code=1 if result['status']=='blocked' else 0
+            elif args.command=='onboard':
+                from . import guided_onboarding as guided
+                from harness_core.guided import QuestionnaireDraft,CertificationInput,sanitize
+                from harness_core.configuration import load_document
+                if args.dry_run:
+                    if not args.config or any((args.plan,args.stage,args.evidence,args.recover_apply)):
+                        raise ConfigError('invalid_arguments')
+                    raw=load_document(args.config); sanitize(raw)
+                    draft=guided.parse(QuestionnaireDraft,raw)
+                    result,code=guided.preview(draft,plan_out=args.plan_out)
+                elif args.apply:
+                    if not args.plan or not args.stage or any((args.config,args.plan_out,args.recover_apply)):
+                        raise ConfigError('invalid_arguments')
+                    if (args.stage=='certify') != bool(args.evidence): raise ConfigError('invalid_arguments')
+                    evidence=guided.parse(CertificationInput,load_document(args.evidence)) if args.evidence else None
+                    result,code=guided.apply(args.plan,stage=args.stage,evidence=evidence)
+                else:
+                    if not args.plan or args.stage not in ('prepare','integrate') or any((args.config,args.plan_out,args.evidence)):
+                        raise ConfigError('invalid_arguments')
+                    result,code=guided.recover(args.plan,stage=args.stage,apply_changes=args.recover_apply)
+            elif args.command in ('review-snapshot','review-compare','supervised-prepare'):
+                from . import supervised
+                from harness_core.desktop import RoleCatalog,DesktopCertificate
+                from harness_core.supervised import CandidateSnapshot,SupervisedAcceptance
+                from harness_core.onboarding_plan import load_json,canonical,separate
+                from harness_core.configuration import safe_path,reject_secrets
+                from .windows_fs import PinnedTree
+                catalog=load_json(args.catalog,RoleCatalog)
+                observations=load_json(args.observations,DesktopCertificate)
+                if args.command=='review-snapshot':
+                    snapshot=supervised.capture(args.path,args.policy,args.binding,args.scope,catalog.sha256,observations)
+                    if args.out:
+                        out=safe_path(args.out)
+                        separate([str(out),str(safe_path(args.path)),str(safe_path(args.policy)),str(safe_path(args.binding)),
+                                  str(safe_path(args.catalog)),str(safe_path(args.observations))])
+                        _,config=supervised.selected(args.path,args.policy,args.binding)
+                        separate([str(out),config['binding'].state_dir])
+                        reject_secrets(snapshot.model_dump())
+                        with PinnedTree(out.parent) as tree:
+                            with tree.file(out.name,create=True) as handle:
+                                handle.write(canonical(snapshot.model_dump())+b'\n')
+                    result=dict(schema_version=1,command=args.command,status='ready',checks=[],
+                        snapshot=snapshot.model_dump(),candidate_sha256=snapshot.sha256,certified=False)
+                else:
+                    snapshot=load_json(args.snapshot,CandidateSnapshot)
+                    if catalog.sha256!=snapshot.catalog_sha256:
+                        raise ConfigError('supervised_identity_mismatch')
+                    if args.command=='review-compare':
+                        result=supervised.compare(args.path,args.policy,args.binding,snapshot,observations)
+                    else:
+                        acceptance=load_json(args.acceptance,SupervisedAcceptance) if args.acceptance else None
+                        result=supervised.prepare(args.path,args.policy,args.binding,args.plan,catalog,observations,snapshot,acceptance,required=args.require)
+                code=1 if result['status']=='blocked' else 0
+            elif args.command=='integrate':
+                from . import desktop_integration
+                from harness_core.desktop import RoleCatalog
+                from harness_core.onboarding_plan import load_json
+                if not args.path or not args.policy:
+                    raise ConfigError('configuration_inputs_required')
+                if args.dry_run:
+                    if not args.catalog or not args.binding or args.plan or args.recover_apply:
+                        raise ConfigError('invalid_arguments')
+                    catalog=load_json(args.catalog,RoleCatalog)
+                    result,code=desktop_integration.preview(args.path,args.policy,args.binding,catalog,plan_out=args.plan_out)
+                elif args.apply:
+                    if not args.plan or any((args.catalog,args.binding,args.plan_out,args.recover_apply)):
+                        raise ConfigError('invalid_arguments')
+                    result,code=desktop_integration.apply(args.path,args.policy,args.plan)
+                else:
+                    if not args.plan or any((args.catalog,args.binding,args.plan_out)):
+                        raise ConfigError('invalid_arguments')
+                    result,code=desktop_integration.recover(args.path,args.policy,args.plan,apply_changes=args.recover_apply)
+            elif args.command=='desktop-check':
+                from harness_core.desktop import RoleCatalog,DesktopCertificate,assess_certificate
+                from harness_core.onboarding_plan import load_json
+                if not args.catalog or not args.observations:
+                    raise ConfigError('configuration_inputs_required')
+                result=assess_certificate(load_json(args.catalog,RoleCatalog),load_json(args.observations,DesktopCertificate))
+                code=1 if result['status']=='blocked' else 0
+            elif args.command=='init':
+                if not args.dry_run and not args.apply:
+                    raise ConfigError('apply_not_supported')
+                if not args.path or not args.policy:
+                    raise ConfigError('configuration_inputs_required')
+                if args.apply:
+                    if not args.plan or any(x is not None for x in (args.binding,args.binding_out,args.checkout_id,
+                            args.state_dir,args.databricks_profile,args.plan_out,args.repo,args.base_branch)):
+                        raise ConfigError('invalid_arguments')
+                    result,code=apply(args.path,args.policy,args.plan)
+                else:
+                    if args.plan:
+                        raise ConfigError('invalid_arguments')
+>                   result,code=preview(args.path,args.policy,args.binding,args.repo,args.base_branch,
+                                ^^^^^^^
+                        binding_out=args.binding_out,checkout_id=args.checkout_id,state_dir=args.state_dir,
+E                       UnboundLocalError: cannot access local variable 'preview' where it is not associated with a value
+
+src\harness_local\cli.py:280: UnboundLocalError
+=========================== short test summary info ===========================
+FAILED tests/test_local.py::test_cli_json_and_invalid_flags - UnboundLocalErr...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 3 passed in 4.31s

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "actual_model_runs": 0,
+  "required_runs": 144,
+  "previous_pending_runs": 126,
+  "provider_cases": [
+    "E21",
+    "E22",
+    "E23"
+  ],
+  "provider_pending_runs": 18,
+  "requested_model": "luna",
+  "requested_effort": "medium",
+  "effective_model_verified": false,
+  "publication_allowed": false,
+  "next_increment_enabled": false,
+  "remote_write_smoke": {
+    "status": "blocked",
+    "reason": "required_evaluations_pending_and_synthetic_destination_not_selected"
+  },
+  "archive_with_pending_authorized_on": "2026-10-13"
+}

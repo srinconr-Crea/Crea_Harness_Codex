@@ -23,7 +23,7 @@ def dispatch(action, value):
     if action not in ('validate', 'run', 'report'):
         raise ConfigError('invalid_eval_action')
     request = parse(EvalInput, value)
-    if request.milestone > 6:
+    if request.milestone > 7:
         raise ConfigError('milestone_not_available')
     bundle = load_quality()
     for profile in request.profiles:

@@ -96,12 +96,13 @@ El [roadmap de ocho incrementos](docs/planning/roadmap.md) propone onboarding
 guiado, roles/herramientas Desktop, flujo de HU, validación Databricks,
 observabilidad/evals, historias/PR y distribución. 01–03 entregan calidad, roles
 supervisados y onboarding preparado; 04 añade HU/gates locales, 05 validación y
-evidencia con smoke remoto blocked; 06–08 siguen pendientes.
+evidencia con smoke remoto blocked; 06 y 07 entregan infraestructura local,
+con evaluaciones y publicación reales pendientes; 08 permanece bloqueado.
 Los [casos de calidad](docs/planning/quality/README.md)
 conservan definiciones not_run; su carga e integridad se verifican en 01. Las Skills oficiales descargadas se
 conservan como [snapshot de referencia](resources/vendor/README.md).
 
-El cambio `01-quality-practices-and-eval-foundation` entrega la [API de calidad](docs/quality-foundation.md), schemas, composición por cliente y recursos verificados dentro del wheel. Los casos de agente pendientes conservan `not_run`; 05 incorpora validación/evidencia y 06–08 siguen pendientes. Ver [evidencia](docs/evidence/quality-foundation.md).
+El cambio `01-quality-practices-and-eval-foundation` entrega la [API de calidad](docs/quality-foundation.md), schemas, composición por cliente y recursos verificados dentro del wheel. Los casos de agente pendientes conservan `not_run`; 05 incorpora validación/evidencia, 06 observabilidad/evals y 07 historias/PR locales. Ver [evidencia](docs/evidence/quality-foundation.md).
 
 ## Observabilidad y evaluación manual
 
@@ -115,3 +116,17 @@ sin interfaz certificada devuelve `blocked`.
 Ver [contratos y protocolo](docs/observability-and-evals.md) y
 [evidencia del incremento 06](docs/evidence/observability-evals-verification.md).
 Las 126 evaluaciones Luna/medium están pendientes; el runner no las inventa.
+
+## Historias y PR
+
+`harness story read` congela una HU de fixture o GitHub seleccionado;
+`harness story bind` fija el vínculo técnicamente aprobado entre historia y plan.
+`harness pr preview` prepara título/cuerpo/candidato/evidencia sin autenticar
+ni escribir. `harness pr publish` y `reconcile` exigen autorización explícita,
+gates actuales, identidad y evaluaciones reales; no duplican un PR ni
+reemplazan ramas ajenas. El flujo completo se prueba con dobles declarados.
+
+Ver [contratos y comandos](docs/story-pr-integrations.md) y
+[evidencia de 07](docs/evidence/story-pr-verification.md). Las 144 evaluaciones
+Luna/medium y el smoke de escritura real permanecen pendientes; el archivo
+autorizado con advertencias conserva publicación y 08 bloqueados.

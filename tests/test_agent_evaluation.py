@@ -215,7 +215,7 @@ def test_profile_without_configuration_evidence_and_automatic_receipts_blocked()
 
 def test_unimplemented_milestone_cannot_be_selected_in_service():
     from harness_local.evaluation_service import dispatch
-    for milestone in (7, 8):
+    for milestone in (8,):
         with pytest.raises(ValueError, match='milestone_not_available'):
             dispatch('report', dict(schema_version=1, milestone=milestone, purpose='promotion',
                 profiles=[profile().model_dump()], runs=[], budget_runs=1000, execution_mode='manual'))

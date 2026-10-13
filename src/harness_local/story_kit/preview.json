@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "intent": {
+    "schema_version": 1,
+    "intent_id": "synthetic1",
+    "client_id": "synthetic",
+    "checkout_id": "checkout",
+    "hu_id": "HU17",
+    "attempt": 1,
+    "provider": "fixture",
+    "repository": "demo/synthetic",
+    "base_branch": "develop",
+    "head_branch": "feature/hu17",
+    "base_oid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "head_oid": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "candidate_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "context_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "plan_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "story": {
+      "schema_version": 1,
+      "repository": "demo/synthetic",
+      "source_id": "17",
+      "revision": "rev1",
+      "title": "Suma decimal",
+      "criteria": [
+        "Suma por cliente"
+      ],
+      "refs": [],
+      "trust": "external_data",
+      "acceptance_sha256": "13f2bbfaf3784e7e1662af699c3c7e3448b170144e3c495350bc8f20f65354f0",
+      "snapshot_sha256": "2a216844eecf848790d3164c16abf7cdc7a940e51635d79d06a3718c64d0190e"
+    },
+    "title": "Suma por cliente",
+    "body": "HU17. Evidencia T20 (doble local).",
+    "evidence_refs": [
+      "T20"
+    ],
+    "draft": true,
+    "intent_sha256": "4ec5aae96e6b0b551247b7d27d7054f15f7070fb3aec6982efa3fe8533067dc9"
+  },
+  "authorization": null,
+  "evaluation": null
+}
