@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "plan": {
+    "schema_version": 1,
+    "client_id": "synthetic",
+    "run_id": "remote-smoke",
+    "attempt": 1,
+    "candidate_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "plan_revision": 1,
+    "practice_pack_sha256": "ed6ef780c6ed3e11e32450667f28533060b617beebb847b5e261bace8b5928d0",
+    "technologies": [
+      "sql"
+    ],
+    "impacts": [
+      "logic"
+    ],
+    "tests": [
+      {
+        "schema_version": 1,
+        "test_id": "sql-static",
+        "technology": "sql",
+        "layer": "L0",
+        "required": true,
+        "scope": "offline-syntax",
+        "rule_ids": [
+          "GEN-01",
+          "GEN-02",
+          "GEN-03",
+          "GEN-04",
+          "SQL-01",
+          "SQL-02",
+          "SQL-03",
+          "SQL-04",
+          "SQL-05",
+          "SQL-06"
+        ]
+      },
+      {
+        "schema_version": 1,
+        "test_id": "sql-semantic",
+        "technology": "sql",
+        "layer": "L2",
+        "required": true,
+        "scope": "runtime-semantics",
+        "rule_ids": [
+          "GEN-01",
+          "GEN-02",
+          "GEN-03",
+          "GEN-04",
+          "SQL-01",
+          "SQL-02",
+          "SQL-03",
+          "SQL-04",
+          "SQL-05",
+          "SQL-06"
+        ]
+      }
+    ],
+    "catalog_test_ids": [
+      "T01",
+      "T02",
+      "T03",
+      "T04"
+    ],
+    "performance_baseline_sha256": null,
+    "plan_sha256": "e72a87c0cb85fb90c7c56ff08149af286a72a7fe319b96a095de69ffb8537e00"
+  },
+  "request": {
+    "schema_version": 1,
+    "plan_sha256": "e72a87c0cb85fb90c7c56ff08149af286a72a7fe319b96a095de69ffb8537e00",
+    "test_id": "sql-semantic",
+    "client_id": "synthetic",
+    "run_id": "remote-smoke",
+    "attempt": 1,
+    "candidate_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "plan_revision": 1,
+    "practice_pack_sha256": "ed6ef780c6ed3e11e32450667f28533060b617beebb847b5e261bace8b5928d0",
+    "data_sha256": "db304d25675a4b9b4c0097aa0baf260837ab420919f4244495684d64ac4d9ad3",
+    "runtime": "not-selected",
+    "runtime_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "tool_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "request_key": "example",
+    "command": [
+      "harness",
+      "validate",
+      "remote"
+    ],
+    "source_sha256": null
+  },
+  "target": null,
+  "state_dir": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\.test-data\\remote-smoke-state",
+  "mode": "sql",
+  "expected": {
+    "rows": 3,
+    "sum": "30.00"
+  }
+}

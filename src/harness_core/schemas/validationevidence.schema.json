@@ -1,0 +1,227 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    },
+    "test_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Test Id",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "attempt": {
+      "minimum": 1,
+      "title": "Attempt",
+      "type": "integer"
+    },
+    "candidate_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Candidate Sha256",
+      "type": "string"
+    },
+    "plan_revision": {
+      "minimum": 1,
+      "title": "Plan Revision",
+      "type": "integer"
+    },
+    "practice_pack_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Practice Pack Sha256",
+      "type": "string"
+    },
+    "data_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Data Sha256",
+      "type": "string"
+    },
+    "runtime": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Runtime",
+      "type": "string"
+    },
+    "runtime_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Runtime Sha256",
+      "type": "string"
+    },
+    "tool_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Tool Sha256",
+      "type": "string"
+    },
+    "request_key": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Request Key",
+      "type": "string"
+    },
+    "command": {
+      "items": {
+        "maxLength": 4096,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "title": "Command",
+      "type": "array"
+    },
+    "source_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Sha256"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "not_run"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "scope": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Scope",
+      "type": "string"
+    },
+    "reason": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reason"
+    },
+    "observed": {
+      "default": false,
+      "title": "Observed",
+      "type": "boolean"
+    },
+    "simulated": {
+      "default": false,
+      "title": "Simulated",
+      "type": "boolean"
+    },
+    "remote_run_id": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Remote Run Id"
+    },
+    "result_uri": {
+      "anyOf": [
+        {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Result Uri"
+    },
+    "result_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Result Sha256"
+    },
+    "result": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Result"
+    },
+    "started_at": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Started At",
+      "type": "string"
+    },
+    "finished_at": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Finished At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "plan_sha256",
+    "test_id",
+    "client_id",
+    "run_id",
+    "attempt",
+    "candidate_sha256",
+    "plan_revision",
+    "practice_pack_sha256",
+    "data_sha256",
+    "runtime",
+    "runtime_sha256",
+    "tool_sha256",
+    "request_key",
+    "command",
+    "status",
+    "scope",
+    "started_at",
+    "finished_at"
+  ],
+  "title": "ValidationEvidence",
+  "type": "object"
+}

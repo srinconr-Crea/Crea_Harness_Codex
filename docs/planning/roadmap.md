@@ -1,6 +1,6 @@
 # Secuencia de implementación del harness
 
-Actualizado: 13 de octubre de 2026. Estado: 01 verificado; 02 verificado para preparación supervisada, con conflicto de sandbox conservado; 03 archivado para onboarding preparado; 04 implementado/verificado y cerrado; 05–08 propuestos.
+Actualizado: 13 de octubre de 2026. Estado: 01 verificado; 02 verificado para preparación supervisada, con conflicto de sandbox conservado; 03 archivado para onboarding preparado; 04 y 05 implementados/verificados y cerrados; 06–08 propuestos. 05 conserva smoke remoto blocked sin sandbox seleccionado.
 Objetivo: usuario nuevo completa onboarding y HU en Desktop con roles, herramientas, validaciones y PR autorizado.
 Baseline implementada: bootstrap-codex-local-core y apply-client-onboarding.
 
@@ -10,14 +10,14 @@ Baseline implementada: bootstrap-codex-local-core y apply-client-onboarding.
 | 02 | [Integración Desktop, roles y herramientas](../../openspec/changes/archive/2026-10-09-02-desktop-roles-and-tool-contracts/proposal.md) | 01 | Preparación supervisada implementada/verificada, matriz observada y límites aceptados, evals con anotación humana; certificación estricta separada. |
 | 03 | [Onboarding conversacional y configuración del cliente](../../openspec/changes/archive/2026-10-13-03-guided-client-onboarding/proposal.md) | 02 | Una persona nueva completa el flujo con plantilla o entrevista y recibe configuración trazable sin ampliar permisos por inferencia. |
 | 04 | [Flujo de HU, estado y controles de desarrollo](../../openspec/changes/archive/2026-10-13-04-hu-lifecycle-and-development-gates/proposal.md) | 03 | Cada transición queda registrada y los gates rechazan alcance, aprobación o evidencia incorrectos; no se publican cambios todavía. |
-| 05 | [Pruebas Databricks y evidencia del candidato](../../openspec/changes/05-databricks-validation-and-evidence/proposal.md) | 04 | Evidencia determinista y remota genuina donde se exige, ligada al candidato; sin credenciales o runtime disponibles se registra bloqueo. |
+| 05 | [Pruebas Databricks y evidencia del candidato](../../openspec/changes/archive/2026-10-13-05-databricks-validation-and-evidence/proposal.md) | 04 | Evidencia determinista y remota genuina donde se exige, ligada al candidato; sin credenciales o runtime disponibles se registra bloqueo. |
 | 06 | [Observabilidad y ejecución de evals de agentes](../../openspec/changes/06-observability-and-agent-evals/proposal.md) | 05 | Evals ejecutados con trazabilidad y gate reproducible; tokens/costos desconocidos se mantienen null con motivo. |
 | 07 | [Integraciones de historias y publicación de PR](../../openspec/changes/07-story-and-pr-integrations/proposal.md) | 06 | HU de fuente trazable a PR draft autorizado con evidencia; repetir o reanudar no duplica publicación. |
 | 08 | [Piloto completo y distribución reproducible](../../openspec/changes/08-pilot-and-reproducible-distribution/proposal.md) | 07 | Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones. |
 
 Implementar en orden 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08. La dependencia es sobre comportamiento implementado y evidencia, no sobre documentos existentes. OpenSpec status no enforcea esta cadena: revisar dependencia en tarea 1.1. El cambio 01 queda verificado y archivado. 02 está implementado/verificado para preparación supervisada y habilita 03 para onboarding preparado, conservando conflictos. No exige certificado estricto completo ni habilita fases que requieran capacidades fallidas.
 
-Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capability. Las specs de 01–04 están sincronizadas; sync no certifica ejecución Desktop. 03 entrega preparación por etapas y 04 gates locales de HU; los cambios 05–08 aún no modifican main specs. La distribución para equipo nuevo y update llega en 08. GitHub es proveedor remoto inicial, configurable; Jira/Linear son extensiones posteriores.
+Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capability. Las specs de 01–05 están sincronizadas; sync no certifica ejecución Desktop/Databricks. 03 entrega preparación por etapas, 04 gates locales de HU y 05 validación/evidencia con bloqueos remotos conservados; 06–08 siguen propuestos. La distribución para equipo nuevo y update llega en 08. GitHub es proveedor remoto inicial, configurable; Jira/Linear son extensiones posteriores.
 
 ## Recursos ya preparados
 
@@ -32,7 +32,14 @@ Antes de 06 se pueden ejecutar protocolos manuales para certificar roles; el run
 
 ## Próxima acción
 
-Implementar 05-databricks-validation-and-evidence sobre gates locales verificados.
+Implementar 06-observability-and-agent-evals sobre capacidades locales verificadas.
+05 entrega selección por impacto, workers con runtime explícito, adaptadores
+autorizados, journal de reconciliación y evidencia ligada a fuente/candidato.
+[Evidencia de 05](../evidence/candidate-validation-verification.md): 398 pruebas
+aprobadas, smoke instalado de validación/HU/catálogos y cuatro requisitos/ocho
+escenarios trazados. Smoke Databricks genuine blocked por decisión del usuario
+sin sandbox seleccionado; Docker/Spark genuine blocked. Todo gate que requiera
+esas capacidades sigue bloqueado. E07/E09/E10/E11/E12 permanecen not_run.
 04 entrega estado SQLite por cliente/checkout/HU/intento, plan/aprobación ligados,
 candidato de working tree/índice, revisión independiente y recuperación conservadora.
 [Evidencia de 04](../evidence/hu-lifecycle-verification.md): 340 pruebas aprobadas,

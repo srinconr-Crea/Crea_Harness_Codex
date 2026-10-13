@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "client_id": "synthetic",
+  "run_id": "example",
+  "attempt": 1,
+  "candidate_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "plan_revision": 1,
+  "practice_pack_sha256": "ed6ef780c6ed3e11e32450667f28533060b617beebb847b5e261bace8b5928d0",
+  "technologies": [
+    "python"
+  ],
+  "impacts": [
+    "logic"
+  ],
+  "tests": [
+    {
+      "schema_version": 1,
+      "test_id": "python-static",
+      "technology": "python",
+      "layer": "L0",
+      "required": true,
+      "scope": "offline-syntax",
+      "rule_ids": [
+        "GEN-01",
+        "GEN-02",
+        "GEN-03",
+        "GEN-04",
+        "PY-01",
+        "PY-02",
+        "PY-03",
+        "PY-04"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "test_id": "python-unit",
+      "technology": "python",
+      "layer": "L1",
+      "required": true,
+      "scope": "isolated-behavior",
+      "rule_ids": [
+        "GEN-01",
+        "GEN-02",
+        "GEN-03",
+        "GEN-04",
+        "PY-01",
+        "PY-02",
+        "PY-03",
+        "PY-04"
+      ]
+    }
+  ],
+  "catalog_test_ids": [
+    "T05",
+    "T06"
+  ],
+  "performance_baseline_sha256": null,
+  "plan_sha256": "5f1d3efe73c524cb1d3dfd85bd3fb47dc4ef5bdf25ddc270631a4657764be38b"
+}

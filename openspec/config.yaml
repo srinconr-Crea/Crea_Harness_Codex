@@ -22,7 +22,12 @@ context: |
   con evidencia en docs/evidence/guided-onboarding-verification.md.
   04 entrega HU/gates locales implementados y verificados el 13 de octubre,
   con 340 pruebas, smoke instalado y evidencia en docs/evidence/hu-lifecycle-verification.md.
-  05 habilitado para implementar validadores propios; 05–08 siguen propuestos.
+  05 entrega validación por impacto, workers seleccionados y evidencia ligada al
+  candidato, verificados el 13 de octubre con 398 pruebas y smoke instalado.
+  Evidencia en docs/evidence/candidate-validation-verification.md.
+  Smoke remoto blocked por falta de sandbox seleccionado por el usuario;
+  Docker/Spark genuine blocked. No hay certificación remota nueva.
+  06 habilitado para implementación sobre capacidades locales; 06–08 propuestos.
   E05/E06/E08/E19 permanecen not_run; ready_to_publish sintético no autoriza publicación.
   E01/E02/E24 manuales permanecen not_run, sin certificación Desktop o remota nueva.
   docs/planning/quality contiene catálogos/fixtures de diseño not_run.

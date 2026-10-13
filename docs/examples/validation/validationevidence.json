@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "plan_sha256": "5f1d3efe73c524cb1d3dfd85bd3fb47dc4ef5bdf25ddc270631a4657764be38b",
+  "test_id": "python-unit",
+  "client_id": "synthetic",
+  "run_id": "example",
+  "attempt": 1,
+  "candidate_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "plan_revision": 1,
+  "practice_pack_sha256": "ed6ef780c6ed3e11e32450667f28533060b617beebb847b5e261bace8b5928d0",
+  "data_sha256": "db304d25675a4b9b4c0097aa0baf260837ab420919f4244495684d64ac4d9ad3",
+  "runtime": "python-3.13",
+  "runtime_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "tool_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "request_key": "example",
+  "command": [
+    "docker",
+    "run",
+    "pinned-worker"
+  ],
+  "source_sha256": null,
+  "status": "blocked",
+  "scope": "validation",
+  "reason": "worker_runtime_absent",
+  "observed": false,
+  "simulated": false,
+  "remote_run_id": null,
+  "result_uri": null,
+  "result_sha256": null,
+  "result": null,
+  "started_at": "2026-10-13T15:09:12.079732+00:00",
+  "finished_at": "2026-10-13T15:09:12.079732+00:00"
+}

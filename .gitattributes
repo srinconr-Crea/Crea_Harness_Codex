@@ -10,3 +10,8 @@ docs/planning/quality/** -text whitespace=cr-at-eol
 src/harness_local/desktop_kit/** -text
 src/harness_local/guided_kit/** -text whitespace=cr-at-eol
 docs/evidence/desktop-runtime-2026-10-09/** -text whitespace=cr-at-eol
+# Validation templates/manifests must retain identical bytes on Windows checkouts.
+resources/validation/** -text
+src/harness_local/validation_kit/** -text whitespace=cr-at-eol
+# Preserve observed transcripts, including pytest's whitespace in tracebacks.
+docs/evidence/candidate-validation-*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

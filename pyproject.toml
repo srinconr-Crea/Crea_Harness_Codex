@@ -12,6 +12,7 @@ dependencies = ["pydantic>=2,<3", "PyYAML>=6,<7"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "build>=1,<2", "jsonschema>=4,<5"]
+sql = ["sqlglot>=26,<31"]
 
 [project.scripts]
 harness = "harness_local.cli:main"
@@ -21,7 +22,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 harness_core = ["schemas/*.json"]
-harness_local = ["compatibility.json", "templates/*.md", "openspec_kit/manifest.json", "openspec_kit/LICENSE", "openspec_kit/openspec/*.yaml", "openspec_kit/.agents/skills/*/SKILL.md", "quality_kit/**/*", "quality_kit/*.json", "desktop_kit/*.json", "desktop_kit/*.md", "desktop_kit/agents/*.md", "desktop_kit/harness-hu/*.md", "guided_kit/*.json", "guided_kit/harness-client-onboarding/*.md"]
+harness_local = ["compatibility.json", "templates/*.md", "openspec_kit/manifest.json", "openspec_kit/LICENSE", "openspec_kit/openspec/*.yaml", "openspec_kit/.agents/skills/*/SKILL.md", "quality_kit/**/*", "quality_kit/*.json", "desktop_kit/*.json", "desktop_kit/*.md", "desktop_kit/agents/*.md", "desktop_kit/harness-hu/*.md", "guided_kit/*.json", "guided_kit/harness-client-onboarding/*.md", "validation_kit/*.json", "validation_kit/*.py"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

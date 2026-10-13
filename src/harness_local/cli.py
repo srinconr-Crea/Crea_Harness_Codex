@@ -21,6 +21,10 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    validation=commands.add_parser('validate')
+    validation.add_argument('action',choices=('plan','static','worker','remote','bundle','gate','attach'))
+    validation.add_argument('--input',required=True)
+    validation.add_argument('--json',action='store_true')
     hu=commands.add_parser('hu')
     hu.add_argument('action',choices=('start','plan','approve','candidate','status','transition','evidence',
         'assign','correct','block','resume','handoff','worktree','attempt'))
@@ -91,11 +95,15 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+    command=next((c for c in ('validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command=='hu':
+        if args.command=='validate':
+            from .validation_service import dispatch
+            from harness_core.configuration import load_document
+            result,code=dispatch(args.action,load_document(args.input))
+        elif args.command=='hu':
             from .hu import HuService
             from harness_core.configuration import load_document
             if args.action=='status':
@@ -224,6 +232,8 @@ def main(argv=None):
                           'guided_recover_integration_first','guided_new_preview_required'})
         conflicts.update({'hu_not_found','hu_identity_mismatch','hu_preparation_required','hu_state_conflict',
             'hu_state_version','hu_operation_conflict','hu_story_exists','hu_clean_base_required','hu_candidate_too_large'})
+        conflicts.update({'validation_operation_conflict','validation_journal_version','validation_journal_conflict',
+            'validation_journal_unavailable','remote_service_unavailable'})
         code=1 if error_code in conflicts or isinstance(error,OSError) else 2
         if code==1:
             result['status']='blocked'

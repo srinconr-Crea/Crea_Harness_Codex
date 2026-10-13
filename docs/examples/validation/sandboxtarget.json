@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "profile": "SELECTED",
+  "host": "https://sandbox.example.invalid",
+  "caller_identity": "operator@example.invalid",
+  "execution_identity": "runner@example.invalid",
+  "job_id": 1,
+  "task_key": "validate",
+  "runtime": "15.4.x-scala2.12",
+  "volume": "/Volumes/sandbox/test/fixtures",
+  "resources": [
+    "/Workspace/sandbox/validate"
+  ],
+  "modes": [
+    "sql",
+    "notebook",
+    "delta",
+    "job"
+  ],
+  "job_settings_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "notebook_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "authorized": false,
+  "synthetic": true,
+  "max_polls": 5,
+  "poll_seconds": 1
+}

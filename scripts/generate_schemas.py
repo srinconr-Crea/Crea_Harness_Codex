@@ -13,6 +13,7 @@ from harness_core.guided import (ClientDevelopmentConfig, ClientToolBinding, Que
                                   CompositePreparationPlan, GuidedOnboardingPlan, OnboardingRun, CertificationInput)
 from harness_core.hu import (HuRun,PlanRevision,ApprovalRecord,Candidate,Assignment,GateResult,Evidence,Handoff,
                              Start,PlanInput,Approval,Transition,WorktreeInput)
+from harness_core.validation import ValidationPlan, ValidationRequest, ValidationEvidence, SandboxTarget, WorkerRuntime
 
 root = Path(__file__).resolve().parents[1] / 'schemas'
 root.mkdir(exist_ok=True)
@@ -24,7 +25,8 @@ for model in (Descriptor, Policy, Binding, OnboardingPlan, Journal, LockOwner,
               CandidateSnapshot, SupervisedAcceptance, ClientDevelopmentConfig, ClientToolBinding, QuestionnaireDraft,
               GuidedRequest, CompositePreparationPlan, GuidedOnboardingPlan, OnboardingRun, CertificationInput,
               HuRun,PlanRevision,ApprovalRecord,Candidate,Assignment,GateResult,Evidence,Handoff,
-              Start,PlanInput,Approval,Transition,WorktreeInput):
+              Start,PlanInput,Approval,Transition,WorktreeInput,
+              ValidationPlan,ValidationRequest,ValidationEvidence,SandboxTarget,WorkerRuntime):
     name = model.__name__.lower() + '.schema.json'
     content = json.dumps(model.model_json_schema(), indent=2) + '\n'
     (root / name).write_text(content, encoding='utf-8')
