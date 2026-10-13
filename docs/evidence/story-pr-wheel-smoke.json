@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "ab8189bbaffd77dcc23eea3681491ec26091be67ae567f4c5f94743e72cec9be",
+  "installed_isolated": true,
+  "exit_code": 0,
+  "smoke": {
+    "contracts": 7,
+    "resources": 4,
+    "preview": "partial",
+    "evaluation_gate": "blocked",
+    "legacy_hu_contracts": 4,
+    "legacy_eval_required_runs": 126,
+    "legacy_cli_preview": "preserved",
+    "remote_writes": 0,
+    "actual_model_runs": 0,
+    "global_activation": false,
+    "certified": false
+  }
+}

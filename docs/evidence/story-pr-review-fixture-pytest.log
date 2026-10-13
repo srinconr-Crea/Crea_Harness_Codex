@@ -1,0 +1,50 @@
+.........F..                                                             [100%]
+================================== FAILURES ===================================
+____ test_final_committed_candidate_rechecked_after_openspec_changes[crlf] ____
+
+hu = (<harness_local.hu.HuService object at 0x000002D322143490>, {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Docum...ers/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/66473935450e4dccae82a6ff7822cdcc/guided-plan.json'))
+kind = 'crlf'
+
+    @pytest.mark.parametrize('kind', ['unchanged', 'spec_after_approval', 'context_after_approval', 'mode_after_approval', 'crlf', 'unbound_story', 'changed_story'])
+    def test_final_committed_candidate_rechecked_after_openspec_changes(hu, kind):
+        from harness_core.story import intent, snapshot
+        from harness_local.publication import candidate_gate
+        from test_hu_lifecycle import plan, git
+        service, client, preparation = hu
+        if kind == 'crlf':
+            git(client['target'],'config','core.autocrlf','true')
+            # A baseline file has CRLF in the approved checkout but LF in Git.
+            f=client['target']/'.harness/context.md'
+            f.write_bytes(f.read_bytes().replace(b'\r\n',b'\n').replace(b'\n',b'\r\n'))
+>       service.run('start','FINAL','start',dict(schema_version=1,writer_actor='developer',onboarding_plan=str(preparation),simulation=False))
+
+tests\test_story_cli.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\harness_local\hu.py:257: in run
+    if action == 'start': preparation=self.prepared(data.onboarding_plan)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\harness_local\hu.py:178: in prepared
+    guided.verify_prepared(plan, run, integrated=next(s.status for s in run.stages if s.name == 'integrate') == 'completed')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = GuidedOnboardingPlan(schema_version=1, kind='guided_onboarding_plan', run_id='060d350793e9428e99d7a18bfaad08a1', reque...opment_policy_sha256=None, blockers=[], plan_sha256='20b0b378c991c26d5e217f2a74bd8b0cdd4aa87211ac8437abe967f7ecf64d19')
+run = OnboardingRun(schema_version=1, kind='onboarding_run', client_id='alpha', checkout_id='checkout', run_id='060d350793e9...ca8a0baece1226f59bb40534e21ea', file_identity='b685a610:20000:15607b:1dd5b4a:696a7f6b')], integration_plan_sha256=None)
+integrated = False
+
+    def verify_prepared(plan, run, *, integrated=False):
+        """All creations and all preserved inputs remain exactly as reviewed."""
+        integration = {e.path:e.new_hash for e in plan.integration_edits} if integrated else {}
+        for entry in run.operations:
+            root, relative = operation_path(plan, entry)
+            with PinnedTree(root) as tree:
+                with (tree.directory if entry.kind == 'directory' else tree.file)(relative) as handle:
+                    if entry.state != 'created' or handle.identity() != entry.file_identity: raise ConfigError('application_conflict')
+                    expected = integration.get(entry.path, entry.sha256) if entry.scope == 'target' else entry.sha256
+>                   if entry.kind == 'file' and sha(handle.read(128 * 1024)) != expected: raise ConfigError('application_conflict')
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E                   harness_core.configuration.ConfigError: application_conflict
+
+src\harness_local\guided_onboarding.py:293: ConfigError
+=========================== short test summary info ===========================
+FAILED tests/test_story_cli.py::test_final_committed_candidate_rechecked_after_openspec_changes[crlf]
+1 failed, 11 passed in 87.03s (0:01:27)

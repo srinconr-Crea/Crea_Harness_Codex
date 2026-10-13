@@ -2,8 +2,8 @@
 
 ## Context
 
-Ver [proposal.md](proposal.md) para motivación y alcance. La base 0.1.0 proporciona contratos Pydantic v1, diagnóstico, init create-only y recuperación Windows. No tiene flujo de HU ni roles operativos.
-Dependencia obligatoria: **06-observability-and-agent-evals**, implementada y verificada. OpenSpec status comprueba artefactos, no satisface este gate. Los comandos nuevos de este documento son propuestos.
+Ver [proposal.md](proposal.md) para motivación y alcance. La base 0.1.0 incluye onboarding, HU/gates del 04, validación/evidencia del 05 e infraestructura local de observabilidad/evals del 06. Esta última está verificada con 439 pruebas, smoke instalado y specs sincronizadas en ec84193/54faea5; su matriz real de agentes sigue pendiente.
+El usuario autorizó el 2026-10-13 iniciar la implementación local de **07-story-and-pr-integrations** sobre esa infraestructura, con las tareas 2.4/3.3 de 06 pendientes. OpenSpec status y el archivo de 06 no sustituyen evidencia ni conceden permisos. Los comandos nuevos de este documento son propuestos.
 
 ## Goals / Non-Goals
 
@@ -25,6 +25,8 @@ Dependencia obligatoria: **06-observability-and-agent-evals**, implementada y ve
 
 6. Crear PR draft por defecto en piloto; attach_artifact cuando corre dentro de Codex con herramienta disponible. Ausencia de integración se informa sin inventar asociación.
 
+7. Separar habilitación de desarrollo y gate de publicación. La excepción aprobada permite implementar contratos/adaptadores, lectura seleccionada, preview y pruebas con dobles; las 126 evaluaciones Luna/medium de 06 conservan not_run y promoción blocked. Un candidato con evaluaciones requeridas pendientes MUST NOT hacer push, crear PR o comentar una historia aunque tenga autorización para publicar. Los dobles prueban controles/reconciliación, no certifican proveedores ni agentes. El smoke de escritura en un repo sintético real queda blocked hasta contar con los gates y la autorización específica de destino/acción; esa falta no impide implementar y probar su adaptador localmente.
+
 Razonamiento y alternativas:
 - Procedimientos/roles/validadores separados frente a centralizar todo en AGENTS: mantiene instrucciones acotadas y permite probar controles con código.
 - Paquete Python único frente a lógica copiada en Skills: versiona y prueba comportamiento una vez; Skills aportan instrucciones/wrappers.
@@ -34,7 +36,17 @@ Razonamiento y alternativas:
 
 ## Contracts and operational boundaries
 
-StorySnapshot, ProviderBinding, PublicationIntent y PublicationReceipt v1; tool requirements por capability; idempotency_key y outcome unknown exigen reconciliación.
+StorySnapshot, ProviderBinding, PublicationIntent, PublicationAuthorization,
+PublicationReceipt y StoryPlanBinding v1, con PublicationRequest para CLI.
+StoryPlanBinding conserva en SQLite separado el vínculo inmutable y explícitamente
+aprobado entre HU/intento/hash de plan y snapshot; revisión distinta exige nuevo
+plan/aprobación. intent_sha256 funciona como idempotency_key de contenido;
+outcome unknown exige lectura/reconciliación antes de reintentar.
+El push CLI rechaza url.* heredadas y usa lease de rama ausente. El puente MCP
+debe garantizar creación atómica con expected_old_oid=null/creation_only=true.
+Attach solo se registra ante retorno True del callback que comprobó éxito real.
+El candidato final verifica bytes físicos/modes y blobs Git, admitiendo solo
+normalización LF/CRLF local explícita; filtros/encoding custom quedan blocked.
 
 Objetos estrictos y versiones conocidas. Capacidad requerida ausente es blocked; fuente opcional ausente es unavailable/not_checked. Los comandos nuevos conservan JSON schema_version/command/status/checks y códigos 0 (operación comprobada sin bloqueos, con partial explícito si corresponde), 1 (bloqueo/fallo/conflicto), 2 (entrada inválida). Reportes sanitizados no exponen credenciales.
 
@@ -45,6 +57,8 @@ Recursos compartidos viven en el paquete; contexto/configuración cliente en tar
 Tests iniciales: T20.
 Evals iniciales: E21, E22, E23.
 Consultar docs/planning/quality. Todos los escenarios adicionales de las delta specs se trazan a prueba/protocolo y evidencia en la verificación del incremento. Los tests simulados no certifican Desktop/Databricks.
+
+Añadir negativos de publicación con evals de 06 not_run/blocked aun con autorización explícita, y comprobar que preview sigue disponible sin efectos. E21/E22/E23 requieren ejecuciones/anotaciones reales para el gate final; los dobles no cuentan como esas evaluaciones. Las tareas 2.5/3.3 y el criterio de salida completo permanecen exigibles; esta excepción no habilita 08.
 
 Spark/MLflow no son dependencias del runtime básico para cargar catálogos. Los runners especializados se aíslan y fijan versión; código cliente solo se ejecuta por adaptador autorizado.
 
@@ -59,7 +73,7 @@ Spark/MLflow no son dependencias del runtime básico para cargar catálogos. Los
 
 ## Migration Plan
 
-1. Confirmar dependencia implementada/verificada y alcance autorizado.
+1. Confirmar evidencia de la infraestructura local de 06 y registrar la excepción aprobada, sus tareas pendientes y el bloqueo de promoción/publicación; comprobar alcance autorizado.
 2. Incorporar nuevos contratos/código/recursos mediante apply y ejecutar sus pruebas.
 3. Conservar v1; nuevos recursos tienen versiones y ownership propios.
 4. Usar planes explícitos con hashes/backups para editar configuración cliente.

@@ -1,0 +1,45 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "actor": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Actor",
+      "type": "string"
+    },
+    "confirmed": {
+      "title": "Confirmed",
+      "type": "boolean"
+    },
+    "intent_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Intent Sha256",
+      "type": "string"
+    },
+    "actions": {
+      "items": {
+        "enum": [
+          "push",
+          "create_pr"
+        ],
+        "type": "string"
+      },
+      "maxItems": 2,
+      "title": "Actions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "actor",
+    "confirmed",
+    "intent_sha256",
+    "actions"
+  ],
+  "title": "PublicationAuthorization",
+  "type": "object"
+}

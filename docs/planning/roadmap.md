@@ -1,6 +1,6 @@
 # Secuencia de implementación del harness
 
-Actualizado: 13 de octubre de 2026. Estado: 01 verificado; 02 verificado para preparación supervisada, con conflicto de sandbox conservado; 03 archivado para onboarding preparado; 04 y 05 implementados/verificados y cerrados; 06 con infraestructura implementada y evals manuales pendientes; 07–08 propuestos. 05 conserva smoke remoto blocked sin sandbox seleccionado.
+Actualizado: 13 de octubre de 2026. Estado: 01 verificado; 02 verificado para preparación supervisada, con conflicto de sandbox conservado; 03 archivado para onboarding preparado; 04 y 05 implementados/verificados y cerrados; 06 con infraestructura implementada y evals manuales pendientes; 07 implementado localmente y archivado con pendientes autorizados, publicación bloqueada; 08 propuesto. 05 conserva smoke remoto blocked sin sandbox seleccionado.
 Objetivo: usuario nuevo completa onboarding y HU en Desktop con roles, herramientas, validaciones y PR autorizado.
 Baseline implementada: bootstrap-codex-local-core y apply-client-onboarding.
 
@@ -12,12 +12,17 @@ Baseline implementada: bootstrap-codex-local-core y apply-client-onboarding.
 | 04 | [Flujo de HU, estado y controles de desarrollo](../../openspec/changes/archive/2026-10-13-04-hu-lifecycle-and-development-gates/proposal.md) | 03 | Cada transición queda registrada y los gates rechazan alcance, aprobación o evidencia incorrectos; no se publican cambios todavía. |
 | 05 | [Pruebas Databricks y evidencia del candidato](../../openspec/changes/archive/2026-10-13-05-databricks-validation-and-evidence/proposal.md) | 04 | Evidencia determinista y remota genuina donde se exige, ligada al candidato; sin credenciales o runtime disponibles se registra bloqueo. |
 | 06 | [Observabilidad y ejecución de evals de agentes](../../openspec/changes/archive/2026-10-13-06-observability-and-agent-evals/proposal.md) | 05 | Evals ejecutados con trazabilidad y gate reproducible; tokens/costos desconocidos se mantienen null con motivo. Archivo autorizado con 2.4/3.3 pendientes; criterio aún no satisfecho. |
-| 07 | [Integraciones de historias y publicación de PR](../../openspec/changes/07-story-and-pr-integrations/proposal.md) | 06 | HU de fuente trazable a PR draft autorizado con evidencia; repetir o reanudar no duplica publicación. |
+| 07 | [Integraciones de historias y publicación de PR](../../openspec/changes/archive/2026-10-13-07-story-and-pr-integrations/proposal.md) | Infraestructura verificada de 06; excepción para desarrollo local | HU de fuente trazable a PR draft autorizado con evidencia; repetir o reanudar no duplica publicación. Archivo autorizado con 2.3/2.5/3.3 pendientes; publicación y cierre completo requieren gates/evals. |
 | 08 | [Piloto completo y distribución reproducible](../../openspec/changes/08-pilot-and-reproducible-distribution/proposal.md) | 07 | Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones. |
 
 Implementar en orden 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08. La dependencia es sobre comportamiento implementado y evidencia, no sobre documentos existentes. OpenSpec status no enforcea esta cadena: revisar dependencia en tarea 1.1. El cambio 01 queda verificado y archivado. 02 está implementado/verificado para preparación supervisada y habilita 03 para onboarding preparado, conservando conflictos. No exige certificado estricto completo ni habilita fases que requieran capacidades fallidas.
 
-Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capability. Las specs de 01–06 están sincronizadas; sync no certifica ejecución Desktop/Databricks. 03 entrega preparación por etapas, 04 gates locales de HU y 05 validación/evidencia con bloqueos remotos conservados; 06 entrega infraestructura con evals pendientes y 07–08 siguen propuestos. La distribución para equipo nuevo y update llega en 08. GitHub es proveedor remoto inicial, configurable; Jira/Linear son extensiones posteriores.
+Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capability. Las specs de 01–07 están sincronizadas; sync no certifica ejecución Desktop/Databricks. 03 entrega preparación por etapas, 04 gates locales de HU y 05 validación/evidencia con bloqueos remotos conservados; 06 entrega infraestructura con evals pendientes, 07 entrega implementación local y está archivado con pendientes; 08 sigue propuesto y bloqueado. La distribución para equipo nuevo y update llega en 08. GitHub es proveedor remoto inicial, configurable; Jira/Linear son extensiones posteriores.
+
+Excepción aprobada el 2026-10-13: la infraestructura de 06 (439 pruebas, smoke
+instalado, commits ec84193/54faea5) habilita implementar 07 localmente. La
+dependencia de evaluación para promoción/publicación sigue pendiente. Esta
+decisión posterior no modifica los snapshots históricos de 06 ni habilita 08.
 
 ## Recursos ya preparados
 
@@ -32,13 +37,21 @@ El runner/scorers de 06 valida recibos manuales; la matriz de promoción aún es
 
 ## Próxima acción
 
-Completar las evaluaciones manuales de 06-observability-and-agent-evals.
+Completar las 144 evaluaciones manuales de 06/07 y seleccionar/autorizar el
+smoke de escritura sintético real después de pasar los gates. 07 está archivado
+con 2.3/2.5/3.3 pendientes por autorización expresa; el archivo no satisface
+el criterio de salida ni habilita 08. Su [evidencia](../evidence/story-pr-verification.md)
+registra 507 pruebas aprobadas, smoke instalado y cuatro requisitos/diez
+escenarios sincronizados. Los controles se comprueban con dobles; no hay nueva
+certificación de agentes ni de GitHub.
 La infraestructura local de observabilidad, importación manual y gates está
 implementada; specs de agent-evaluation/development-observability sincronizadas.
 06 fue archivado con las tareas 2.4/3.3 pendientes por autorización expresa del
-usuario; el archivo no habilita 07 ni equivale a aprobar la matriz.
+usuario; el archivo no equivale a aprobar la matriz. La decisión posterior
+habilita únicamente el desarrollo local de 07.
 El protocolo conserva 126 ejecuciones not_run para dos perfiles Luna/medium,
-cero capturas reales y promoción blocked. Tareas 2.4/3.3 pendientes: 07 no habilitado.
+cero capturas reales y promoción blocked. Tareas 2.4/3.3 pendientes; publicación
+de 07 y habilitación de 08 permanecen bloqueadas.
 Ver [evidencia de 06](../evidence/observability-evals-verification.md) y
 [protocolo manual](../observability-and-evals.md). Los tests del runner no
 sustituyen evaluaciones de modelos.

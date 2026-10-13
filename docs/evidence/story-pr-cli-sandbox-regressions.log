@@ -1,0 +1,35 @@
+..........F.............................                                 [100%]
+================================== FAILURES ===================================
+________________ test_git_status_never_executes_client_filter _________________
+
+client = {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/e6f8aa313aa346889ad4ee...ocal-Harness/.test-data/e6f8aa313aa346889ad4ee7f3e70b85a/binding.json'), 'origin': 'https://github.com/demo/alpha.git'}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023509A7AB10>
+
+    def test_git_status_never_executes_client_filter(client,monkeypatch):
+        p=client['target']
+        marker=p.parent/'filter-executed'
+        script=p/'filter.py'
+        script.write_text('from pathlib import Path\nPath('+repr(str(marker))+').touch()\nimport sys\nsys.stdout.write(sys.stdin.read())\n')
+        (p/'.gitattributes').write_text('tracked.txt filter=evil\n')
+        (p/'tracked.txt').write_text('before\n')
+        # Stage before registering the malicious driver.
+        subprocess.run(['git','-C',str(p),'add','.'],check=True,capture_output=True)
+        subprocess.run(['git','-C',str(p),'-c','user.name=Fixture','-c','user.email=fixture@example.invalid',
+                        'commit','-m','fixture'],check=True,capture_output=True)
+        command='"'+sys.executable+'" "'+str(script)+'"'
+        subprocess.run(['git','-C',str(p),'config','filter.evil.clean',command],check=True)
+        (p/'tracked.txt').write_text('after!\n')
+        import os,time
+        stamp=time.time()+5
+        os.utime(p/'tracked.txt',(stamp,stamp))
+        subprocess.run(['git','-C',str(p),'hash-object','--path=tracked.txt','tracked.txt'],check=True,capture_output=True)
+>       assert marker.exists(), 'Control positivo: Git debe ejecutar el filtro de la fixture'
+E       AssertionError: Control positivo: Git debe ejecutar el filtro de la fixture
+E       assert False
+E        +  where False = exists()
+E        +    where exists = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/e6f8aa313aa346889ad4ee7f3e70b85a/filter-executed').exists
+
+tests\test_local.py:173: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_local.py::test_git_status_never_executes_client_filter - As...
+1 failed, 39 passed in 142.56s (0:02:22)

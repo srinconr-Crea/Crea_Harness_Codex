@@ -1,0 +1,144 @@
+{
+  "$defs": {
+    "StorySnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "repository": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "source_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "revision": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Revision",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "criteria": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Criteria",
+          "type": "array"
+        },
+        "refs": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Refs",
+          "type": "array"
+        },
+        "trust": {
+          "const": "external_data",
+          "default": "external_data",
+          "title": "Trust",
+          "type": "string"
+        },
+        "acceptance_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Acceptance Sha256",
+          "type": "string"
+        },
+        "snapshot_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Snapshot Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "repository",
+        "source_id",
+        "revision",
+        "title",
+        "criteria",
+        "refs",
+        "acceptance_sha256",
+        "snapshot_sha256"
+      ],
+      "title": "StorySnapshot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "checkout_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Checkout Id",
+      "type": "string"
+    },
+    "hu_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Hu Id",
+      "type": "string"
+    },
+    "attempt": {
+      "minimum": 1,
+      "title": "Attempt",
+      "type": "integer"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    },
+    "actor": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Actor",
+      "type": "string"
+    },
+    "confirmed": {
+      "title": "Confirmed",
+      "type": "boolean"
+    },
+    "story": {
+      "$ref": "#/$defs/StorySnapshot"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "checkout_id",
+    "hu_id",
+    "attempt",
+    "plan_sha256",
+    "actor",
+    "confirmed",
+    "story"
+  ],
+  "title": "StoryPlanBinding",
+  "type": "object"
+}

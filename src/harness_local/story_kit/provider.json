@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "client_id": "synthetic",
+  "checkout_id": "checkout",
+  "provider": "fixture",
+  "transport": "fixture",
+  "host": "github.com",
+  "repository": "demo/synthetic",
+  "base_branch": "develop",
+  "capabilities": [
+    "read_story"
+  ]
+}

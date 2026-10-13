@@ -37,7 +37,7 @@ def test_cli_usage_redacts_credentials_and_retains_counters(scratch, capsys):
 
 
 @pytest.mark.parametrize('value', [dict(schema_version=99, password='hidden'),
-    dict(schema_version=True), dict(schema_version=1, milestone=7), dict(unrecognized='hidden')])
+    dict(schema_version=True), dict(schema_version=1, milestone=8), dict(unrecognized='hidden')])
 def test_invalid_eval_inputs_never_echo_payload(scratch, capsys, value):
     code, result = call(scratch, capsys, 'eval', 'run', value)
     assert code == 2 and result['status'] == 'invalid' and 'hidden' not in json.dumps(result)

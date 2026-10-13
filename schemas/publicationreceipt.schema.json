@@ -1,0 +1,287 @@
+{
+  "$defs": {
+    "PublicationIntent": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "intent_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Intent Id",
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "checkout_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Checkout Id",
+          "type": "string"
+        },
+        "hu_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Hu Id",
+          "type": "string"
+        },
+        "attempt": {
+          "minimum": 1,
+          "title": "Attempt",
+          "type": "integer"
+        },
+        "provider": {
+          "enum": [
+            "fixture",
+            "github"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "repository": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "base_branch": {
+          "title": "Base Branch",
+          "type": "string"
+        },
+        "head_branch": {
+          "title": "Head Branch",
+          "type": "string"
+        },
+        "base_oid": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Base Oid",
+          "type": "string"
+        },
+        "head_oid": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Head Oid",
+          "type": "string"
+        },
+        "candidate_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Candidate Sha256",
+          "type": "string"
+        },
+        "context_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Context Sha256",
+          "type": "string"
+        },
+        "plan_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Plan Sha256",
+          "type": "string"
+        },
+        "story": {
+          "$ref": "#/$defs/StorySnapshot"
+        },
+        "title": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "body": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Body",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "draft": {
+          "const": true,
+          "default": true,
+          "title": "Draft",
+          "type": "boolean"
+        },
+        "intent_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Intent Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "intent_id",
+        "client_id",
+        "checkout_id",
+        "hu_id",
+        "attempt",
+        "provider",
+        "repository",
+        "base_branch",
+        "head_branch",
+        "base_oid",
+        "head_oid",
+        "candidate_sha256",
+        "context_sha256",
+        "plan_sha256",
+        "story",
+        "title",
+        "body",
+        "evidence_refs",
+        "intent_sha256"
+      ],
+      "title": "PublicationIntent",
+      "type": "object"
+    },
+    "StorySnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "repository": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "source_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "revision": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Revision",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "criteria": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Criteria",
+          "type": "array"
+        },
+        "refs": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Refs",
+          "type": "array"
+        },
+        "trust": {
+          "const": "external_data",
+          "default": "external_data",
+          "title": "Trust",
+          "type": "string"
+        },
+        "acceptance_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Acceptance Sha256",
+          "type": "string"
+        },
+        "snapshot_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Snapshot Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "repository",
+        "source_id",
+        "revision",
+        "title",
+        "criteria",
+        "refs",
+        "acceptance_sha256",
+        "snapshot_sha256"
+      ],
+      "title": "StorySnapshot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "intent": {
+      "$ref": "#/$defs/PublicationIntent"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "unknown",
+        "pushed",
+        "published"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "pr_number": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Pr Number"
+    },
+    "pr_url": {
+      "anyOf": [
+        {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Pr Url"
+    },
+    "attached": {
+      "default": false,
+      "title": "Attached",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "intent",
+    "status"
+  ],
+  "title": "PublicationReceipt",
+  "type": "object"
+}

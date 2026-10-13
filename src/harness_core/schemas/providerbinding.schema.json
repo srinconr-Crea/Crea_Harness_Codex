@@ -1,0 +1,80 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "checkout_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Checkout Id",
+      "type": "string"
+    },
+    "provider": {
+      "enum": [
+        "fixture",
+        "github"
+      ],
+      "title": "Provider",
+      "type": "string"
+    },
+    "transport": {
+      "enum": [
+        "fixture",
+        "cli",
+        "mcp"
+      ],
+      "title": "Transport",
+      "type": "string"
+    },
+    "host": {
+      "const": "github.com",
+      "default": "github.com",
+      "title": "Host",
+      "type": "string"
+    },
+    "repository": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Repository",
+      "type": "string"
+    },
+    "base_branch": {
+      "title": "Base Branch",
+      "type": "string"
+    },
+    "capabilities": {
+      "items": {
+        "enum": [
+          "read_story",
+          "create_branch",
+          "push",
+          "create_pr",
+          "write_story"
+        ],
+        "type": "string"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "title": "Capabilities",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "checkout_id",
+    "provider",
+    "transport",
+    "repository",
+    "base_branch",
+    "capabilities"
+  ],
+  "title": "ProviderBinding",
+  "type": "object"
+}

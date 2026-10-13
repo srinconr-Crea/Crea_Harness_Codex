@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "change": "07-story-and-pr-integrations",
+  "verified_on": "2026-10-13",
+  "timezone": "America/Bogota",
+  "baseline": "54faea5",
+  "kit_version": "0.1.0",
+  "implementation_status": "partial",
+  "completed_tasks": [
+    "1.1",
+    "1.2",
+    "2.1",
+    "2.2",
+    "2.4",
+    "3.1",
+    "3.2"
+  ],
+  "pending_tasks": [
+    "2.3",
+    "2.5",
+    "3.3"
+  ],
+  "change_status": "archived_with_pending_tasks",
+  "archive_path": "openspec/changes/archive/2026-10-13-07-story-and-pr-integrations",
+  "archive_with_pending_authorized": true,
+  "pytest": {
+    "passed": 507,
+    "duration_seconds": 981.48,
+    "exit_code": 0,
+    "log": "story-pr-final-pytest.log",
+    "log_sha256": "b57ae96f4c6c19965953bd825274004a18fa81e6b364628612268c1226cd8487"
+  },
+  "wheel_smoke": {
+    "schema_version": 1,
+    "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "ab8189bbaffd77dcc23eea3681491ec26091be67ae567f4c5f94743e72cec9be",
+    "installed_isolated": true,
+    "exit_code": 0,
+    "smoke": {
+      "contracts": 7,
+      "resources": 4,
+      "preview": "partial",
+      "evaluation_gate": "blocked",
+      "legacy_hu_contracts": 4,
+      "legacy_eval_required_runs": 126,
+      "legacy_cli_preview": "preserved",
+      "remote_writes": 0,
+      "actual_model_runs": 0,
+      "global_activation": false,
+      "certified": false
+    }
+  },
+  "protocol": {
+    "schema_version": 1,
+    "actual_model_runs": 0,
+    "required_runs": 144,
+    "previous_pending_runs": 126,
+    "provider_cases": [
+      "E21",
+      "E22",
+      "E23"
+    ],
+    "provider_pending_runs": 18,
+    "requested_model": "luna",
+    "requested_effort": "medium",
+    "effective_model_verified": false,
+    "publication_allowed": false,
+    "next_increment_enabled": false,
+    "remote_write_smoke": {
+      "status": "blocked",
+      "reason": "required_evaluations_pending_and_synthetic_destination_not_selected"
+    },
+    "archive_with_pending_authorized_on": "2026-10-13"
+  },
+  "requirements": 4,
+  "scenarios": 10,
+  "specs_synced": [
+    "story-pr-integration"
+  ],
+  "spec_sync_exact": true,
+  "publication_allowed": false,
+  "certified": false,
+  "next_increment_enabled": false,
+  "exit_criterion_satisfied": false,
+  "reason": "real_provider_smoke_and_manual_evaluations_pending",
+  "actual_provider_writes": 0,
+  "actual_model_runs": 0,
+  "deterministic_T20": "passed_provider_double",
+  "agent_cases": {
+    "E21": "not_run",
+    "E22": "not_run",
+    "E23": "not_run"
+  },
+  "review": {
+    "independent": true,
+    "important_findings": 3,
+    "transport_attach_contract_clarifications": 2,
+    "regression_tests_passed": true,
+    "model_performance_verified": false,
+    "real_provider_verified": false
+  },
+  "source_sha256": {
+    "src/harness_core/story.py": "106e0884ef3b1a79b0ea131d0f971afe50e3b5a4307b970341f7e65f8ffb78b9",
+    "src/harness_local/publication.py": "90ed1a2b2bc5e298d91d54deaff7be4f7b8faa959ce7e189d3a5e71f227834d7",
+    "src/harness_local/story_providers.py": "eb4da4ccaf4cd0255d7af105be73a34aafaef2686afdbd276e9ef57766a7c683",
+    "src/harness_local/cli.py": "413997127cdc4679aa5bc5e7f3ceb05b7a75902bfec6ecef47364a194769661a",
+    "src/harness_local/evaluation_service.py": "7ef714da88f83bdfc91765cfc4c1d310c33b392ef74140d018e11aa8d9c3a5c2"
+  }
+}

@@ -1,0 +1,135 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+____ test_final_committed_candidate_rechecked_after_openspec_changes[crlf] ____
+
+hu = (<harness_local.hu.HuService object at 0x00000202B9224830>, {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Docum...ers/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/3b988d3b46fa427cbed395ed9fb58ac6/guided-plan.json'))
+kind = 'crlf'
+
+    @pytest.mark.parametrize('kind', ['unchanged', 'spec_after_approval', 'context_after_approval', 'mode_after_approval', 'crlf', 'unbound_story', 'changed_story'])
+    def test_final_committed_candidate_rechecked_after_openspec_changes(hu, kind):
+        from harness_core.story import intent, snapshot
+        from harness_local.publication import candidate_gate
+        from test_hu_lifecycle import plan, git
+        service, client, preparation = hu
+        if kind == 'crlf':
+            git(client['target'],'config','core.autocrlf','true')
+            # A baseline file has CRLF in the approved checkout but LF in Git.
+            f=client['target']/'.harness/context.md'
+            f.write_bytes(f.read_bytes().replace(b'\r\n',b'\n').replace(b'\n',b'\r\n'))
+>       service.run('start','FINAL','start',dict(schema_version=1,writer_actor='developer',onboarding_plan=str(preparation),simulation=False))
+
+tests\test_story_cli.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\harness_local\hu.py:257: in run
+    if action == 'start': preparation=self.prepared(data.onboarding_plan)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\harness_local\hu.py:178: in prepared
+    guided.verify_prepared(plan, run, integrated=next(s.status for s in run.stages if s.name == 'integrate') == 'completed')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = GuidedOnboardingPlan(schema_version=1, kind='guided_onboarding_plan', run_id='1002f98017c2474d91ae61b568b0f33e', reque...opment_policy_sha256=None, blockers=[], plan_sha256='d5e3a92f954e6001e55972fb4a0d74c46ceae9160c7a6c9cec300c3c57f41c38')
+run = OnboardingRun(schema_version=1, kind='onboarding_run', client_id='alpha', checkout_id='checkout', run_id='1002f98017c2...ca8a0baece1226f59bb40534e21ea', file_identity='b685a610:20000:155c94:1dd5b4a:189e477d')], integration_plan_sha256=None)
+integrated = False
+
+    def verify_prepared(plan, run, *, integrated=False):
+        """All creations and all preserved inputs remain exactly as reviewed."""
+        integration = {e.path:e.new_hash for e in plan.integration_edits} if integrated else {}
+        for entry in run.operations:
+            root, relative = operation_path(plan, entry)
+            with PinnedTree(root) as tree:
+                with (tree.directory if entry.kind == 'directory' else tree.file)(relative) as handle:
+                    if entry.state != 'created' or handle.identity() != entry.file_identity: raise ConfigError('application_conflict')
+                    expected = integration.get(entry.path, entry.sha256) if entry.scope == 'target' else entry.sha256
+>                   if entry.kind == 'file' and sha(handle.read(128 * 1024)) != expected: raise ConfigError('application_conflict')
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E                   harness_core.configuration.ConfigError: application_conflict
+
+src\harness_local\guided_onboarding.py:293: ConfigError
+_ test_final_committed_candidate_rechecked_after_openspec_changes[unbound_story] _
+
+hu = (<harness_local.hu.HuService object at 0x00000202B8412C10>, {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Docum...ers/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/9dce3917cc7a4170ba687879abde6d6f/guided-plan.json'))
+kind = 'unbound_story'
+
+    @pytest.mark.parametrize('kind', ['unchanged', 'spec_after_approval', 'context_after_approval', 'mode_after_approval', 'crlf', 'unbound_story', 'changed_story'])
+    def test_final_committed_candidate_rechecked_after_openspec_changes(hu, kind):
+        from harness_core.story import intent, snapshot
+        from harness_local.publication import candidate_gate
+        from test_hu_lifecycle import plan, git
+        service, client, preparation = hu
+        if kind == 'crlf':
+            git(client['target'],'config','core.autocrlf','true')
+            # A baseline file has CRLF in the approved checkout but LF in Git.
+            f=client['target']/'.harness/context.md'
+            f.write_bytes(f.read_bytes().replace(b'\r\n',b'\n').replace(b'\n',b'\r\n'))
+        service.run('start','FINAL','start',dict(schema_version=1,writer_actor='developer',onboarding_plan=str(preparation),simulation=False))
+        p = plan(service)  # HU1 is unrelated; FINAL keeps its own approval and evidence.
+        raw = p['run']['plan']; fields = ['criteria','paths','operations','tests','required_capabilities','max_delegations','allow_worktrees','sources','decisions']
+        p = service.run('plan','FINAL','p',dict(schema_version=1, **{k:raw[k] for k in fields}))['run']['plan']
+        service.run('approve','FINAL','a',dict(schema_version=1,actor='operator',confirmed=True,client_id='alpha',checkout_id='checkout',attempt=1,revision=1,plan_sha256=p['plan_sha256']))
+        story = snapshot('demo/alpha','17','r','Sumar',['x'],[])
+        if kind != 'unbound_story':
+            from harness_local.publication import bind_story
+            from harness_core.story import StoryPlanBinding
+            bind_story(service,StoryPlanBinding(schema_version=1,client_id='alpha',checkout_id='checkout',hu_id='FINAL',attempt=1,
+                plan_sha256=p['plan_sha256'],actor='operator',confirmed=True,story=story))
+        (client['target']/'src').mkdir(exist_ok=True)
+        (client['target']/'src/total.py').write_bytes(b'def total(xs): return sum(xs)\r\n' if kind=='crlf' else b'def total(xs): return sum(xs)\n')
+        c = service.run('candidate','FINAL','c',dict(schema_version=1))['run']['candidate']
+        service.run('transition','FINAL','v',dict(schema_version=1,state='validating'))
+        for eid, who, kind_e in [('T16','tester','test'), ('review','auditor','review')]:
+            service.run('evidence','FINAL',eid,dict(schema_version=1,id=eid,actor=who,kind=kind_e,status='passed',simulated=False,
+                candidate_sha256=c['candidate_sha256'],evidence_ref=eid))
+        service.run('transition','FINAL','r',dict(schema_version=1,state='reviewing'))
+        assert service.run('transition','FINAL','ready',dict(schema_version=1,state='ready_to_publish'))['status'] == 'ready'
+        if kind == 'spec_after_approval':
+            d=client['target']/'openspec'; d.mkdir(exist_ok=True); (d/'extra.md').write_text('Nueva spec')
+        if kind == 'context_after_approval':
+            d=client['target']/'.harness/context.md'; d.write_text(d.read_text()+'\nNueva regla')
+        git(client['target'],'add','.')
+        if kind == 'mode_after_approval': git(client['target'],'update-index','--chmod=+x','src/total.py')
+        git(client['target'],'-c','user.name=Test','-c','user.email=test@example.invalid','commit','-m','final')
+        head=git(client['target'],'rev-parse','HEAD').decode().strip()
+        i=intent(intent_id='final1',client_id='alpha',checkout_id='checkout',hu_id='FINAL',attempt=1,provider='github',
+            repository='demo/alpha',base_branch='develop',head_branch='feature/final',base_oid=c['base'],head_oid=head,
+            candidate_sha256=c['candidate_sha256'],context_sha256=c['context_sha256'],plan_sha256=p['plan_sha256'],
+            story=snapshot('demo/alpha','17','r2','Sumar',['nuevo'],[]) if kind=='changed_story' else story,
+            title='Sumar',body='Evidencia T16',evidence_refs=['T16','review'])
+>       assert candidate_gate(service,i) == {'unchanged':None,'spec_after_approval':'candidate_changed',
+            'context_after_approval':'context_changed','mode_after_approval':'candidate_changed','crlf':None,
+            'unbound_story':'story_plan_binding_required','changed_story':'story_plan_binding_mismatch'}[kind]
+E       AssertionError: assert None == 'story_plan_binding_required'
+E        +  where None = <function candidate_gate at 0x00000202B9204A40>(<harness_local.hu.HuService object at 0x00000202B8412C10>, PublicationIntent(schema_version=1, intent_id='final1', client_id='alpha', checkout_id='checkout', hu_id='FINAL', atte...e_refs=['T16', 'review'], draft=True, intent_sha256='75c3dfd3a6c0abf2ffaf943129fb693eddb7d1b9d467972905f909e2d1226f0b'))
+
+tests\test_story_cli.py:111: AssertionError
+_ test_final_committed_candidate_rechecked_after_openspec_changes[changed_story] _
+
+hu = (<harness_local.hu.HuService object at 0x00000202B922DF90>, {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Docum...ers/Stiveen Rincon Ruge/Documents/ChatGPT/Local-Harness/.test-data/a0395b2686ae4c7bb89bdd09ceb61577/guided-plan.json'))
+kind = 'changed_story'
+
+    @pytest.mark.parametrize('kind', ['unchanged', 'spec_after_approval', 'context_after_approval', 'mode_after_approval', 'crlf', 'unbound_story', 'changed_story'])
+    def test_final_committed_candidate_rechecked_after_openspec_changes(hu, kind):
+        from harness_core.story import intent, snapshot
+        from harness_local.publication import candidate_gate
+        from test_hu_lifecycle import plan, git
+        service, client, preparation = hu
+        if kind == 'crlf':
+            git(client['target'],'config','core.autocrlf','true')
+            # A baseline file has CRLF in the approved checkout but LF in Git.
+            f=client['target']/'.harness/context.md'
+            f.write_bytes(f.read_bytes().replace(b'\r\n',b'\n').replace(b'\n',b'\r\n'))
+        service.run('start','FINAL','start',dict(schema_version=1,writer_actor='developer',onboarding_plan=str(preparation),simulation=False))
+        p = plan(service)  # HU1 is unrelated; FINAL keeps its own approval and evidence.
+        raw = p['run']['plan']; fields = ['criteria','paths','operations','tests','required_capabilities','max_delegations','allow_worktrees','sources','decisions']
+        p = service.run('plan','FINAL','p',dict(schema_version=1, **{k:raw[k] for k in fields}))['run']['plan']
+        service.run('approve','FINAL','a',dict(schema_version=1,actor='operator',confirmed=True,client_id='alpha',checkout_id='checkout',attempt=1,revision=1,plan_sha256=p['plan_sha256']))
+        story = snapshot('demo/alpha','17','r','Sumar',['x'],[])
+        if kind != 'unbound_story':
+>           from harness_local.publication import bind_story
+E           ImportError: cannot import name 'bind_story' from 'harness_local.publication' (C:\Users\Stiveen Rincon Ruge\Documents\ChatGPT\Local-Harness\src\harness_local\publication.py)
+
+tests\test_story_cli.py:85: ImportError
+=========================== short test summary info ===========================
+FAILED tests/test_story_cli.py::test_final_committed_candidate_rechecked_after_openspec_changes[crlf]
+FAILED tests/test_story_cli.py::test_final_committed_candidate_rechecked_after_openspec_changes[unbound_story]
+FAILED tests/test_story_cli.py::test_final_committed_candidate_rechecked_after_openspec_changes[changed_story]
+3 failed, 9 deselected in 26.62s
