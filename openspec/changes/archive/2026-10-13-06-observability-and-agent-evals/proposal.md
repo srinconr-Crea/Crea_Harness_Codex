@@ -28,4 +28,4 @@ Ninguna. Conserva contratos y comportamiento v1; las nuevas operaciones tienen c
 
 Adaptadores de eventos/hooks certificados, almacenamiento externo, runner de evals y reportes; MLflow opcional separado del núcleo. No invoca un motor API para sustituir Desktop sin cambio aprobado.
 
-Recursos de aceptación: [catálogo de pruebas](../../../docs/planning/quality/test-cases.json), [catálogo de evals](../../../docs/planning/quality/eval-cases.json), [prácticas](../../../docs/planning/quality/practices.json) y [secuencia](../../../docs/planning/roadmap.md). Criterio de salida: Evals ejecutados con trazabilidad y gate reproducible; tokens/costos desconocidos se mantienen null con motivo.
+Recursos de aceptación: [catálogo de pruebas](../../../../docs/planning/quality/test-cases.json), [catálogo de evals](../../../../docs/planning/quality/eval-cases.json), [prácticas](../../../../docs/planning/quality/practices.json) y [secuencia](../../../../docs/planning/roadmap.md). Criterio de salida: Evals ejecutados con trazabilidad y gate reproducible; tokens/costos desconocidos se mantienen null con motivo.

@@ -102,3 +102,16 @@ conservan definiciones not_run; su carga e integridad se verifican en 01. Las Sk
 conservan como [snapshot de referencia](resources/vendor/README.md).
 
 El cambio `01-quality-practices-and-eval-foundation` entrega la [API de calidad](docs/quality-foundation.md), schemas, composición por cliente y recursos verificados dentro del wheel. Los casos de agente pendientes conservan `not_run`; 05 incorpora validación/evidencia y 06–08 siguen pendientes. Ver [evidencia](docs/evidence/quality-foundation.md).
+
+## Observabilidad y evaluación manual
+
+`harness usage report --input observaciones.json --json` reporta actividad
+recibida por cliente/HU/intento y uso desconocido en `null` con motivo.
+`harness eval validate`, `harness eval run` y `harness eval report`, con
+`--input batch.json --json`, validan/importan
+recibos manuales y calcula el gate de promoción. La automatización Desktop
+sin interfaz certificada devuelve `blocked`.
+
+Ver [contratos y protocolo](docs/observability-and-evals.md) y
+[evidencia del incremento 06](docs/evidence/observability-evals-verification.md).
+Las 126 evaluaciones Luna/medium están pendientes; el runner no las inventa.

@@ -1,0 +1,403 @@
+{
+  "$defs": {
+    "CheckAnnotation": {
+      "additionalProperties": false,
+      "properties": {
+        "check_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Check Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "blocked",
+            "not_run"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Evidence Ref",
+          "type": "string"
+        },
+        "annotator": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Annotator",
+          "type": "string"
+        },
+        "annotation_kind": {
+          "enum": [
+            "human",
+            "deterministic",
+            "llm"
+          ],
+          "title": "Annotation Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "check_id",
+        "status",
+        "evidence_ref",
+        "annotator",
+        "annotation_kind",
+        "reason"
+      ],
+      "title": "CheckAnnotation",
+      "type": "object"
+    },
+    "EvalOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "observed_defects": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 256,
+          "title": "Observed Defects",
+          "type": "array"
+        },
+        "checks": {
+          "items": {
+            "$ref": "#/$defs/CheckAnnotation"
+          },
+          "maxItems": 256,
+          "title": "Checks",
+          "type": "array"
+        }
+      },
+      "required": [
+        "observed_defects",
+        "checks"
+      ],
+      "title": "EvalOutput",
+      "type": "object"
+    },
+    "EvalProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "profile_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "model": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "effort": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max",
+            "ultra"
+          ],
+          "title": "Effort",
+          "type": "string"
+        },
+        "surface": {
+          "enum": [
+            "desktop",
+            "cli",
+            "harness-local"
+          ],
+          "title": "Surface",
+          "type": "string"
+        },
+        "dataset_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Dataset Sha256",
+          "type": "string"
+        },
+        "kit_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Kit Sha256",
+          "type": "string"
+        },
+        "config_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Config Sha256",
+          "type": "string"
+        },
+        "runtime": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Runtime",
+          "type": "string"
+        },
+        "tools": {
+          "maxProperties": 64,
+          "minProperties": 1,
+          "patternProperties": {
+            "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$": {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "title": "Tools",
+          "type": "object"
+        },
+        "roles_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Roles Sha256",
+          "type": "string"
+        },
+        "practices_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Practices Sha256",
+          "type": "string"
+        },
+        "configuration_evidence_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Configuration Evidence Ref"
+        }
+      },
+      "required": [
+        "schema_version",
+        "profile_id",
+        "model",
+        "effort",
+        "surface",
+        "dataset_sha256",
+        "kit_sha256",
+        "config_sha256",
+        "runtime",
+        "tools",
+        "roles_sha256",
+        "practices_sha256"
+      ],
+      "title": "EvalProfile",
+      "type": "object"
+    },
+    "EvalRun": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "case_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Case Id",
+          "type": "string"
+        },
+        "role": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Role",
+          "type": "string"
+        },
+        "profile_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Profile Sha256",
+          "type": "string"
+        },
+        "repetition": {
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Repetition",
+          "type": "integer"
+        },
+        "surface": {
+          "enum": [
+            "desktop",
+            "cli",
+            "harness-local"
+          ],
+          "title": "Surface",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "manual",
+            "automatic"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "blocked",
+            "not_run"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "observed_at": {
+          "maxLength": 64,
+          "title": "Observed At",
+          "type": "string"
+        },
+        "duration_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Duration Ms"
+        },
+        "artifact_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Artifact Ref"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Artifact Sha256"
+        },
+        "output": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EvalOutput"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "simulated": {
+          "title": "Simulated",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "run_id",
+        "case_id",
+        "role",
+        "profile_sha256",
+        "repetition",
+        "surface",
+        "mode",
+        "status",
+        "observed_at",
+        "duration_ms",
+        "artifact_ref",
+        "artifact_sha256",
+        "output",
+        "simulated"
+      ],
+      "title": "EvalRun",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "milestone": {
+      "maximum": 8,
+      "minimum": 1,
+      "title": "Milestone",
+      "type": "integer"
+    },
+    "purpose": {
+      "enum": [
+        "development",
+        "promotion"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "profiles": {
+      "items": {
+        "$ref": "#/$defs/EvalProfile"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "title": "Profiles",
+      "type": "array"
+    },
+    "runs": {
+      "items": {
+        "$ref": "#/$defs/EvalRun"
+      },
+      "maxItems": 10000,
+      "title": "Runs",
+      "type": "array"
+    },
+    "budget_runs": {
+      "maximum": 10000,
+      "minimum": 1,
+      "title": "Budget Runs",
+      "type": "integer"
+    },
+    "execution_mode": {
+      "enum": [
+        "manual",
+        "automatic"
+      ],
+      "title": "Execution Mode",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "milestone",
+    "purpose",
+    "profiles",
+    "runs",
+    "budget_runs",
+    "execution_mode"
+  ],
+  "title": "EvalInput",
+  "type": "object"
+}

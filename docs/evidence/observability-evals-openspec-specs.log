@@ -1,0 +1,20 @@
+- Validating...
+✓ spec/agent-evaluation
+  ℹ [INFO] requirements[4]: Requirement text is very long (>500 characters). Consider breaking it down.
+✓ spec/candidate-validation
+✓ spec/client-configuration
+✓ spec/desktop-integration
+✓ spec/development-observability
+✓ spec/development-practice-pack
+✓ spec/evaluation-catalog
+✓ spec/guided-client-onboarding
+✓ spec/hu-lifecycle
+✓ spec/local-diagnostics
+✓ spec/onboarding-application
+✓ spec/onboarding-preview
+  ℹ [INFO] requirements[3]: Requirement text is very long (>500 characters). Consider breaking it down.
+✓ spec/onboarding-recovery
+  ℹ [INFO] requirements[2]: Requirement text is very long (>500 characters). Consider breaking it down.
+✓ spec/role-tool-catalog
+  ℹ [INFO] requirements[3]: Requirement text is very long (>500 characters). Consider breaking it down.
+Totals: 14 passed, 0 failed (14 items)

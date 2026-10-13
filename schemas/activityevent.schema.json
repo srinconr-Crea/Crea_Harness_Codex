@@ -1,0 +1,108 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "hu_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Hu Id",
+      "type": "string"
+    },
+    "attempt": {
+      "minimum": 1,
+      "title": "Attempt",
+      "type": "integer"
+    },
+    "role": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Role",
+      "type": "string"
+    },
+    "event_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "duration",
+        "delegation",
+        "retry",
+        "test",
+        "remote",
+        "gate",
+        "annotation"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "source": {
+      "enum": [
+        "harness-local",
+        "desktop-manual"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "observed_at": {
+      "maxLength": 64,
+      "title": "Observed At",
+      "type": "string"
+    },
+    "duration_ms": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Duration Ms"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "not_run"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "payload": {
+      "additionalProperties": true,
+      "title": "Payload",
+      "type": "object"
+    },
+    "redacted": {
+      "default": false,
+      "title": "Redacted",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "hu_id",
+    "attempt",
+    "role",
+    "event_id",
+    "kind",
+    "source",
+    "observed_at",
+    "status"
+  ],
+  "title": "ActivityEvent",
+  "type": "object"
+}

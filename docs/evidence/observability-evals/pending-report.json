@@ -1,0 +1,1093 @@
+{
+  "schema_version": 1,
+  "command": "eval",
+  "status": "blocked",
+  "checks": [],
+  "promotion_allowed": false,
+  "certified": false,
+  "evidence_scope": "manual_declared",
+  "purpose": "promotion",
+  "milestone": 6,
+  "comparable": true,
+  "repetitions": 3,
+  "profiles": [
+    {
+      "profile_id": "baseline",
+      "profile_sha256": "482620251993c413cbea7414d757bee071c23c9327c2b7f5a18addc2eae1d64b",
+      "model": "luna",
+      "effort": "medium",
+      "surface": "desktop",
+      "status": "blocked",
+      "promotion_allowed": false,
+      "critical_pass_rate": 0.0,
+      "noncritical_pass_rate": 0.0,
+      "pending": 63,
+      "simulated_runs": 0,
+      "false_positives": {},
+      "missed_defects": {},
+      "duration_mean_ms": null,
+      "duration_variance_ms2": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "cached_tokens": null,
+      "cost_usd": null,
+      "usage_reason": "supported_attributable_source_unavailable",
+      "matrix": [
+        {
+          "case_id": "E01",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E01",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E01",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E02",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E02",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E02",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E03",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E03",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E03",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E04",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E04",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E04",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E05",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E05",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E05",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E06",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E06",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E06",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E07",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E07",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E07",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E08",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E08",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E08",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E09",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E09",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E09",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E10",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E10",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E10",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E11",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E11",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E11",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E12",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E12",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E12",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E13",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E13",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E13",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E14",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E14",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E14",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E15",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E15",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E15",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E16",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E16",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E16",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E17",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E17",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E17",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E18",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E18",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E18",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E19",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E19",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E19",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E20",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E20",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E20",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E24",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E24",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E24",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        }
+      ]
+    },
+    {
+      "profile_id": "candidate",
+      "profile_sha256": "a8df13c8282caecb6eedd26a05cc02469d7242b0dcdbde9f21600771db8a0747",
+      "model": "luna",
+      "effort": "medium",
+      "surface": "desktop",
+      "status": "blocked",
+      "promotion_allowed": false,
+      "critical_pass_rate": 0.0,
+      "noncritical_pass_rate": 0.0,
+      "pending": 63,
+      "simulated_runs": 0,
+      "false_positives": {},
+      "missed_defects": {},
+      "duration_mean_ms": null,
+      "duration_variance_ms2": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "cached_tokens": null,
+      "cost_usd": null,
+      "usage_reason": "supported_attributable_source_unavailable",
+      "matrix": [
+        {
+          "case_id": "E01",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E01",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E01",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E02",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E02",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E02",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "analyst",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E03",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E03",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E03",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E04",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E04",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E04",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "impact-analyzer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E05",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E05",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E05",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E06",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E06",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E06",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "planner",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E07",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E07",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E07",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E08",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E08",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E08",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E09",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E09",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E09",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "developer",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E10",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E10",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E10",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E11",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E11",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E11",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E12",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E12",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E12",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "tester",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E13",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E13",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E13",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E14",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E14",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E14",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E15",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E15",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E15",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E16",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E16",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E16",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "auditor",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E17",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E17",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E17",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E18",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E18",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E18",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "verifier",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E19",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E19",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E19",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E20",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E20",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E20",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E24",
+          "repetition": 1,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E24",
+          "repetition": 2,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        },
+        {
+          "case_id": "E24",
+          "repetition": 3,
+          "status": "not_run",
+          "role": "principal",
+          "scores": [],
+          "reason": "capture_missing"
+        }
+      ]
+    }
+  ],
+  "future_cases": [
+    {
+      "case_id": "E21",
+      "status": "not_run"
+    },
+    {
+      "case_id": "E22",
+      "status": "not_run"
+    },
+    {
+      "case_id": "E23",
+      "status": "not_run"
+    }
+  ],
+  "holdout_policy": "promotion_only",
+  "publication_allowed": false,
+  "action": "report",
+  "required_runs": 126,
+  "budget_runs": 126,
+  "dataset_sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477",
+  "kit_sha256": "a09cea35d3ea5cea60a0de4a08a8ec511b1c9879ccdda09a7fb461ebc77b99ab",
+  "imported_runs": []
+}
