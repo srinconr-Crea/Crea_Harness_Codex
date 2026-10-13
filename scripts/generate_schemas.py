@@ -9,6 +9,8 @@ from harness_core.quality import PracticePack, TestCase, TestCatalog, EvalCase, 
 from harness_core.desktop import (ToolRequirement, RoleCatalog, RoleAssignment, DesktopIntegrationPlan,
                                   IntegrationJournal, DesktopCertificate)
 from harness_core.supervised import CandidateSnapshot, SupervisedAcceptance
+from harness_core.guided import (ClientDevelopmentConfig, ClientToolBinding, QuestionnaireDraft, GuidedRequest,
+                                  CompositePreparationPlan, GuidedOnboardingPlan, OnboardingRun, CertificationInput)
 
 root = Path(__file__).resolve().parents[1] / 'schemas'
 root.mkdir(exist_ok=True)
@@ -17,7 +19,8 @@ package_root.mkdir(exist_ok=True)
 for model in (Descriptor, Policy, Binding, OnboardingPlan, Journal, LockOwner,
               PracticePack, TestCase, TestCatalog, EvalCase, EvalCatalog, PracticeExtension,
               ToolRequirement, RoleCatalog, RoleAssignment, DesktopIntegrationPlan, IntegrationJournal, DesktopCertificate,
-              CandidateSnapshot, SupervisedAcceptance):
+              CandidateSnapshot, SupervisedAcceptance, ClientDevelopmentConfig, ClientToolBinding, QuestionnaireDraft,
+              GuidedRequest, CompositePreparationPlan, GuidedOnboardingPlan, OnboardingRun, CertificationInput):
     name = model.__name__.lower() + '.schema.json'
     content = json.dumps(model.model_json_schema(), indent=2) + '\n'
     (root / name).write_text(content, encoding='utf-8')

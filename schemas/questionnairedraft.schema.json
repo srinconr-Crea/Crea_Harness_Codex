@@ -1,0 +1,74 @@
+{
+  "$defs": {
+    "Answer": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "value": {
+          "default": null,
+          "title": "Value"
+        },
+        "status": {
+          "enum": [
+            "known",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "user",
+            "template",
+            "local"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "confirmed": {
+          "title": "Confirmed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "source",
+        "confirmed"
+      ],
+      "title": "Answer",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "questionnaire_draft",
+      "default": "questionnaire_draft",
+      "title": "Kind",
+      "type": "string"
+    },
+    "answers": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Answer"
+      },
+      "title": "Answers",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "answers"
+  ],
+  "title": "QuestionnaireDraft",
+  "type": "object"
+}

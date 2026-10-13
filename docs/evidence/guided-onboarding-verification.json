@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "change": "03-guided-client-onboarding",
+  "baseline_commit": "d175d84",
+  "kit_version": "0.1.0",
+  "implementation_verified_on": "2026-10-09",
+  "closure_verified_on": "2026-10-13",
+  "timezone": "America/Bogota",
+  "full_suite": {
+    "command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider",
+    "passed": 298,
+    "failed": 0,
+    "duration_seconds": 832.02,
+    "log": "guided-onboarding-pytest.txt"
+  },
+  "resume_checks": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_guided_contracts.py tests/test_guided_cli.py -q -p no:cacheprovider",
+    "passed": 20,
+    "failed": 0
+  },
+  "wheel_smoke": {
+    "status": "passed",
+    "checks": 18,
+    "wheel_sha256": "43c04c60132eca366b63503e2c91941ad963f5edadba5478c6050bc5f07fe1d6",
+    "evidence": "guided-onboarding-wheel-smoke.json"
+  },
+  "openspec": {
+    "change_strict": "passed",
+    "main_specs_passed": 10,
+    "main_specs_failed": 0,
+    "requirements": 5,
+    "scenarios": 11,
+    "sync": "verified",
+    "schema": "spec-driven"
+  },
+  "independent_review": {
+    "critical": 0,
+    "important_found": 3,
+    "important_fixed": 3,
+    "regression_tests": "passed"
+  },
+  "quality": {
+    "T15": "passed-local",
+    "E01": "not_run",
+    "E02": "not_run",
+    "E24": "not_run"
+  },
+  "certification": {
+    "desktop": "not_checked-for-new-client",
+    "remote": "not_checked",
+    "acceptance_never_certifies": true
+  },
+  "next_increment": "04-hu-lifecycle-and-development-gates",
+  "scope": "onboarding-prepared-only"
+}

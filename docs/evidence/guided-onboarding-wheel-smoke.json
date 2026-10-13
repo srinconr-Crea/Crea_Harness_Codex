@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "43c04c60132eca366b63503e2c91941ad963f5edadba5478c6050bc5f07fe1d6",
+  "installed_isolated": true,
+  "exit_code": 0,
+  "smoke": {
+    "checks": 18,
+    "schemas": 8,
+    "dependency": "verified-supervised",
+    "client": "synthetic",
+    "stages": [
+      "prepare",
+      "integrate",
+      "recover"
+    ],
+    "certified": false,
+    "remote": "not_checked",
+    "agent_evals": "not_run",
+    "global_activation": false
+  }
+}

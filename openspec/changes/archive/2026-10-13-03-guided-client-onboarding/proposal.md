@@ -27,4 +27,4 @@ Ninguna. Conserva contratos y comportamiento v1; las nuevas operaciones tienen c
 
 Skill, nuevos contratos ClientDevelopmentConfig y ClientToolBinding, plantillas, asistente CLI opcional y journal de etapas. No agrega campos desconocidos a descriptor/policy/binding v1.
 
-Recursos de aceptación: [catálogo de pruebas](../../../docs/planning/quality/test-cases.json), [catálogo de evals](../../../docs/planning/quality/eval-cases.json), [prácticas](../../../docs/planning/quality/practices.json) y [secuencia](../../../docs/planning/roadmap.md). Criterio de salida: Una persona nueva completa el flujo con plantilla o entrevista y recibe configuración trazable sin ampliar permisos por inferencia.
+Recursos de aceptación: [catálogo de pruebas](../../../../docs/planning/quality/test-cases.json), [catálogo de evals](../../../../docs/planning/quality/eval-cases.json), [prácticas](../../../../docs/planning/quality/practices.json) y [secuencia](../../../../docs/planning/roadmap.md). Criterio de salida: Una persona nueva completa el flujo con plantilla o entrevista y recibe configuración trazable sin ampliar permisos por inferencia.

@@ -8,4 +8,5 @@ src/harness_local/quality_kit/** -text whitespace=cr-at-eol
 src/harness_local/quality_kit/vendor/** whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 docs/planning/quality/** -text whitespace=cr-at-eol
 src/harness_local/desktop_kit/** -text
+src/harness_local/guided_kit/** -text whitespace=cr-at-eol
 docs/evidence/desktop-runtime-2026-10-09/** -text whitespace=cr-at-eol

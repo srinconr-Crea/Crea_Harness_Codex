@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "files": {
+    "complete-template.json": "faecf926dadaada493a411391ba8ef09108d39003236cae6fc20c3ab254c9b1a",
+    "dependency.json": "2d74a91388d75f12256d2b27f54c7977d6d95caa57cc5e5ae89991e505f766fd",
+    "harness-client-onboarding/SKILL.md": "4b5012831376ce2a490546bdd71b8e9c730ad27f22a8c3f28a9348389814f4dd",
+    "questionnaire.json": "c800a0295f713eb6b86b13c21cbeaf995d35add76e7809e7c86b4013be1512bd"
+  }
+}

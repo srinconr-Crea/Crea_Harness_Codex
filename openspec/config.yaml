@@ -18,7 +18,10 @@ context: |
   únicamente para onboarding preparado.
   Preparación supervisada aceptada y certificación estricta son resultados separados;
   un conflicto conserva certified=false y bloquea fases que requieran esa capacidad.
-  Los incrementos 03–08 siguen propuestos.
+  03 entrega onboarding guiado preparado, verificado y archivado el 13 de octubre,
+  con evidencia en docs/evidence/guided-onboarding-verification.md.
+  04 habilitado para implementar gates sobre preparación local; 04–08 siguen propuestos.
+  E01/E02/E24 manuales permanecen not_run, sin certificación Desktop o remota nueva.
   docs/planning/quality contiene catálogos/fixtures de diseño not_run.
   resources/vendor contiene Skills oficiales fijadas por commit/hash,
   con licencia/NOTICE conservados, empaquetadas como datos pasivos por 01, sin instalación ni activación global.

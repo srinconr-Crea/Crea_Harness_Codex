@@ -1,0 +1,1158 @@
+{
+  "$defs": {
+    "Answer": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "value": {
+          "default": null,
+          "title": "Value"
+        },
+        "status": {
+          "enum": [
+            "known",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "user",
+            "template",
+            "local"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "confirmed": {
+          "title": "Confirmed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "source",
+        "confirmed"
+      ],
+      "title": "Answer",
+      "type": "object"
+    },
+    "Binding": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "checkout_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Checkout Id",
+          "type": "string"
+        },
+        "target_path": {
+          "title": "Target Path",
+          "type": "string"
+        },
+        "policy_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Policy Sha256",
+          "type": "string"
+        },
+        "state_dir": {
+          "title": "State Dir",
+          "type": "string"
+        },
+        "databricks_profile": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Databricks Profile"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "checkout_id",
+        "target_path",
+        "policy_sha256",
+        "state_dir"
+      ],
+      "title": "Binding",
+      "type": "object"
+    },
+    "ClientDevelopmentConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "client_development_config",
+          "default": "client_development_config",
+          "title": "Kind",
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "stack": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Stack",
+          "type": "array"
+        },
+        "conventions": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Conventions",
+          "type": "array"
+        },
+        "business_rules": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Business Rules",
+          "type": "array"
+        },
+        "roles": {
+          "items": {
+            "enum": [
+              "principal",
+              "analyst",
+              "impact-analyzer",
+              "planner",
+              "developer",
+              "tester",
+              "auditor",
+              "verifier"
+            ],
+            "type": "string"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Roles",
+          "type": "array"
+        },
+        "validations": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Validations",
+          "type": "array"
+        },
+        "sources": {
+          "additionalProperties": {
+            "enum": [
+              "user",
+              "template",
+              "local"
+            ],
+            "type": "string"
+          },
+          "title": "Sources",
+          "type": "object"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "stack",
+        "conventions",
+        "business_rules",
+        "roles",
+        "validations",
+        "sources"
+      ],
+      "title": "ClientDevelopmentConfig",
+      "type": "object"
+    },
+    "ClientToolBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "client_tool_binding",
+          "default": "client_tool_binding",
+          "title": "Kind",
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "checkout_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Checkout Id",
+          "type": "string"
+        },
+        "tools": {
+          "items": {
+            "$ref": "#/$defs/ToolConnection"
+          },
+          "maxItems": 64,
+          "title": "Tools",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "checkout_id",
+        "tools"
+      ],
+      "title": "ClientToolBinding",
+      "type": "object"
+    },
+    "CompositePreparationPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "composite_preparation_plan",
+          "default": "composite_preparation_plan",
+          "title": "Kind",
+          "type": "string"
+        },
+        "kit_version": {
+          "const": "0.1.0",
+          "default": "0.1.0",
+          "title": "Kit Version",
+          "type": "string"
+        },
+        "resource_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Resource Manifest Sha256",
+          "type": "string"
+        },
+        "target_path": {
+          "title": "Target Path",
+          "type": "string"
+        },
+        "origin": {
+          "title": "Origin",
+          "type": "string"
+        },
+        "policy_path": {
+          "title": "Policy Path",
+          "type": "string"
+        },
+        "policy_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Policy Sha256",
+          "type": "string"
+        },
+        "binding_path": {
+          "title": "Binding Path",
+          "type": "string"
+        },
+        "binding_mode": {
+          "enum": [
+            "existing",
+            "proposed"
+          ],
+          "title": "Binding Mode",
+          "type": "string"
+        },
+        "binding": {
+          "$ref": "#/$defs/Binding"
+        },
+        "descriptor": {
+          "$ref": "#/$defs/Descriptor"
+        },
+        "input_hashes": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Input Hashes",
+          "type": "object"
+        },
+        "absent_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Absent Paths",
+          "type": "array"
+        },
+        "applicable": {
+          "title": "Applicable",
+          "type": "boolean"
+        },
+        "operations": {
+          "items": {
+            "$ref": "#/$defs/Operation"
+          },
+          "maxItems": 64,
+          "title": "Operations",
+          "type": "array"
+        },
+        "plan_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Plan Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "resource_manifest_sha256",
+        "target_path",
+        "origin",
+        "policy_path",
+        "policy_sha256",
+        "binding_path",
+        "binding_mode",
+        "binding",
+        "descriptor",
+        "input_hashes",
+        "absent_paths",
+        "applicable",
+        "operations",
+        "plan_sha256"
+      ],
+      "title": "CompositePreparationPlan",
+      "type": "object"
+    },
+    "Descriptor": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "repository": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "base_branch": {
+          "title": "Base Branch",
+          "type": "string"
+        },
+        "openspec_root": {
+          "default": "openspec",
+          "title": "Openspec Root",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "client_id",
+        "repository",
+        "base_branch"
+      ],
+      "title": "Descriptor",
+      "type": "object"
+    },
+    "GuidedRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "guided_request",
+          "default": "guided_request",
+          "title": "Kind",
+          "type": "string"
+        },
+        "target_path": {
+          "title": "Target Path",
+          "type": "string"
+        },
+        "policy_path": {
+          "title": "Policy Path",
+          "type": "string"
+        },
+        "binding_path": {
+          "title": "Binding Path",
+          "type": "string"
+        },
+        "binding_mode": {
+          "default": "existing",
+          "enum": [
+            "existing",
+            "proposed"
+          ],
+          "title": "Binding Mode",
+          "type": "string"
+        },
+        "repository": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Repository"
+        },
+        "base_branch": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Branch"
+        },
+        "state_dir": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State Dir"
+        },
+        "development_policy_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Development Policy Path"
+        },
+        "development": {
+          "$ref": "#/$defs/ClientDevelopmentConfig"
+        },
+        "tool_binding": {
+          "$ref": "#/$defs/ClientToolBinding"
+        },
+        "catalog": {
+          "$ref": "#/$defs/RoleCatalog"
+        }
+      },
+      "required": [
+        "schema_version",
+        "target_path",
+        "policy_path",
+        "binding_path",
+        "development",
+        "tool_binding",
+        "catalog"
+      ],
+      "title": "GuidedRequest",
+      "type": "object"
+    },
+    "IntegrationEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "owner": {
+          "const": "harness-desktop-v1",
+          "default": "harness-desktop-v1",
+          "title": "Owner",
+          "type": "string"
+        },
+        "content": {
+          "maxLength": 131072,
+          "title": "Content",
+          "type": "string"
+        },
+        "old_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Old Hash"
+        },
+        "old_identity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Old Identity"
+        },
+        "new_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "New Hash",
+          "type": "string"
+        },
+        "backup": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Backup"
+        }
+      },
+      "required": [
+        "schema_version",
+        "path",
+        "content",
+        "old_hash",
+        "old_identity",
+        "new_hash",
+        "backup"
+      ],
+      "title": "IntegrationEdit",
+      "type": "object"
+    },
+    "OnboardingPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "onboarding_plan",
+          "default": "onboarding_plan",
+          "title": "Kind",
+          "type": "string"
+        },
+        "kit_version": {
+          "const": "0.1.0",
+          "default": "0.1.0",
+          "title": "Kit Version",
+          "type": "string"
+        },
+        "resource_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Resource Manifest Sha256",
+          "type": "string"
+        },
+        "target_path": {
+          "title": "Target Path",
+          "type": "string"
+        },
+        "origin": {
+          "title": "Origin",
+          "type": "string"
+        },
+        "policy_path": {
+          "title": "Policy Path",
+          "type": "string"
+        },
+        "policy_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Policy Sha256",
+          "type": "string"
+        },
+        "binding_path": {
+          "title": "Binding Path",
+          "type": "string"
+        },
+        "binding_mode": {
+          "enum": [
+            "existing",
+            "proposed"
+          ],
+          "title": "Binding Mode",
+          "type": "string"
+        },
+        "binding": {
+          "$ref": "#/$defs/Binding"
+        },
+        "descriptor": {
+          "$ref": "#/$defs/Descriptor"
+        },
+        "input_hashes": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Input Hashes",
+          "type": "object"
+        },
+        "absent_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Absent Paths",
+          "type": "array"
+        },
+        "applicable": {
+          "title": "Applicable",
+          "type": "boolean"
+        },
+        "operations": {
+          "items": {
+            "$ref": "#/$defs/Operation"
+          },
+          "maxItems": 64,
+          "title": "Operations",
+          "type": "array"
+        },
+        "plan_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Plan Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "resource_manifest_sha256",
+        "target_path",
+        "origin",
+        "policy_path",
+        "policy_sha256",
+        "binding_path",
+        "binding_mode",
+        "binding",
+        "descriptor",
+        "input_hashes",
+        "absent_paths",
+        "applicable",
+        "operations",
+        "plan_sha256"
+      ],
+      "title": "OnboardingPlan",
+      "type": "object"
+    },
+    "Operation": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "create_file",
+          "default": "create_file",
+          "title": "Kind",
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "target",
+            "binding"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "content": {
+          "maxLength": 131072,
+          "title": "Content",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "scope",
+        "path",
+        "content",
+        "sha256"
+      ],
+      "title": "Operation",
+      "type": "object"
+    },
+    "QuestionnaireDraft": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "questionnaire_draft",
+          "default": "questionnaire_draft",
+          "title": "Kind",
+          "type": "string"
+        },
+        "answers": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Answer"
+          },
+          "title": "Answers",
+          "type": "object"
+        }
+      },
+      "required": [
+        "schema_version",
+        "answers"
+      ],
+      "title": "QuestionnaireDraft",
+      "type": "object"
+    },
+    "RoleCatalog": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "catalog_version": {
+          "const": "1.0.0",
+          "default": "1.0.0",
+          "title": "Catalog Version",
+          "type": "string"
+        },
+        "practice_pack_version": {
+          "title": "Practice Pack Version",
+          "type": "string"
+        },
+        "max_concurrent": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Max Concurrent",
+          "type": "integer"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/$defs/RoleProfile"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "title": "Roles",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "practice_pack_version",
+        "max_concurrent",
+        "roles"
+      ],
+      "title": "RoleCatalog",
+      "type": "object"
+    },
+    "RoleProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "enum": [
+            "principal",
+            "analyst",
+            "impact-analyzer",
+            "planner",
+            "developer",
+            "tester",
+            "auditor",
+            "verifier"
+          ],
+          "title": "Id",
+          "type": "string"
+        },
+        "responsibility": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Responsibility",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "outputs": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "write_scope": {
+          "enum": [
+            "assigned-only",
+            "none"
+          ],
+          "title": "Write Scope",
+          "type": "string"
+        },
+        "sandbox": {
+          "enum": [
+            "read-only",
+            "workspace-write"
+          ],
+          "title": "Sandbox",
+          "type": "string"
+        },
+        "delegate_when": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Delegate When",
+          "type": "string"
+        },
+        "max_delegation_depth": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Max Delegation Depth",
+          "type": "integer"
+        },
+        "tools": {
+          "items": {
+            "$ref": "#/$defs/ToolRequirement"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Tools",
+          "type": "array"
+        },
+        "practice_ids": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Practice Ids",
+          "type": "array"
+        },
+        "activated": {
+          "default": false,
+          "title": "Activated",
+          "type": "boolean"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "effort": {
+          "anyOf": [
+            {
+              "enum": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effort"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "responsibility",
+        "inputs",
+        "outputs",
+        "write_scope",
+        "sandbox",
+        "delegate_when",
+        "max_delegation_depth",
+        "tools",
+        "practice_ids"
+      ],
+      "title": "RoleProfile",
+      "type": "object"
+    },
+    "ToolConnection": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "local",
+            "cli",
+            "mcp",
+            "skill"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "connection_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Connection Ref"
+        },
+        "status": {
+          "enum": [
+            "declared",
+            "unavailable",
+            "not_checked"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "kind",
+        "connection_ref",
+        "status"
+      ],
+      "title": "ToolConnection",
+      "type": "object"
+    },
+    "ToolRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "local",
+            "skill",
+            "mcp",
+            "cli"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Purpose",
+          "type": "string"
+        },
+        "required": {
+          "title": "Required",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "kind",
+        "purpose",
+        "required"
+      ],
+      "title": "ToolRequirement",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "guided_onboarding_plan",
+      "default": "guided_onboarding_plan",
+      "title": "Kind",
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "request": {
+      "$ref": "#/$defs/GuidedRequest"
+    },
+    "provenance": {
+      "$ref": "#/$defs/QuestionnaireDraft"
+    },
+    "target_identity": {
+      "title": "Target Identity",
+      "type": "string"
+    },
+    "init_v1": {
+      "$ref": "#/$defs/OnboardingPlan"
+    },
+    "preparation": {
+      "$ref": "#/$defs/CompositePreparationPlan"
+    },
+    "integration_edits": {
+      "items": {
+        "$ref": "#/$defs/IntegrationEdit"
+      },
+      "maxItems": 16,
+      "title": "Integration Edits",
+      "type": "array"
+    },
+    "desktop_resource_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Desktop Resource Sha256",
+      "type": "string"
+    },
+    "guided_resource_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Guided Resource Sha256",
+      "type": "string"
+    },
+    "development_policy_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Development Policy Sha256"
+    },
+    "blockers": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Blockers",
+      "type": "array"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "request",
+    "provenance",
+    "target_identity",
+    "init_v1",
+    "preparation",
+    "integration_edits",
+    "desktop_resource_sha256",
+    "guided_resource_sha256",
+    "development_policy_sha256",
+    "blockers",
+    "plan_sha256"
+  ],
+  "title": "GuidedOnboardingPlan",
+  "type": "object"
+}
