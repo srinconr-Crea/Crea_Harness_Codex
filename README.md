@@ -69,8 +69,9 @@ creaciones: un descriptor ausente bajo `.harness/` protegido bloquea el plan.
 - `schemas`: JSON Schema generado desde los contratos Pydantic.
 - `tests`: clientes sintéticos y comprobaciones de comportamiento sin conexión remota.
 
-Los límites de la política todavía no son controles de edición de Codex. No hay
-SQLite, instalador/plugin, registro persistente de HUs,
+Los límites de la política se comprueban en comandos/adaptadores del kit. El
+[flujo de HU](docs/hu-lifecycle.md) registra estado SQLite, planes, aprobación,
+candidatos, evidencia y recuperación por cliente/checkout. No hay instalador/plugin,
 hooks operativos ni ejecución Databricks en este incremento. Las plantillas de
 roles y su configuración local revisada están disponibles; el kit no ejecuta agentes.
 Tampoco se altera
@@ -92,9 +93,9 @@ El onboarding aplicado también está cerrado en
 El [roadmap de ocho incrementos](docs/planning/roadmap.md) propone onboarding
 guiado, roles/herramientas Desktop, flujo de HU, validación Databricks,
 observabilidad/evals, historias/PR y distribución. 01–03 entregan calidad, roles
-supervisados y onboarding preparado; 04–08 siguen pendientes.
+supervisados y onboarding preparado; 04 añade HU/gates locales y 05–08 siguen pendientes.
 Los [casos de calidad](docs/planning/quality/README.md)
 conservan definiciones not_run; su carga e integridad se verifican en 01. Las Skills oficiales descargadas se
 conservan como [snapshot de referencia](resources/vendor/README.md).
 
-El cambio `01-quality-practices-and-eval-foundation` entrega la [API de calidad](docs/quality-foundation.md), schemas, composición por cliente y recursos verificados dentro del wheel. Los casos de agente siguen `not_run`; los incrementos 02–08 permanecen pendientes. Ver [evidencia](docs/evidence/quality-foundation.md).
+El cambio `01-quality-practices-and-eval-foundation` entrega la [API de calidad](docs/quality-foundation.md), schemas, composición por cliente y recursos verificados dentro del wheel. Los casos de agente pendientes conservan `not_run`; los incrementos 05–08 siguen pendientes. Ver [evidencia](docs/evidence/quality-foundation.md).

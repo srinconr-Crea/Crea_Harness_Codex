@@ -1,0 +1,66 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "candidate_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Candidate Sha256",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "not_run",
+        "unavailable"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "simulated": {
+      "title": "Simulated",
+      "type": "boolean"
+    },
+    "actor": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Actor",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "test",
+        "review",
+        "capability"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "evidence_ref": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Evidence Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "candidate_sha256",
+    "status",
+    "simulated",
+    "actor",
+    "kind",
+    "evidence_ref"
+  ],
+  "title": "Evidence",
+  "type": "object"
+}

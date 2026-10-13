@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "files": {
-    "agents/analyst.md": "f0772c82386804bc9c1db8300adb5f116f9c98c7e4040bc47faf5fc5c9657b4a",
-    "agents/auditor.md": "d958513b565e08d7afba70ed934c12c20f3fbd702c51c0341e092afc1e3f2957",
-    "agents/developer.md": "021879382cebd6e7ba0b51bdd32a41cf20a2d120721007e4ab83f9c625ed7745",
-    "agents/impact-analyzer.md": "66ed943cb9c927929878bcd32fa7de08ed1e7d1498f6e57fd5acc84619f3a798",
-    "agents/planner.md": "c2eb10cb25b8dc6d4326474fad9d96ced7d15e197f9486ade359e93b664e6cb3",
-    "agents/principal.md": "5d916b56643d9aaead2f83039efaa1aa44197e2b9015e689b0570844c8f9865c",
-    "agents/tester.md": "9317e627ff8bb7190d8a8c3863eeacc1d28deb038a7d5621d5766aeadbc8cd11",
-    "agents/verifier.md": "f00537aff8a68b63a81a4be9c9349372e82a00361f1ec461e94daf37dc5c686f",
+    "agents/analyst.md": "5ad133e59ed801eab214032837271cdcb21dd2cce4e1c6e02e45ea68c152bcd1",
+    "agents/auditor.md": "97ce9a97e70893e3a8c79c53a9a0951a5da63679a316eaf20ed8278e913edf65",
+    "agents/developer.md": "661c8215164cf7c57c010ec1300a6c9376a32d7f4effb9be71a7261e27a0988f",
+    "agents/impact-analyzer.md": "12c38d275c24385fcafd83d44f6792fe3ddffc7e16190bd5216109541b89815f",
+    "agents/planner.md": "adb87e12877748be436512682fbb49189a505bf8ef45d962d7c67936eda020cf",
+    "agents/principal.md": "84fd8d2d357459783f5ddb5a1ee6484d9138ea4c05940efd4e2959a8c7c5da44",
+    "agents/tester.md": "988c20086b2e844819bf505f7c8f78a785a06fdac38c8854a9c5383d87d12f7d",
+    "agents/verifier.md": "0a8674bdd8181643693813b31153f75098f3964748cb07edfac352b15e6d2a8f",
     "AGENTS.md": "8ff4fc2da4e3fa6cefec69bc46fd282994709334a75e9d07629537354a8afc1d",
-    "harness-hu/SKILL.md": "347766d08cbd79ad2bfe0aec3ed7a90094a076e70af1184062b14764fc146230",
+    "harness-hu/SKILL.md": "c0f49c913738b48ca09837c9a30a5707d63db20f556ffdf6b0eb2ea981263608",
     "roles.json": "b884342b5bed5dea9c97357b58f94a53e433e989901fd095f8f9e051a6784bb4"
   }
 }

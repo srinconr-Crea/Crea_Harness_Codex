@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "c42bd6bade38f7e2bc2d058c8fe514b3a2662e38594a1d1005127907653fba26",
+  "installed_isolated": true,
+  "exit_code": 0,
+  "smoke": {
+    "client": "synthetic",
+    "ready_to_publish": "partial",
+    "simulated_evidence": true,
+    "publication_allowed": false,
+    "certified": false,
+    "schemas": 6,
+    "stale_candidate": "blocked",
+    "idempotent": true,
+    "agent_evals": "not_run",
+    "global_activation": false
+  }
+}

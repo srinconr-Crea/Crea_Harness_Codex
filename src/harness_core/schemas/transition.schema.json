@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "state": {
+      "enum": [
+        "draft",
+        "analyzing",
+        "planned",
+        "approved",
+        "implementing",
+        "validating",
+        "reviewing",
+        "ready_to_publish",
+        "published",
+        "failed",
+        "cancelled"
+      ],
+      "title": "State",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "state"
+  ],
+  "title": "Transition",
+  "type": "object"
+}
