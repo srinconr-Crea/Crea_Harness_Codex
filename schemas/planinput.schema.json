@@ -1,0 +1,108 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "criteria": {
+      "items": {
+        "maxLength": 4096,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "title": "Criteria",
+      "type": "array"
+    },
+    "paths": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "title": "Paths",
+      "type": "array"
+    },
+    "operations": {
+      "items": {
+        "enum": [
+          "create",
+          "modify",
+          "delete"
+        ],
+        "type": "string"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "title": "Operations",
+      "type": "array"
+    },
+    "tests": {
+      "items": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "title": "Tests",
+      "type": "array"
+    },
+    "required_capabilities": {
+      "items": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "title": "Required Capabilities",
+      "type": "array"
+    },
+    "max_delegations": {
+      "default": 2,
+      "maximum": 4,
+      "minimum": 0,
+      "title": "Max Delegations",
+      "type": "integer"
+    },
+    "allow_worktrees": {
+      "default": false,
+      "title": "Allow Worktrees",
+      "type": "boolean"
+    },
+    "sources": {
+      "patternProperties": {
+        "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$": {
+          "enum": [
+            "user",
+            "local",
+            "template"
+          ],
+          "type": "string"
+        }
+      },
+      "title": "Sources",
+      "type": "object"
+    },
+    "decisions": {
+      "items": {
+        "maxLength": 4096,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 64,
+      "title": "Decisions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "criteria",
+    "paths",
+    "operations",
+    "tests"
+  ],
+  "title": "PlanInput",
+  "type": "object"
+}

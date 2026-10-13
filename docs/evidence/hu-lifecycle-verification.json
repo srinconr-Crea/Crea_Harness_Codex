@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "change": "04-hu-lifecycle-and-development-gates",
+  "baseline_commit": "c005854",
+  "kit_version": "0.1.0",
+  "date": "2026-10-13",
+  "timezone": "America/Bogota",
+  "dependency": {
+    "change": "03-guided-client-onboarding",
+    "commit": "c005854",
+    "status": "verified-supervised",
+    "evidence": "guided-onboarding-verification.json"
+  },
+  "full_suite": {
+    "command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider",
+    "status": "passed",
+    "passed": 340,
+    "failed": 0,
+    "log": "hu-lifecycle-final-pytest.txt",
+    "duration_seconds": 698.85
+  },
+  "source_hashes": {
+    "src\\harness_core\\hu.py": "0f04a88052c252e12913a41a5fe2f757a744a8cd58d7ab323827e2e2d9375a0c",
+    "src\\harness_local\\hu.py": "00ad90b761c5cfc74674f0ac37c23b09531d86ce50218c84320e73daa6d16d32",
+    "src\\harness_local\\cli.py": "bb58104c8e3295e814f4b29f25acf5505aec0879d56a591afcb4b92e15c4b012"
+  },
+  "wheel_smoke": {
+    "status": "passed",
+    "evidence": "hu-lifecycle-wheel-smoke.json",
+    "wheel_sha256": "c42bd6bade38f7e2bc2d058c8fe514b3a2662e38594a1d1005127907653fba26",
+    "simulated_evidence": true,
+    "publication_allowed": false,
+    "certified": false
+  },
+  "openspec": {
+    "change_strict": "passed",
+    "main_specs_passed": 11,
+    "main_specs_failed": 0,
+    "sync_requirements": 4,
+    "sync_scenarios": 8,
+    "verify_change": "passed_local_scope_with_declared_manual_eval_limits",
+    "archive": "openspec/changes/archive/2026-10-13-04-hu-lifecycle-and-development-gates",
+    "archive_status": "complete"
+  },
+  "agent_evals": {
+    "E05": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null,
+      "reason": "desktop-manual-first protocol not executed"
+    },
+    "E06": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null,
+      "reason": "desktop-manual-first protocol not executed"
+    },
+    "E08": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null,
+      "reason": "desktop-manual-first protocol not executed"
+    },
+    "E19": {
+      "status": "not_run",
+      "observed_output": null,
+      "scores": null,
+      "reason": "desktop-manual-first protocol not executed"
+    }
+  },
+  "strict_desktop_certified": false,
+  "remote_status": "not_checked",
+  "global_activation": false,
+  "exit_criterion_met": true,
+  "tasks": {
+    "complete": 10,
+    "total": 10
+  },
+  "local_test_cases": {
+    "T16": {
+      "status": "passed",
+      "source": "automated local gate test",
+      "catalog_status_preserved": "not_run"
+    },
+    "T17": {
+      "status": "passed",
+      "source": "automated local gate test",
+      "catalog_status_preserved": "not_run"
+    }
+  },
+  "review": {
+    "independent_review": true,
+    "reported_important_issues": 5,
+    "addressed_issues": 5,
+    "pending_critical": 0,
+    "pending_warnings": 0,
+    "regressions_verified": true
+  },
+  "next_increment": {
+    "change": "05-databricks-validation-and-evidence",
+    "implementation_enabled": true,
+    "remote_execution_authorized": false
+  }
+}

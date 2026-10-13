@@ -1,7 +1,7 @@
 # Propuesta de Harness Local para Codex Desktop
 
 Revisión: **9 de octubre de 2026**, America/Bogota.
-Estado: **base local y fundamento de calidad implementados; incrementos 02–08 pendientes**.
+Estado actualizado al 13 de octubre: **base, calidad, preparación Desktop, onboarding y HU/gates locales implementados; incrementos 05–08 pendientes**.
 Esta revisión sustituye el itinerario inicial del 8 de octubre. Los cambios archivados y su evidencia conservan el historial.
 
 ## 1. Objetivo y estado real
@@ -12,7 +12,10 @@ El producto Local-Harness comparte procedimiento y controles. Cada cliente conse
 
 Implementado en 0.1.0: descriptor/política/binding v1, doctor, init preview/export/apply create-only, recursos OpenSpec, locks/journal y recuperación conservadora Windows. Incrementos archivados: bootstrap-codex-local-core y apply-client-onboarding. Ver [README](../README.md) y [evidencia](evidence/apply-client-onboarding.md).
 
-Pendiente: onboarding conversacional, roles configurados, herramientas por rol, flujo persistido de HU, gates de desarrollo/PR, validación remota, observabilidad, ejecutor de evals, instalador y update. Ninguno de los comandos nuevos que aparecen abajo está disponible todavía.
+01–04 añaden calidad, configuración de roles, onboarding conversacional preparado y
+[HU/gates locales](hu-lifecycle.md). Las secciones siguientes conservan la arquitectura
+objetivo; validación remota, observabilidad, eval runner, PR, instalador y update siguen
+pendientes. Configuración de roles y gates no certifica ejecución Desktop.
 
 Preparado durante esta planificación: 32 prácticas, 24 casos de prueba, 24 evals con ocho roles, fixture sintético y nueve Skills oficiales descargadas. El incremento 01 formaliza contratos/carga/empaquetado y extensiones técnicas; ver [operación de calidad](quality-foundation.md). Los casos siguen siendo definiciones: status not_run significa ausencia de ejecución de agentes o pruebas de HU. La validación de los documentos no certifica el flujo operativo.
 
@@ -132,7 +135,11 @@ Estado externo por cliente/checkout/HU/intento registra:
 
 Cambio de alcance invalida aprobación; cambio del candidato invalida pruebas/revisión correspondientes. Sync/archive que cambia el candidato debe incluirse antes de prueba final o revalidarse según impacto. Hasta dos correcciones por intento; fallos de infraestructura se reportan separadamente.
 
-SQLite se propone para coordinación de HU a partir de 04; el journal de onboarding actual mantiene su formato JSON. Interrupción exige revalidación/reconciliación; no se interpreta un timeout como operación no realizada.
+04 implementa SQLite transaccional para HU con exportaciones JSON/hash externas;
+el journal de onboarding conserva su formato JSON. El candidato incluye working
+tree e índice, y la aprobación liga actor, cliente, checkout, intento y revisión.
+Interrupción exige revalidación/reconciliación; no se interpreta un timeout como
+operación no realizada. Ready_to_publish sintético es partial y no permite publicación.
 
 Gates controlan transiciones/adaptadores del kit. Permisos de sandbox, credenciales, CI y protección de ramas determinan lo posible fuera del procedimiento. No se promete cobertura total de acciones Desktop.
 
@@ -190,7 +197,10 @@ El recolector vive en el paquete/adaptador, no duplicado en cada Skill. Hooks ce
 La secuencia detallada está en [roadmap](planning/roadmap.md). Cada incremento requiere implementación y verificación del anterior:
 01 calidad/evals → 02 roles/herramientas Desktop → 03 onboarding guiado → 04 HU/gates → 05 validación Databricks → 06 observabilidad/evals → 07 historias/PR → 08 piloto/distribución.
 
-Todos tienen proposal, design, delta specs y tasks sin marcar. OpenSpec valida estructura; no enforcea por sí mismo dependencias entre cambios. Antes de 04 se verifica manualmente la evidencia del predecesor; después se incorporan gates de negocio pertinentes.
+Todos tienen proposal, design, delta specs y tasks; 01–04 conservan cierre y evidencia,
+y los activos 05–08 mantienen tareas pendientes. OpenSpec valida estructura; no
+enforcea por sí mismo dependencias entre cambios. 04 verifica recibos de preparación
+y aporta gates locales; cada siguiente incremento debe comprobar su dependencia.
 
 Distribución reproducible es el último incremento: lock/manifiesto, launcher, plugin donde esté certificado y update/recover con comparación installed/upstream/local hashes. Preserva personalizaciones y estado. El plugin no se presupone instalador de Python o agentes.
 

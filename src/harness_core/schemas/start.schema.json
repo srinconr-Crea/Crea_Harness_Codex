@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "onboarding_plan": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Onboarding Plan",
+      "type": "string"
+    },
+    "writer_actor": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Writer Actor",
+      "type": "string"
+    },
+    "simulation": {
+      "default": false,
+      "title": "Simulation",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "onboarding_plan",
+    "writer_actor"
+  ],
+  "title": "Start",
+  "type": "object"
+}

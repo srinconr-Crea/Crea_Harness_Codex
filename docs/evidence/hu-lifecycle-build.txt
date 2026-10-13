@@ -1,0 +1,615 @@
+* Getting build dependencies for wheel...
+running egg_info
+writing src\crea_local_harness.egg-info\PKG-INFO
+writing dependency_links to src\crea_local_harness.egg-info\dependency_links.txt
+writing entry points to src\crea_local_harness.egg-info\entry_points.txt
+writing requirements to src\crea_local_harness.egg-info\requires.txt
+writing top-level names to src\crea_local_harness.egg-info\top_level.txt
+reading manifest file 'src\crea_local_harness.egg-info\SOURCES.txt'
+writing manifest file 'src\crea_local_harness.egg-info\SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+copying src\harness_local\hu.py -> build\lib\harness_local
+running egg_info
+writing src\crea_local_harness.egg-info\PKG-INFO
+writing dependency_links to src\crea_local_harness.egg-info\dependency_links.txt
+writing entry points to src\crea_local_harness.egg-info\entry_points.txt
+writing requirements to src\crea_local_harness.egg-info\requires.txt
+writing top-level names to src\crea_local_harness.egg-info\top_level.txt
+reading manifest file 'src\crea_local_harness.egg-info\SOURCES.txt'
+writing manifest file 'src\crea_local_harness.egg-info\SOURCES.txt'
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\harness_core
+copying build\lib\harness_core\configuration.py -> build\bdist.win-amd64\wheel\.\harness_core
+copying build\lib\harness_core\contracts.py -> build\bdist.win-amd64\wheel\.\harness_core
+copying build\lib\harness_core\desktop.py -> build\bdist.win-amd64\wheel\.\harness_core
+copying build\lib\harness_core\guided.py -> build\bdist.win-amd64\wheel\.\harness_core
+copying build\lib\harness_core\hu.py -> build\bdist.win-amd64\wheel\.\harness_core
+copying build\lib\harness_core\onboarding_plan.py -> build\bdist.win-amd64\wheel\.\harness_core
+copying build\lib\harness_core\quality.py -> build\bdist.win-amd64\wheel\.\harness_core
+creating build\bdist.win-amd64\wheel\harness_core\schemas
+copying build\lib\harness_core\schemas\approval.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\approvalrecord.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\assignment.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\binding.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\candidate.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\candidatesnapshot.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\certificationinput.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\clientdevelopmentconfig.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\clienttoolbinding.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\compositepreparationplan.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\descriptor.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\desktopcertificate.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\desktopintegrationplan.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\evalcase.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\evalcatalog.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\evidence.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\gateresult.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\guidedonboardingplan.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\guidedrequest.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\handoff.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\hurun.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\integrationjournal.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\journal.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\lockowner.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\onboardingplan.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\onboardingrun.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\planinput.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\planrevision.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\policy.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\practiceextension.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\practicepack.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\questionnairedraft.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\roleassignment.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\rolecatalog.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\start.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\supervisedacceptance.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\testcase.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\testcatalog.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\toolrequirement.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\transition.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\schemas\worktreeinput.schema.json -> build\bdist.win-amd64\wheel\.\harness_core\schemas
+copying build\lib\harness_core\supervised.py -> build\bdist.win-amd64\wheel\.\harness_core
+copying build\lib\harness_core\__init__.py -> build\bdist.win-amd64\wheel\.\harness_core
+creating build\bdist.win-amd64\wheel\harness_local
+copying build\lib\harness_local\application.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\cli.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\compatibility.json -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\desktop_integration.py -> build\bdist.win-amd64\wheel\.\harness_local
+creating build\bdist.win-amd64\wheel\harness_local\desktop_kit
+creating build\bdist.win-amd64\wheel\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\agents\analyst.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\agents\auditor.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\agents\developer.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\agents\impact-analyzer.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\agents\planner.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\agents\principal.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\agents\tester.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\agents\verifier.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\agents
+copying build\lib\harness_local\desktop_kit\AGENTS.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit
+creating build\bdist.win-amd64\wheel\harness_local\desktop_kit\harness-hu
+copying build\lib\harness_local\desktop_kit\harness-hu\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit\harness-hu
+copying build\lib\harness_local\desktop_kit\manifest.json -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit
+copying build\lib\harness_local\desktop_kit\roles.json -> build\bdist.win-amd64\wheel\.\harness_local\desktop_kit
+copying build\lib\harness_local\desktop_resources.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\diagnostics.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\execution_state.py -> build\bdist.win-amd64\wheel\.\harness_local
+creating build\bdist.win-amd64\wheel\harness_local\guided_kit
+copying build\lib\harness_local\guided_kit\complete-template.json -> build\bdist.win-amd64\wheel\.\harness_local\guided_kit
+copying build\lib\harness_local\guided_kit\dependency.json -> build\bdist.win-amd64\wheel\.\harness_local\guided_kit
+creating build\bdist.win-amd64\wheel\harness_local\guided_kit\harness-client-onboarding
+copying build\lib\harness_local\guided_kit\harness-client-onboarding\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\guided_kit\harness-client-onboarding
+copying build\lib\harness_local\guided_kit\manifest.json -> build\bdist.win-amd64\wheel\.\harness_local\guided_kit
+copying build\lib\harness_local\guided_kit\questionnaire.json -> build\bdist.win-amd64\wheel\.\harness_local\guided_kit
+copying build\lib\harness_local\guided_onboarding.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\guided_resources.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\hu.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\onboarding.py -> build\bdist.win-amd64\wheel\.\harness_local
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents\skills
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents\skills\openspec-apply-change
+copying build\lib\harness_local\openspec_kit\.agents\skills\openspec-apply-change\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit\.agents\skills\openspec-apply-change
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents\skills\openspec-archive-change
+copying build\lib\harness_local\openspec_kit\.agents\skills\openspec-archive-change\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit\.agents\skills\openspec-archive-change
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents\skills\openspec-explore
+copying build\lib\harness_local\openspec_kit\.agents\skills\openspec-explore\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit\.agents\skills\openspec-explore
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents\skills\openspec-propose
+copying build\lib\harness_local\openspec_kit\.agents\skills\openspec-propose\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit\.agents\skills\openspec-propose
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents\skills\openspec-sync-specs
+copying build\lib\harness_local\openspec_kit\.agents\skills\openspec-sync-specs\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit\.agents\skills\openspec-sync-specs
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents\skills\openspec-update-change
+copying build\lib\harness_local\openspec_kit\.agents\skills\openspec-update-change\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit\.agents\skills\openspec-update-change
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\.agents\skills\openspec-verify-change
+copying build\lib\harness_local\openspec_kit\.agents\skills\openspec-verify-change\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit\.agents\skills\openspec-verify-change
+copying build\lib\harness_local\openspec_kit\LICENSE -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit
+copying build\lib\harness_local\openspec_kit\manifest.json -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit
+creating build\bdist.win-amd64\wheel\harness_local\openspec_kit\openspec
+copying build\lib\harness_local\openspec_kit\openspec\config.yaml -> build\bdist.win-amd64\wheel\.\harness_local\openspec_kit\openspec
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit
+copying build\lib\harness_local\quality_kit\eval-cases.json -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\fixtures
+copying build\lib\harness_local\quality_kit\fixtures\synthetic-sales.json -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\fixtures
+copying build\lib\harness_local\quality_kit\manifest.json -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit
+copying build\lib\harness_local\quality_kit\practices.json -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit
+copying build\lib\harness_local\quality_kit\test-cases.json -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\LICENSE -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\manifest.json -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\NOTICE -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\README.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\databricks-cli-auth.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\databricks-cli-install.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\manual-data-exploration.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-core
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\assets
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references\alerts.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references\bundle-structure.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references\deploy-and-run.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references\resource-permissions.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references\sdp-pipelines.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dabs
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\assets
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references\ai-functions.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references\best-practices.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references\geospatial-collations.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references\materialized-views-pipes.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references\sql-scripting.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-dbsql
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-docs
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\assets
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references\examples.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references\notifications-monitoring.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references\task-types.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references\triggers-schedules.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-jobs
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\assets
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\CRITICAL-interfaces.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\GOTCHAS.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\patterns-context-optimization.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\patterns-datasets.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\patterns-evaluation.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\patterns-judge-alignment.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\patterns-prompt-optimization.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\patterns-scorers.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\patterns-trace-analysis.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\patterns-trace-ingestion.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references\user-journeys.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-mlflow-evaluation
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\assets
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\1-project-initialization-with-dab.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\2-rapid-iteration-with-cli.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\auto-cdc-python.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\auto-cdc-sql.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\auto-loader-python.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\auto-loader-sql.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\dlt-migration.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\expectations-python.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\expectations-sql.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\foreach-batch-sink-python.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\kafka.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\materialized-view-python.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\materialized-view-sql.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\options-avro.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\options-csv.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\options-json.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\options-orc.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\options-parquet.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\options-text.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\options-xml.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\performance.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\pipeline-configuration.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\python-basics.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\real-time-mode.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\scd-2-querying.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\sink-python.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\sql-basics.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\streaming-patterns.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\streaming-table-python.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\streaming-table-sql.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\temporary-view-python.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\temporary-view-sql.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references\view-sql.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-pipelines
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\assets
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\1-authentication.py -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\2-clusters-and-jobs.py -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\3-sql-and-warehouses.py -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\4-unity-catalog.py -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\5-serving-and-vector-search.py -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__\1-authentication.cpython-313.pyc -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__\2-clusters-and-jobs.cpython-313.pyc -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__\3-sql-and-warehouses.cpython-313.pyc -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__\4-unity-catalog.cpython-313.pyc -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__\5-serving-and-vector-search.cpython-313.pyc -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\examples\__pycache__
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\references\doc-index.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-python-sdk
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\agents
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\agents\openai.yaml -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\agents
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\assets\databricks.png -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\assets
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\assets\databricks.svg -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\assets
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\references\1-data-patterns.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\references
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\references\2-troubleshooting.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\references
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\scripts
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\scripts\generate_synthetic_data.py -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\scripts
+creating build\bdist.win-amd64\wheel\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\scripts\__pycache__
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\scripts\__pycache__\generate_synthetic_data.cpython-313.pyc -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\scripts\__pycache__
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen\SKILL.md -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills\skills\databricks-synthetic-data-gen
+copying build\lib\harness_local\quality_kit\vendor\databricks-agent-skills\SOURCE.json -> build\bdist.win-amd64\wheel\.\harness_local\quality_kit\vendor\databricks-agent-skills
+copying build\lib\harness_local\quality_resources.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\resources.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\supervised.py -> build\bdist.win-amd64\wheel\.\harness_local
+creating build\bdist.win-amd64\wheel\harness_local\templates
+copying build\lib\harness_local\templates\AGENTS.md -> build\bdist.win-amd64\wheel\.\harness_local\templates
+copying build\lib\harness_local\windows_fs.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\__init__.py -> build\bdist.win-amd64\wheel\.\harness_local
+copying build\lib\harness_local\__main__.py -> build\bdist.win-amd64\wheel\.\harness_local
+running install_egg_info
+Copying src\crea_local_harness.egg-info to build\bdist.win-amd64\wheel\.\crea_local_harness-0.1.0-py3.13.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\crea_local_harness-0.1.0.dist-info\WHEEL
+creating 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Local-Harness\\dist\\.tmp-mmbumn27\\crea_local_harness-0.1.0-py3-none-any.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'harness_core/__init__.py'
+adding 'harness_core/configuration.py'
+adding 'harness_core/contracts.py'
+adding 'harness_core/desktop.py'
+adding 'harness_core/guided.py'
+adding 'harness_core/hu.py'
+adding 'harness_core/onboarding_plan.py'
+adding 'harness_core/quality.py'
+adding 'harness_core/supervised.py'
+adding 'harness_core/schemas/approval.schema.json'
+adding 'harness_core/schemas/approvalrecord.schema.json'
+adding 'harness_core/schemas/assignment.schema.json'
+adding 'harness_core/schemas/binding.schema.json'
+adding 'harness_core/schemas/candidate.schema.json'
+adding 'harness_core/schemas/candidatesnapshot.schema.json'
+adding 'harness_core/schemas/certificationinput.schema.json'
+adding 'harness_core/schemas/clientdevelopmentconfig.schema.json'
+adding 'harness_core/schemas/clienttoolbinding.schema.json'
+adding 'harness_core/schemas/compositepreparationplan.schema.json'
+adding 'harness_core/schemas/descriptor.schema.json'
+adding 'harness_core/schemas/desktopcertificate.schema.json'
+adding 'harness_core/schemas/desktopintegrationplan.schema.json'
+adding 'harness_core/schemas/evalcase.schema.json'
+adding 'harness_core/schemas/evalcatalog.schema.json'
+adding 'harness_core/schemas/evidence.schema.json'
+adding 'harness_core/schemas/gateresult.schema.json'
+adding 'harness_core/schemas/guidedonboardingplan.schema.json'
+adding 'harness_core/schemas/guidedrequest.schema.json'
+adding 'harness_core/schemas/handoff.schema.json'
+adding 'harness_core/schemas/hurun.schema.json'
+adding 'harness_core/schemas/integrationjournal.schema.json'
+adding 'harness_core/schemas/journal.schema.json'
+adding 'harness_core/schemas/lockowner.schema.json'
+adding 'harness_core/schemas/onboardingplan.schema.json'
+adding 'harness_core/schemas/onboardingrun.schema.json'
+adding 'harness_core/schemas/planinput.schema.json'
+adding 'harness_core/schemas/planrevision.schema.json'
+adding 'harness_core/schemas/policy.schema.json'
+adding 'harness_core/schemas/practiceextension.schema.json'
+adding 'harness_core/schemas/practicepack.schema.json'
+adding 'harness_core/schemas/questionnairedraft.schema.json'
+adding 'harness_core/schemas/roleassignment.schema.json'
+adding 'harness_core/schemas/rolecatalog.schema.json'
+adding 'harness_core/schemas/start.schema.json'
+adding 'harness_core/schemas/supervisedacceptance.schema.json'
+adding 'harness_core/schemas/testcase.schema.json'
+adding 'harness_core/schemas/testcatalog.schema.json'
+adding 'harness_core/schemas/toolrequirement.schema.json'
+adding 'harness_core/schemas/transition.schema.json'
+adding 'harness_core/schemas/worktreeinput.schema.json'
+adding 'harness_local/__init__.py'
+adding 'harness_local/__main__.py'
+adding 'harness_local/application.py'
+adding 'harness_local/cli.py'
+adding 'harness_local/compatibility.json'
+adding 'harness_local/desktop_integration.py'
+adding 'harness_local/desktop_resources.py'
+adding 'harness_local/diagnostics.py'
+adding 'harness_local/execution_state.py'
+adding 'harness_local/guided_onboarding.py'
+adding 'harness_local/guided_resources.py'
+adding 'harness_local/hu.py'
+adding 'harness_local/onboarding.py'
+adding 'harness_local/quality_resources.py'
+adding 'harness_local/resources.py'
+adding 'harness_local/supervised.py'
+adding 'harness_local/windows_fs.py'
+adding 'harness_local/desktop_kit/AGENTS.md'
+adding 'harness_local/desktop_kit/manifest.json'
+adding 'harness_local/desktop_kit/roles.json'
+adding 'harness_local/desktop_kit/agents/analyst.md'
+adding 'harness_local/desktop_kit/agents/auditor.md'
+adding 'harness_local/desktop_kit/agents/developer.md'
+adding 'harness_local/desktop_kit/agents/impact-analyzer.md'
+adding 'harness_local/desktop_kit/agents/planner.md'
+adding 'harness_local/desktop_kit/agents/principal.md'
+adding 'harness_local/desktop_kit/agents/tester.md'
+adding 'harness_local/desktop_kit/agents/verifier.md'
+adding 'harness_local/desktop_kit/harness-hu/SKILL.md'
+adding 'harness_local/guided_kit/complete-template.json'
+adding 'harness_local/guided_kit/dependency.json'
+adding 'harness_local/guided_kit/manifest.json'
+adding 'harness_local/guided_kit/questionnaire.json'
+adding 'harness_local/guided_kit/harness-client-onboarding/SKILL.md'
+adding 'harness_local/openspec_kit/LICENSE'
+adding 'harness_local/openspec_kit/manifest.json'
+adding 'harness_local/openspec_kit/.agents/skills/openspec-apply-change/SKILL.md'
+adding 'harness_local/openspec_kit/.agents/skills/openspec-archive-change/SKILL.md'
+adding 'harness_local/openspec_kit/.agents/skills/openspec-explore/SKILL.md'
+adding 'harness_local/openspec_kit/.agents/skills/openspec-propose/SKILL.md'
+adding 'harness_local/openspec_kit/.agents/skills/openspec-sync-specs/SKILL.md'
+adding 'harness_local/openspec_kit/.agents/skills/openspec-update-change/SKILL.md'
+adding 'harness_local/openspec_kit/.agents/skills/openspec-verify-change/SKILL.md'
+adding 'harness_local/openspec_kit/openspec/config.yaml'
+adding 'harness_local/quality_kit/eval-cases.json'
+adding 'harness_local/quality_kit/manifest.json'
+adding 'harness_local/quality_kit/practices.json'
+adding 'harness_local/quality_kit/test-cases.json'
+adding 'harness_local/quality_kit/fixtures/synthetic-sales.json'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/LICENSE'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/NOTICE'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/README.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/SOURCE.json'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/manifest.json'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-core/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-core/databricks-cli-auth.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-core/databricks-cli-install.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-core/manual-data-exploration.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-core/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-core/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-core/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/references/alerts.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/references/bundle-structure.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/references/deploy-and-run.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/references/resource-permissions.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dabs/references/sdp-pipelines.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/references/ai-functions.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/references/best-practices.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/references/geospatial-collations.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/references/materialized-views-pipes.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-dbsql/references/sql-scripting.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-docs/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-docs/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-docs/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-docs/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-jobs/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-jobs/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-jobs/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-jobs/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-jobs/references/examples.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-jobs/references/notifications-monitoring.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-jobs/references/task-types.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-jobs/references/triggers-schedules.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/CRITICAL-interfaces.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/GOTCHAS.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-context-optimization.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-datasets.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-evaluation.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-judge-alignment.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-prompt-optimization.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-scorers.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-trace-analysis.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/patterns-trace-ingestion.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-mlflow-evaluation/references/user-journeys.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/1-project-initialization-with-dab.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/2-rapid-iteration-with-cli.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/auto-cdc-python.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/auto-cdc-sql.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/auto-loader-python.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/auto-loader-sql.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/dlt-migration.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/expectations-python.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/expectations-sql.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/foreach-batch-sink-python.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/kafka.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/materialized-view-python.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/materialized-view-sql.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-avro.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-csv.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-json.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-orc.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-parquet.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-text.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/options-xml.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/performance.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/pipeline-configuration.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/python-basics.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/real-time-mode.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/scd-2-querying.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/sink-python.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/sql-basics.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/streaming-patterns.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/streaming-table-python.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/streaming-table-sql.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/temporary-view-python.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/temporary-view-sql.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-pipelines/references/view-sql.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/1-authentication.py'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/2-clusters-and-jobs.py'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/3-sql-and-warehouses.py'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/4-unity-catalog.py'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/5-serving-and-vector-search.py'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/__pycache__/1-authentication.cpython-313.pyc'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/__pycache__/2-clusters-and-jobs.cpython-313.pyc'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/__pycache__/3-sql-and-warehouses.cpython-313.pyc'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/__pycache__/4-unity-catalog.cpython-313.pyc'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/examples/__pycache__/5-serving-and-vector-search.cpython-313.pyc'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-python-sdk/references/doc-index.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/SKILL.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/agents/openai.yaml'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/assets/databricks.png'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/assets/databricks.svg'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/references/1-data-patterns.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/references/2-troubleshooting.md'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/scripts/generate_synthetic_data.py'
+adding 'harness_local/quality_kit/vendor/databricks-agent-skills/skills/databricks-synthetic-data-gen/scripts/__pycache__/generate_synthetic_data.cpython-313.pyc'
+adding 'harness_local/templates/AGENTS.md'
+adding 'crea_local_harness-0.1.0.dist-info/METADATA'
+adding 'crea_local_harness-0.1.0.dist-info/WHEEL'
+adding 'crea_local_harness-0.1.0.dist-info/entry_points.txt'
+adding 'crea_local_harness-0.1.0.dist-info/top_level.txt'
+adding 'crea_local_harness-0.1.0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+WARNING Package 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-python-sdk.examples.__pycache__' is absent from the `packages` configuration.
+!!
+
+        ********************************************************************************
+        ############################
+        # Package would be ignored #
+        ############################
+        Python recognizes 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-python-sdk.examples.__pycache__' as an importable package[^1],
+        but it is absent from setuptools' `packages` configuration.
+
+        This leads to an ambiguous overall configuration. If you want to distribute this
+        package, please make sure that 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-python-sdk.examples.__pycache__' is explicitly added
+        to the `packages` configuration field.
+
+        Alternatively, you can also rely on setuptools' discovery methods
+        (for example by using `find_namespace_packages(...)`/`find_namespace:`
+        instead of `find_packages(...)`/`find:`).
+
+        You can read more about "package discovery" on setuptools documentation page:
+
+        - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+        If you don't want 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-python-sdk.examples.__pycache__' to be distributed and are
+        already explicitly excluding 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-python-sdk.examples.__pycache__' via
+        `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+        you can try to use `exclude_package_data`, or `include-package-data=False` in
+        combination with a more fine grained `package-data` configuration.
+
+        You can read more about "package data files" on setuptools documentation page:
+
+        - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+        [^1]: For Python, any directory (with suitable naming) can be imported,
+              even if it does not contain any `.py` files.
+              On the other hand, currently there is no concept of package data
+              directory, all directories are treated like packages.
+        ********************************************************************************
+
+!!
+WARNING Package 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-synthetic-data-gen.scripts.__pycache__' is absent from the `packages` configuration.
+!!
+
+        ********************************************************************************
+        ############################
+        # Package would be ignored #
+        ############################
+        Python recognizes 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-synthetic-data-gen.scripts.__pycache__' as an importable package[^1],
+        but it is absent from setuptools' `packages` configuration.
+
+        This leads to an ambiguous overall configuration. If you want to distribute this
+        package, please make sure that 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-synthetic-data-gen.scripts.__pycache__' is explicitly added
+        to the `packages` configuration field.
+
+        Alternatively, you can also rely on setuptools' discovery methods
+        (for example by using `find_namespace_packages(...)`/`find_namespace:`
+        instead of `find_packages(...)`/`find:`).
+
+        You can read more about "package discovery" on setuptools documentation page:
+
+        - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+        If you don't want 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-synthetic-data-gen.scripts.__pycache__' to be distributed and are
+        already explicitly excluding 'harness_local.quality_kit.vendor.databricks-agent-skills.skills.databricks-synthetic-data-gen.scripts.__pycache__' via
+        `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+        you can try to use `exclude_package_data`, or `include-package-data=False` in
+        combination with a more fine grained `package-data` configuration.
+
+        You can read more about "package data files" on setuptools documentation page:
+
+        - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+        [^1]: For Python, any directory (with suitable naming) can be imported,
+              even if it does not contain any `.py` files.
+              On the other hand, currently there is no concept of package data
+              directory, all directories are treated like packages.
+        ********************************************************************************
+
+!!
+Successfully built crea_local_harness-0.1.0-py3-none-any.whl

@@ -1,0 +1,151 @@
+{
+  "$defs": {
+    "CandidateEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "create",
+            "modify",
+            "delete"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "base_oid": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Base Oid"
+        },
+        "content_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Content Sha256"
+        },
+        "index_oid": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Index Oid"
+        },
+        "index_mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Index Mode"
+        },
+        "staged_operation": {
+          "anyOf": [
+            {
+              "enum": [
+                "create",
+                "modify",
+                "delete"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Staged Operation"
+        }
+      },
+      "required": [
+        "schema_version",
+        "path",
+        "operation",
+        "base_oid",
+        "content_sha256",
+        "index_oid",
+        "index_mode",
+        "staged_operation"
+      ],
+      "title": "CandidateEntry",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "base": {
+      "title": "Base",
+      "type": "string"
+    },
+    "baseline_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Baseline Sha256",
+      "type": "string"
+    },
+    "context_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Context Sha256",
+      "type": "string"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    },
+    "entries": {
+      "items": {
+        "$ref": "#/$defs/CandidateEntry"
+      },
+      "maxItems": 256,
+      "title": "Entries",
+      "type": "array"
+    },
+    "candidate_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Candidate Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "base",
+    "baseline_sha256",
+    "context_sha256",
+    "plan_sha256",
+    "entries",
+    "candidate_sha256"
+  ],
+  "title": "Candidate",
+  "type": "object"
+}

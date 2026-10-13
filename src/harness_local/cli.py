@@ -21,6 +21,14 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    hu=commands.add_parser('hu')
+    hu.add_argument('action',choices=('start','plan','approve','candidate','status','transition','evidence',
+        'assign','correct','block','resume','handoff','worktree','attempt'))
+    for field in ('path','policy','binding','story'):
+        hu.add_argument('--'+field,required=True)
+    hu.add_argument('--operation')
+    hu.add_argument('--input')
+    hu.add_argument('--json',action='store_true')
     onboard=commands.add_parser('onboard')
     for field in ('config','plan','plan-out','evidence'):
         onboard.add_argument('--'+field)
@@ -83,11 +91,22 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+    command=next((c for c in ('hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command=='onboard':
+        if args.command=='hu':
+            from .hu import HuService
+            from harness_core.configuration import load_document
+            if args.action=='status':
+                if args.input or args.operation: raise ConfigError('invalid_arguments')
+                payload=None
+            else:
+                if not args.input or not args.operation: raise ConfigError('invalid_arguments')
+                payload=load_document(args.input)
+            result=HuService(args.path,args.policy,args.binding).run(args.action,args.story,args.operation,payload)
+            code=1 if result['status']=='blocked' else 0
+        elif args.command=='onboard':
             from . import guided_onboarding as guided
             from harness_core.guided import QuestionnaireDraft,CertificationInput,sanitize
             from harness_core.configuration import load_document
@@ -203,6 +222,8 @@ def main(argv=None):
                    'candidate_scope_denied','candidate_too_large'}
         conflicts.update({'guided_prepare_required','guided_role_mismatch','guided_dependency_pending','guided_resource_drift',
                           'guided_recover_integration_first','guided_new_preview_required'})
+        conflicts.update({'hu_not_found','hu_identity_mismatch','hu_preparation_required','hu_state_conflict',
+            'hu_state_version','hu_operation_conflict','hu_story_exists','hu_clean_base_required','hu_candidate_too_large'})
         code=1 if error_code in conflicts or isinstance(error,OSError) else 2
         if code==1:
             result['status']='blocked'
@@ -223,11 +244,17 @@ def main(argv=None):
                 if field in result: print(f'  {field}: {result[field]}')
             for question in result.get('questions',[]):
                 print(f"  Decisión requerida: {question['field']} ({question['reason']})")
+        if result['command']=='hu' and 'run' in result:
+            print(f"  HU: {result['run']['story_id']} ({result['run']['state']})")
+            print(f"  Publicación permitida: {result['publication_allowed']}")
         if 'identities' in result:
             print('  Identidades: '+json.dumps(result['identities'],ensure_ascii=True,sort_keys=True))
         for name,value in result.get('input_hashes',{}).items():
             print(f'  SHA256 entrada {name}: {value}')
         for check in result['checks']:
+            if 'gate' in check:
+                print(f"  {check['gate']}: {check['status']} ({check['reason'] or 'checked'})")
+                continue
             print(f"  {check['id']}: {check['status']} ({check.get('code','observation')}) — {check.get('message','Comprobación Desktop declarada.')}")
             for field in ('observed_version','observed_branch','remediation','document','fields'):
                 if check.get(field):

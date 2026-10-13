@@ -20,7 +20,10 @@ context: |
   un conflicto conserva certified=false y bloquea fases que requieran esa capacidad.
   03 entrega onboarding guiado preparado, verificado y archivado el 13 de octubre,
   con evidencia en docs/evidence/guided-onboarding-verification.md.
-  04 habilitado para implementar gates sobre preparación local; 04–08 siguen propuestos.
+  04 entrega HU/gates locales implementados y verificados el 13 de octubre,
+  con 340 pruebas, smoke instalado y evidencia en docs/evidence/hu-lifecycle-verification.md.
+  05 habilitado para implementar validadores propios; 05–08 siguen propuestos.
+  E05/E06/E08/E19 permanecen not_run; ready_to_publish sintético no autoriza publicación.
   E01/E02/E24 manuales permanecen not_run, sin certificación Desktop o remota nueva.
   docs/planning/quality contiene catálogos/fixtures de diseño not_run.
   resources/vendor contiene Skills oficiales fijadas por commit/hash,
@@ -36,7 +39,7 @@ context: |
   clona, autentica, modifica el target ni registra bindings persistentes.
   init apply solo crea recursos ausentes autorizados; integración de AGENTS
   personalizado/TOML requiere contratos separados en nuevos incrementos.
-  Installer/plugin, ejecución remota, gates completos de HU y PR, SQLite,
+  Installer/plugin, ejecución remota, gates de PR,
   hooks y agentes operativos pertenecen a incrementos posteriores.
   Las instrucciones y Skills orientan al agente; no son fronteras de seguridad.
   No prometer control exacto de tokens, contexto interno o costos de Codex.
