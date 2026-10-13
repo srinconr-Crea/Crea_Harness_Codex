@@ -21,6 +21,14 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    evaluation=commands.add_parser('eval')
+    evaluation.add_argument('action',choices=('validate','run','report'))
+    evaluation.add_argument('--input',required=True)
+    evaluation.add_argument('--json',action='store_true')
+    usage=commands.add_parser('usage')
+    usage.add_argument('action',choices=('report',))
+    usage.add_argument('--input',required=True)
+    usage.add_argument('--json',action='store_true')
     validation=commands.add_parser('validate')
     validation.add_argument('action',choices=('plan','static','worker','remote','bundle','gate','attach'))
     validation.add_argument('--input',required=True)
@@ -95,11 +103,19 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+    command=next((c for c in ('eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command=='validate':
+        if args.command in ('eval','usage'):
+            from .observability_service import load_input, usage_report
+            value=load_input(args.input)
+            if args.command=='eval':
+                from .evaluation_service import dispatch
+                result,code=dispatch(args.action,value)
+            else:
+                result,code=usage_report(value),0
+        elif args.command=='validate':
             from .validation_service import dispatch
             from harness_core.configuration import load_document
             result,code=dispatch(args.action,load_document(args.input))

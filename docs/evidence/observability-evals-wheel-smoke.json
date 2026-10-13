@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "120f6d7b08fa0f84a9ee34ac532cf89f3832242e387e22be945d8d5c0769eec0",
+  "installed_isolated": true,
+  "exit_code": 0,
+  "smoke": {
+    "contracts": 7,
+    "required_runs": 126,
+    "actual_model_runs": 0,
+    "pending_gate": "blocked",
+    "usage": "unavailable",
+    "global_activation": false,
+    "certified": false
+  }
+}

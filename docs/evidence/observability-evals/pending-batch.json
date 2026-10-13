@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "milestone": 6,
+  "purpose": "promotion",
+  "profiles": [
+    {
+      "schema_version": 1,
+      "profile_id": "baseline",
+      "model": "luna",
+      "effort": "medium",
+      "surface": "desktop",
+      "dataset_sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477",
+      "kit_sha256": "a09cea35d3ea5cea60a0de4a08a8ec511b1c9879ccdda09a7fb461ebc77b99ab",
+      "config_sha256": "b6ed36d010186174fea2991682d55d9b62d78b820e16e778d54beb23fbc1cf09",
+      "runtime": "desktop_pending_effective_version",
+      "tools": {
+        "harness": "0.1.0"
+      },
+      "roles_sha256": "b884342b5bed5dea9c97357b58f94a53e433e989901fd095f8f9e051a6784bb4",
+      "practices_sha256": "a3cc1a42fd53d36d57cbe960ce15807fad7827fe4598c10408d52109dbadce11",
+      "configuration_evidence_ref": null
+    },
+    {
+      "schema_version": 1,
+      "profile_id": "candidate",
+      "model": "luna",
+      "effort": "medium",
+      "surface": "desktop",
+      "dataset_sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477",
+      "kit_sha256": "a09cea35d3ea5cea60a0de4a08a8ec511b1c9879ccdda09a7fb461ebc77b99ab",
+      "config_sha256": "99c5539f38ee400d126ab6f1f23a01549cb776d24d205c58a07c70be50d841a2",
+      "runtime": "desktop_pending_effective_version",
+      "tools": {
+        "harness": "0.1.0"
+      },
+      "roles_sha256": "b884342b5bed5dea9c97357b58f94a53e433e989901fd095f8f9e051a6784bb4",
+      "practices_sha256": "a3cc1a42fd53d36d57cbe960ce15807fad7827fe4598c10408d52109dbadce11",
+      "configuration_evidence_ref": null
+    }
+  ],
+  "runs": [],
+  "budget_runs": 126,
+  "execution_mode": "manual"
+}

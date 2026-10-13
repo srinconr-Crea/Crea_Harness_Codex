@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "not_run",
+  "actual_model_runs": 0,
+  "selected_cases": [
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "E06",
+    "E07",
+    "E08",
+    "E09",
+    "E10",
+    "E11",
+    "E12",
+    "E13",
+    "E14",
+    "E15",
+    "E16",
+    "E17",
+    "E18",
+    "E19",
+    "E20",
+    "E24"
+  ],
+  "future_cases": [
+    "E21",
+    "E22",
+    "E23"
+  ],
+  "profiles": [
+    "baseline",
+    "candidate"
+  ],
+  "repetitions": 3,
+  "required_runs": 126,
+  "requested_model": "luna",
+  "requested_effort": "medium",
+  "effective_model_verified": false,
+  "configuration_evidence_ref": null,
+  "dataset_sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477",
+  "kit_sha256": "a09cea35d3ea5cea60a0de4a08a8ec511b1c9879ccdda09a7fb461ebc77b99ab",
+  "holdout_reserved_for_promotion": true,
+  "next_increment_enabled": false
+}

@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "change": "06-observability-and-agent-evals",
+  "verified_on": "2026-10-13",
+  "timezone": "America/Bogota",
+  "baseline": "75c1bfc",
+  "kit_version": "0.1.0",
+  "implementation_status": "partial",
+  "completed_tasks": [
+    "1.1",
+    "1.2",
+    "2.1",
+    "2.2",
+    "2.3",
+    "2.5",
+    "2.6",
+    "3.1",
+    "3.2"
+  ],
+  "pending_tasks": [
+    "2.4",
+    "3.3"
+  ],
+  "pytest": {
+    "passed": 439,
+    "duration_seconds": 1043.72,
+    "log": "observability-evals-final-pytest.log",
+    "log_sha256": "7970027037d3dbe3db0ba724d90f5d34a3fa557e9d6768957b2b2db8200813df"
+  },
+  "wheel_smoke": {
+    "schema_version": 1,
+    "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "120f6d7b08fa0f84a9ee34ac532cf89f3832242e387e22be945d8d5c0769eec0",
+    "installed_isolated": true,
+    "exit_code": 0,
+    "smoke": {
+      "contracts": 7,
+      "required_runs": 126,
+      "actual_model_runs": 0,
+      "pending_gate": "blocked",
+      "usage": "unavailable",
+      "global_activation": false,
+      "certified": false
+    }
+  },
+  "protocol": {
+    "schema_version": 1,
+    "status": "not_run",
+    "actual_model_runs": 0,
+    "selected_cases": [
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05",
+      "E06",
+      "E07",
+      "E08",
+      "E09",
+      "E10",
+      "E11",
+      "E12",
+      "E13",
+      "E14",
+      "E15",
+      "E16",
+      "E17",
+      "E18",
+      "E19",
+      "E20",
+      "E24"
+    ],
+    "future_cases": [
+      "E21",
+      "E22",
+      "E23"
+    ],
+    "profiles": [
+      "baseline",
+      "candidate"
+    ],
+    "repetitions": 3,
+    "required_runs": 126,
+    "requested_model": "luna",
+    "requested_effort": "medium",
+    "effective_model_verified": false,
+    "configuration_evidence_ref": null,
+    "dataset_sha256": "b44ab599f4de92a8ea1f20f798677a6bf9675f7e1aeba8d6b3b91a0a4a0da477",
+    "kit_sha256": "a09cea35d3ea5cea60a0de4a08a8ec511b1c9879ccdda09a7fb461ebc77b99ab",
+    "holdout_reserved_for_promotion": true,
+    "next_increment_enabled": false
+  },
+  "specs_synced": [
+    "agent-evaluation",
+    "development-observability"
+  ],
+  "spec_sync_exact": true,
+  "requirements": 5,
+  "scenarios": 10,
+  "promotion_allowed": false,
+  "certified": false,
+  "next_increment_enabled": false,
+  "source_sha256": {
+    "src/harness_core/observability.py": "4747ccc2fde0cb6941410af8e49854ef3bf7ec947bf2af3c6d78b015a51be0c2",
+    "src/harness_core/evaluation.py": "a6bf751cb50b59d430e72023d6f83ee2cd3efb6e959ee8e75b3000dfc874b23e",
+    "src/harness_local/observability_service.py": "03a958be007b0b59b982503ea5ef716ac3672c1e6acdfd8ab9c8e236e756c7d0",
+    "src/harness_local/evaluation_service.py": "4ca6e342222d25620e1a6aeaaf25a6755c67894e5c02241e47561e67154c3f8e",
+    "src/harness_local/cli.py": "83139784d1b597681fe8b1caf8d6b83230a4b251521ae3efab77d60404aa1a21"
+  },
+  "review": {
+    "independent": true,
+    "findings": 2,
+    "fixes_verified_red_green": true,
+    "open_code_findings": 0,
+    "model_performance_verified": false
+  },
+  "exit_criterion_satisfied": false,
+  "reason": "manual_evaluations_not_run"
+}

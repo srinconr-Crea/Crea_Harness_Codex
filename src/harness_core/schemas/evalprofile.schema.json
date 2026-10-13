@@ -1,0 +1,115 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "profile_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Profile Id",
+      "type": "string"
+    },
+    "model": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Model",
+      "type": "string"
+    },
+    "effort": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "title": "Effort",
+      "type": "string"
+    },
+    "surface": {
+      "enum": [
+        "desktop",
+        "cli",
+        "harness-local"
+      ],
+      "title": "Surface",
+      "type": "string"
+    },
+    "dataset_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Dataset Sha256",
+      "type": "string"
+    },
+    "kit_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Kit Sha256",
+      "type": "string"
+    },
+    "config_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Config Sha256",
+      "type": "string"
+    },
+    "runtime": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Runtime",
+      "type": "string"
+    },
+    "tools": {
+      "maxProperties": 64,
+      "minProperties": 1,
+      "patternProperties": {
+        "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "title": "Tools",
+      "type": "object"
+    },
+    "roles_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Roles Sha256",
+      "type": "string"
+    },
+    "practices_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Practices Sha256",
+      "type": "string"
+    },
+    "configuration_evidence_ref": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Configuration Evidence Ref"
+    }
+  },
+  "required": [
+    "schema_version",
+    "profile_id",
+    "model",
+    "effort",
+    "surface",
+    "dataset_sha256",
+    "kit_sha256",
+    "config_sha256",
+    "runtime",
+    "tools",
+    "roles_sha256",
+    "practices_sha256"
+  ],
+  "title": "EvalProfile",
+  "type": "object"
+}

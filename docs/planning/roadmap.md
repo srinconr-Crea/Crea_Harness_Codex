@@ -1,6 +1,6 @@
 # Secuencia de implementación del harness
 
-Actualizado: 13 de octubre de 2026. Estado: 01 verificado; 02 verificado para preparación supervisada, con conflicto de sandbox conservado; 03 archivado para onboarding preparado; 04 y 05 implementados/verificados y cerrados; 06–08 propuestos. 05 conserva smoke remoto blocked sin sandbox seleccionado.
+Actualizado: 13 de octubre de 2026. Estado: 01 verificado; 02 verificado para preparación supervisada, con conflicto de sandbox conservado; 03 archivado para onboarding preparado; 04 y 05 implementados/verificados y cerrados; 06 con infraestructura implementada y evals manuales pendientes; 07–08 propuestos. 05 conserva smoke remoto blocked sin sandbox seleccionado.
 Objetivo: usuario nuevo completa onboarding y HU en Desktop con roles, herramientas, validaciones y PR autorizado.
 Baseline implementada: bootstrap-codex-local-core y apply-client-onboarding.
 
@@ -17,7 +17,7 @@ Baseline implementada: bootstrap-codex-local-core y apply-client-onboarding.
 
 Implementar en orden 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08. La dependencia es sobre comportamiento implementado y evidencia, no sobre documentos existentes. OpenSpec status no enforcea esta cadena: revisar dependencia en tarea 1.1. El cambio 01 queda verificado y archivado. 02 está implementado/verificado para preparación supervisada y habilita 03 para onboarding preparado, conservando conflictos. No exige certificado estricto completo ni habilita fases que requieran capacidades fallidas.
 
-Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capability. Las specs de 01–05 están sincronizadas; sync no certifica ejecución Desktop/Databricks. 03 entrega preparación por etapas, 04 gates locales de HU y 05 validación/evidencia con bloqueos remotos conservados; 06–08 siguen propuestos. La distribución para equipo nuevo y update llega en 08. GitHub es proveedor remoto inicial, configurable; Jira/Linear son extensiones posteriores.
+Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capability. Las specs de 01–06 están sincronizadas; sync no certifica ejecución Desktop/Databricks. 03 entrega preparación por etapas, 04 gates locales de HU y 05 validación/evidencia con bloqueos remotos conservados; 06 entrega infraestructura con evals pendientes y 07–08 siguen propuestos. La distribución para equipo nuevo y update llega en 08. GitHub es proveedor remoto inicial, configurable; Jira/Linear son extensiones posteriores.
 
 ## Recursos ya preparados
 
@@ -28,11 +28,18 @@ Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capabil
 - [Snapshot oficial](../../resources/vendor/README.md): nueve Skills, dependencias documentales y hashes.
 - [Arquitectura actualizada](../propuesta-harness-local-codex.md).
 
-Antes de 06 se pueden ejecutar protocolos manuales para certificar roles; el runner/scorers llega en 06. Gate 06 usa capacidades ya implementadas; 07 añade casos de proveedores y 08 exige todos. El catálogo no contiene resultados passed inventados.
+El runner/scorers de 06 valida recibos manuales; la matriz de promoción aún está pendiente. Gate 06 usa capacidades ya implementadas; 07 añade casos de proveedores y 08 exige todos. El catálogo no contiene resultados passed inventados.
 
 ## Próxima acción
 
-Implementar 06-observability-and-agent-evals sobre capacidades locales verificadas.
+Completar las evaluaciones manuales de 06-observability-and-agent-evals.
+La infraestructura local de observabilidad, importación manual y gates está
+implementada; specs de agent-evaluation/development-observability sincronizadas.
+El protocolo conserva 126 ejecuciones not_run para dos perfiles Luna/medium,
+cero capturas reales y promoción blocked. Tareas 2.4/3.3 pendientes: 07 no habilitado.
+Ver [evidencia de 06](../evidence/observability-evals-verification.md) y
+[protocolo manual](../observability-and-evals.md). Los tests del runner no
+sustituyen evaluaciones de modelos.
 05 entrega selección por impacto, workers con runtime explícito, adaptadores
 autorizados, journal de reconciliación y evidencia ligada a fuente/candidato.
 [Evidencia de 05](../evidence/candidate-validation-verification.md): 398 pruebas

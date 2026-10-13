@@ -1,0 +1,68 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "run_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "check_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Check Id",
+      "type": "string"
+    },
+    "critical": {
+      "title": "Critical",
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "not_run"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "reason": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Reason",
+      "type": "string"
+    },
+    "evidence_ref": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Evidence Ref"
+    },
+    "scorer": {
+      "const": "artifact-review-v1",
+      "default": "artifact-review-v1",
+      "title": "Scorer",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "check_id",
+    "critical",
+    "status",
+    "reason",
+    "evidence_ref"
+  ],
+  "title": "EvalScore",
+  "type": "object"
+}
