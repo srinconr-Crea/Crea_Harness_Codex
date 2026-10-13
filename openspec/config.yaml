@@ -31,6 +31,8 @@ context: |
   ver docs/evidence/observability-evals-verification.md. Sus specs están sincronizadas.
   El usuario eligió Luna/medium en ambos perfiles; 126 ejecuciones manuales siguen
   not_run, cero capturas reales, promoción blocked. 2.4/3.3 pendientes; 07 no habilitado.
+  06 archivado el 13 de octubre con esas dos tareas pendientes por autorización
+  expresa del usuario. El archivo no satisface el criterio de salida ni habilita 07.
   07–08 siguen propuestos. No inferir certificación a partir de pytest o de la matriz.
   E05/E06/E08/E19 permanecen not_run; ready_to_publish sintético no autoriza publicación.
   E01/E02/E24 manuales permanecen not_run, sin certificación Desktop o remota nueva.

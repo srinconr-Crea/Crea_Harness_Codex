@@ -21,6 +21,8 @@
     "2.4",
     "3.3"
   ],
+  "change_status": "archived_with_pending_tasks",
+  "archive_path": "openspec/changes/archive/2026-10-13-06-observability-and-agent-evals",
   "pytest": {
     "passed": 439,
     "duration_seconds": 1043.72,

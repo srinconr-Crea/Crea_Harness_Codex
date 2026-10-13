@@ -27,7 +27,10 @@ promotion_allowed=false, certified=false y next_increment_enabled=false.
 9/11 tareas de implementación/pruebas completadas. **2.4 y 3.3 permanecen
 pendientes**: falta ejecutar/anotar la matriz y satisfacer el criterio de salida.
 Verificar contratos o ejecutar pytest no cumple esa condición. 07 no queda habilitado.
-El cambio permanece activo salvo autorización expresa para archivo con pendientes.
+El usuario autorizó explícitamente el archivo con ambas tareas pendientes.
+Archivado el 2026-10-13 en openspec/changes/archive/
+2026-10-13-06-observability-and-agent-evals, con .openspec.yaml conservado.
+El archivo no declara el criterio de salida satisfecho ni habilita 07.
 
 ## Fuentes Desktop y cobertura
 

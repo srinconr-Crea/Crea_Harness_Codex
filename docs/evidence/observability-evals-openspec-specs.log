@@ -1,9 +1,9 @@
 - Validating...
 ✓ spec/agent-evaluation
+  ℹ [INFO] requirements[4]: Requirement text is very long (>500 characters). Consider breaking it down.
 ✓ spec/candidate-validation
 ✓ spec/client-configuration
 ✓ spec/desktop-integration
-  ℹ [INFO] requirements[4]: Requirement text is very long (>500 characters). Consider breaking it down.
 ✓ spec/development-observability
 ✓ spec/development-practice-pack
 ✓ spec/evaluation-catalog

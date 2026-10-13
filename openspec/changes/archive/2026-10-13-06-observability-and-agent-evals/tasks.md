@@ -23,8 +23,11 @@
 ## Estado de ejecución 2026-10-13
 
 Infraestructura local y protocolo implementados; ver
-[verificación](../../../docs/evidence/observability-evals-verification.md).
+[verificación](../../../../docs/evidence/observability-evals-verification.md).
 El usuario seleccionó Luna/medium para ambos perfiles y confirmó que aún no hay
 ejecuciones manuales. 2.4 y 3.3 permanecen pendientes: la matriz preparada tiene
 126 slots not_run, cero capturas reales y gate blocked. Las pruebas del runner
 no sustituyen esas evaluaciones ni habilitan 07.
+
+Archivo autorizado explícitamente por el usuario el 2026-10-13 con ambas tareas
+pendientes. Conservar los checkboxes abiertos y los resultados not_run/blocked.

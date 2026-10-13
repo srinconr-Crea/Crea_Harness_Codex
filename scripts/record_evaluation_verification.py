@@ -18,12 +18,19 @@ pending = json.loads((evidence / 'observability-evals/pending-report.json').read
 assert wheel['exit_code'] == 0 and wheel['installed_isolated']
 assert protocol['actual_model_runs'] == 0 and pending['status'] == 'blocked'
 assert not pending['promotion_allowed'] and not protocol['next_increment_enabled']
-tasks = (root / 'openspec/changes/06-observability-and-agent-evals/tasks.md').read_text(encoding='utf-8-sig')
+change_root = root / 'openspec/changes/06-observability-and-agent-evals'
+archived = not change_root.is_dir()
+if archived:
+    candidates = list((root / 'openspec/changes/archive').glob('*-06-observability-and-agent-evals'))
+    if len(candidates) != 1:
+        raise SystemExit('Exactly one archived change is required for this evidence record.')
+    change_root = candidates[0]
+tasks = (change_root / 'tasks.md').read_text(encoding='utf-8-sig')
 done = re.findall(r'^- \[x\] (\d\.\d)', tasks, re.M)
 remaining = re.findall(r'^- \[ \] (\d\.\d)', tasks, re.M)
 assert len(done) == 9 and remaining == ['2.4', '3.3']
 for name in ('agent-evaluation', 'development-observability'):
-    delta = (root / f'openspec/changes/06-observability-and-agent-evals/specs/{name}/spec.md').read_text(encoding='utf-8-sig')
+    delta = (change_root / f'specs/{name}/spec.md').read_text(encoding='utf-8-sig')
     main = (root / f'openspec/specs/{name}/spec.md').read_text(encoding='utf-8-sig')
     expected = delta.replace('# Spec Delta', f'# {name} Specification').replace('## ADDED Requirements', '## Requirements')
     assert main.strip() == expected.strip(), 'Spec sync mismatch: ' + name
@@ -33,6 +40,8 @@ source_paths = ['src/harness_core/observability.py', 'src/harness_core/evaluatio
 result = dict(schema_version=1, change='06-observability-and-agent-evals',
     verified_on='2026-10-13', timezone='America/Bogota', baseline='75c1bfc', kit_version='0.1.0',
     implementation_status='partial', completed_tasks=done, pending_tasks=remaining,
+    change_status='archived_with_pending_tasks' if archived else 'active',
+    archive_path=change_root.relative_to(root).as_posix() if archived else None,
     pytest=dict(passed=int(match[1]), duration_seconds=float(match[2]),
                 log=log.name, log_sha256=hashlib.sha256(log.read_bytes()).hexdigest()),
     wheel_smoke=wheel, protocol=protocol,
