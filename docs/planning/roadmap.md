@@ -13,11 +13,11 @@ Baseline implementada: bootstrap-codex-local-core y apply-client-onboarding.
 | 05 | [Pruebas Databricks y evidencia del candidato](../../openspec/changes/archive/2026-10-13-05-databricks-validation-and-evidence/proposal.md) | 04 | Evidencia determinista y remota genuina donde se exige, ligada al candidato; sin credenciales o runtime disponibles se registra bloqueo. |
 | 06 | [Observabilidad y ejecución de evals de agentes](../../openspec/changes/archive/2026-10-13-06-observability-and-agent-evals/proposal.md) | 05 | Evals ejecutados con trazabilidad y gate reproducible; tokens/costos desconocidos se mantienen null con motivo. Archivo autorizado con 2.4/3.3 pendientes; criterio aún no satisfecho. |
 | 07 | [Integraciones de historias y publicación de PR](../../openspec/changes/archive/2026-10-13-07-story-and-pr-integrations/proposal.md) | Infraestructura verificada de 06; excepción para desarrollo local | HU de fuente trazable a PR draft autorizado con evidencia; repetir o reanudar no duplica publicación. Archivo autorizado con 2.3/2.5/3.3 pendientes; publicación y cierre completo requieren gates/evals. |
-| 08 | [Piloto completo y distribución reproducible](../../openspec/changes/08-pilot-and-reproducible-distribution/proposal.md) | 07 | Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones. |
+| 08 | [Piloto completo y distribución reproducible](../../openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/proposal.md) | 07 | Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones. |
 
 Implementar en orden 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08. La dependencia es sobre comportamiento implementado y evidencia, no sobre documentos existentes. OpenSpec status no enforcea esta cadena: revisar dependencia en tarea 1.1. El cambio 01 queda verificado y archivado. 02 está implementado/verificado para preparación supervisada y habilita 03 para onboarding preparado, conservando conflictos. No exige certificado estricto completo ni habilita fases que requieran capacidades fallidas.
 
-Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capability. Las specs de 01–07 están sincronizadas; sync no certifica ejecución Desktop/Databricks. 03 entrega preparación por etapas, 04 gates locales de HU y 05 validación/evidencia con bloqueos remotos conservados; 06 entrega infraestructura con evals pendientes, 07 entrega implementación local y está archivado con pendientes; 08 sigue propuesto y bloqueado. La distribución para equipo nuevo y update llega en 08. GitHub es proveedor remoto inicial, configurable; Jira/Linear son extensiones posteriores.
+Cada carpeta contiene proposal.md, design.md, tasks.md y delta specs por capability. Las specs de 01–08 están sincronizadas; sync no certifica ejecución Desktop/Databricks. 03 entrega preparación por etapas, 04 gates locales de HU y 05 validación/evidencia con bloqueos remotos conservados; 06 entrega infraestructura con evals pendientes, 07 entrega implementación local y está archivado con pendientes; 08 entrega distribución candidata y update/recover locales y está archivado con aceptación pendiente. GitHub es proveedor remoto inicial, configurable; Jira/Linear son extensiones posteriores.
 
 Excepción aprobada el 2026-10-13: la infraestructura de 06 (439 pruebas, smoke
 instalado, commits ec84193/54faea5) habilita implementar 07 localmente. La
@@ -40,8 +40,10 @@ El runner/scorers de 06 valida recibos manuales; la matriz de promoción aún es
 08 tiene desarrollo local anticipado autorizado el 13 de octubre e implementación
 local verificada el 14 de octubre: candidato, bootstrap/launcher, update/recover y
 gate de release, con 52 pruebas propias y smoke instalado. Ocho de trece tareas
-completas; 3.1–3.4 y 4.3 permanecen abiertas. El usuario eligió conservar el cambio
-activo hasta aceptación real. Las specs se sincronizan sin certificar release.
+completas; 3.1–3.4 y 4.3 permanecen pendientes en el archivo. El 14 de octubre,
+el usuario autorizó archivar 08 con esos pendientes para realizar la prueba real
+y gestionar defectos o mejoras mediante nuevos cambios. Las specs están
+sincronizadas sin certificar release.
 Ver [evidencia de 08](../evidence/distribution-verification.md). Los bloqueos
 históricos descritos abajo continúan como dependencias de aceptación y release;
 la autorización posterior permite únicamente código y comprobación local de 08.

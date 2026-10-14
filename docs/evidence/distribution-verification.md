@@ -7,8 +7,11 @@ Autorización de desarrollo anticipado: 13 de octubre de 2026.
 ## Resultado local y aceptación
 
 Ocho de trece tareas cumplen su alcance local: 1.1, 1.2, 2.1–2.4 y 4.1–4.2.
-El cambio **permanece activo**, por decisión explícita del usuario. Las tareas
-3.1–3.4 y 4.3 están abiertas. Sync, commit y push conservan
+El cambio **está archivado con pendientes**, por autorización explícita del
+usuario del 14 de octubre de 2026 para realizar la prueba real y gestionar
+defectos o mejoras mediante cambios posteriores. Esta decisión sustituye su
+preferencia anterior de mantenerlo activo. Las tareas 3.1–3.4 y 4.3 siguen sin
+completar en el archivo. Sync, archivo, commit y push conservan
 `certified=false`, `release_allowed=false`, `publication_allowed=false` y
 `next_increment_enabled=false`; no constituyen un release.
 
@@ -67,7 +70,8 @@ capturas reales ni evidencia de aceptación de agentes.
 Cinco incidencias críticas de completitud: completar 3.1 (aceptación de 06/07),
 3.2 (alpha/beta reales), 3.3 (piloto por harness), 3.4 (aceptación e instalación
 en otro equipo) y 4.3 (criterio de salida y certificación final).
-La evidencia local no permite archivar como incremento aceptado.
+La evidencia local no permite declarar el incremento aceptado. El archivo
+administrativo autorizado conserva estas cinco incidencias y los gates bloqueados.
 
 No verificado: comportamiento real de roles/modelos/herramientas, sandbox
 compatible, recorrido real de publicación/reconciliación y ejecución del piloto

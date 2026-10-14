@@ -30,6 +30,12 @@ TRACE={
 def main():
     manifest=candidate_manifest()
     change=ROOT/'openspec/changes/08-pilot-and-reproducible-distribution'
+    archived=False
+    if not change.exists():
+        matches=list((ROOT/'openspec/changes/archive').glob('*-08-pilot-and-reproducible-distribution'))
+        assert len(matches)==1, 'Expected one archived distribution change'
+        change=matches[0]
+        archived=True
     tests='\n'.join(p.read_text(encoding='utf-8') for p in (ROOT/'tests').glob('test_distribution*.py'))
     protocols=json.loads((OUT/'distribution/protocols.json').read_bytes())
     ids={p['protocol'] for p in protocols['protocols']}
@@ -56,12 +62,14 @@ def main():
     full_match=re.search(r'(\d+) passed',full_content)
     assert full_match and ' failed' not in full_content
     (OUT/'distribution-full-pytest.log').write_bytes(full_log.read_bytes())
-    value=dict(schema_version=1,change=change.name,date='2026-10-14',timezone='America/Bogota',
+    value=dict(schema_version=1,change='08-pilot-and-reproducible-distribution',date='2026-10-14',timezone='America/Bogota',
         base_commit=manifest.base_commit,base_implementation_07='af9d645',kit_version=manifest.version,
         local_development_authorized_on='2026-10-13',candidate_sha256=manifest.manifest_sha256,
         completed_tasks=['1.1','1.2','2.1','2.2','2.3','2.4','4.1','4.2'],
-        pending_tasks=['3.1','3.2','3.3','3.4','4.3'],change_status='active',
-        archive_decision='user_requested_keep_active_until_real_acceptance',implementation_status='complete',
+        pending_tasks=['3.1','3.2','3.3','3.4','4.3'],
+        change_status='archived_with_pending_tasks' if archived else 'active',
+        archive_decision='user_authorized_archive_with_pending_tasks' if archived else 'user_requested_keep_active_until_real_acceptance',
+        implementation_status='complete',
         acceptance_status='pending',certified=False,release_allowed=False,publication_allowed=False,
         next_increment_enabled=False,required_predecessor_runs=144,actual_model_runs=0,
         pytest=dict(local_passed=int(match[1]),log='distribution-local-pytest.log',log_sha256=sha(log.read_bytes()),
@@ -70,6 +78,9 @@ def main():
         wheel_smoke=smoke,assigned_quality_case=dict(id='T22',test='test_T22_personalized_agent_toml_preserves_external_state',
             execution_scope='isolated_local',catalog_status_preserved='not_run'),
         scenarios=scenarios)
+    if archived:
+        value.update(archive_path=change.relative_to(ROOT).as_posix(),archived_on='2026-10-14',
+            archive_with_pending_authorized=True,archive_is_acceptance=False)
     (OUT/'distribution-verification.json').write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     for task in value['completed_tasks']:
         p=change/'tasks.md'

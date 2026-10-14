@@ -909,7 +909,7 @@
       "scenario": "Clean Windows machine",
       "input_condition": "faltan herramientas y usuario usa launcher",
       "expected_behavior": "guía preparación con pasos revisables y pendientes explícitos",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -922,7 +922,7 @@
       "scenario": "Unsupported plugin capability",
       "input_condition": "plugin no distribuye agente/Python requerido",
       "expected_behavior": "usa mecanismo separado revisado o informa unsupported",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -935,7 +935,7 @@
       "scenario": "Unmodified managed file",
       "input_condition": "existe actualización y hash local coincide instalado",
       "expected_behavior": "presenta/aplica reemplazo revisado con backup",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -948,7 +948,7 @@
       "scenario": "Locally modified file",
       "input_condition": "cambia archivo gestionado respecto del instalado",
       "expected_behavior": "marca conflicto y conserva contenido hasta resolución",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -961,7 +961,7 @@
       "scenario": "Accepted release",
       "input_condition": "pasan pruebas y evals requeridos en segundo entorno",
       "expected_behavior": "distribuye manifiesto de resultados reales y limitaciones",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -974,7 +974,7 @@
       "scenario": "Modified post-update file",
       "input_condition": "archivo cambió después de actualizar",
       "expected_behavior": "recuperación reporta conflicto sin sobrescribir",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -987,7 +987,7 @@
       "scenario": "Preview snapshot",
       "input_condition": "se solicita preview sin exportación",
       "expected_behavior": "conserva snapshots y no ejecuta escritura o autenticación",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -1000,7 +1000,7 @@
       "scenario": "Existing export destination",
       "input_condition": "el destino de exportación existe o está enlazado",
       "expected_behavior": "rechaza sin sobrescribir o redirigir archivos",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/harness-distribution/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -1013,7 +1013,7 @@
       "scenario": "Two clients",
       "input_condition": "alpha y beta completan flujo con políticas distintas",
       "expected_behavior": "evidencia demuestra ausencia de estado/aprobaciones cruzados",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/pilot-certification/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/pilot-certification/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -1026,7 +1026,7 @@
       "scenario": "Missing remote test",
       "input_condition": "prueba requerida del piloto queda blocked",
       "expected_behavior": "no declara aceptación end-to-end",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/pilot-certification/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/pilot-certification/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -1039,7 +1039,7 @@
       "scenario": "Synthetic client pilot",
       "input_condition": "cliente autoriza HU pequeña y recursos aislados",
       "expected_behavior": "conserva restricciones y publica solo resultado autorizado",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/pilot-certification/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/pilot-certification/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
@@ -1052,7 +1052,7 @@
       "scenario": "Real data requested by fixture",
       "input_condition": "un caso referencia catálogo productivo",
       "expected_behavior": "bloquea operación y no convierte la referencia en permiso",
-      "spec_ref": "openspec/changes/08-pilot-and-reproducible-distribution/specs/pilot-certification/spec.md",
+      "spec_ref": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution/specs/pilot-certification/spec.md",
       "execution_status": "not_run",
       "evidence": null,
       "verification_mode": "behavior-test-or-observed-desktop-protocol"
