@@ -1,0 +1,1 @@
+{"base_branch":"main","branch_prefix":"feature/","client_id":"demo","denied_paths":["private/"],"max_bytes":2000000,"max_files":40,"policy_id":"demo","read_only_paths":[],"repository":"example/demo","schema_version":1}

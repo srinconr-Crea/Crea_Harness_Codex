@@ -1,0 +1,188 @@
+{
+  "$defs": {
+    "InstalledTool": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "name": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "license": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "License",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "name",
+        "version",
+        "path",
+        "sha256",
+        "license"
+      ],
+      "title": "InstalledTool",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "installation_record",
+      "default": "installation_record",
+      "title": "Kind",
+      "type": "string"
+    },
+    "version": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    },
+    "product_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Product Sha256",
+      "type": "string"
+    },
+    "installation_root": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Installation Root",
+      "type": "string"
+    },
+    "runtime_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Runtime Path",
+      "type": "string"
+    },
+    "skill_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Skill Path",
+      "type": "string"
+    },
+    "skill_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Skill Sha256"
+    },
+    "skill_files": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "propertyNames": {
+        "maxLength": 4096,
+        "minLength": 1
+      },
+      "title": "Skill Files",
+      "type": "object"
+    },
+    "kit_path": {
+      "anyOf": [
+        {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Kit Path"
+    },
+    "tools": {
+      "items": {
+        "$ref": "#/$defs/InstalledTool"
+      },
+      "maxItems": 32,
+      "title": "Tools",
+      "type": "array"
+    },
+    "owned_files": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "propertyNames": {
+        "maxLength": 4096,
+        "minLength": 1
+      },
+      "title": "Owned Files",
+      "type": "object"
+    },
+    "resource_installed": {
+      "title": "Resource Installed",
+      "type": "boolean"
+    },
+    "skill_discovered": {
+      "title": "Skill Discovered",
+      "type": "boolean"
+    },
+    "certified": {
+      "const": false,
+      "default": false,
+      "title": "Certified",
+      "type": "boolean"
+    },
+    "release_allowed": {
+      "const": false,
+      "default": false,
+      "title": "Release Allowed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "version",
+    "product_sha256",
+    "installation_root",
+    "runtime_path",
+    "skill_path",
+    "tools",
+    "owned_files",
+    "resource_installed",
+    "skill_discovered"
+  ],
+  "title": "InstallationRecord",
+  "type": "object"
+}

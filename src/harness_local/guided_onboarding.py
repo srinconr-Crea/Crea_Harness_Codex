@@ -455,7 +455,7 @@ def integrate_stage(plan, run):
         checkpoint('integration')
         result, code = desktop_integration.apply(plan.request.target_path, plan.request.policy_path, integration_path)
         record.status = 'failed' if code else 'completed'
-        record.error_code = 'integration_failed' if code else None
+        record.error_code = result.get('cause','integration_failed') if code else None
         persist(path, run)
         return response(plan, run, blocked=bool(code))
     except (ConfigError, OSError) as error:

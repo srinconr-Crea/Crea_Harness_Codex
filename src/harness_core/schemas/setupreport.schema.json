@@ -1,0 +1,339 @@
+{
+  "$defs": {
+    "CapabilityEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "identity": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Identity",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "observed_at": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Observed At",
+          "type": "string"
+        },
+        "valid_until": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Valid Until",
+          "type": "string"
+        },
+        "evidence_path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Evidence Path",
+          "type": "string"
+        },
+        "evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Evidence Sha256",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "local_test",
+            "local_probe",
+            "desktop",
+            "remote_read"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "identity",
+        "version",
+        "observed_at",
+        "valid_until",
+        "evidence_path",
+        "evidence_sha256",
+        "source"
+      ],
+      "title": "CapabilityEvidence",
+      "type": "object"
+    },
+    "CapabilityResult": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "enum": [
+            "local",
+            "git",
+            "openspec",
+            "databricks",
+            "desktop"
+          ],
+          "title": "Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "available",
+            "blocked",
+            "not_checked",
+            "unsupported"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "invalid_input",
+                "identity_mismatch",
+                "access_denied",
+                "tool_unavailable",
+                "download_integrity_failed",
+                "skill_discovery_pending",
+                "auth_pending",
+                "permission_conflict",
+                "plan_stale",
+                "owned_resource_conflict",
+                "recovery_required",
+                "remote_not_checked"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "next_action": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Action"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/CapabilityEvidence"
+          },
+          "maxItems": 64,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "status",
+        "evidence"
+      ],
+      "title": "CapabilityResult",
+      "type": "object"
+    },
+    "SetupStage": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "name": {
+          "enum": [
+            "validate",
+            "tools",
+            "checkout",
+            "prepare",
+            "integrate",
+            "auth",
+            "check",
+            "report"
+          ],
+          "title": "Name",
+          "type": "string"
+        },
+        "dependencies": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Dependencies",
+          "type": "array"
+        },
+        "child_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Child Sha256"
+        },
+        "status": {
+          "default": "pending",
+          "enum": [
+            "pending",
+            "completed",
+            "blocked",
+            "failed",
+            "recovered"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "invalid_input",
+                "identity_mismatch",
+                "access_denied",
+                "tool_unavailable",
+                "download_integrity_failed",
+                "skill_discovery_pending",
+                "auth_pending",
+                "permission_conflict",
+                "plan_stale",
+                "owned_resource_conflict",
+                "recovery_required",
+                "remote_not_checked"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "schema_version",
+        "name",
+        "dependencies"
+      ],
+      "title": "SetupStage",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "setup_report",
+      "default": "setup_report",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "checkout_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Checkout Id",
+      "type": "string"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    },
+    "prepared": {
+      "title": "Prepared",
+      "type": "boolean"
+    },
+    "stages": {
+      "items": {
+        "$ref": "#/$defs/SetupStage"
+      },
+      "maxItems": 8,
+      "title": "Stages",
+      "type": "array"
+    },
+    "capabilities": {
+      "items": {
+        "$ref": "#/$defs/CapabilityResult"
+      },
+      "maxItems": 5,
+      "title": "Capabilities",
+      "type": "array"
+    },
+    "hu_admissible": {
+      "items": {
+        "enum": [
+          "local_prepared",
+          "local_clean",
+          "remote_validation"
+        ],
+        "type": "string"
+      },
+      "title": "Hu Admissible",
+      "type": "array"
+    },
+    "certified": {
+      "const": false,
+      "default": false,
+      "title": "Certified",
+      "type": "boolean"
+    },
+    "release_allowed": {
+      "const": false,
+      "default": false,
+      "title": "Release Allowed",
+      "type": "boolean"
+    },
+    "publication_allowed": {
+      "const": false,
+      "default": false,
+      "title": "Publication Allowed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "checkout_id",
+    "plan_sha256",
+    "prepared",
+    "stages",
+    "capabilities"
+  ],
+  "title": "SetupReport",
+  "type": "object"
+}

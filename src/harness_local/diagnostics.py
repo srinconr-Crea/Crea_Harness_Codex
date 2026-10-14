@@ -101,7 +101,8 @@ def launcher(name):
 
 def probe(name, executable=_AUTO, args=None, timeout=10):
     if executable is _AUTO:
-        executable,default,reason=launcher(name)
+        from .tool_runtime import override
+        executable,default,reason=override(name) or launcher(name)
         if reason:
             return Check(name,'not_checked',reason,'La sonda requiere un launcher nativo verificado.')
         args=default
@@ -125,7 +126,8 @@ def probe(name, executable=_AUTO, args=None, timeout=10):
 
 
 def git_read(target, *args, overrides=()):
-    executable=shutil.which('git')
+    from .tool_runtime import executable as selected_executable
+    executable=selected_executable('git')
     if not executable:
         raise ConfigError('tool_missing')
     env=dict(os.environ,GIT_OPTIONAL_LOCKS='0',GIT_TERMINAL_PROMPT='0',GIT_CONFIG_NOSYSTEM='1',GIT_CONFIG_GLOBAL=os.devnull)

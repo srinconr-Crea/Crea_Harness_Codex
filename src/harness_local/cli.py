@@ -22,6 +22,10 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    setup=commands.add_parser('setup')
+    setup.add_argument('action',choices=('interview','preview','apply','status','recover'))
+    for field in ('input','plan','plan-out','authorize'): setup.add_argument('--'+field)
+    setup.add_argument('--json',action='store_true')
     bootstrap=commands.add_parser('bootstrap')
     bootstrap.add_argument('--json',action='store_true')
     release=commands.add_parser('release')
@@ -128,7 +132,7 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('bootstrap','release','update','story','pr','eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+    command=next((c for c in ('setup','bootstrap','release','update','story','pr','eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
@@ -145,6 +149,25 @@ def main(argv=None):
             else:
                 if not args.input: raise ConfigError('invalid_arguments')
                 result,code=release_gate(load_json(args.input,PilotReport),evidence_root=args.evidence_root)
+        elif args.command=='setup':
+            from . import environment_setup as environment
+            from harness_core.configuration import load_document
+            if args.action in ('interview','preview'):
+                if not args.input or args.plan or args.authorize or (args.action=='interview' and args.plan_out):
+                    raise ConfigError('invalid_input')
+                value=load_document(args.input)
+                if args.action=='interview':
+                    result=environment.interview(value); code=2 if result['questions'] else 0
+                else: result,code=environment.preview(value,plan_out=args.plan_out)
+            else:
+                if not args.plan or args.input or args.plan_out: raise ConfigError('invalid_input')
+                if args.action=='status':
+                    if args.authorize: raise ConfigError('invalid_input')
+                    result,code=environment.status(args.plan)
+                else:
+                    if not args.authorize: raise ConfigError('invalid_input')
+                    operation=environment.apply if args.action=='apply' else environment.recover
+                    result,code=operation(args.plan,args.authorize)
         elif args.command=='update':
             from .distribution import preview as update_preview, apply as update_apply, recover as update_recover
             from harness_core.distribution import UpdateRequest
@@ -356,6 +379,12 @@ def main(argv=None):
         code=1 if error_code in conflicts or isinstance(error,(OSError,sqlite3.Error)) else 2
         if code==1:
             result['status']='blocked'
+        if command=='setup':
+            reason=error_code
+            code= {'invalid_input':2,'identity_mismatch':2,'access_denied':3,'tool_unavailable':3,
+                'skill_discovery_pending':3,'auth_pending':3,'permission_conflict':3,
+                'plan_stale':4,'owned_resource_conflict':4,'download_integrity_failed':5,'recovery_required':6}.get(reason,2)
+            result.update(status='blocked',reason=reason,certified=False,release_allowed=False,publication_allowed=False)
     if json_mode:
         print(json.dumps(result,ensure_ascii=True,sort_keys=True))
     else:

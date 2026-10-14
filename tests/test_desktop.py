@@ -40,13 +40,19 @@ def test_catalog_and_templates_have_bounded_roles_and_passive_practices():
     assert '.agents/skills/harness-hu/SKILL.md' in content
     assert 'practices.json' in content['.agents/skills/harness-hu/SKILL.md']
     config = tomllib.loads(content['.codex/config.toml'])
-    assert len(config['agents']) == 8
+    assert config['agents']['max_concurrent_threads_per_session']==4
     for role in catalog.roles:
         agent = tomllib.loads(content[f'.codex/agents/harness-{role.id}.toml'])
         assert agent['model'] == 'account-model'
         assert agent['model_reasoning_effort'] == 'high'
-        assert agent['sandbox_mode'] == role.sandbox
+        assert set(agent)=={'name','description','developer_instructions','model','model_reasoning_effort'}
+        assert agent['name']=='harness-'+role.id
         assert role.inputs and role.outputs and role.tools
+
+
+def test_unsupported_agent_format_rejected_before_rendering():
+    with pytest.raises(ConfigError,match='unsupported_agent_format'):
+        render_integration(profiles(),agent_format='unknown')
 
 
 def test_no_silent_model_fallback_and_no_unselected_profiles():
