@@ -48,8 +48,10 @@ context: |
   El usuario autorizó desarrollo local anticipado de 08 el 13 de octubre.
   08 entrega candidato, bootstrap/launcher y update/recover locales, verificados
   el 14 de octubre con 52 pruebas propias y smoke de wheel instalado.
-  Ocho de trece tareas completas; 3.1–3.4 y 4.3 pendientes. El usuario eligió
-  conservar el cambio activo hasta aceptación real. Specs sincronizadas;
+  Ocho de trece tareas completas; 3.1–3.4 y 4.3 pendientes. El usuario autorizó
+  archivar 08 con pendientes el 14 de octubre para realizar la prueba real y
+  gestionar defectos/mejoras mediante nuevos cambios. El archivo administrativo
+  no satisface aceptación; mantiene los gates bloqueados. Specs sincronizadas;
   certified=false y release_allowed=false. Evidencia en
   docs/evidence/distribution-verification.md. No hay nueva aceptación remota.
   No inferir certificación desde pytest/matriz ni desde archivo/push de código.

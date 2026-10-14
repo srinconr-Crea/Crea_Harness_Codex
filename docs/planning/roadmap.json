@@ -125,7 +125,7 @@
       "depends_on": [
         "07-story-and-pr-integrations"
       ],
-      "status": "local-implementation-verified-acceptance-pending",
+      "status": "archived-local-implementation-acceptance-pending",
       "implemented": false,
       "implementation_gate": "Local development authorized 2026-10-13; verified predecessor acceptance remains mandatory for release",
       "exit_criterion": "Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones.",
@@ -139,7 +139,10 @@
       "release_allowed": false,
       "completed_tasks": 8,
       "total_tasks": 13,
-      "archive_status": "active_by_user_choice"
+      "archive_status": "archived_with_pending_tasks",
+      "archive_path": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution",
+      "archived_on": "2026-10-14",
+      "archive_with_pending_authorized": true
     }
   ]
 }

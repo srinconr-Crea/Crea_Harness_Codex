@@ -25,8 +25,8 @@
     "3.4",
     "4.3"
   ],
-  "change_status": "active",
-  "archive_decision": "user_requested_keep_active_until_real_acceptance",
+  "change_status": "archived_with_pending_tasks",
+  "archive_decision": "user_authorized_archive_with_pending_tasks",
   "implementation_status": "complete",
   "acceptance_status": "pending",
   "certified": false,
@@ -258,5 +258,9 @@
       "acceptance_status": "not_run",
       "local_mechanics_do_not_certify_desktop": true
     }
-  ]
+  ],
+  "archive_path": "openspec/changes/archive/2026-10-14-08-pilot-and-reproducible-distribution",
+  "archived_on": "2026-10-14",
+  "archive_with_pending_authorized": true,
+  "archive_is_acceptance": false
 }

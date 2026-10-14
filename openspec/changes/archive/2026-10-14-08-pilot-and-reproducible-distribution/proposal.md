@@ -28,10 +28,10 @@ Ninguna. Conserva contratos y comportamiento v1; las nuevas operaciones tienen c
 
 installer/, distribución opcional plugin, wheel/lock, update, manual de nuevo desarrollador y evidencias de aceptación; no configura recursos reales NaturaPet.
 
-Recursos de aceptación: [catálogo de pruebas](../../../docs/planning/quality/test-cases.json), [catálogo de evals](../../../docs/planning/quality/eval-cases.json), [prácticas](../../../docs/planning/quality/practices.json) y [secuencia](../../../docs/planning/roadmap.md). Criterio de salida: Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones.
+Recursos de aceptación: [catálogo de pruebas](../../../../docs/planning/quality/test-cases.json), [catálogo de evals](../../../../docs/planning/quality/eval-cases.json), [prácticas](../../../../docs/planning/quality/practices.json) y [secuencia](../../../../docs/planning/roadmap.md). Criterio de salida: Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones.
 
 ## Desarrollo anticipado autorizado
 
-La base local de 07 está implementada y probada; su archivo con pendientes no certifica aceptación. Continúan pendientes las 144 evaluaciones reales de 06/07, la verificación del sandbox compatible de Local-Harness y el recorrido de publicación/reanudación con sus gates. El piloto NaturaPet HU-BRONZE-001 pasó 25 tests remotos y produjo un PR draft autorizado mediante Git/Codex; no sustituye esos protocolos ([evidencia](../../../docs/evidence/naturapet-hu-bronze-001-pilot.md)).
+La base local de 07 está implementada y probada; su archivo con pendientes no certifica aceptación. Continúan pendientes las 144 evaluaciones reales de 06/07, la verificación del sandbox compatible de Local-Harness y el recorrido de publicación/reanudación con sus gates. El piloto NaturaPet HU-BRONZE-001 pasó 25 tests remotos y produjo un PR draft autorizado mediante Git/Codex; no sustituye esos protocolos ([evidencia](../../../../docs/evidence/naturapet-hu-bronze-001-pilot.md)).
 
 Esta revisión permite completar contratos, empaquetado candidato, bootstrap/launcher, update/recover, pruebas locales y preparación de protocolos. No concede instalación global, despliegue, efectos remotos ni publicación de producto. Código terminado con aceptación pendiente conserva estado explícito sin certificar, gate de release bloqueado y tareas remotas abiertas; el criterio de salida completo se mantiene.

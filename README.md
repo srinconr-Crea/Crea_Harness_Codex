@@ -140,7 +140,8 @@ hashes; `harness update preview/apply/recover` opera solo sobre ownership revisa
 y conserva personalizaciones, backups y estado. `harness release gate` exige
 evidencia real ligada al candidato; no publica el producto.
 
-08 permanece activo con ocho de trece tareas completas y cinco de aceptación
-abiertas. Ver [guía](docs/pilot-and-distribution.md) y
+08 está archivado con ocho de trece tareas completas y cinco de aceptación
+pendientes, por autorización del usuario para realizar la prueba real y gestionar
+defectos o mejoras mediante cambios posteriores. Ver [guía](docs/pilot-and-distribution.md) y
 [verificación](docs/evidence/distribution-verification.md). El wheel candidato y
 el push de código no cierran las 144 evaluaciones de 06/07 ni certifican Desktop.
