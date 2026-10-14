@@ -1,0 +1,199 @@
+{
+  "$defs": {
+    "PilotReceipt": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "protocol": {
+          "enum": [
+            "predecessor_evals",
+            "compatible_sandbox",
+            "harness_publication",
+            "alpha_hu",
+            "beta_hu",
+            "client_isolation",
+            "synthetic_client_pilot",
+            "interrupt_resume",
+            "update_recover",
+            "second_environment",
+            "new_user_desktop"
+          ],
+          "title": "Protocol",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "not_run",
+            "blocked",
+            "passed",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "desktop_harness",
+            "local_test",
+            "simulated",
+            "manual_git"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "evidence_path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Evidence Path",
+          "type": "string"
+        },
+        "evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Evidence Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "protocol",
+        "status",
+        "source",
+        "evidence_path",
+        "evidence_sha256"
+      ],
+      "title": "PilotReceipt",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "candidate_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Candidate Sha256",
+      "type": "string"
+    },
+    "implementation_status": {
+      "enum": [
+        "not_started",
+        "partial",
+        "complete"
+      ],
+      "title": "Implementation Status",
+      "type": "string"
+    },
+    "receipts": {
+      "items": {
+        "$ref": "#/$defs/PilotReceipt"
+      },
+      "maxItems": 11,
+      "title": "Receipts",
+      "type": "array"
+    },
+    "evaluation_path": {
+      "anyOf": [
+        {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Evaluation Path"
+    },
+    "evaluation_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Evaluation Sha256"
+    },
+    "catalog_path": {
+      "anyOf": [
+        {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Catalog Path"
+    },
+    "catalog_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Catalog Sha256"
+    },
+    "certificate_path": {
+      "anyOf": [
+        {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Certificate Path"
+    },
+    "certificate_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Certificate Sha256"
+    },
+    "configuration_evidence": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "title": "Configuration Evidence",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "candidate_sha256",
+    "implementation_status",
+    "receipts"
+  ],
+  "title": "PilotReport",
+  "type": "object"
+}

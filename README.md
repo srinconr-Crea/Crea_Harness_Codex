@@ -71,8 +71,8 @@ creaciones: un descriptor ausente bajo `.harness/` protegido bloquea el plan.
 
 Los límites de la política se comprueban en comandos/adaptadores del kit. El
 [flujo de HU](docs/hu-lifecycle.md) registra estado SQLite, planes, aprobación,
-candidatos, evidencia y recuperación por cliente/checkout. No hay instalador/plugin,
-hooks operativos. El incremento 05 añade [validación de candidatos](docs/candidate-validation.md),
+candidatos, evidencia y recuperación por cliente/checkout. No hay plugin certificado ni hooks operativos. El incremento 08 añade un
+[launcher candidato y update/recover](docs/pilot-and-distribution.md). El incremento 05 añade [validación de candidatos](docs/candidate-validation.md),
 workers seleccionados y adaptadores Databricks con autorización explícita; sin
 sandbox/runtime requerido conserva blocked. Las plantillas de
 roles y su configuración local revisada están disponibles; el kit no ejecuta agentes.
@@ -97,7 +97,8 @@ guiado, roles/herramientas Desktop, flujo de HU, validación Databricks,
 observabilidad/evals, historias/PR y distribución. 01–03 entregan calidad, roles
 supervisados y onboarding preparado; 04 añade HU/gates locales, 05 validación y
 evidencia con smoke remoto blocked; 06 y 07 entregan infraestructura local,
-con evaluaciones y publicación reales pendientes; 08 permanece bloqueado.
+con evaluaciones y publicación reales pendientes; 08 entrega implementación local
+y distribución candidata, con aceptación y release bloqueados.
 Los [casos de calidad](docs/planning/quality/README.md)
 conservan definiciones not_run; su carga e integridad se verifican en 01. Las Skills oficiales descargadas se
 conservan como [snapshot de referencia](resources/vendor/README.md).
@@ -129,4 +130,17 @@ reemplazan ramas ajenas. El flujo completo se prueba con dobles declarados.
 Ver [contratos y comandos](docs/story-pr-integrations.md) y
 [evidencia de 07](docs/evidence/story-pr-verification.md). Las 144 evaluaciones
 Luna/medium y el smoke de escritura real permanecen pendientes; el archivo
-autorizado con advertencias conserva publicación y 08 bloqueados.
+autorizado con advertencias conserva publicación y aceptación de 08 bloqueadas.
+
+## Piloto y distribución candidata
+
+`harness bootstrap --json` muestra herramientas y preparación/login/confianza
+pendientes. `harness release candidate --json` describe recursos, dependencias y
+hashes; `harness update preview/apply/recover` opera solo sobre ownership revisado
+y conserva personalizaciones, backups y estado. `harness release gate` exige
+evidencia real ligada al candidato; no publica el producto.
+
+08 permanece activo con ocho de trece tareas completas y cinco de aceptación
+abiertas. Ver [guía](docs/pilot-and-distribution.md) y
+[verificación](docs/evidence/distribution-verification.md). El wheel candidato y
+el push de código no cierran las 144 evaluaciones de 06/07 ni certifican Desktop.

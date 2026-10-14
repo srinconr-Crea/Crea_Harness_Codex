@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "command": "release",
+  "status": "blocked",
+  "checks": [],
+  "implementation_status": "complete",
+  "acceptance_status": "pending",
+  "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+  "certified": false,
+  "release_allowed": false,
+  "next_increment_enabled": false,
+  "publication_allowed": false,
+  "pending": [
+    "alpha_hu",
+    "beta_hu",
+    "client_isolation",
+    "compatible_sandbox",
+    "desktop_certificate",
+    "harness_publication",
+    "interrupt_resume",
+    "new_user_desktop",
+    "predecessor_evals",
+    "required_real_evals",
+    "second_environment",
+    "synthetic_client_pilot",
+    "update_recover"
+  ]
+}

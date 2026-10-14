@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "binding_path": "C:/HarnessConfig/alpha-binding.json",
+  "release_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+  "files": {
+    "AGENTS.md": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  }
+}

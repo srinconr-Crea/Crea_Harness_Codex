@@ -1,0 +1,253 @@
+{
+  "$defs": {
+    "InstallationBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "binding_path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Binding Path",
+          "type": "string"
+        },
+        "release_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Release Sha256",
+          "type": "string"
+        },
+        "files": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Files",
+          "type": "object"
+        }
+      },
+      "required": [
+        "schema_version",
+        "binding_path",
+        "release_sha256",
+        "files"
+      ],
+      "title": "InstallationBinding",
+      "type": "object"
+    },
+    "PinnedDependency": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "license": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "License",
+          "type": "string"
+        },
+        "artifact": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Artifact",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "name",
+        "version",
+        "sha256",
+        "license",
+        "artifact"
+      ],
+      "title": "PinnedDependency",
+      "type": "object"
+    },
+    "PinnedSource": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "commit": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Commit",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "license": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "License",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "name",
+        "commit",
+        "sha256",
+        "license"
+      ],
+      "title": "PinnedSource",
+      "type": "object"
+    },
+    "ReleaseManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "release_candidate",
+          "default": "release_candidate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "base_commit": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Base Commit",
+          "type": "string"
+        },
+        "resources": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Resources",
+          "type": "object"
+        },
+        "dependencies": {
+          "items": {
+            "$ref": "#/$defs/PinnedDependency"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Dependencies",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/PinnedSource"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "certified": {
+          "const": false,
+          "default": false,
+          "title": "Certified",
+          "type": "boolean"
+        },
+        "release_allowed": {
+          "const": false,
+          "default": false,
+          "title": "Release Allowed",
+          "type": "boolean"
+        },
+        "pending_acceptance": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Pending Acceptance",
+          "type": "array"
+        },
+        "manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Manifest Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "version",
+        "base_commit",
+        "resources",
+        "dependencies",
+        "sources",
+        "pending_acceptance",
+        "manifest_sha256"
+      ],
+      "title": "ReleaseManifest",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "installation": {
+      "$ref": "#/$defs/InstallationBinding"
+    },
+    "manifest": {
+      "$ref": "#/$defs/ReleaseManifest"
+    },
+    "upstream": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Upstream",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "installation",
+    "manifest",
+    "upstream"
+  ],
+  "title": "UpdateRequest",
+  "type": "object"
+}

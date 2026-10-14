@@ -125,14 +125,21 @@
       "depends_on": [
         "07-story-and-pr-integrations"
       ],
-      "status": "proposed",
+      "status": "local-implementation-verified-acceptance-pending",
       "implemented": false,
-      "implementation_gate": "predecessor implemented and verified; planning complete does not satisfy dependency",
+      "implementation_gate": "Local development authorized 2026-10-13; verified predecessor acceptance remains mandatory for release",
       "exit_criterion": "Usuario nuevo completa onboarding y HU en Desktop, dos clientes permanecen aislados y update/recover preserva personalizaciones.",
       "capabilities": [
         "pilot-certification",
         "harness-distribution"
-      ]
+      ],
+      "local_implementation_complete": true,
+      "acceptance_status": "pending",
+      "certified": false,
+      "release_allowed": false,
+      "completed_tasks": 8,
+      "total_tasks": 13,
+      "archive_status": "active_by_user_choice"
     }
   ]
 }

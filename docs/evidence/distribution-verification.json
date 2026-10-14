@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "change": "08-pilot-and-reproducible-distribution",
+  "date": "2026-10-14",
+  "timezone": "America/Bogota",
+  "base_commit": "ce75d69d5d74cd391977a79eb1480713fa1e5625",
+  "base_implementation_07": "af9d645",
+  "kit_version": "0.1.0",
+  "local_development_authorized_on": "2026-10-13",
+  "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+  "completed_tasks": [
+    "1.1",
+    "1.2",
+    "2.1",
+    "2.2",
+    "2.3",
+    "2.4",
+    "4.1",
+    "4.2"
+  ],
+  "pending_tasks": [
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.4",
+    "4.3"
+  ],
+  "change_status": "active",
+  "archive_decision": "user_requested_keep_active_until_real_acceptance",
+  "implementation_status": "complete",
+  "acceptance_status": "pending",
+  "certified": false,
+  "release_allowed": false,
+  "publication_allowed": false,
+  "next_increment_enabled": false,
+  "required_predecessor_runs": 144,
+  "actual_model_runs": 0,
+  "pytest": {
+    "local_passed": 52,
+    "log": "distribution-local-pytest.log",
+    "log_sha256": "be6c4547069e0824818ff3da5eb128fb2c2e1c81596df9f6563bebc7e4fdf94f",
+    "full_passed": 534,
+    "full_log": "distribution-full-pytest.log",
+    "full_log_sha256": "95922a39d2ab7e5df0ba3252f9978109249da6da743f0c714e60573ded077496",
+    "full_run_precedes_additional_local_tests": true
+  },
+  "wheel_smoke": {
+    "schema_version": 1,
+    "wheel": "crea_local_harness-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "455370b119c038c96c4e124a5174bdfd6934778419ec4161f770f6acc868f756",
+    "installed_isolated": true,
+    "exit_code": 0,
+    "smoke": {
+      "contracts": 6,
+      "resources": 263,
+      "dependencies": 6,
+      "bootstrap": "partial",
+      "release_gate": "blocked",
+      "certified": false,
+      "release_allowed": false,
+      "actual_model_runs": 0,
+      "remote_writes": 0,
+      "second_environment_verified": false,
+      "legacy_resources": "preserved"
+    }
+  },
+  "assigned_quality_case": {
+    "id": "T22",
+    "test": "test_T22_personalized_agent_toml_preserves_external_state",
+    "execution_scope": "isolated_local",
+    "catalog_status_preserved": "not_run"
+  },
+  "scenarios": [
+    {
+      "capability": "harness-distribution",
+      "scenario": "Clean Windows machine",
+      "local_tests": [
+        "test_bootstrap_has_no_side_effects",
+        "test_launcher_clean_machine_preview_is_read_only"
+      ],
+      "protocols": [
+        "second_environment",
+        "new_user_desktop"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "harness-distribution",
+      "scenario": "Unsupported plugin capability",
+      "local_tests": [
+        "test_bootstrap_has_no_side_effects"
+      ],
+      "protocols": [],
+      "acceptance_status": "local_only",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "harness-distribution",
+      "scenario": "Unmodified managed file",
+      "local_tests": [
+        "test_update_and_recovery_preserve_state"
+      ],
+      "protocols": [
+        "update_recover"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "harness-distribution",
+      "scenario": "Locally modified file",
+      "local_tests": [
+        "test_personalization_conflict",
+        "test_rehashed_plan_cannot_launder_personalized_lock"
+      ],
+      "protocols": [
+        "update_recover"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "harness-distribution",
+      "scenario": "Accepted release",
+      "local_tests": [
+        "test_complete_import_gate_mechanics"
+      ],
+      "protocols": [
+        "second_environment",
+        "predecessor_evals",
+        "new_user_desktop"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "harness-distribution",
+      "scenario": "Modified post-update file",
+      "local_tests": [
+        "test_drift_blocks_without_overwrite"
+      ],
+      "protocols": [
+        "update_recover"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "harness-distribution",
+      "scenario": "Candidate with pending acceptance",
+      "local_tests": [
+        "test_release_pending_gate",
+        "test_complete_import_rejects_invalid_eval_identity"
+      ],
+      "protocols": [
+        "predecessor_evals"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "harness-distribution",
+      "scenario": "Preview snapshot",
+      "local_tests": [
+        "test_preview_no_writes_and_three_hashes"
+      ],
+      "protocols": [],
+      "acceptance_status": "local_only",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "harness-distribution",
+      "scenario": "Existing export destination",
+      "local_tests": [
+        "test_existing_export_preserved",
+        "test_export_inside_target_rejected"
+      ],
+      "protocols": [],
+      "acceptance_status": "local_only",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "pilot-certification",
+      "scenario": "Two clients",
+      "local_tests": [
+        "test_other_checkout_rejected"
+      ],
+      "protocols": [
+        "alpha_hu",
+        "beta_hu",
+        "client_isolation"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "pilot-certification",
+      "scenario": "Missing remote test",
+      "local_tests": [
+        "test_release_pending_gate",
+        "test_complete_import_rejects_bad_protocol"
+      ],
+      "protocols": [
+        "synthetic_client_pilot"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "pilot-certification",
+      "scenario": "Local development before predecessor acceptance",
+      "local_tests": [
+        "test_candidate_pinned_and_unaccepted",
+        "test_release_pending_gate"
+      ],
+      "protocols": [
+        "predecessor_evals",
+        "compatible_sandbox"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "pilot-certification",
+      "scenario": "Manual pilot does not certify harness publication",
+      "local_tests": [
+        "test_non_harness_receipts_never_certify",
+        "test_complete_import_rejects_bad_protocol"
+      ],
+      "protocols": [
+        "harness_publication"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "pilot-certification",
+      "scenario": "Synthetic client pilot",
+      "local_tests": [
+        "test_release_pending_gate"
+      ],
+      "protocols": [
+        "synthetic_client_pilot"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    },
+    {
+      "capability": "pilot-certification",
+      "scenario": "Real data requested by fixture",
+      "local_tests": [
+        "test_release_pending_gate"
+      ],
+      "protocols": [
+        "synthetic_client_pilot"
+      ],
+      "acceptance_status": "not_run",
+      "local_mechanics_do_not_certify_desktop": true
+    }
+  ]
+}
