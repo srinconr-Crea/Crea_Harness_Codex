@@ -56,13 +56,13 @@ def api():
 
 
 class Handle:
-    def __init__(self, raw, kernel):
+    def __init__(self, raw, kernel, allow_hardlinks=False):
         self.raw, self.kernel = raw, kernel
         self.info = FileInfo()
         if not kernel.GetFileInformationByHandle(raw, c.byref(self.info)) or self.info.attributes & 0x400:
             self.close()
             raise ConfigError('linked_path')
-        if self.info.links > 1:
+        if self.info.links > 1 and not allow_hardlinks:
             self.close()
             raise ConfigError('linked_path')
 
@@ -95,13 +95,19 @@ class Handle:
             raise ConfigError('flush_failed')
 
     def read(self, limit=1024 * 1024):
-        buffer = c.create_string_buffer(limit + 1)
-        count = w.DWORD()
-        if not self.kernel.ReadFile(self.raw, buffer, limit + 1, c.byref(count), None):
-            raise ConfigError('read_failed')
-        if count.value > limit:
-            raise ConfigError('document_too_large')
-        return buffer.raw[:count.value]
+        # Tool bounds can be hundreds of MB; allocate only a bounded chunk,
+        # never the maximum permitted size for each small executable/read.
+        buffer = c.create_string_buffer(min(limit + 1,65536))
+        chunks=[]; total=0
+        while total<=limit:
+            size=min(len(buffer),limit+1-total); count=w.DWORD()
+            if not self.kernel.ReadFile(self.raw,buffer,size,c.byref(count),None):
+                raise ConfigError('read_failed')
+            total+=count.value
+            if total>limit: raise ConfigError('document_too_large')
+            chunks.append(c.string_at(buffer,count.value))
+            if count.value<size: break
+        return b''.join(chunks)
 
     def delete(self):
         flag = w.BOOL(1)
@@ -146,7 +152,7 @@ class PinnedTree:
             self.__exit__()
             raise
 
-    def _open(self, parent, name, directory=False, create=False, delete=False, editable=False):
+    def _open(self, parent, name, directory=False, create=False, delete=False, editable=False, allow_hardlinks=False):
         from harness_core.onboarding_plan import destination_path
         destination_path(name)
         text = c.create_unicode_buffer(name)
@@ -166,8 +172,8 @@ class PinnedTree:
         if result < 0:
             if result & 0xffffffff == 0xc0000035:
                 raise ConfigError('destination_exists')
-            raise ConfigError('confinement_rejected')
-        handle = Handle(raw.value, self.kernel)
+            raise ConfigError('confinement_rejected',fields=[f'ntstatus_{result & 0xffffffff:08x}'])
+        handle = Handle(raw.value, self.kernel, allow_hardlinks=allow_hardlinks)
         try:
             if handle.final_path() != parent.final_path() / name:
                 raise ConfigError('destination_alias')
@@ -200,7 +206,16 @@ class PinnedTree:
             yield handle
 
     @contextmanager
-    def entry(self, relative, directory=False, create=False, delete=False, editable=False):
+    def verified_binary(self, relative):
+        # Read-only registered tools may be legitimate Git hardlinks. The handle
+        # denies concurrent writes through every alias while the caller checks
+        # its pinned hash. Client IO retains the default hardlink rejection.
+        with self.entry(relative,allow_hardlinks=True) as handle:
+            yield handle
+
+    @contextmanager
+    def entry(self, relative, directory=False, create=False, delete=False, editable=False, allow_hardlinks=False):
+        if allow_hardlinks and (directory or create or delete or editable): raise ConfigError('confinement_rejected')
         from harness_core.onboarding_plan import destination_path
         destination_path(relative)
         current = self.base
@@ -210,7 +225,7 @@ class PinnedTree:
             for name in parts[:-1]:
                 current = self._open(current, name, directory=True)
                 with_handles.append(current)
-            with self._open(current, parts[-1], directory=directory, create=create, delete=delete, editable=editable) as handle:
+            with self._open(current, parts[-1], directory=directory, create=create, delete=delete, editable=editable,allow_hardlinks=allow_hardlinks) as handle:
                 yield handle
         finally:
             for handle in reversed(with_handles):

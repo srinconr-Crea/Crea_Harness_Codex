@@ -1,5 +1,6 @@
 """Transactional local HU adapters. Never execute client code or publish remotely."""
-from contextlib import contextmanager
+from contextlib import contextmanager,nullcontext
+from functools import wraps
 from datetime import datetime, timezone
 import json
 import os
@@ -45,7 +46,8 @@ def git_names(target, *args):
     # scalar output, which is appropriate for HEAD but not for path inventories.
     import shutil
     from .diagnostics import run_bounded
-    executable=shutil.which('git')
+    from .tool_runtime import executable as selected_executable
+    executable=selected_executable('git')
     if not executable: raise ConfigError('tool_missing')
     env=dict(os.environ,GIT_OPTIONAL_LOCKS='0',GIT_TERMINAL_PROMPT='0',GIT_CONFIG_NOSYSTEM='1',GIT_CONFIG_GLOBAL=os.devnull)
     for key in ('GIT_DIR','GIT_WORK_TREE','GIT_INDEX_FILE','GIT_COMMON_DIR'): env.pop(key,None)
@@ -53,7 +55,26 @@ def git_names(target, *args):
     return text.split('\0') if text else []
 
 
-def baseline(target):
+def scope_read(access, policy, path, paths):
+    if access is None: return
+    from harness_core.setup import authorize_access
+    from harness_core.setup import within
+    if within(path,access.inputs.access_scope.deny) or denied(path,policy.denied_paths):
+        raise ConfigError('hu_access_denied')
+    if path in access.technical_reads or path in access.integration_writes:
+        return  # Exact managed paths were declared in the reviewed setup plan.
+    try: authorize_access(access.inputs.access_scope,policy,path,'read',paths)
+    except ConfigError: raise ConfigError('hu_access_denied') from None
+
+
+def scope_write(access, policy, path, paths):
+    if access is None: return
+    from harness_core.setup import authorize_access
+    try: authorize_access(access.inputs.access_scope,policy,path,'write',paths,read_required=True)
+    except ConfigError: raise ConfigError('hu_access_denied') from None
+
+
+def baseline(target, access=None, policy=None):
     status = local_status(target)
     if status.status != 'ready' or status.code != 'clean': raise ConfigError('hu_clean_base_required')
     values, total = {}, 0
@@ -61,6 +82,7 @@ def baseline(target):
         names = [p for p in git_names(target,'ls-files','-z','--cached') if p]
         if len(names)>4096: raise ConfigError('hu_candidate_too_large')
         for name in names:
+            scope_read(access,policy,name,access.inputs.access_scope.read_allow if access else [])
             with tree.file(name) as handle: raw=handle.read(2*1024*1024)
             total+=len(raw)
             if total>16*1024*1024: raise ConfigError('hu_candidate_too_large')
@@ -68,10 +90,10 @@ def baseline(target):
     return values
 
 
-def capture(target, run, policy):
+def capture(target, run, policy, access=None):
     try:
-        before = capture_once(target,run,policy)
-        after = capture_once(target,run,policy)
+        before = capture_once(target,run,policy,access)
+        after = capture_once(target,run,policy,access)
     except ConfigError as error:
         if error.code=='document_too_large': raise ConfigError('hu_candidate_too_large') from None
         raise
@@ -79,7 +101,7 @@ def capture(target, run, policy):
     return after
 
 
-def capture_once(target, run, policy):
+def capture_once(target, run, policy, access=None):
     base = git_read(target, 'rev-parse', 'HEAD')
     if base != run.base: raise ConfigError('hu_base_changed')
     tracked = {}
@@ -102,6 +124,7 @@ def capture_once(target, run, policy):
     names.update(p for p in git_names(target, 'ls-files', '-z', '--cached', '--others', '--exclude-standard') if p)
     # Include explicitly selected ignored files; directories are traversed without following links.
     for scope in run.plan.paths:
+        scope_write(access,policy,scope.rstrip('/')+('/scope-check' if scope.endswith('/') else ''),run.plan.paths)
         p = safe_path(target / scope)
         if p.is_file(): names.add(scope.rstrip('/'))
         elif p.is_dir():
@@ -114,6 +137,10 @@ def capture_once(target, run, policy):
         for path in sorted(names):
             from harness_core.onboarding_plan import destination_path
             destination_path(path)
+            # Unknown external files are rejected before contents are read.
+            scope_read(access,policy,path,access.inputs.access_scope.read_allow if access else [])
+            if path not in run.baseline_files:
+                scope_write(access,policy,path,run.plan.paths)
             p = safe_path(target / path)
             before = tracked.get(path)
             index_mode,index_oid=indexed.get(path,(None,None))
@@ -129,6 +156,7 @@ def capture_once(target, run, policy):
                 total += len(raw)
                 if total > 16 * 1024 * 1024: raise ConfigError('hu_candidate_too_large')
             elif before is None and staged_operation is None: continue
+            scope_write(access,policy,path,run.plan.paths)
             operation = 'delete' if content is None else ('modify' if before else 'create')
             if (not covers(path, run.plan.paths) or operation not in run.plan.operations or
                 (staged_operation is not None and staged_operation not in run.plan.operations) or
@@ -142,11 +170,47 @@ def capture_once(target, run, policy):
     return parse(Candidate, {**value, 'candidate_sha256':sha(canonical(value))})
 
 
+def with_hu_tools(function):
+    @wraps(function)
+    def call(self,*args,**kwargs):
+        from .tool_runtime import using_tools
+        tools=self.selected_tools()
+        with using_tools(tools) if tools else nullcontext(): return function(self,*args,**kwargs)
+    return call
+
+
 class HuService:
     def __init__(self, target, policy, binding):
-        self.target, self.config = selected(target, policy, binding)
         self.policy_path, self.binding_path = safe_path(policy), safe_path(binding)
+        self.access_path=self.binding_path.with_name(self.binding_path.name+'.setup.json')
+        from .tool_runtime import using_tools
+        tools=self.selected_tools()
+        with using_tools(tools) if tools else nullcontext(): self.target, self.config = selected(target, policy, binding)
         self.state = safe_path(self.config['binding'].state_dir)
+        self.access=self.load_access()
+
+    def selected_tools(self):
+        from harness_core.setup import SetupPlan,InstallationRecord,InstalledTool
+        if not safe_path(self.access_path).exists(): return None
+        access=load_json(self.access_path,SetupPlan)
+        raw=json.loads(access.child_payloads['tools']) if 'tools' in access.child_payloads else None
+        if raw is None: return None
+        tools={t['name']:InstalledTool.model_validate(t) for t in raw['existing']}
+        if access.inputs.installation_record:
+            record=load_json(access.inputs.installation_record,InstallationRecord,limit=8*1024*1024)
+            tools.update({t.name:t for t in record.tools})
+        return list(tools.values())
+
+    def load_access(self):
+        from harness_core.setup import SetupPlan
+        if not safe_path(self.access_path).exists(): return None
+        access=load_json(self.access_path,SetupPlan)
+        b=self.config['binding']
+        if access.inputs.binding!=b or access.inputs.policy!=self.config['policy']:
+            raise ConfigError('hu_identity_mismatch')
+        if access.inputs.access_scope.policy_sha256!=digest(self.policy_path):
+            raise ConfigError('hu_identity_mismatch')
+        return access
 
     def context_hash(self):
         hashes = input_hashes(self.target, self.policy_path, self.binding_path)
@@ -155,6 +219,11 @@ class HuService:
         hashes['tools'] = digest(self.binding_path.with_name(self.binding_path.name+'.tools.json'))
         hashes['desktop_kit'] = resource_digest()
         hashes['practices'] = sha(canonical(load_quality().practices.model_dump()))
+        if self.access is not None: hashes['access_scope']=sha(canonical(self.access.model_dump()))
+        if self.access and self.access.inputs.installation_record:
+            path=safe_path(self.access.inputs.installation_record)
+            with PinnedTree(path.parent) as tree:
+                with tree.file(path.name) as handle: hashes['installation']=sha(handle.read(8*1024*1024))
         return sha(canonical(hashes))
 
     def prepared(self, path):
@@ -240,6 +309,7 @@ class HuService:
                 artifact_sha256=sha(canonical(dict(run=run.model_dump(), history=history))))
         persist(self.state / 'hu-artifacts' / (run.story_id + '.json'), Artifact())
 
+    @with_hu_tools
     def run(self, action, story, operation=None, payload=None):
         # Reload policy and binding at every adapter boundary, including reuse of
         # a service instance; changed selection never redirects its state silently.
@@ -248,6 +318,7 @@ class HuService:
         if (b.client_id,b.checkout_id,b.state_dir,target)!=(original.client_id,original.checkout_id,original.state_dir,self.target):
             raise ConfigError('hu_identity_mismatch')
         self.config=config
+        self.access=self.load_access()
         try:
             TypeAdapter(ID).validate_python(story, strict=True)
             if action != 'status': TypeAdapter(ID).validate_python(operation, strict=True)
@@ -266,7 +337,7 @@ class HuService:
                         client_id=self.config['binding'].client_id, checkout_id=self.config['binding'].checkout_id,
                         target_identity=tree.base.identity(), onboarding_plan=data.onboarding_plan,writer_actor=data.writer_actor,
                         catalog=preparation.request.catalog,simulation=data.simulation,
-                        context_sha256=self.context_hash(), base=git_read(self.target, 'rev-parse', 'HEAD'), baseline_files=baseline(self.target))
+                        context_sha256=self.context_hash(), base=git_read(self.target, 'rev-parse', 'HEAD'), baseline_files=baseline(self.target,self.access,self.config['policy']))
             else: run = self.load(db, story)
             current_context = self.context_hash()
             drift = run.context_sha256 != current_context
@@ -324,7 +395,7 @@ class HuService:
 
     def fresh_candidate(self, run):
         if not run.candidate: return 'candidate_required'
-        try: after = capture(self.target, run, self.config['policy'])
+        try: after = capture(self.target, run, self.config['policy'],self.access)
         except ConfigError as error:
             run.candidate,run.evidence=None,[]
             run.state='implementing'
@@ -341,7 +412,7 @@ class HuService:
         if action == 'attempt':
             if run.state!='failed': return 'failed_attempt_required'
             self.prepared(run.onboarding_plan)
-            run.baseline_files=baseline(self.target)
+            run.baseline_files=baseline(self.target,self.access,self.config['policy'])
             run.base=git_read(self.target,'rev-parse','HEAD')
             run.attempt+=1
             run.corrections,run.delegations=0,0
@@ -350,6 +421,7 @@ class HuService:
             run.state='draft'
         elif action == 'plan':
             for path in data.paths:
+                scope_write(self.access,self.config['policy'],path.rstrip('/')+('/scope-check' if path.endswith('/') else ''),data.paths)
                 if denied(path.rstrip('/'), ['.git/', '.harness/', '.codex/', '.agents/'] + self.config['policy'].denied_paths + self.config['policy'].read_only_paths): return 'scope_denied'
             value = dict(**data.model_dump(), revision=run.plan.revision+1 if run.plan else 1, context_sha256=run.context_sha256)
             run.plan = parse(PlanRevision, {**value, 'plan_sha256':sha(canonical(value))})
@@ -365,7 +437,7 @@ class HuService:
             if not approval_current(run): return 'approval_required'
             if action == 'candidate':
                 if run.state not in ('approved','implementing','validating','reviewing','ready_to_publish'): return 'invalid_transition'
-                try: current = capture(self.target, run, self.config['policy'])
+                try: current = capture(self.target, run, self.config['policy'],self.access)
                 except ConfigError as error:
                     run.candidate,run.evidence=None,[]
                     run.state='implementing'

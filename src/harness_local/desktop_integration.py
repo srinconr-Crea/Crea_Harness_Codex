@@ -58,6 +58,16 @@ def merge_content(path, old, proposed):
             reject_secrets(current)
             added = tomllib.loads(proposed)
             agents = current.get('agents', {})
+            if set(added.get('agents',{}))=={'max_concurrent_threads_per_session'} and isinstance(agents,dict):
+                if 'max_concurrent_threads_per_session' in agents:
+                    if type(agents['max_concurrent_threads_per_session']) is not int or agents['max_concurrent_threads_per_session']<1:
+                        raise ConfigError('integration_conflict')
+                    return text
+                if 'agents' in current:
+                    import re
+                    marker=re.search(r'(?m)^\[agents\]\s*$',text)
+                    if not marker: raise ConfigError('integration_conflict')
+                    return text[:marker.end()]+'\nmax_concurrent_threads_per_session = 4\n'+text[marker.end():]
             if not isinstance(agents, dict) or set(agents) & set(added['agents']):
                 raise ConfigError('integration_conflict')
             if any(key.startswith('harness-') for key in agents):
@@ -211,10 +221,11 @@ def apply(target, policy_path, plan_path):
                         persist(journal_path, journal)
                     journal.state = 'applied'
                     persist(journal_path, journal)
-                except (ConfigError, OSError):
+                except (ConfigError, OSError) as error:
                     journal.state = 'failed'
                     persist(journal_path, journal)
-                    return report('integrate-apply', 'blocked', run_id=plan.run_id, code='integration_failed')
+                    cause=(error.code+('_'+error.fields[0] if error.fields else '')) if isinstance(error,ConfigError) else 'filesystem_error_'+str(getattr(error,'winerror',None) or error.errno)
+                    return report('integrate-apply', 'blocked', run_id=plan.run_id, code='integration_failed',cause=cause)
             return report('integrate-apply', run_id=plan.run_id)
 
 

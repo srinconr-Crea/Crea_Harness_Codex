@@ -52,7 +52,8 @@ def load_desktop():
         raise ConfigError('desktop_resources_invalid') from None
 
 
-def render_integration(catalog):
+def render_integration(catalog, *, agent_format='standalone-v2'):
+    if agent_format!='standalone-v2': raise ConfigError('unsupported_agent_format')
     bundle = resources()
     base = load_desktop()
     # A selected model is the only customization of the shipped responsibility.
@@ -63,7 +64,6 @@ def render_integration(catalog):
     if not active:
         raise ConfigError('invalid_role_selection')
     content = {'AGENTS.md': bundle['AGENTS.md'], '.agents/skills/harness-hu/SKILL.md': bundle['harness-hu/SKILL.md']}
-    config = []
     for role in active:
         path = '.codex/agents/harness-' + role.id + '.toml'
         # JSON quoting is also valid for these simple TOML string values.
@@ -71,10 +71,8 @@ def render_integration(catalog):
         instructions = bundle['agents/' + role.id + '.md']
         content[path] = (f'name = {q("harness-" + role.id)}\ndescription = {q(role.responsibility, ensure_ascii=False)}\n'
             f'model = {q(role.model)}\nmodel_reasoning_effort = {q(role.effort)}\n'
-            f'sandbox_mode = {q(role.sandbox)}\ndeveloper_instructions = {q(instructions, ensure_ascii=False)}\n')
-        config.append(f'[agents.harness-{role.id}]\ndescription = {q(role.responsibility, ensure_ascii=False)}\n'
-                      f'config_file = {q("agents/harness-" + role.id + ".toml")}\n')
+            f'developer_instructions = {q(instructions, ensure_ascii=False)}\n')
         tomllib.loads(content[path])
-    content['.codex/config.toml'] = '\n'.join(config)
+    content['.codex/config.toml'] = '[agents]\nmax_concurrent_threads_per_session = 4\n'
     tomllib.loads(content['.codex/config.toml'])
     return content

@@ -21,6 +21,7 @@ from harness_local.observability_service import UsageInput
 from harness_core.story import MODELS as STORY_MODELS
 from harness_local.publication import PublicationRequest
 from harness_core.distribution import MODELS as DISTRIBUTION_MODELS
+from harness_core.setup import MODELS as SETUP_MODELS
 
 root = Path(__file__).resolve().parents[1] / 'schemas'
 root.mkdir(exist_ok=True)
@@ -34,7 +35,7 @@ for model in (Descriptor, Policy, Binding, OnboardingPlan, Journal, LockOwner,
               HuRun,PlanRevision,ApprovalRecord,Candidate,Assignment,GateResult,Evidence,Handoff,
               Start,PlanInput,Approval,Transition,WorktreeInput,
               ValidationPlan,ValidationRequest,ValidationEvidence,SandboxTarget,WorkerRuntime,
-              ActivityEvent,UsageObservation,EvalProfile,EvalRun,EvalScore,EvalInput,UsageInput, *STORY_MODELS,PublicationRequest, *DISTRIBUTION_MODELS):
+              ActivityEvent,UsageObservation,EvalProfile,EvalRun,EvalScore,EvalInput,UsageInput, *STORY_MODELS,PublicationRequest, *DISTRIBUTION_MODELS, *SETUP_MODELS):
     name = model.__name__.lower() + '.schema.json'
     content = json.dumps(model.model_json_schema(), indent=2) + '\n'
     (root / name).write_text(content, encoding='utf-8', newline='\n')
