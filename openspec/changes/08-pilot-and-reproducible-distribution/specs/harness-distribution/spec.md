@@ -34,6 +34,8 @@ Update SHALL comparar installed/upstream/local hashes, producir plan explícito 
 
 Release SHALL incluir certificados y evals exigidos; recover SHALL restaurar solo recursos propios intactos y preservar estado/evidencia.
 
+Un paquete candidato SHALL distinguir implementación local de aceptación real. Con evidencias requeridas de 06/07 u 08 not_run/blocked, SHALL conservar certified=false y release_allowed=false sin alterar los gates de publicación existentes.
+
 #### Scenario: Accepted release
 - **WHEN** pasan pruebas y evals requeridos en segundo entorno
 - **THEN** distribuye manifiesto de resultados reales y limitaciones
@@ -41,6 +43,10 @@ Release SHALL incluir certificados y evals exigidos; recover SHALL restaurar sol
 #### Scenario: Modified post-update file
 - **WHEN** archivo cambió después de actualizar
 - **THEN** recuperación reporta conflicto sin sobrescribir
+
+#### Scenario: Candidate with pending acceptance
+- **WHEN** el código y las pruebas locales están completos pero faltan certificados, evals reales o protocolos remotos requeridos
+- **THEN** permite preparar el paquete candidato con pendientes explícitos y bloquea su certificación y release
 
 ### Requirement: Side effect free preview
 

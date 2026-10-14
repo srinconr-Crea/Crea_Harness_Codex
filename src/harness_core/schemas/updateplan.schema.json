@@ -1,0 +1,404 @@
+{
+  "$defs": {
+    "InstallationBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "binding_path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Binding Path",
+          "type": "string"
+        },
+        "release_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Release Sha256",
+          "type": "string"
+        },
+        "files": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Files",
+          "type": "object"
+        }
+      },
+      "required": [
+        "schema_version",
+        "binding_path",
+        "release_sha256",
+        "files"
+      ],
+      "title": "InstallationBinding",
+      "type": "object"
+    },
+    "PinnedDependency": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "license": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "License",
+          "type": "string"
+        },
+        "artifact": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Artifact",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "name",
+        "version",
+        "sha256",
+        "license",
+        "artifact"
+      ],
+      "title": "PinnedDependency",
+      "type": "object"
+    },
+    "PinnedSource": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "commit": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Commit",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "license": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "License",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "name",
+        "commit",
+        "sha256",
+        "license"
+      ],
+      "title": "PinnedSource",
+      "type": "object"
+    },
+    "ReleaseManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "release_candidate",
+          "default": "release_candidate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "base_commit": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Base Commit",
+          "type": "string"
+        },
+        "resources": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Resources",
+          "type": "object"
+        },
+        "dependencies": {
+          "items": {
+            "$ref": "#/$defs/PinnedDependency"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Dependencies",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/PinnedSource"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "certified": {
+          "const": false,
+          "default": false,
+          "title": "Certified",
+          "type": "boolean"
+        },
+        "release_allowed": {
+          "const": false,
+          "default": false,
+          "title": "Release Allowed",
+          "type": "boolean"
+        },
+        "pending_acceptance": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Pending Acceptance",
+          "type": "array"
+        },
+        "manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Manifest Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "version",
+        "base_commit",
+        "resources",
+        "dependencies",
+        "sources",
+        "pending_acceptance",
+        "manifest_sha256"
+      ],
+      "title": "ReleaseManifest",
+      "type": "object"
+    },
+    "UpdateEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "content": {
+          "maxLength": 131072,
+          "title": "Content",
+          "type": "string"
+        },
+        "installed_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Installed Hash"
+        },
+        "local_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Local Hash"
+        },
+        "local_identity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Local Identity"
+        },
+        "upstream_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Upstream Hash",
+          "type": "string"
+        },
+        "backup": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Backup"
+        },
+        "conflict": {
+          "title": "Conflict",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "path",
+        "content",
+        "installed_hash",
+        "local_hash",
+        "local_identity",
+        "upstream_hash",
+        "backup",
+        "conflict"
+      ],
+      "title": "UpdateEdit",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "update_plan",
+      "default": "update_plan",
+      "title": "Kind",
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "target_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Target Path",
+      "type": "string"
+    },
+    "target_identity": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Target Identity",
+      "type": "string"
+    },
+    "policy_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Policy Path",
+      "type": "string"
+    },
+    "binding_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Binding Path",
+      "type": "string"
+    },
+    "input_hashes": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "title": "Input Hashes",
+      "type": "object"
+    },
+    "installation": {
+      "$ref": "#/$defs/InstallationBinding"
+    },
+    "manifest": {
+      "$ref": "#/$defs/ReleaseManifest"
+    },
+    "edits": {
+      "items": {
+        "$ref": "#/$defs/UpdateEdit"
+      },
+      "maxItems": 65,
+      "minItems": 1,
+      "title": "Edits",
+      "type": "array"
+    },
+    "applicable": {
+      "title": "Applicable",
+      "type": "boolean"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "target_path",
+    "target_identity",
+    "policy_path",
+    "binding_path",
+    "input_hashes",
+    "installation",
+    "manifest",
+    "edits",
+    "applicable",
+    "plan_sha256"
+  ],
+  "title": "UpdatePlan",
+  "type": "object"
+}

@@ -22,6 +22,19 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    bootstrap=commands.add_parser('bootstrap')
+    bootstrap.add_argument('--json',action='store_true')
+    release=commands.add_parser('release')
+    release.add_argument('action',choices=('candidate','gate'))
+    release.add_argument('--input')
+    release.add_argument('--evidence-root')
+    release.add_argument('--json',action='store_true')
+    update=commands.add_parser('update')
+    update.add_argument('action',choices=('preview','apply','recover'))
+    for field in ('path','policy','binding','input','plan','plan-out'):
+        update.add_argument('--'+field)
+    update.add_argument('--apply',action='store_true')
+    update.add_argument('--json',action='store_true')
     story=commands.add_parser('story')
     story.add_argument('action',choices=('read','bind'))
     for field in ('provider','source','input','path','policy','binding'):
@@ -115,11 +128,41 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('story','pr','eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+    command=next((c for c in ('bootstrap','release','update','story','pr','eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command=='story':
+        if args.command=='bootstrap':
+            from .distribution import bootstrap
+            result,code=bootstrap()
+        elif args.command=='release':
+            from .distribution import candidate_manifest, release_gate, report
+            from harness_core.distribution import PilotReport
+            from harness_core.onboarding_plan import load_json
+            if args.action=='candidate':
+                if args.input or args.evidence_root: raise ConfigError('invalid_arguments')
+                result,code=report('release', 'partial', manifest=candidate_manifest().model_dump())
+            else:
+                if not args.input: raise ConfigError('invalid_arguments')
+                result,code=release_gate(load_json(args.input,PilotReport),evidence_root=args.evidence_root)
+        elif args.command=='update':
+            from .distribution import preview as update_preview, apply as update_apply, recover as update_recover
+            from harness_core.distribution import UpdateRequest
+            from harness_core.onboarding_plan import load_json, separate
+            if not args.path or not args.policy: raise ConfigError('invalid_arguments')
+            if args.action=='preview':
+                if not args.binding or not args.input or args.plan or args.apply: raise ConfigError('invalid_arguments')
+                request=load_json(args.input,UpdateRequest)
+                if args.plan_out:
+                    separate([args.plan_out,args.input])
+                result,code=update_preview(args.path,args.policy,args.binding,request.installation,
+                    request.manifest,request.upstream,plan_out=args.plan_out)
+            else:
+                if not args.plan or args.binding or args.input or args.plan_out or (args.apply and args.action!='recover'):
+                    raise ConfigError('invalid_arguments')
+                if args.action=='apply': result,code=update_apply(args.path,args.policy,args.plan)
+                else: result,code=update_recover(args.path,args.policy,args.plan,apply_changes=args.apply)
+        elif args.command=='story':
             from harness_core.configuration import load_document
             from harness_core.story import ProviderBinding,StoryPlanBinding
             from .story_providers import select_provider
@@ -309,6 +352,7 @@ def main(argv=None):
             'provider_story_mismatch','provider_story_invalid','provider_capability_missing','publication_fixture_read_only'})
         conflicts.update({'story_plan_approval_required','story_plan_binding_mismatch','story_plan_binding_immutable',
             'story_source_conflict','story_source_version','context_changed'})
+        conflicts.update({'update_identity_mismatch','update_drift','update_conflict','update_failed'})
         code=1 if error_code in conflicts or isinstance(error,(OSError,sqlite3.Error)) else 2
         if code==1:
             result['status']='blocked'

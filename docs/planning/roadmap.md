@@ -37,6 +37,15 @@ El runner/scorers de 06 valida recibos manuales; la matriz de promoción aún es
 
 ## Próxima acción
 
+08 tiene desarrollo local anticipado autorizado el 13 de octubre e implementación
+local verificada el 14 de octubre: candidato, bootstrap/launcher, update/recover y
+gate de release, con 52 pruebas propias y smoke instalado. Ocho de trece tareas
+completas; 3.1–3.4 y 4.3 permanecen abiertas. El usuario eligió conservar el cambio
+activo hasta aceptación real. Las specs se sincronizan sin certificar release.
+Ver [evidencia de 08](../evidence/distribution-verification.md). Los bloqueos
+históricos descritos abajo continúan como dependencias de aceptación y release;
+la autorización posterior permite únicamente código y comprobación local de 08.
+
 Completar las 144 evaluaciones manuales de 06/07 y seleccionar/autorizar el
 smoke de escritura sintético real después de pasar los gates. 07 está archivado
 con 2.3/2.5/3.3 pendientes por autorización expresa; el archivo no satisface

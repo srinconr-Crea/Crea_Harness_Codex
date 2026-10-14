@@ -1,0 +1,88 @@
+{
+  "$defs": {
+    "UpdateRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "identity": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Identity",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "prepared",
+            "applied",
+            "recovered"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "path",
+        "identity",
+        "state"
+      ],
+      "title": "UpdateRecord",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Plan Sha256",
+      "type": "string"
+    },
+    "target_identity": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Target Identity",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "prepared",
+        "applied",
+        "failed",
+        "recovered"
+      ],
+      "title": "State",
+      "type": "string"
+    },
+    "records": {
+      "items": {
+        "$ref": "#/$defs/UpdateRecord"
+      },
+      "title": "Records",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "plan_sha256",
+    "target_identity",
+    "state",
+    "records"
+  ],
+  "title": "UpdateJournal",
+  "type": "object"
+}

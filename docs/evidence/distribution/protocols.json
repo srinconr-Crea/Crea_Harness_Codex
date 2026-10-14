@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+  "clients": [
+    {
+      "client_id": "alpha",
+      "repository": "demo/alpha",
+      "branch_prefix": "feature/alpha/",
+      "external_state": "operator_selects_distinct_state_alpha",
+      "policy": "operator_selects_policy_alpha",
+      "story_id": "HU-SYNTHETIC-001",
+      "status": "not_run",
+      "constraints": [
+        "synthetic_data_only",
+        "selected_isolated_resources",
+        "explicit_policy_binding",
+        "no_production_access",
+        "no_cross_client_state",
+        "no_remote_write_without_current_gates"
+      ]
+    },
+    {
+      "client_id": "beta",
+      "repository": "demo/beta",
+      "branch_prefix": "feature/beta/",
+      "external_state": "operator_selects_distinct_state_beta",
+      "policy": "operator_selects_policy_beta",
+      "story_id": "HU-SYNTHETIC-001",
+      "status": "not_run",
+      "constraints": [
+        "synthetic_data_only",
+        "selected_isolated_resources",
+        "explicit_policy_binding",
+        "no_production_access",
+        "no_cross_client_state",
+        "no_remote_write_without_current_gates"
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "protocol": "predecessor_evals",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Importar 144 capturas reales y anotaciones humanas de 06/07 (dos perfiles Luna/medium).",
+        "Ejecutar eval report milestone=7 promotion con hashes vigentes."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "compatible_sandbox",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Observar sandbox/modelos/herramientas de todos los roles seleccionados en Desktop.",
+        "desktop-check conserva conflicto o ausencia como no certificado."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "harness_publication",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Seleccionar autorización/provider GitHub sintético y gates actuales.",
+        "pr preview, publish, interrumpir y reconcile; comprobar un único draft PR y misma rama."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "alpha_hu",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Onboarding desde usuario nuevo: preview, revisión y apply.",
+        "HU start/plan/approve/candidate/validación/evidencia hasta PR autorizado."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "beta_hu",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Repetir recorrido con política y estado externo propios.",
+        "Comprobar que aprobación/candidato alpha no sirven para beta."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "client_isolation",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Comparar bindings, locks, HU/evidencias y aprobaciones alpha/beta.",
+        "Intentar usar plan/aprobación de otro checkout; exigir rechazo."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "synthetic_client_pilot",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Seleccionar copia NaturaPet y HU/recursos sintéticos aprobados por el operador.",
+        "Recorrer harness con validación por impacto y PR draft autorizado; no usar piloto manual como aceptación.",
+        "Caso negativo: catálogo productivo en fixture bloquea sin crear permiso."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "interrupt_resume",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Interrumpir HU, validación y publicación; conservar estado/evidencia.",
+        "Inyectar fallo de infraestructura y reconciliar sin duplicados ni falsos passed."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "update_recover",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Editar recurso gestionado; preview debe producir conflict sin escritura.",
+        "Revisar nuevo plan con archivo intacto, apply con backups; recover restaura ownership y conserva estado.",
+        "Editar después de apply: recover bloquea y conserva contenido."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "second_environment",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Usar otro equipo Windows limpio y usuario nuevo; registrar versiones/hashes.",
+        "Revisar launcher y lock, instalar candidato en venv nuevo; comprobar recursos y protocolos reales."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    },
+    {
+      "protocol": "new_user_desktop",
+      "status": "not_run",
+      "source": "desktop_harness",
+      "required": true,
+      "steps": [
+        "Observar login y confianza como pasos explícitos.",
+        "Usuario nuevo completa onboarding y HU completa con roles/modelos/herramientas reales."
+      ],
+      "candidate_sha256": "e66861d8c57bcaf826f9783c6261c99160ad6c5032d6b96d8c05890325f49eb3",
+      "evidence_required": [
+        "captura_real",
+        "anotacion_humana",
+        "versions_and_hashes",
+        "restricciones_y_limitaciones"
+      ],
+      "observed_result": null
+    }
+  ],
+  "constraints": [
+    "synthetic_data_only",
+    "selected_isolated_resources",
+    "explicit_policy_binding",
+    "no_production_access",
+    "no_cross_client_state",
+    "no_remote_write_without_current_gates"
+  ],
+  "synthetic_client_pilot": {
+    "status": "not_run",
+    "resources": null,
+    "authorization": null,
+    "real_resource_reference_status": "blocked",
+    "manual_pilot_is_precedent_only": true
+  },
+  "required_predecessor_runs": 144,
+  "actual_model_runs": 0,
+  "certified": false,
+  "release_allowed": false
+}

@@ -17,3 +17,9 @@ src/harness_local/validation_kit/** -text whitespace=cr-at-eol
 docs/evidence/candidate-validation-*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 src/harness_local/story_kit/** -text whitespace=cr-at-eol
 docs/evidence/story-pr*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+# Distribution pins source/schema/template bytes across Windows checkouts.
+src/**/*.py text eol=lf
+src/harness_core/schemas/*.json text eol=lf
+src/harness_local/templates/** text eol=lf
+src/harness_local/distribution_kit/** -text whitespace=cr-at-eol
+docs/evidence/distribution*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
