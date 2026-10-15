@@ -43,6 +43,17 @@ def evaluation_gate(value):
 
 def bind_story(hu, value):
     """Explicit technical approval of a story/plan link; immutable for that plan hash."""
+    from .activity_execution import run
+    context=None
+    if hu.access or (hu.state/'activity.sqlite3').exists():
+        context=dict(schema_version=1,target_path=str(hu.target),policy_path=str(hu.policy_path),
+            binding_path=str(hu.binding_path),hu_id=value.hu_id,attempt=value.attempt,
+            operation_id=sha(canonical(value.model_dump())))
+    return run(context,'story_bind',lambda:_bind_story(hu,value),expected_binding=hu.config['binding'],
+        reconciler=True,reconcile_success=('ready',),request_sha256=sha(canonical(value.model_dump())))
+
+
+def _bind_story(hu, value):
     value = parse(StoryPlanBinding, value.model_dump())
     with hu.database() as db:
         run = hu.load(db, value.hu_id)
@@ -182,9 +193,10 @@ def candidate_gate(hu, value):
 
 
 class PublicationService:
-    def __init__(self, binding, provider, state_dir, *, candidate_check, evaluation_check=evaluation_gate, attach=None):
+    def __init__(self, binding, provider, state_dir, *, candidate_check, evaluation_check=evaluation_gate, attach=None, activity_context=None):
         self.binding, self.provider, self.state = binding, provider, safe_path(state_dir)
         self.candidate_check, self.evaluation_check, self.attach = candidate_check, evaluation_check, attach
+        self.activity_context=activity_context
 
     @contextmanager
     def database(self):
@@ -214,6 +226,11 @@ class PublicationService:
         return authorization_gate(value, approval) or self.candidate_check(value) or self.evaluation_check(evaluation)
 
     def publish(self, value, approval, evaluation):
+        from .activity_execution import run
+        return run(self.activity_context,'publication',lambda:self._publish(value,approval,evaluation),
+            expected_identity=(value.client_id,value.checkout_id),reconciler=True,request_sha256=value.intent_sha256)
+
+    def _publish(self, value, approval, evaluation):
         value = parse(PublicationIntent, value.model_dump())
         if approval: approval = parse(PublicationAuthorization, approval.model_dump())
         receipt = None

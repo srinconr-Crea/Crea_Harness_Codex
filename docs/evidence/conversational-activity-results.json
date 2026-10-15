@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "change": "10-conversational-hu-and-activity-ledger",
+  "regression": {
+    "status": "passed",
+    "duration_seconds": 973.37,
+    "passed": 676,
+    "all_test_files": 48,
+    "duplicate_files": 0,
+    "parts": [
+      {
+        "exit_code": 0,
+        "passed": 130,
+        "files": [
+          "tests/test_access_scope.py",
+          "tests/test_agent_evaluation.py",
+          "tests/test_distribution_cli.py",
+          "tests/test_evaluation_cli.py",
+          "tests/test_hu_cli.py",
+          "tests/test_journal_replace.py",
+          "tests/test_onboarding_execution.py",
+          "tests/test_onboarding_resources.py",
+          "tests/test_setup_contracts.py",
+          "tests/test_story_providers.py",
+          "tests/test_validation.py",
+          "tests/test_validation_remote.py"
+        ],
+        "log": "10-regression-part-1.log",
+        "summary": "======================= 130 passed in 159.73s (0:02:39) =======================",
+        "log_sha256": "cc1db687704005b2b06124bbc66b6fbe522e4f6b3210a955707404ed9347071e"
+      },
+      {
+        "exit_code": 0,
+        "passed": 248,
+        "files": [
+          "tests/test_activity_execution.py",
+          "tests/test_configuration.py",
+          "tests/test_distribution_gate.py",
+          "tests/test_guided_cli.py",
+          "tests/test_hu_lifecycle.py",
+          "tests/test_local.py",
+          "tests/test_onboarding_faults.py",
+          "tests/test_publication.py",
+          "tests/test_setup_hu_scope.py",
+          "tests/test_story_resources.py",
+          "tests/test_validation_bundle.py",
+          "tests/test_validation_workers.py"
+        ],
+        "log": "10-regression-part-2.log",
+        "summary": "======================= 248 passed in 972.29s (0:16:12) =======================",
+        "log_sha256": "51f12ff1af7ba9f065a5e086771a7bac8c1b8b19b072e33ebeb5e55dd58496c5"
+      },
+      {
+        "exit_code": 0,
+        "passed": 155,
+        "files": [
+          "tests/test_activity_hooks.py",
+          "tests/test_desktop.py",
+          "tests/test_distribution_launcher.py",
+          "tests/test_guided_contracts.py",
+          "tests/test_hu_resources.py",
+          "tests/test_observability.py",
+          "tests/test_onboarding_guards.py",
+          "tests/test_quality.py",
+          "tests/test_story_cli.py",
+          "tests/test_supervised.py",
+          "tests/test_validation_cli.py",
+          "tests/test_windows_writes.py"
+        ],
+        "log": "10-regression-part-3.log",
+        "summary": "======================= 155 passed in 440.21s (0:07:20) =======================",
+        "log_sha256": "5d86cf4b10294e8d317809ca1506968638589529ab700ea23d4a8f623a2d0f0a"
+      },
+      {
+        "exit_code": 0,
+        "passed": 143,
+        "files": [
+          "tests/test_activity_ledger.py",
+          "tests/test_distribution.py",
+          "tests/test_environment_setup.py",
+          "tests/test_guided_onboarding.py",
+          "tests/test_installation.py",
+          "tests/test_onboarding_cli.py",
+          "tests/test_onboarding_plan.py",
+          "tests/test_setup_cli.py",
+          "tests/test_story_contracts.py",
+          "tests/test_tool_runtime.py",
+          "tests/test_validation_regressions.py",
+          "tests/test_work.py"
+        ],
+        "log": "10-regression-part-4.log",
+        "summary": "======================= 143 passed in 817.71s (0:13:37) =======================",
+        "log_sha256": "f7374c6b6af2e2d86315dee310c51bb69a30c0377a9f58ccd41faeb829a7dd60"
+      }
+    ],
+    "mode": "four_independent_processes_all_test_files",
+    "wheel_sha256": "fcdc94f0da5cc3998f71a4874a259413cb70e8a82c883dff64713f25524afb44"
+  },
+  "kit": {
+    "status": "passed",
+    "wheel_sha256": "fcdc94f0da5cc3998f71a4874a259413cb70e8a82c883dff64713f25524afb44",
+    "package_sources_match": true,
+    "manifest_sha256": "c99ae6f0ff6f7c25f5285c8dcec62a92262b51492c43f86c05a903e0183953cb",
+    "bundle_sha256": "5188f03af3142ef61523f8a29ebc5f61741aa8c525d4e3c7a5ca1b921cd3340e",
+    "files": 18
+  },
+  "installed_smoke": {
+    "status": "passed",
+    "client_id": "demo",
+    "branch": "codex/activity-smoke",
+    "setup_prepared": true,
+    "tests_passed": 3,
+    "new_process_resume": true,
+    "another_chat": "not_run",
+    "another_machine": "not_run",
+    "review": "blocked_independence_not_observed",
+    "remote": "not_checked",
+    "certified": false,
+    "release_allowed": false,
+    "publication_allowed": false,
+    "candidate_sha256": "149a8f2feb73f519ee273ef21cd9bad39c38572719f077d72cd377fcf07fcba0",
+    "counts": {
+      "start": 10,
+      "result": 9
+    },
+    "duration_ms": 20231.813400000647,
+    "pending_interrupted_operations": 1,
+    "input_tokens": null,
+    "cost_usd": null,
+    "unavailable_reason": "supported_attributable_source_unavailable"
+  },
+  "naturapet_pilot": {
+    "status": "passed",
+    "client_id": "naturapet-pilot",
+    "branch": "codex/10-activity-ledger-pilot",
+    "setup_prepared": true,
+    "tests_passed": 3,
+    "new_process_resume": true,
+    "another_chat": "not_run",
+    "another_machine": "not_run",
+    "review": "blocked_independence_not_observed",
+    "remote": "not_checked",
+    "certified": false,
+    "release_allowed": false,
+    "publication_allowed": false,
+    "candidate_sha256": "27f323561f415d5d91c2ae493d6f4b33b4eac85620be1934b3a3fe3d7765c76a",
+    "counts": {
+      "start": 10,
+      "result": 9
+    },
+    "duration_ms": 12771.071499999834,
+    "pending_interrupted_operations": 1,
+    "input_tokens": null,
+    "cost_usd": null,
+    "unavailable_reason": "supported_attributable_source_unavailable",
+    "wheel_sha256": "002629301bcde62d37bf95e50f383eb5c9510bc4d1f67f37c5ca77bdb94dfcad",
+    "note": "Recorrido ejecutado con wheel anterior; consulta sin escrituras repetida sobre wheel final."
+  },
+  "hooks_diagnosis": {
+    "cost_usd": null,
+    "documentation_ref": "https://learn.chatgpt.com/docs/hooks",
+    "hooks_observed": false,
+    "reason": "native_actions_not_observed",
+    "schema_version": 1,
+    "script_present": false,
+    "status": "unavailable",
+    "supported_events": [],
+    "tokens": null,
+    "trusted": false,
+    "usage_reason": "supported_attributable_source_unavailable"
+  },
+  "historical_manual_evals": {
+    "not_run": 144,
+    "modified": false
+  },
+  "second_machine": {
+    "status": "not_run",
+    "reason": "user_has_no_second_machine"
+  },
+  "naturapet_final_wheel_readonly": {
+    "status": "passed",
+    "wheel_sha256": "fcdc94f0da5cc3998f71a4874a259413cb70e8a82c883dff64713f25524afb44",
+    "database_snapshots_unchanged": true,
+    "local_state": "validating",
+    "approval_current": true,
+    "next_action": "reconcile_pending",
+    "pending_operations": 1
+  },
+  "focused_durability_selection": {
+    "passed": 7,
+    "duration_seconds": 38.35
+  },
+  "installed_setup_recovery": {
+    "status": "passed",
+    "client_id": "demo",
+    "branch": "codex/activity-smoke",
+    "setup_prepared": true,
+    "tests_passed": 3,
+    "new_process_resume": true,
+    "another_chat": "not_run",
+    "another_machine": "not_run",
+    "review": "blocked_independence_not_observed",
+    "remote": "not_checked",
+    "certified": false,
+    "release_allowed": false,
+    "publication_allowed": false,
+    "candidate_sha256": "e56523f44baeecacab427706959898f0091a8aa2a029b8310786a46171d39375",
+    "counts": {
+      "start": 10,
+      "result": 9
+    },
+    "duration_ms": 36230.96879999957,
+    "pending_interrupted_operations": 1,
+    "input_tokens": null,
+    "cost_usd": null,
+    "unavailable_reason": "supported_attributable_source_unavailable"
+  },
+  "acceptance_pending_tasks": [
+    "3.4",
+    "5.3"
+  ],
+  "openspec": {
+    "schema": "spec-driven",
+    "completed_tasks": 22,
+    "total_tasks": 24,
+    "pending_tasks": [
+      "3.4",
+      "5.3"
+    ],
+    "specs_validated": 21,
+    "delta_requirements_synced": 8,
+    "archive": "openspec/changes/archive/2026-10-15-10-conversational-hu-and-activity-ledger",
+    "acceptance_complete": false
+  }
+}

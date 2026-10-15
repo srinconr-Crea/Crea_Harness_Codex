@@ -4,6 +4,7 @@ from ctypes import wintypes as w
 import json
 import os
 from pathlib import Path
+import time
 import uuid
 
 from pydantic import Field
@@ -78,7 +79,14 @@ def persist(path, journal):
             handle.write(data)
         # os.replace replaces a leaf link rather than following it. Parent
         # components cannot be swapped while their no-delete handles remain.
-        os.replace(path.parent / temporary, path)
+        for attempt in range(6):
+            try:
+                os.replace(path.parent / temporary, path)
+                break
+            except PermissionError as error:
+                if getattr(error,'winerror',None) not in (5,32,33) or attempt==5:
+                    raise
+                time.sleep(0.05)
 
 
 class CheckoutLock:

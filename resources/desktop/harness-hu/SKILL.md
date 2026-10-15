@@ -7,6 +7,51 @@ Usar al iniciar o reanudar una HU en un checkout cliente preparado por onboardin
 Codex conserva conversación, herramientas y delegación; Python valida contratos y
 registra decisiones. Las instrucciones no conceden permisos ni restringen Desktop.
 
+## Entrada habitual desde chat
+
+Resolver runtime desde el registro de instalación de harness-setup y verificar su
+ownership antes de invocarlo; reutilizar policy/binding del checkout, nunca los de
+otro cliente. No solicitar al usuario escribir JSON. La fachada genera los contratos
+de HU; para adaptadores de nivel bajo Codex materializa entradas tipadas en el estado
+externo autorizado, sin secretos, y presenta su contenido legible al operador.
+
+1. Recoger historia textual, criterios verificables, rutas positivas, operaciones y
+   tests. Consultar referencias externas solo mediante herramientas disponibles.
+   Preguntar únicamente decisiones ausentes. No elegir permisos abiertos.
+2. Comprobar los perfiles seleccionados contra modelos/esfuerzos disponibles en el
+   host. La presencia del TOML no demuestra ejecución. Si no hay delegación, proponer
+   explícitamente `supervised_single_agent` para implementación admisible. Una fase
+   que exige independencia/aislamiento queda bloqueada hasta observarlos; cambiar
+   nombres de actores o pasar booleanos no constituye evidencia nativa.
+3. Invocar `harness work preview --path TARGET --policy POLICY --binding BINDING
+   --story HU --story-text "HISTORIA" --writer principal --criterion "CRITERIO"
+   --scope src/pilot.py --change create --test T16 --mode supervised_single_agent
+   --available-model MODELO:EFFORT --json`. Repetir criterion/scope/change/test y
+   available-model según decisiones reales. El recibo de onboarding se resuelve de
+   setup 09; `--onboarding-plan` permite seleccionarlo explícitamente.
+4. Presentar el plan devuelto y su SHA, límites, modo y gates pendientes. Preview
+   no crea HU ni SQLite. Tras autorización humana vigente ejecutar el mismo comando
+   con `work start` y `--authorize SHA`. No convertir «planifica» en aprobación.
+5. Implementar solo rutas/operaciones aprobadas, un escritor por rutas compartidas;
+   usar los comandos HU de abajo para candidato, validación, handoff y revisión.
+   Registrar referencia de tarea real de cada rol ejecutado y snapshot revisado;
+   sin tarea comprobable conservar not_run. No sustituir modelos silenciosamente.
+6. En otro chat ejecutar `harness work status` con selección/story y luego
+   `harness work resume ... --operation OP --json`. Leer próxima acción, aprobación,
+   drift y pendientes. Reconciliar los journals antes de repetir efectos. Mantener
+   el límite de dos correcciones del ciclo; no reiniciarlo desde memoria del chat.
+7. Consultar `harness activity report --path TARGET --policy POLICY --binding BINDING
+   --hu HU --json`; exportar solo a destino explícito con `activity export --out FILE`.
+   Consultas no crean bases ni incrementan métricas. Cliente antiguo: inicializar
+   con `activity init` solo bajo autorización; ausencia de base es ledger_missing.
+
+Duración/comandos son actividad. Tokens/costos Desktop quedan null con motivo si
+falta fuente atribuible soportada; cuotas de cuenta y estimaciones por texto no se
+imputan a HU. Hooks son opt-in, requieren revisión/confianza manual del host y solo
+amplían cobertura observada; no leer transcript_path ni bases internas de Codex.
+Informar estado local, remoto, revisión y publicación por separado. Un éxito local,
+un archivo OpenSpec o un push no habilita PR, deploy, release ni certificación.
+
 ## Selección y análisis
 
 1. Leer AGENTS cliente; seleccionar target, policy, binding, story y recibo de

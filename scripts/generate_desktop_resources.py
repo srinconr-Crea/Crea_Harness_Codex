@@ -53,6 +53,7 @@ herramientas en Desktop antes de declarar certificado.
 <!-- /harness-desktop-v1 -->
 ''', encoding='utf-8', newline='\n')
 skill_source = root.parents[2] / 'resources/desktop/harness-hu/SKILL.md'
+(root / 'AGENTS.md').write_text((root.parents[2] / 'resources/desktop/AGENTS.md').read_text(encoding='utf-8'), encoding='utf-8', newline='\n')
 (root / 'harness-hu/SKILL.md').write_text(skill_source.read_text(encoding='utf-8'), encoding='utf-8', newline='\n')
 manifest = {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in sorted(root.rglob('*')) if p.is_file() and p.name != 'manifest.json'}
