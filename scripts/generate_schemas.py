@@ -40,3 +40,14 @@ for model in (Descriptor, Policy, Binding, OnboardingPlan, Journal, LockOwner,
     content = json.dumps(model.model_json_schema(), indent=2) + '\n'
     (root / name).write_text(content, encoding='utf-8', newline='\n')
     (package_root / name).write_text(content, encoding='utf-8', newline='\n')
+
+# The ledger adds contracts without overwriting observation v1 schemas.
+from harness_core.activity import ActivityEvent as LedgerEvent, UsageObservation as LedgerUsage, LedgerQuery, LedgerReport
+from harness_local.work import WorkRequest
+from harness_local.activity_execution import ActivityContext
+from harness_local.activity_hooks import HookAssociation
+for model in (LedgerEvent,LedgerUsage,LedgerQuery,LedgerReport,WorkRequest,ActivityContext,HookAssociation):
+    name='ledger-'+model.__name__.lower()+'.schema.json'
+    content=json.dumps(model.model_json_schema(),indent=2)+'\n'
+    (root/name).write_text(content,encoding='utf-8',newline='\n')
+    (package_root/name).write_text(content,encoding='utf-8',newline='\n')

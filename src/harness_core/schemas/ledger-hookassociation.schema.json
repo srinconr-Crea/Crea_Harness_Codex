@@ -1,0 +1,66 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "checkout_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Checkout Id",
+      "type": "string"
+    },
+    "session_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "target_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Target Path",
+      "type": "string"
+    },
+    "hu_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Hu Id",
+      "type": "string"
+    },
+    "attempt": {
+      "minimum": 1,
+      "title": "Attempt",
+      "type": "integer"
+    },
+    "confirmed": {
+      "title": "Confirmed",
+      "type": "boolean"
+    },
+    "tool_operations": {
+      "additionalProperties": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+        "type": "string"
+      },
+      "maxProperties": 256,
+      "title": "Tool Operations",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "checkout_id",
+    "session_id",
+    "target_path",
+    "hu_id",
+    "attempt",
+    "confirmed"
+  ],
+  "title": "HookAssociation",
+  "type": "object"
+}

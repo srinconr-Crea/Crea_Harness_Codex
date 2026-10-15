@@ -22,6 +22,27 @@ def main(argv=None):
     parser=Parser(prog='harness',description='Diagnóstico, preparación local explícita y recuperación.')
     parser.add_argument('--version',action='version',version=__version__)
     commands=parser.add_subparsers(dest='command',required=True)
+    activity=commands.add_parser('activity')
+    activity.add_argument('action',choices=('init','migrate','status','report','import','export','diagnose-hooks'))
+    for field in ('path','policy','binding'):
+        activity.add_argument('--'+field,required=True)
+    for field in ('hu','role','since','until','input','out'):
+        activity.add_argument('--'+field)
+    activity.add_argument('--attempt',type=int)
+    activity.add_argument('--json',action='store_true')
+    work=commands.add_parser('work')
+    work.add_argument('action',choices=('preview','start','status','resume'))
+    for field in ('path','policy','binding','story'):
+        work.add_argument('--'+field,required=True)
+    for field in ('story-text','onboarding-plan','writer','authorize','operation','plan-out'):
+        work.add_argument('--'+field)
+    for field in ('criterion','scope','test','change','available-model'):
+        work.add_argument('--'+field,action='append',default=[])
+    work.add_argument('--mode',choices=('native','supervised_single_agent'))
+    work.add_argument('--delegation-available',action='store_true')
+    work.add_argument('--isolation-observed',action='store_true')
+    work.add_argument('--requires-independence',action='store_true')
+    work.add_argument('--json',action='store_true')
     setup=commands.add_parser('setup')
     setup.add_argument('action',choices=('interview','preview','apply','status','recover'))
     for field in ('input','plan','plan-out','authorize'): setup.add_argument('--'+field)
@@ -132,11 +153,68 @@ def main(argv=None):
             p.add_argument('--plan-out')
         if name=='recover':
             p.add_argument('--run')
-    command=next((c for c in ('setup','bootstrap','release','update','story','pr','eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
+    command=next((c for c in ('activity','work','setup','bootstrap','release','update','story','pr','eval','usage','validate','hu','onboard','init','recover','doctor','integrate','desktop-check','review-snapshot','review-compare','supervised-prepare') if c in argv),'doctor')
     json_mode='--json' in argv
     try:
         args=parser.parse_args(argv)
-        if args.command=='bootstrap':
+        if args.command=='work':
+            from .work import WorkService
+            work_service=WorkService(args.path,args.policy,args.binding)
+            if args.action=='status': result=work_service.status(args.story)
+            elif args.action=='resume':
+                if not args.operation: raise ConfigError('invalid_arguments')
+                result=work_service.resume(args.story,args.operation)
+            else:
+                models={}
+                for profile in args.available_model:
+                    if ':' not in profile: raise ConfigError('invalid_arguments')
+                    name,effort=profile.rsplit(':',1); models.setdefault(name,[]).append(effort)
+                request=dict(schema_version=1,story_id=args.story,story=args.story_text,writer_actor=args.writer,
+                    onboarding_plan=args.onboarding_plan,criteria=args.criterion,paths=args.scope,tests=args.test,operations=args.change,
+                    mode=args.mode,available_models=models,delegation_available=args.delegation_available,
+                    isolation_observed=args.isolation_observed,requires_independence=args.requires_independence)
+                result=work_service.preview(request) if args.action=='preview' else work_service.start(request,args.authorize)
+                if args.plan_out:
+                    if args.action!='preview': raise ConfigError('invalid_arguments')
+                    from .guided_onboarding import export
+                    export(args.plan_out,result,[args.path,args.policy,args.binding,str(work_service.hu.state)])
+            code=1 if result['status']=='blocked' else 0
+        elif args.command=='activity':
+            from .desktop_integration import selected
+            from .activity_ledger import ActivityLedger
+            from harness_core.configuration import load_document
+            _,config=selected(args.path,args.policy,args.binding)
+            ledger=ActivityLedger(config['binding'])
+            query=dict(schema_version=1,hu_id=args.hu,attempt=args.attempt,role=args.role,since=args.since,until=args.until)
+            if args.action=='diagnose-hooks':
+                from .activity_hooks import diagnose
+                declaration=load_document(args.input) if args.input else {}
+                result=dict(schema_version=1,command='activity',status='partial',checks=[],
+                    hooks=diagnose(events=declaration.get('events',[]),trusted=declaration.get('trusted',False),script=declaration.get('script')))
+                code=0
+            elif args.action=='init':
+                ledger.initialize()
+                from .hu import HuService
+                selected_hu=HuService(args.path,args.policy,args.binding)
+                if selected_hu.access:
+                    from .environment_setup import journal as setup_journal
+                    plan=selected_hu.access
+                    ledger.import_setup_journal(plan.run_id,setup_journal(plan).model_dump())
+            elif args.action=='migrate':
+                if not args.out: raise ConfigError('invalid_arguments')
+                ledger.migrate(args.out)
+            elif args.action=='import':
+                if not args.input: raise ConfigError('invalid_arguments')
+                data=load_document(args.input)
+                if set(data)-{'schema_version','events','usage'} or data.get('schema_version')!=1: raise ConfigError('event_invalid')
+                ledger.ingest(data.get('events',[]),data.get('usage',[]))
+            elif args.action=='export':
+                if not args.out: raise ConfigError('invalid_arguments')
+                ledger.export(args.out,query)
+            if args.action!='diagnose-hooks':
+                result=dict(schema_version=1,command='activity',status='ready',checks=[],report=ledger.report(query))
+                code=0
+        elif args.command=='bootstrap':
             from .distribution import bootstrap
             result,code=bootstrap()
         elif args.command=='release':
@@ -226,7 +304,11 @@ def main(argv=None):
                 provider=select_provider(provider_binding,target=hu_service.target)
                 if provider.simulated: raise ConfigError('publication_fixture_read_only')
                 result=PublicationService(provider_binding,provider,hu_service.state,
-                    candidate_check=lambda i:candidate_gate(hu_service,i)).publish(request.intent,request.authorization,request.evaluation)
+                    candidate_check=lambda i:candidate_gate(hu_service,i),
+                    activity_context=(dict(schema_version=1,target_path=str(hu_service.target),policy_path=str(args.policy),
+                        binding_path=str(args.binding),hu_id=request.intent.hu_id,attempt=request.intent.attempt,
+                        operation_id=request.intent.intent_id) if hu_service.access or (hu_service.state/'activity.sqlite3').exists() else None)
+                    ).publish(request.intent,request.authorization,request.evaluation)
                 code=0 if result['status']=='published' else 1
         elif args.command in ('eval','usage'):
             from .observability_service import load_input, usage_report
@@ -356,6 +438,7 @@ def main(argv=None):
     except (ConfigError, OSError, UnicodeError, sqlite3.Error) as error:
         error_code=error.code if isinstance(error,ConfigError) else 'local_state_error' if isinstance(error,sqlite3.Error) else 'local_read_error'
         result=dict(schema_version=1,command=command,status='invalid',checks=[vars(Check('input','error',error_code,'Entrada o configuración inválida.'))])
+        if command in ('activity','work'): result['reason']=error_code
         if isinstance(error,ConfigError) and error.document:
             result['checks'][0].update(document=error.document,fields=error.fields)
         conflicts={'stale_plan','plan_identity_mismatch','plan_not_applicable','onboarding_locked','lock_owner_unknown',
@@ -402,9 +485,20 @@ def main(argv=None):
                 if field in result: print(f'  {field}: {result[field]}')
             for question in result.get('questions',[]):
                 print(f"  Decisión requerida: {question['field']} ({question['reason']})")
-        if result['command']=='hu' and 'run' in result:
+        if result['command'] in ('hu','work') and 'run' in result:
             print(f"  HU: {result['run']['story_id']} ({result['run']['state']})")
             print(f"  Publicación permitida: {result['publication_allowed']}")
+        if result['command']=='work':
+            if 'next_action' in result: print('  Próxima acción: '+result['next_action'])
+            for question in result.get('questions',[]): print('  Decisión requerida: '+question)
+        if result['command']=='activity' and 'report' in result:
+            report=result['report']
+            print('  Eventos: '+json.dumps(report['counts'],ensure_ascii=False,sort_keys=True))
+            print(f"  Operaciones pendientes: {report['incomplete_operations']}")
+            print(f"  Fallidas: {report['failed_operations']}; bloqueadas: {report['blocked_operations']}")
+            print(f"  Duración observada (ms): {report['duration_ms']}; incompletas: {report['incomplete_durations']}")
+            print('  Consumo Desktop: null ('+report['unavailable_reason']+')')
+            print('  Cobertura: '+json.dumps(report['coverage'],ensure_ascii=False,sort_keys=True))
         if 'identities' in result:
             print('  Identidades: '+json.dumps(result['identities'],ensure_ascii=True,sort_keys=True))
         for name,value in result.get('input_hashes',{}).items():

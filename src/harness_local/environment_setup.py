@@ -10,6 +10,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import uuid
+import time
 from functools import wraps
 
 from pydantic import Field, ValidationError
@@ -73,6 +74,7 @@ class SetupJournal(SafeContract):
     owned: dict[str,str]
     observations: dict[str,dict] = Field(default_factory=dict)
     updated_installation_sha256: str | None = None
+    activity_operations: dict[str,str] = Field(default_factory=dict)
 
 
 def interview(raw):
@@ -223,6 +225,7 @@ def preview(raw, *, probe_fn=probe,plan_out=None):
         effects.append(dict(schema_version=1,kind='create',destination=str(scope_file),description='Alcance portable versionado, contenido fijado'))
     technical=sorted(set(technical)|{'.harness/access-scope.json'})
     effects.extend([
+        dict(schema_version=1,kind='create',destination=str(Path(inputs.binding.state_dir)/'activity.sqlite3'),description='SQLite de actividad propia, separada de hu.sqlite3'),
         dict(schema_version=1,kind='create',destination=inputs.binding.state_dir,description='Estado del checkout: locks y journals propios, sin SQLite durante preview'),
         dict(schema_version=1,kind='create',destination=str(Path(inputs.binding.state_dir)/('setup-'+run_id)),description='Journal padre y recibos de observaciones inmutables'),
         dict(schema_version=1,kind='create',destination=str(Path(r.binding_path).with_name('setup-'+run_id+'-child.json')),description='Plan hijo materializado y verificado contra el padre'),
@@ -368,14 +371,33 @@ def apply(path,authorization,*,probe_fn=probe,recovering=False):
             run=journal(plan)
             if run.parent_sha256!=digest(path): raise ConfigError('plan_stale')
             if run.state=='failed' and not recovering: raise ConfigError('recovery_required')
-            if run.state=='completed':
+            if run.state=='completed' and not run.activity_operations:
                 child=guided.selected(run.child_path)
                 guided.verify_prepared(child,guided.load_run(child),integrated=True)
                 return response(plan,run,idempotent=True)
+        from .activity_ledger import ActivityLedger, now as activity_now
+        ledger=ActivityLedger(plan.inputs.binding)
+        ledger.initialize()
+        with ledger.database(write=True) as db:
+            db.execute('INSERT OR IGNORE INTO coverage VALUES (?,?)',('setup-journal-'+plan.run_id,'harness_commands'))
+        # The own journal is authority when the final ledger write was lost.
+        for stage in run.stages:
+            name=stage['name']; operation_id=run.activity_operations.get(name)
+            if operation_id and stage['status']=='completed':
+                ledger.finish_pending(operation_id,'passed')
+                del run.activity_operations[name]
+                persist(folder(plan)/'journal.json',run)
         for stage in run.stages:
             if stage['status']=='completed': continue
             select(path,authorization)
-            name=stage['name']; run.state='applying'; stage['status']='pending'; persist(folder(plan)/'journal.json',run)
+            name=stage['name']
+            operation_id=uuid.uuid4().hex
+            activity=dict(schema_version=1,client_id=plan.inputs.binding.client_id,checkout_id=plan.inputs.binding.checkout_id,
+                operation_id=operation_id,scope='setup',action=name,source='harness_commands')
+            ledger.ingest([dict(**activity,event_id=operation_id+'s',idempotency_key=operation_id+'s',kind='start',observed_at=activity_now())])
+            started=time.monotonic()
+            run.activity_operations[name]=operation_id
+            run.state='applying'; stage['status']='pending'; persist(folder(plan)/'journal.json',run)
             try:
                 checkpoint('before_'+name)
                 if name=='tools':
@@ -517,7 +539,18 @@ def apply(path,authorization,*,probe_fn=probe,recovering=False):
                 checkpoint('after_'+name)
                 stage['status']='completed'; stage['reason']=None
                 persist(folder(plan)/'journal.json',run)
+                ledger.ingest([dict(**activity,event_id=operation_id+'r',idempotency_key=operation_id+'r',kind='result',
+                    observed_at=activity_now(),status='passed',duration_ms=(time.monotonic()-started)*1000)])
+                del run.activity_operations[name]
+                persist(folder(plan)/'journal.json',run)
             except (ConfigError,OSError,subprocess.SubprocessError) as error:
+                if getattr(error,'code','').startswith('ledger_'):
+                    run.state='failed'; persist(folder(plan)/'journal.json',run)
+                    raise
+                if not getattr(error,'code','').startswith('ledger_'):
+                    ledger.ingest([dict(**activity,event_id=operation_id+'r',idempotency_key=operation_id+'r',kind='result',
+                        observed_at=activity_now(),status='failed',duration_ms=(time.monotonic()-started)*1000)])
+                    run.activity_operations.pop(name,None)
                 stage['status']='failed'; stage['reason']=getattr(error,'code','recovery_required')
                 if stage['reason'] not in ('invalid_input','identity_mismatch','access_denied','tool_unavailable','download_integrity_failed',
                     'skill_discovery_pending','auth_pending','permission_conflict','plan_stale','owned_resource_conflict','recovery_required','remote_not_checked'):

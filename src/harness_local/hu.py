@@ -248,7 +248,7 @@ class HuService:
         return plan
 
     @contextmanager
-    def database(self, create=False):
+    def database(self, create=False, readonly=False):
         if create: ensure_state(self.config['binding'])
         if not self.state.exists(): raise ConfigError('hu_not_found')
         with PinnedTree(self.state):
@@ -257,13 +257,14 @@ class HuService:
                 if p.exists() and (not p.is_file() or p.stat().st_nlink != 1): raise ConfigError('hu_state_conflict')
             db_path = self.state / 'hu.sqlite3'
             if not create and not db_path.exists(): raise ConfigError('hu_not_found')
-            with CheckoutLock(self.state, 'hu', recover=True):
-                db = sqlite3.connect(db_path, timeout=1, isolation_level=None)
+            with nullcontext() if readonly else CheckoutLock(self.state, 'hu', recover=True):
+                db = sqlite3.connect(db_path.as_uri()+'?mode=ro',uri=True,timeout=1,isolation_level=None) if readonly else sqlite3.connect(db_path, timeout=1, isolation_level=None)
                 try:
-                    db.execute('PRAGMA synchronous=FULL')
+                    if not readonly: db.execute('PRAGMA synchronous=FULL')
                     version = db.execute('PRAGMA user_version').fetchone()[0]
                     if version not in (0, 1): raise ConfigError('hu_state_version')
-                    db.execute('BEGIN IMMEDIATE')
+                    if readonly and version!=1: raise ConfigError('hu_state_version')
+                    if not readonly: db.execute('BEGIN IMMEDIATE')
                     if version == 0:
                         if db.execute("SELECT count(*) FROM sqlite_master WHERE type='table'").fetchone()[0]:
                             raise ConfigError('hu_state_version')
@@ -309,8 +310,45 @@ class HuService:
                 artifact_sha256=sha(canonical(dict(run=run.model_dump(), history=history))))
         persist(self.state / 'hu-artifacts' / (run.story_id + '.json'), Artifact())
 
-    @with_hu_tools
     def run(self, action, story, operation=None, payload=None):
+        from .activity_ledger import ActivityLedger, now as activity_now
+        self.refresh_selection()
+        ledger=ActivityLedger(self.config['binding'])
+        # Legacy 03 clients opt in with activity init. New setup clients require it.
+        if action=='status' or (self.access is None and not ledger.path.exists()):
+            return self._run(action,story,operation,payload)
+        operation_id=sha(canonical(dict(story=story,operation=operation)))
+        # The HU transaction remains authoritative for replay and final-persist repair.
+        recorded=False
+        if (self.state/'hu.sqlite3').exists():
+            with sqlite3.connect((self.state/'hu.sqlite3').as_uri()+'?mode=ro',uri=True) as db:
+                recorded=bool(db.execute('SELECT 1 FROM events WHERE story=? AND operation=?',(story,operation)).fetchone())
+        if recorded:
+            result=self._run(action,story,operation,payload)
+            with ledger.database() as db:
+                pending=db.execute('SELECT start_event FROM operations WHERE operation_id=? AND result_event IS NULL',(operation_id,)).fetchone()
+            if pending:
+                start=json.loads(pending[0]); key=sha((operation_id+'result').encode())
+                ledger.ingest([{**start,'event_id':key,'idempotency_key':key,'kind':'result',
+                    'observed_at':activity_now(),'status':'blocked' if result['status']=='blocked' else 'passed','duration_ms':None}])
+            return result
+        attempt=None
+        if action!='start' and (self.state/'hu.sqlite3').exists():
+            with sqlite3.connect((self.state/'hu.sqlite3').as_uri()+'?mode=ro',uri=True) as db:
+                row=db.execute('SELECT payload FROM runs WHERE story=?',(story,)).fetchone()
+                if row: attempt=json.loads(row[0])['attempt']
+        if action=='attempt' and attempt is not None: attempt+=1
+        if action=='start': attempt=1
+        with ledger.operation(operation_id,scope='hu',hu_id=story,attempt=attempt,action=action) as outcome:
+            result=self._run(action,story,operation,payload)
+            outcome['status']='blocked' if result['status']=='blocked' else 'passed'
+            run=result.get('run',{})
+            outcome['candidate_sha256']=(run.get('candidate') or {}).get('candidate_sha256')
+            outcome['revision']=(run.get('plan') or {}).get('revision')
+            return result
+
+    @with_hu_tools
+    def refresh_selection(self):
         # Reload policy and binding at every adapter boundary, including reuse of
         # a service instance; changed selection never redirects its state silently.
         target,config=selected(self.target,self.policy_path,self.binding_path)
@@ -319,6 +357,10 @@ class HuService:
             raise ConfigError('hu_identity_mismatch')
         self.config=config
         self.access=self.load_access()
+
+    @with_hu_tools
+    def _run(self, action, story, operation=None, payload=None):
+        self.refresh_selection()
         try:
             TypeAdapter(ID).validate_python(story, strict=True)
             if action != 'status': TypeAdapter(ID).validate_python(operation, strict=True)
@@ -327,7 +369,7 @@ class HuService:
         data = parse(INPUTS[action], payload) if action != 'status' else None
         if action == 'start': preparation=self.prepared(data.onboarding_plan)
         request_hash = sha(canonical(dict(action=action, data=data.model_dump()))) if data else None
-        with self.database(create=action == 'start') as db:
+        with self.database(create=action == 'start',readonly=action=='status') as db:
             existing = db.execute('SELECT request_hash FROM events WHERE story=? AND operation=?', (story, operation)).fetchone()
             if existing and existing[0] != request_hash: raise ConfigError('hu_operation_conflict')
             if action == 'start' and not existing:

@@ -141,7 +141,27 @@ def _pin_inputs(stack, plan, plan_path):
         stack.enter_context(tree.file(path.name))
 
 
-def apply(target, policy_path, plan_path):
+def apply(target, policy_path, plan_path, *, activity_context=None):
+    from .activity_execution import run,operation_key
+    plan,selected_target,binding=_validate(target,policy_path,plan_path)
+    if activity_context is None and ((Path(binding.state_dir)/'activity.sqlite3').exists() or Path(plan.binding_path+'.setup.json').exists()):
+        activity_context=dict(schema_version=1,target_path=str(selected_target),policy_path=str(policy_path),
+            binding_path=plan.binding_path,operation_id=plan.run_id)
+    def execute():
+        if activity_context:
+            value=dict(plan_sha256=plan.plan_sha256,operation_key=operation_key(activity_context,'distribution_apply'))
+            path=safe_path(binding.state_dir)/('update-activity-'+plan.run_id+'.json')
+            with PinnedTree(path.parent) as tree:
+                if path.exists():
+                    with tree.file(path.name) as handle:
+                        if handle.read()!=canonical(value): raise ConfigError('ledger_operation_conflict')
+                else:
+                    with tree.file(path.name,create=True) as handle: handle.write(canonical(value))
+        return _apply(target,policy_path,plan_path)
+    return run(activity_context,'distribution_apply',execute,expected_binding=binding,request_sha256=plan.plan_sha256)
+
+
+def _apply(target, policy_path, plan_path):
     plan, target, binding = _validate(target, policy_path, plan_path)
     with ExitStack() as stack:
         tree = stack.enter_context(PinnedTree(target))
@@ -191,7 +211,29 @@ def apply(target, policy_path, plan_path):
     return report('update-apply', run_id=plan.run_id)
 
 
-def recover(target, policy_path, plan_path, *, apply_changes=False):
+def recover(target, policy_path, plan_path, *, apply_changes=False, activity_context=None):
+    from .activity_execution import run
+    if activity_context is not None and not apply_changes: raise ConfigError('invalid_arguments')
+    if not apply_changes: return _recover(target,policy_path,plan_path,apply_changes=False)
+    plan,selected_target,binding=_validate(target,policy_path,plan_path)
+    if activity_context is None and ((Path(binding.state_dir)/'activity.sqlite3').exists() or Path(plan.binding_path+'.setup.json').exists()):
+        activity_context=dict(schema_version=1,target_path=str(selected_target),policy_path=str(policy_path),
+            binding_path=plan.binding_path,operation_id=plan.run_id)
+    def execute():
+        result=_recover(target,policy_path,plan_path,apply_changes=True)
+        link=safe_path(binding.state_dir)/('update-activity-'+plan.run_id+'.json')
+        if activity_context and result[1]==0 and link.exists():
+            with PinnedTree(link.parent) as tree:
+                with tree.file(link.name) as handle: value=json.loads(handle.read(4096))
+            if value['plan_sha256']!=plan.plan_sha256: raise ConfigError('ledger_operation_conflict')
+            from .activity_ledger import ActivityLedger
+            ActivityLedger(binding).finish_pending(value['operation_key'],'blocked')
+        return result
+    return run(activity_context,'distribution_recover',execute,
+        expected_binding=binding,reconciler=True,reconcile_success=('ready',),request_sha256=plan.plan_sha256)
+
+
+def _recover(target, policy_path, plan_path, *, apply_changes=False):
     plan, target, binding = _validate(target, policy_path, plan_path)
     folder = safe_path(binding.state_dir)/('update-'+plan.run_id)
     with ExitStack() as stack:

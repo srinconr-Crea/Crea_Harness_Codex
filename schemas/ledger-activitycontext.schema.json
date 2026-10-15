@@ -1,0 +1,81 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "target_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Target Path",
+      "type": "string"
+    },
+    "policy_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Policy Path",
+      "type": "string"
+    },
+    "binding_path": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Binding Path",
+      "type": "string"
+    },
+    "hu_id": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Hu Id"
+    },
+    "attempt": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Attempt"
+    },
+    "role": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Role"
+    },
+    "operation_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+      "title": "Operation Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_path",
+    "policy_path",
+    "binding_path",
+    "operation_id"
+  ],
+  "title": "ActivityContext",
+  "type": "object"
+}

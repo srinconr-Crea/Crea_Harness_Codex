@@ -145,3 +145,14 @@ pendientes, por autorización del usuario para realizar la prueba real y gestion
 defectos o mejoras mediante cambios posteriores. Ver [guía](docs/pilot-and-distribution.md) y
 [verificación](docs/evidence/distribution-verification.md). El wheel candidato y
 el push de código no cierran las 144 evaluaciones de 06/07 ni certifican Desktop.
+
+## HU conversacional y actividad SQLite
+
+`harness work preview/start/status/resume` reutiliza el cliente preparado por setup
+y genera contratos de HU desde opciones tipadas, con aprobación ligada al hash y
+recuperación persistida. `harness activity status/report/import/export` conserva
+actividad propia atribuible y cobertura explícita en SQLite externa; consultas no
+crean estado. Tokens/costos Desktop sin fuente soportada permanecen `null`.
+Ver la [guía de actividad y recuperación](docs/activity-ledger.md).
+La [evidencia de 10](docs/evidence/conversational-activity-verification.md) distingue
+el smoke instalado y piloto local de la aceptación pendiente en otra máquina.

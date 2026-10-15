@@ -105,6 +105,25 @@ def attach(service,story,operation,plan,records,*,actor):
 
 
 def dispatch(action,raw):
+    from .activity_execution import run
+    raw=dict(raw)
+    context=raw.pop('activity_context',None)
+    if context is not None and action in ('static','worker','remote','bundle'):
+        try:
+            plan=ValidationPlan.model_validate(raw['plan'])
+            request=ValidationRequest.model_validate(raw['request'])
+        except (ValidationError,KeyError): raise ConfigError('invalid_validation_document') from None
+        if any(getattr(plan,key)!=getattr(request,key) for key in ('client_id','run_id','attempt','plan_revision','candidate_sha256')) or request.plan_sha256!=plan.plan_sha256:
+            raise ConfigError('activity_association_mismatch')
+        from harness_core.onboarding_plan import canonical,sha
+        return run(context,'validate_'+action,lambda:_dispatch(action,raw),expected_client=plan.client_id,validation_plan=plan,
+            reconciler=action in ('remote','bundle'),reconcile_success=('passed','failed','blocked','not_run','unavailable'),
+            request_sha256=sha(canonical(raw)))
+    if context is not None: raise ConfigError('invalid_validation_document')
+    return _dispatch(action,raw)
+
+
+def _dispatch(action,raw):
     models=dict(plan=SelectionInput,static=StaticInput,worker=WorkerInput,remote=RemoteInput,bundle=RemoteInput,gate=GateInput,attach=AttachInput)
     try: data=models[action].model_validate(raw)
     except (ValidationError,ValueError,TypeError,KeyError): raise ConfigError('invalid_validation_document') from None
