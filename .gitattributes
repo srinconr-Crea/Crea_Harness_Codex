@@ -23,3 +23,6 @@ src/harness_core/schemas/*.json text eol=lf
 src/harness_local/templates/** text eol=lf
 src/harness_local/distribution_kit/** -text whitespace=cr-at-eol
 docs/evidence/distribution*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
+# Preserve the original manual kit bytes covered by kit-manifest.json.
+artifacts/crea-manual-kit-0.1.3/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
