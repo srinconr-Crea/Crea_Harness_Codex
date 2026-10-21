@@ -1,158 +1,139 @@
-# Crea Harness Codex (Local-Harness)
+# Crea Harness Codex MVP — kit manual 0.1.3
 
-Kit genérico para desarrollar sobre repositorios de clientes desde Codex Desktop.
-El kit entrega contratos, diagnóstico local, preview, aplicación explícita de
-onboarding y recuperación conservadora. Codex mantiene la conversación y las herramientas; este
-paquete no invoca modelos ni sustituye su motor.
+Kit de configuración para trabajar con Codex sobre repositorios de proyectos y clientes,
+con contexto explícito, roles especializados y un flujo de desarrollo guiado por OpenSpec.
+Está orientado a proyectos de datos y aplicaciones en Databricks, con entrega por GitHub
+o Azure DevOps / Azure Repos.
 
-El incremento 02 añade [integración revisable de roles Desktop](docs/desktop-integration.md)
-con preview/apply/recover propios y comprobación conservadora de observaciones.
-La preparación supervisada de 02 está verificada con límites aceptados; la
-certificación estricta sigue pendiente. El incremento 03 añade
-[onboarding guiado por plantilla o entrevista](docs/guided-client-onboarding.md),
-preview compuesto y aplicación/recuperación explícita por etapa.
+La entrega principal de la rama `Crea_Harness_Codex_MVP` es **`crea-manual-kit` 0.1.3**:
+archivos que se revisan, copian y adaptan a la raíz del repositorio destino.
+El kit usa las capacidades de la sesión de Codex y las herramientas del equipo;
+no requiere instalar el paquete Python `harness_local`.
 
-## Instalación de desarrollo (Windows)
+## Descargar y empezar
 
-Requiere Python 3.13. Git, Node, OpenSpec y Databricks CLI se preparan por separado;
-la instalación Python no los descarga. Ejecutar desde este repositorio:
+- [Descargar ZIP 0.1.3](artifacts/crea-manual-kit-0.1.3.zip?raw=true).
+- [SHA-256 del ZIP](artifacts/crea-manual-kit-0.1.3.zip.sha256).
+- [Explorar el kit](artifacts/crea-manual-kit-0.1.3/).
+- [Guía completa de configuración manual](artifacts/crea-manual-kit-0.1.3/docs/configuracion-manual.md).
+
+1. Descarga el ZIP y su archivo `.sha256`. Compara el hash antes de extraer.
+2. Extrae en una carpeta de preparación y verifica la distribución original.
+3. Prepara las herramientas y autentica el proveedor Git siguiendo la guía.
+4. Clona o crea el repositorio destino y copia el contenido del kit, incluidas
+   `.agents` y `.codex`. En proyectos existentes, combina las instrucciones y
+   configuraciones después de revisar diferencias.
+5. Abre el repositorio destino en Codex, inicializa OpenSpec y completa el contexto
+   y el inventario del proyecto.
+6. Comprueba la configuración, versiona el setup como cambio separado e inicia
+   una primera historia de usuario pequeña.
+
+La guía está escrita para **Windows y PowerShell**. Requiere una sesión de Codex
+con acceso al proyecto, Git, Node.js y OpenSpec. Las herramientas de Databricks y
+del proveedor Git se preparan según el proyecto; el ZIP no incluye esos ejecutables.
+
+## Qué contiene
+
+| Recurso dentro del kit | Propósito |
+| --- | --- |
+| `AGENTS.md` | Instrucciones de inicio, responsabilidades y reglas del proyecto. |
+| `.codex/config.toml` | Modelo principal y configuración de delegación. |
+| `.codex/agents/` | Perfiles planner, developer y reviewer. |
+| `.agents/skills/Crea/` | Orquestador y skill propia para agentes Databricks. |
+| `.agents/skills/Project/` | Espacio para skills específicas del proyecto. |
+| Otras carpetas de `.agents/skills/` | Quince skills Databricks y siete skills OpenSpec con sus recursos. |
+| `docs/contexto-proyecto.md` | Plantilla para objetivos, negocio, arquitectura y restricciones. |
+| `docs/proyecto.json` y su schema | Inventario, rutas, proveedor Git, validaciones y contrato de entrega. |
+| `docs/buenas-practicas/` | Prácticas por herramienta para orientar implementación y revisión. |
+| `docs/plantillas/` | Evidencia, handoff y borrador de PR. |
+| `scripts/crea/verificar-kit.ps1` | Comprobación de estructura e integridad de la distribución. |
+| `kit-manifest.json` | Inventario de archivos originales con tamaños y hashes SHA-256. |
+
+Los perfiles incluidos usan `gpt-6.1-sol` con esfuerzo `medium`; son configurables.
+Su disponibilidad y descubrimiento deben comprobarse en la app y cuenta de destino.
+
+## Cómo se trabaja
+
+El principal coordina el trabajo con `crea-orquestador`. Los roles se ejecutan
+**en secuencia, con un agente activo por vez**:
+
+1. **Planner:** explora cuando hace falta y prepara o actualiza la propuesta,
+   especificaciones y tareas de OpenSpec.
+2. **Persona:** revisa los artefactos y solicita expresamente la implementación.
+3. **Developer:** aplica el cambio y ejecuta las pruebas pertinentes.
+4. **Reviewer:** revisa el resultado, valida contra las especificaciones y sincroniza
+   cuando corresponde. Presenta evidencia y solicita aprobación para archivar.
+5. **Principal:** tras la aprobación que incluya publicación, realiza commit y push
+   en la rama de la HU y entrega el PR según el proveedor.
+
+La rama de trabajo se prepara antes de modificar el proyecto. El flujo conserva
+las pausas humanas de OpenSpec y la aprobación de archivo/publicación. Las rutas
+y responsabilidades declaradas orientan a los agentes; no crean aislamiento técnico.
+
+## Adaptar al proyecto
+
+Completa primero estos archivos del **repositorio destino**:
+
+- `docs/contexto-proyecto.md`: propósito, negocio, stack, fuentes, entornos y restricciones.
+- `docs/proyecto.json`: proveedor y URL del repositorio, rama base real, rutas existentes,
+  perfil Databricks elegido, comprobaciones aplicables y entrega. Marca `setup_complete`
+  al terminar la preparación.
+- `AGENTS.md`: convenciones e instrucciones que deben convivir con las del cliente.
+- `.codex/config.toml` y `.codex/agents/*.toml`: modelos e instrucciones por rol.
+- `openspec/config.yaml`: contexto y reglas del proyecto, una vez inicializado OpenSpec.
+
+El ZIP incluye las skills de OpenSpec, pero **no trae un directorio `openspec/`
+preinicializado**. Sigue la guía para crearlo en el repositorio correcto y comprobar
+los workflows disponibles. Conserva las licencias y las skills upstream; agrega
+extensiones propias en `Crea/` o `Project/`.
+
+## Verificar el kit
+
+Desde la carpeta donde descargaste el ZIP:
 
 ```powershell
-python -m venv .venv
-.venv/Scripts/python.exe -m pip install -e '.[dev]'
-.venv/Scripts/harness.exe --version
-.venv/Scripts/python.exe -m harness_local --help
-.venv/Scripts/harness.exe doctor --path . --json
-.venv/Scripts/python.exe -m pytest -q
-.venv/Scripts/python.exe -m build --wheel --no-isolation
+Get-FileHash -LiteralPath .\crea-manual-kit-0.1.3.zip -Algorithm SHA256
+Get-Content -LiteralPath .\crea-manual-kit-0.1.3.zip.sha256
 ```
 
-En este proyecto `doctor --path .` puede devolver `partial`: no es un repositorio
-cliente vinculado y las capacidades Desktop/autenticación remota no se comprueban.
-Los recursos genéricos (matriz, AGENTS, kit OpenSpec y schemas) se incluyen en el wheel.
-
-## Uso sobre un cliente
-
-Abrir en Codex la carpeta del checkout cliente. El producto, sus especificaciones
-y su venv permanecen aquí. El cliente conserva su código, OpenSpec y un descriptor
-portable; la política y el binding son entradas explícitas del operador.
+Compara ambos hashes. Después de extraer, ejecuta desde la raíz del kit:
 
 ```powershell
-.venv/Scripts/harness.exe doctor --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --binding C:/HarnessConfig/alpha-binding.json --json
-.venv/Scripts/harness.exe init --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --binding C:/HarnessConfig/alpha-binding.json --dry-run --json
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\crea\verificar-kit.ps1 -OriginalDistribution
 ```
 
-Las rutas son ejemplos; deben apuntar a archivos validados. Si falta el descriptor,
-agregar `--repo demo/alpha --base-branch develop`. El preview no crea archivos,
-salvo el plan externo solicitado con `--plan-out`. `init` sin `--dry-run` ni
-`--apply` devuelve `apply_not_supported`, código 2.
+`Bypass` se aplica al proceso invocado; las directivas corporativas siguen vigentes.
+Tras personalizar el kit, omite `-OriginalDistribution` para comprobar la estructura
+sin exigir los bytes originales. El verificador no ejecuta pruebas de negocio,
+no autentica servicios y no acredita la ejecución de agentes en Codex.
 
-Para un binding nuevo y una preparación explícita:
+## Entrega por proveedor
 
-```powershell
-harness init --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --binding-out C:/HarnessConfig/alpha-binding.json --checkout-id checkout --state-dir C:/HarnessState/alpha/checkout --dry-run --plan-out C:/HarnessPlans/alpha.json --json
-# Revisar contenido, destinos, hashes y applicable antes de aplicar:
-harness init --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --apply --plan C:/HarnessPlans/alpha.json --json
-# RUN es el run_id devuelto por apply:
-harness recover --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --plan C:/HarnessPlans/alpha.json --run RUN --dry-run --json
-harness recover --path C:/Clientes/alpha --policy C:/HarnessConfig/alpha-policy.json --plan C:/HarnessPlans/alpha.json --run RUN --apply --json
-```
+| Proveedor | Entrega prevista por el kit |
+| --- | --- |
+| GitHub | Commit y push en la rama de la HU; enlace al formulario web y borrador para crear el PR manualmente. |
+| Azure DevOps Services | Git/Git Credential Manager para operaciones Git; Azure CLI con `azure-devops` para crear y verificar el PR tras aprobación expresa. |
+| Azure DevOps Server | Operaciones Git y formulario web como alternativa; la integración CLI del kit está orientada a Services. |
 
-Las carpetas del plan y binding deben existir. La política debe autorizar las
-creaciones: un descriptor ausente bajo `.harness/` protegido bloquea el plan.
-`applicable` indica preparación local permitida; no certifica Desktop ni autenticación.
+El alcance termina en la entrega para revisión. No incluye merge, auto-complete,
+borrado automático de ramas, despliegues, Boards ni pipelines.
+Consulta el [procedimiento de entrega](artifacts/crea-manual-kit-0.1.3/docs/entrega-git.md).
 
-## Alcance
+## Estado del MVP y estructura de esta rama
 
-- `harness_core`: contratos, lectura segura, integridad y separación de clientes.
-- `harness_local`: sondas, planes, aplicación Windows, journal y recuperación.
-- `schemas`: JSON Schema generado desde los contratos Pydantic.
-- `tests`: clientes sintéticos y comprobaciones de comportamiento sin conexión remota.
+La versión 0.1.3 incorpora la preparación y entrega por Azure CLI para Azure DevOps
+Services. El kit cuenta con comprobaciones locales de estructura, configuración e
+integridad. La autenticación, los permisos, el descubrimiento de agentes y una HU
+real deben validarse en el entorno destino. Los detalles y límites están en el
+[registro de validación](artifacts/crea-manual-kit-0.1.3/docs/VALIDACION-KIT.md).
 
-Los límites de la política se comprueban en comandos/adaptadores del kit. El
-[flujo de HU](docs/hu-lifecycle.md) registra estado SQLite, planes, aprobación,
-candidatos, evidencia y recuperación por cliente/checkout. No hay plugin certificado ni hooks operativos. El incremento 08 añade un
-[launcher candidato y update/recover](docs/pilot-and-distribution.md). El incremento 05 añade [validación de candidatos](docs/candidate-validation.md),
-workers seleccionados y adaptadores Databricks con autorización explícita; sin
-sandbox/runtime requerido conserva blocked. Las plantillas de
-roles y su configuración local revisada están disponibles; el kit no ejecuta agentes.
-Tampoco se altera
-la configuración global de Codex. El hash de política comprueba integridad,
-no una firma ni autorización externa.
+El contenido que debes llevar a un proyecto nuevo está en
+[`artifacts/crea-manual-kit-0.1.3/`](artifacts/crea-manual-kit-0.1.3/), o en su ZIP.
+Las carpetas raíz `src/`, `tests/`, `resources/`, `openspec/` y parte de `docs/` y
+`scripts/` conservan el desarrollo anterior del motor Python Local-Harness.
+Permanecen como antecedente técnico; no forman parte de la instalación del kit manual.
 
-Ver [configuración](docs/configuracion-clientes.md),
-[operación](docs/operacion-local.md),
-[aplicación y recuperación](docs/onboarding-aplicacion.md),
-[arquitectura](docs/propuesta-harness-local-codex.md) y
-[evidencia](docs/evidence/bootstrap-codex-local-core.md).
-
-La base versión 0.1.0 mantiene sus specs en `openspec/specs/`. El primer cambio
-está cerrado en
-`openspec/changes/archive/2026-10-09-bootstrap-codex-local-core/`.
-
-El onboarding aplicado también está cerrado en
-`openspec/changes/archive/2026-10-09-apply-client-onboarding/`.
-El [roadmap de ocho incrementos](docs/planning/roadmap.md) propone onboarding
-guiado, roles/herramientas Desktop, flujo de HU, validación Databricks,
-observabilidad/evals, historias/PR y distribución. 01–03 entregan calidad, roles
-supervisados y onboarding preparado; 04 añade HU/gates locales, 05 validación y
-evidencia con smoke remoto blocked; 06 y 07 entregan infraestructura local,
-con evaluaciones y publicación reales pendientes; 08 entrega implementación local
-y distribución candidata, con aceptación y release bloqueados.
-Los [casos de calidad](docs/planning/quality/README.md)
-conservan definiciones not_run; su carga e integridad se verifican en 01. Las Skills oficiales descargadas se
-conservan como [snapshot de referencia](resources/vendor/README.md).
-
-El cambio `01-quality-practices-and-eval-foundation` entrega la [API de calidad](docs/quality-foundation.md), schemas, composición por cliente y recursos verificados dentro del wheel. Los casos de agente pendientes conservan `not_run`; 05 incorpora validación/evidencia, 06 observabilidad/evals y 07 historias/PR locales. Ver [evidencia](docs/evidence/quality-foundation.md).
-
-## Observabilidad y evaluación manual
-
-`harness usage report --input observaciones.json --json` reporta actividad
-recibida por cliente/HU/intento y uso desconocido en `null` con motivo.
-`harness eval validate`, `harness eval run` y `harness eval report`, con
-`--input batch.json --json`, validan/importan
-recibos manuales y calcula el gate de promoción. La automatización Desktop
-sin interfaz certificada devuelve `blocked`.
-
-Ver [contratos y protocolo](docs/observability-and-evals.md) y
-[evidencia del incremento 06](docs/evidence/observability-evals-verification.md).
-Las 126 evaluaciones Luna/medium están pendientes; el runner no las inventa.
-
-## Historias y PR
-
-`harness story read` congela una HU de fixture o GitHub seleccionado;
-`harness story bind` fija el vínculo técnicamente aprobado entre historia y plan.
-`harness pr preview` prepara título/cuerpo/candidato/evidencia sin autenticar
-ni escribir. `harness pr publish` y `reconcile` exigen autorización explícita,
-gates actuales, identidad y evaluaciones reales; no duplican un PR ni
-reemplazan ramas ajenas. El flujo completo se prueba con dobles declarados.
-
-Ver [contratos y comandos](docs/story-pr-integrations.md) y
-[evidencia de 07](docs/evidence/story-pr-verification.md). Las 144 evaluaciones
-Luna/medium y el smoke de escritura real permanecen pendientes; el archivo
-autorizado con advertencias conserva publicación y aceptación de 08 bloqueadas.
-
-## Piloto y distribución candidata
-
-`harness bootstrap --json` muestra herramientas y preparación/login/confianza
-pendientes. `harness release candidate --json` describe recursos, dependencias y
-hashes; `harness update preview/apply/recover` opera solo sobre ownership revisado
-y conserva personalizaciones, backups y estado. `harness release gate` exige
-evidencia real ligada al candidato; no publica el producto.
-
-08 está archivado con ocho de trece tareas completas y cinco de aceptación
-pendientes, por autorización del usuario para realizar la prueba real y gestionar
-defectos o mejoras mediante cambios posteriores. Ver [guía](docs/pilot-and-distribution.md) y
-[verificación](docs/evidence/distribution-verification.md). El wheel candidato y
-el push de código no cierran las 144 evaluaciones de 06/07 ni certifican Desktop.
-
-## HU conversacional y actividad SQLite
-
-`harness work preview/start/status/resume` reutiliza el cliente preparado por setup
-y genera contratos de HU desde opciones tipadas, con aprobación ligada al hash y
-recuperación persistida. `harness activity status/report/import/export` conserva
-actividad propia atribuible y cobertura explícita en SQLite externa; consultas no
-crean estado. Tokens/costos Desktop sin fuente soportada permanecen `null`.
-Ver la [guía de actividad y recuperación](docs/activity-ledger.md).
-La [evidencia de 10](docs/evidence/conversational-activity-verification.md) distingue
-el smoke instalado y piloto local de la aceptación pendiente en otra máquina.
+Para ampliar o personalizar el kit, consulta su
+[LEEME](artifacts/crea-manual-kit-0.1.3/LEEME-CREA.md), el
+[catálogo de skills](artifacts/crea-manual-kit-0.1.3/docs/catalogo-skills.md) y la
+[guía de extensiones](artifacts/crea-manual-kit-0.1.3/docs/extensiones.md).
