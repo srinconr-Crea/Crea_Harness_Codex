@@ -1,21 +1,21 @@
-# Crea Harness Codex MVP — kit manual 0.1.3
+# Crea Harness Codex MVP — kit manual 0.1.4
 
 Kit de configuración para trabajar con Codex sobre repositorios de proyectos y clientes,
 con contexto explícito, roles especializados y un flujo de desarrollo guiado por OpenSpec.
 Está orientado a proyectos de datos y aplicaciones en Databricks, con entrega por GitHub
 o Azure DevOps / Azure Repos.
 
-La entrega principal de la rama `Crea_Harness_Codex_MVP` es **`crea-manual-kit` 0.1.3**:
+La entrega principal de la rama `Crea_Harness_Codex_MVP` es **`crea-manual-kit` 0.1.4**:
 archivos que se revisan, copian y adaptan a la raíz del repositorio destino.
 El kit usa las capacidades de la sesión de Codex y las herramientas del equipo;
 no requiere instalar el paquete Python `harness_local`.
 
 ## Descargar y empezar
 
-- [Descargar ZIP 0.1.3](artifacts/crea-manual-kit-0.1.3.zip?raw=true).
-- [SHA-256 del ZIP](artifacts/crea-manual-kit-0.1.3.zip.sha256).
-- [Explorar el kit](artifacts/crea-manual-kit-0.1.3/).
-- [Guía completa de configuración manual](artifacts/crea-manual-kit-0.1.3/docs/configuracion-manual.md).
+- [Descargar ZIP 0.1.4](artifacts/crea-manual-kit-0.1.4.zip?raw=true).
+- [SHA-256 del ZIP](artifacts/crea-manual-kit-0.1.4.zip.sha256).
+- [Explorar el kit](artifacts/crea-manual-kit-0.1.4/).
+- [Guía completa de configuración manual](artifacts/crea-manual-kit-0.1.4/docs/configuracion-manual.md).
 
 1. Descarga el ZIP y su archivo `.sha256`. Compara el hash antes de extraer.
 2. Extrae en una carpeta de preparación y verifica la distribución original.
@@ -38,8 +38,8 @@ del proveedor Git se preparan según el proyecto; el ZIP no incluye esos ejecuta
 | --- | --- |
 | `AGENTS.md` | Instrucciones de inicio, responsabilidades y reglas del proyecto. |
 | `.codex/config.toml` | Modelo principal y configuración de delegación. |
-| `.codex/agents/` | Perfiles planner, developer y reviewer. |
-| `.agents/skills/Crea/` | Orquestador y skill propia para agentes Databricks. |
+| `.codex/agents/` | Perfiles planner, developer, tester y reviewer. |
+| `.agents/skills/Crea/` | Orquestador, crea-pruebas y skill propia para agentes Databricks. |
 | `.agents/skills/Project/` | Espacio para skills específicas del proyecto. |
 | Otras carpetas de `.agents/skills/` | Quince skills Databricks y siete skills OpenSpec con sus recursos. |
 | `docs/contexto-proyecto.md` | Plantilla para objetivos, negocio, arquitectura y restricciones. |
@@ -60,10 +60,11 @@ El principal coordina el trabajo con `crea-orquestador`. Los roles se ejecutan
 1. **Planner:** explora cuando hace falta y prepara o actualiza la propuesta,
    especificaciones y tareas de OpenSpec.
 2. **Persona:** revisa los artefactos y solicita expresamente la implementación.
-3. **Developer:** aplica el cambio y ejecuta las pruebas pertinentes.
-4. **Reviewer:** revisa el resultado, valida contra las especificaciones y sincroniza
+3. **Developer:** aplica el cambio y escribe los tests previstos; entrega ready_for_test.
+4. **Tester:** ejecuta el plan final y guarda recibos; entrega ready_for_review.
+5. **Reviewer:** revisa el resultado, valida contra las especificaciones y sincroniza
    cuando corresponde. Presenta evidencia y solicita aprobación para archivar.
-5. **Principal:** tras la aprobación que incluya publicación, realiza commit y push
+6. **Principal:** tras la aprobación que incluya publicación, realiza commit y push
    en la rama de la HU y entrega el PR según el proveedor.
 
 La rama de trabajo se prepara antes de modificar el proyecto. El flujo conserva
@@ -92,8 +93,8 @@ extensiones propias en `Crea/` o `Project/`.
 Desde la carpeta donde descargaste el ZIP:
 
 ```powershell
-Get-FileHash -LiteralPath .\crea-manual-kit-0.1.3.zip -Algorithm SHA256
-Get-Content -LiteralPath .\crea-manual-kit-0.1.3.zip.sha256
+Get-FileHash -LiteralPath .\crea-manual-kit-0.1.4.zip -Algorithm SHA256
+Get-Content -LiteralPath .\crea-manual-kit-0.1.4.zip.sha256
 ```
 
 Compara ambos hashes. Después de extraer, ejecuta desde la raíz del kit:
@@ -117,23 +118,29 @@ no autentica servicios y no acredita la ejecución de agentes en Codex.
 
 El alcance termina en la entrega para revisión. No incluye merge, auto-complete,
 borrado automático de ramas, despliegues, Boards ni pipelines.
-Consulta el [procedimiento de entrega](artifacts/crea-manual-kit-0.1.3/docs/entrega-git.md).
+Consulta el [procedimiento de entrega](artifacts/crea-manual-kit-0.1.4/docs/entrega-git.md).
 
 ## Estado del MVP y estructura de esta rama
 
-La versión 0.1.3 incorpora la preparación y entrega por Azure CLI para Azure DevOps
-Services. El kit cuenta con comprobaciones locales de estructura, configuración e
-integridad. La autenticación, los permisos, el descubrimiento de agentes y una HU
+La versión 0.1.4 incorpora Tester, catálogo único de checks y adaptadores locales
+para Git completo, argv revisado, pytest/JUnit/cobertura y validación Draft2020-12.
+Reviewer consume recibos vigentes sin repetir la batería por rutina. Runtime/Spark,
+SAST/mutation, evals, CI y adopción entre planes siguen inactivos y bloquean si se requieren.
+El kit cuenta con comprobaciones locales de estructura, configuración e integridad. La autenticación, los permisos, el descubrimiento de agentes y una HU
 real deben validarse en el entorno destino. Los detalles y límites están en el
-[registro de validación](artifacts/crea-manual-kit-0.1.3/docs/VALIDACION-KIT.md).
+[registro de validación](artifacts/crea-manual-kit-0.1.4/docs/VALIDACION-KIT.md).
 
 El contenido que debes llevar a un proyecto nuevo está en
-[`artifacts/crea-manual-kit-0.1.3/`](artifacts/crea-manual-kit-0.1.3/), o en su ZIP.
+[`artifacts/crea-manual-kit-0.1.4/`](artifacts/crea-manual-kit-0.1.4/), o en su ZIP.
 Las carpetas raíz `src/`, `tests/`, `resources/`, `openspec/` y parte de `docs/` y
 `scripts/` conservan el desarrollo anterior del motor Python Local-Harness.
 Permanecen como antecedente técnico; no forman parte de la instalación del kit manual.
 
 Para ampliar o personalizar el kit, consulta su
-[LEEME](artifacts/crea-manual-kit-0.1.3/LEEME-CREA.md), el
-[catálogo de skills](artifacts/crea-manual-kit-0.1.3/docs/catalogo-skills.md) y la
-[guía de extensiones](artifacts/crea-manual-kit-0.1.3/docs/extensiones.md).
+[LEEME](artifacts/crea-manual-kit-0.1.4/LEEME-CREA.md), el
+[catálogo de skills](artifacts/crea-manual-kit-0.1.4/docs/catalogo-skills.md) y la
+[guía de extensiones](artifacts/crea-manual-kit-0.1.4/docs/extensiones.md).
+
+La distribución fuente 0.1.3 se conserva intacta junto a la nueva 0.1.4.
+Esta adaptación permanece local, sin commits, push ni PR. El piloto de cuatro roles
+nativos y el runtime remoto requieren validación específica autorizada.

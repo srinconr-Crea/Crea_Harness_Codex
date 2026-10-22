@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "calibration",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "policy_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "stage": {
+            "enum": [
+              "shadow",
+              "warn",
+              "block",
+              "human"
+            ]
+          },
+          "minimum_cases": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minimum_agreement": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "maximum_fp": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "maximum_fn": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "predicate": {
+            "type": "string",
+            "minLength": 1
+          },
+          "human_promotion_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "rule_id",
+          "stage",
+          "minimum_cases",
+          "minimum_agreement",
+          "maximum_fp",
+          "maximum_fn",
+          "predicate",
+          "human_promotion_ref"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy_id",
+    "version",
+    "rules"
+  ],
+  "additionalProperties": false
+}

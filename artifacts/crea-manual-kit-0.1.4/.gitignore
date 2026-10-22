@@ -1,0 +1,30 @@
+# 1. Entornos y dependencias locales
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.test-work/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# 2. Credenciales y estado local; usar .env.example sin secretos para documentar nombres
+.env
+.env.*
+!.env.example
+.databrickscfg
+.databricks/
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+
+# 3. Artefactos generados; adaptar si el proyecto versiona alguno explicitamente
+dist/
+build/
+*.egg-info/
+
+# 4. Extensiones del proyecto: agregar patrones propios aqui.
+# No ignorar AGENTS.md, .codex/, .agents/, docs/ u openspec/.

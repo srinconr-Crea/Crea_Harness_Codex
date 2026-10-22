@@ -1,0 +1,260 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "adapters": {
+      "type": "object",
+      "properties": {
+        "git": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": true
+            },
+            "path": {
+              "const": "scripts/crea/testing/git_adapter.py"
+            },
+            "blocked_reason": {
+              "const": null
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "execution": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": true
+            },
+            "path": {
+              "const": "scripts/crea/testing/execution.py"
+            },
+            "blocked_reason": {
+              "const": null
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "pytest_report": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": true
+            },
+            "path": {
+              "const": "scripts/crea/testing/reports.py"
+            },
+            "blocked_reason": {
+              "const": null
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "strict_schema": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": true
+            },
+            "path": {
+              "const": "scripts/crea/testing/schemas.py"
+            },
+            "blocked_reason": {
+              "const": null
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "runtime": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": false
+            },
+            "path": {
+              "const": null
+            },
+            "blocked_reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "spark_local": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": false
+            },
+            "path": {
+              "const": null
+            },
+            "blocked_reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "sast": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": false
+            },
+            "path": {
+              "const": null
+            },
+            "blocked_reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "mutation": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": false
+            },
+            "path": {
+              "const": null
+            },
+            "blocked_reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "reviewer_evals": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": false
+            },
+            "path": {
+              "const": null
+            },
+            "blocked_reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "cross_plan_reuse": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": false
+            },
+            "path": {
+              "const": null
+            },
+            "blocked_reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        },
+        "ci": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": false
+            },
+            "path": {
+              "const": null
+            },
+            "blocked_reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "enabled",
+            "path",
+            "blocked_reason"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "git",
+        "execution",
+        "pytest_report",
+        "strict_schema",
+        "runtime",
+        "spark_local",
+        "sast",
+        "mutation",
+        "reviewer_evals",
+        "cross_plan_reuse",
+        "ci"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "adapters"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

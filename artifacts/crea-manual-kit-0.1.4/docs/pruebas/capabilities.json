@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "adapters": {
+    "git": {
+      "enabled": true,
+      "path": "scripts/crea/testing/git_adapter.py",
+      "blocked_reason": null
+    },
+    "execution": {
+      "enabled": true,
+      "path": "scripts/crea/testing/execution.py",
+      "blocked_reason": null
+    },
+    "pytest_report": {
+      "enabled": true,
+      "path": "scripts/crea/testing/reports.py",
+      "blocked_reason": null
+    },
+    "strict_schema": {
+      "enabled": true,
+      "path": "scripts/crea/testing/schemas.py",
+      "blocked_reason": null
+    },
+    "runtime": {
+      "enabled": false,
+      "path": null,
+      "blocked_reason": "No adaptador certificado en 0.1.4; si es requerido, bloquear. Requiere integración específica autorizada."
+    },
+    "spark_local": {
+      "enabled": false,
+      "path": null,
+      "blocked_reason": "No adaptador certificado en 0.1.4; si es requerido, bloquear. Requiere integración específica autorizada."
+    },
+    "sast": {
+      "enabled": false,
+      "path": null,
+      "blocked_reason": "No adaptador certificado en 0.1.4; si es requerido, bloquear. Requiere integración específica autorizada."
+    },
+    "mutation": {
+      "enabled": false,
+      "path": null,
+      "blocked_reason": "No adaptador certificado en 0.1.4; si es requerido, bloquear. Requiere integración específica autorizada."
+    },
+    "reviewer_evals": {
+      "enabled": false,
+      "path": null,
+      "blocked_reason": "No adaptador certificado en 0.1.4; si es requerido, bloquear. Requiere integración específica autorizada."
+    },
+    "cross_plan_reuse": {
+      "enabled": false,
+      "path": null,
+      "blocked_reason": "No adaptador certificado en 0.1.4; si es requerido, bloquear. Requiere integración específica autorizada."
+    },
+    "ci": {
+      "enabled": false,
+      "path": null,
+      "blocked_reason": "No adaptador certificado en 0.1.4; si es requerido, bloquear. Requiere integración específica autorizada."
+    }
+  }
+}

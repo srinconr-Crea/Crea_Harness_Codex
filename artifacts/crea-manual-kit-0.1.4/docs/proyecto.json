@@ -1,0 +1,420 @@
+{
+  "$schema": "./proyecto.schema.json",
+  "schema_version": 1,
+  "project": {
+    "name": "EDITAR-nombre-proyecto",
+    "description": "EDITAR-proposito",
+    "setup_complete": false,
+    "context_path": "docs/contexto-proyecto.md",
+    "base_branch": "main",
+    "repository": {
+      "provider": "unconfigured",
+      "url": null,
+      "organization": null,
+      "project": null,
+      "note": "Elegir proveedor y URL Git sin credenciales. Azure DevOps Services: organization=URL HTTPS, project=nombre/ID y name_or_id=repo verificado con az repos show. Git/GCM para Git; az con azure-devops para PR. Sin automatizaciones.",
+      "name_or_id": null
+    }
+  },
+  "inventory": {
+    "mode": "manual-reviewed",
+    "paths": [
+      {
+        "path": "src/",
+        "purpose": "Codigo Python reutilizable; crear solo si aplica",
+        "exists": false,
+        "owner": "developer"
+      },
+      {
+        "path": "notebooks/",
+        "purpose": "Entradas y exploracion Databricks",
+        "exists": false,
+        "owner": "developer"
+      },
+      {
+        "path": "sql/",
+        "purpose": "Consultas y transformaciones SQL",
+        "exists": false,
+        "owner": "developer"
+      },
+      {
+        "path": "tests/",
+        "purpose": "Pruebas y fixtures sinteticos",
+        "exists": false,
+        "owner": "developer"
+      },
+      {
+        "path": "resources/",
+        "purpose": "Recursos de bundles si aplica",
+        "exists": false,
+        "owner": "developer"
+      },
+      {
+        "path": "docs/",
+        "purpose": "Contexto, practicas y evidencia",
+        "exists": true,
+        "owner": "shared"
+      },
+      {
+        "path": "openspec/",
+        "purpose": "Creado por openspec init, no por el ZIP",
+        "exists": false,
+        "owner": "phase-dependent"
+      },
+      {
+        "path": ".agents/skills/Crea/",
+        "purpose": "Procedimientos comunes Crea; orquestador y agentes Databricks",
+        "exists": true,
+        "owner": "shared"
+      },
+      {
+        "path": ".agents/skills/Project/",
+        "purpose": "Skills especificas del proyecto; inicialmente README",
+        "exists": true,
+        "owner": "shared"
+      },
+      {
+        "path": ".codex/agents/",
+        "purpose": "Perfiles nativos planner, developer, tester, reviewer",
+        "exists": true,
+        "owner": "shared"
+      },
+      {
+        "path": "docs/buenas-practicas/",
+        "purpose": "Sintesis por herramienta y referencias",
+        "exists": true,
+        "owner": "shared"
+      },
+      {
+        "path": "docs/plantillas/",
+        "purpose": "Contratos de handoff y evidencia",
+        "exists": true,
+        "owner": "shared"
+      },
+      {
+        "path": "scripts/crea/",
+        "purpose": "Verificador de estructura e integridad; ejecucion opcional",
+        "exists": true,
+        "owner": "shared"
+      },
+      {
+        "path": "docs/pruebas/",
+        "purpose": "Catálogo único, fallos, calibración y adaptadores",
+        "exists": true,
+        "owner": "shared"
+      }
+    ],
+    "file_types": [
+      {
+        "extensions": [
+          ".py"
+        ],
+        "purpose": "Python o notebook fuente: inspeccionar cabecera",
+        "practices": [
+          "python",
+          "spark"
+        ]
+      },
+      {
+        "extensions": [
+          ".sql"
+        ],
+        "purpose": "SQL de transformacion o consulta",
+        "practices": [
+          "sql"
+        ]
+      },
+      {
+        "extensions": [
+          ".ipynb"
+        ],
+        "purpose": "Notebook: revisar salidas y metadatos antes de versionar",
+        "practices": [
+          "databricks"
+        ]
+      },
+      {
+        "extensions": [
+          ".yml",
+          ".yaml",
+          ".tf",
+          ".tfvars"
+        ],
+        "purpose": "Configuracion o infraestructura; verificar herramienta",
+        "practices": [
+          "infraestructura"
+        ]
+      },
+      {
+        "extensions": [
+          ".toml",
+          ".json",
+          ".md",
+          ".ps1"
+        ],
+        "purpose": "Instrucciones, contratos y automatizacion; clasificar por ruta",
+        "practices": [
+          "agentes",
+          "general"
+        ]
+      }
+    ],
+    "exclude_from_context": [
+      ".git/",
+      ".venv/",
+      "node_modules/",
+      ".env",
+      ".databrickscfg",
+      "dist/"
+    ],
+    "update_on_path_change": true,
+    "observed_kit_file_types": [
+      {
+        "extension": "(sin-extension)",
+        "count": 5,
+        "examples": [
+          ".gitignore",
+          "docs/licencias/databricks-snapshot/LICENSE",
+          "docs/licencias/databricks-snapshot/NOTICE"
+        ]
+      },
+      {
+        "extension": ".json",
+        "count": 27,
+        "examples": [
+          ".agents/skills/Crea/crea-pruebas/assets/calibration.schema.json",
+          ".agents/skills/Crea/crea-pruebas/assets/calibration.template.json",
+          ".agents/skills/Crea/crea-pruebas/assets/capabilities.schema.json"
+        ]
+      },
+      {
+        "extension": ".md",
+        "count": 159,
+        "examples": [
+          ".agents/skills/Crea/crea-pruebas/references/calidad.md",
+          ".agents/skills/Crea/crea-pruebas/references/contratos.md",
+          ".agents/skills/Crea/crea-pruebas/references/flujo.md"
+        ]
+      },
+      {
+        "extension": ".png",
+        "count": 15,
+        "examples": [
+          ".agents/skills/databricks-app-design/assets/databricks.png",
+          ".agents/skills/databricks-apps/assets/databricks.png",
+          ".agents/skills/databricks-apps-python/assets/databricks.png"
+        ]
+      },
+      {
+        "extension": ".ps1",
+        "count": 2,
+        "examples": [
+          ".agents/skills/Crea/creating-databricks-agents/scripts/preflight.ps1",
+          "scripts/crea/verificar-kit.ps1"
+        ]
+      },
+      {
+        "extension": ".py",
+        "count": 27,
+        "examples": [
+          ".agents/skills/Crea/crea-pruebas/scripts/contract.py",
+          ".agents/skills/Crea/creating-databricks-agents/scripts/validate_agent_spec.py",
+          ".agents/skills/databricks-apps-python/examples/fm-minimal-chat.py"
+        ]
+      },
+      {
+        "extension": ".svg",
+        "count": 15,
+        "examples": [
+          ".agents/skills/databricks-app-design/assets/databricks.svg",
+          ".agents/skills/databricks-apps/assets/databricks.svg",
+          ".agents/skills/databricks-apps-python/assets/databricks.svg"
+        ]
+      },
+      {
+        "extension": ".toml",
+        "count": 5,
+        "examples": [
+          ".codex/agents/developer.toml",
+          ".codex/agents/planner.toml",
+          ".codex/agents/reviewer.toml"
+        ]
+      },
+      {
+        "extension": ".txt",
+        "count": 1,
+        "examples": [
+          "requirements-validation.txt"
+        ]
+      },
+      {
+        "extension": ".yaml",
+        "count": 18,
+        "examples": [
+          ".agents/skills/Crea/crea-pruebas/agents/openai.yaml",
+          ".agents/skills/Crea/creating-databricks-agents/agents/openai.yaml",
+          ".agents/skills/Crea/orquestador/agents/openai.yaml"
+        ]
+      }
+    ],
+    "observed_on": "2026-10-21",
+    "observed_note": "Inventario de la distribucion 0.1.4 excluyendo manifest y estado local de pruebas; no sustituye inventario del cliente.",
+    "observed_kit_version": "0.1.4"
+  },
+  "databricks": {
+    "enabled": false,
+    "cloud": null,
+    "workspace_host": null,
+    "profile": null,
+    "target": "dev",
+    "catalog": null,
+    "schema": null,
+    "warehouse_id": null,
+    "runtime": null,
+    "spark_version": null,
+    "python_version": null
+  },
+  "workflow": {
+    "orchestrator": ".agents/skills/Crea/orquestador/SKILL.md",
+    "change_name": null,
+    "roles": {
+      "planner": ".codex/agents/planner.toml",
+      "developer": ".codex/agents/developer.toml",
+      "reviewer": ".codex/agents/reviewer.toml",
+      "tester": ".codex/agents/tester.toml"
+    },
+    "max_active_agents": 1,
+    "max_fix_rounds": 2,
+    "require_manual_archive_approval": true,
+    "require_plan_approval": true,
+    "handoff_template": "docs/plantillas/handoff.md",
+    "evidence_template": "docs/plantillas/evidencia-hu.md",
+    "skills_by_role": {
+      "planner": [
+        "openspec-explore",
+        "openspec-propose",
+        "openspec-update-change",
+        "crea-pruebas"
+      ],
+      "developer": [
+        "openspec-apply-change",
+        "crea-pruebas"
+      ],
+      "reviewer": [
+        "openspec-verify-change",
+        "openspec-sync-specs",
+        "openspec-archive-change",
+        "crea-pruebas"
+      ],
+      "tester": [
+        "crea-pruebas"
+      ]
+    },
+    "planning_confirmation_policy": "preserve_openspec_skill_gates"
+  },
+  "validation": {
+    "required_checks": [],
+    "no_checks_policy": "policy_before_apply",
+    "runtime_policy": "required_by_behavior_or_approved_client_policy",
+    "testing": {
+      "enabled": true,
+      "skill_path": ".agents/skills/Crea/crea-pruebas/SKILL.md",
+      "policy_path": "docs/pruebas/policy.json",
+      "execution_path": "docs/pruebas/execution.json",
+      "calibration_path": "docs/pruebas/calibration.json",
+      "failure_modes_path": "docs/pruebas/failure-modes.json",
+      "history_path": "docs/pruebas/review-history.json",
+      "capabilities_path": "docs/pruebas/capabilities.json",
+      "helper_path": ".agents/skills/Crea/crea-pruebas/scripts/contract.py",
+      "artifacts_pattern": "docs/hu/{change}/pruebas/",
+      "strict_schema_validation": true,
+      "git_adapter": "scripts/crea/testing/git_adapter.py",
+      "execution_adapter": "scripts/crea/testing/execution.py",
+      "pytest_adapter": "scripts/crea/testing/reports.py",
+      "workflow_adapter": "scripts/crea/pruebas.py",
+      "cross_plan_reuse_adapter": null,
+      "runtime_adapter": null,
+      "ci_adapter": null
+    }
+  },
+  "practices": {
+    "general": "docs/buenas-practicas/general.md",
+    "databricks": "docs/buenas-practicas/databricks.md",
+    "sql": "docs/buenas-practicas/sql.md",
+    "python": "docs/buenas-practicas/python.md",
+    "spark": "docs/buenas-practicas/spark.md",
+    "infraestructura": "docs/buenas-practicas/infraestructura.md",
+    "agentes": "docs/buenas-practicas/agentes.md",
+    "gobierno-datos": "docs/buenas-practicas/gobierno-datos.md"
+  },
+  "extensions": {
+    "skills": [
+      {
+        "name": "crea-orquestador",
+        "path": ".agents/skills/Crea/orquestador/SKILL.md",
+        "roles": [
+          "principal"
+        ],
+        "when": "Según alcance de la tarea"
+      },
+      {
+        "name": "creating-databricks-agents",
+        "path": ".agents/skills/Crea/creating-databricks-agents/SKILL.md",
+        "roles": [
+          "developer"
+        ],
+        "when": "Según alcance de la tarea"
+      },
+      {
+        "name": "crea-pruebas",
+        "path": ".agents/skills/Crea/crea-pruebas/SKILL.md",
+        "roles": [
+          "planner",
+          "developer",
+          "tester",
+          "reviewer"
+        ],
+        "when": "Según alcance de la tarea"
+      }
+    ],
+    "agents": [
+      {
+        "name": "tester",
+        "path": ".codex/agents/tester.toml",
+        "when": "Después de developer, antes de reviewer"
+      }
+    ],
+    "mcp": [],
+    "hooks": [],
+    "notes": "Declaraciones para que el agente lea; no instalan MCP, no ejecutan hooks ni cambian permisos. Ver docs/extensiones.md."
+  },
+  "delivery": {
+    "enabled": true,
+    "owner": "principal",
+    "mode": "commit_push_provider_pr",
+    "remote": "origin",
+    "branch_prefix": "feature/",
+    "branch_name": null,
+    "base_branch_ref": "project.base_branch",
+    "publish_approval": "include_in_manual_archive_confirmation",
+    "protected_branches": [
+      "main",
+      "master",
+      "develop"
+    ],
+    "allow_force_push": false,
+    "allow_merge": false,
+    "allow_deploy": false,
+    "auto_create_pr": false,
+    "delete_branch_automatically": false,
+    "web_repository_url": null,
+    "pr_template": "docs/plantillas/pr.md",
+    "procedure": "docs/entrega-git.md",
+    "note": "Principal publica el alcance aprobado en feature/<hu>. Azure DevOps Services: crear PR solo si la aprobacion incluye esa accion. auto_create_pr=false prohibe creacion desatendida. Sin auto-complete, merge, borrado, pipelines ni Boards. Mantener la rama hasta completar PR mediante accion posterior.",
+    "pr_creation": {
+      "azure_devops": "cli_after_explicit_approval",
+      "github": "manual_link",
+      "other": "manual_link"
+    }
+  }
+}

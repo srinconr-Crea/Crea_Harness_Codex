@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "roles": 4,
+  "skills": 25,
+  "schemas": 10,
+  "instances": 6,
+  "local_links": 8,
+  "manifest_files": 274,
+  "setup_complete": false,
+  "business_tests_executed": false,
+  "native_agents_executed": false,
+  "source_manifest_files_verified": 223,
+  "upstream_and_license_files_preserved": 182,
+  "zip_sha256": "b52651dc9586c1142895ac109f9b2402be5cb5d1f6275d7c5674d53bdddc5820",
+  "neutrality_unresolved": 0,
+  "neutrality_reviewed": 110,
+  "source_preserved": true,
+  "runtime": "not_run",
+  "four_role_pilot": "not_run"
+}
