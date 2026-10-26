@@ -1,0 +1,514 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Configuracion manual Crea v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project",
+    "inventory",
+    "databricks",
+    "workflow",
+    "validation",
+    "practices",
+    "extensions",
+    "delivery"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "name",
+        "setup_complete",
+        "context_path"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "setup_complete": {
+          "type": "boolean"
+        },
+        "context_path": {
+          "type": "string"
+        },
+        "base_branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository": {
+          "type": "object",
+          "required": [
+            "provider",
+            "url"
+          ],
+          "properties": {
+            "provider": {
+              "enum": [
+                "unconfigured",
+                "github",
+                "azure_devops",
+                "other"
+              ]
+            },
+            "url": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "organization": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "project": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name_or_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "required": [
+        "paths",
+        "file_types",
+        "exclude_from_context"
+      ],
+      "properties": {
+        "paths": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "purpose",
+              "exists",
+              "owner"
+            ]
+          }
+        },
+        "file_types": {
+          "type": "array"
+        },
+        "exclude_from_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "databricks": {
+      "type": "object",
+      "required": [
+        "enabled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "profile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "workspace_host": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "required": [
+        "roles",
+        "orchestrator",
+        "require_manual_archive_approval"
+      ],
+      "properties": {
+        "require_manual_archive_approval": {
+          "const": true
+        },
+        "max_active_agents": {
+          "const": 1
+        },
+        "max_fix_rounds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "roles": {
+          "type": "object",
+          "properties": {
+            "planner": {
+              "type": "string",
+              "minLength": 1
+            },
+            "developer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tester": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reviewer": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "planner",
+            "developer",
+            "tester",
+            "reviewer"
+          ],
+          "additionalProperties": false
+        },
+        "transitions": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "enum": [
+                "informative",
+                "enforcing"
+              ]
+            },
+            "blocking_conditions": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "IDENTITY_MATCH",
+                  "TRANSITION_FIELDS",
+                  "REFERENCE_EXISTS",
+                  "EVIDENCE_CURRENT",
+                  "WRITE_SCOPE",
+                  "AUTHORIZATION_SCOPE",
+                  "NO_REQUIRED_BLOCKERS"
+                ]
+              },
+              "uniqueItems": true
+            },
+            "promotion_ref": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\\\:*?\\[\\]])[^\\r\\n]+$",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "mode",
+            "blocking_conditions"
+          ],
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "mode": {
+                    "const": "enforcing"
+                  },
+                  "blocking_conditions": {
+                    "minItems": 1
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "promotion_ref"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "required_checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "no_checks_policy": {
+          "const": "policy_before_apply"
+        },
+        "runtime_policy": {
+          "const": "required_by_behavior_or_approved_client_policy"
+        },
+        "testing": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "const": true
+            },
+            "skill_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "policy_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "execution_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "calibration_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "failure_modes_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "history_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "capabilities_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "helper_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "artifacts_pattern": {
+              "const": "docs/hu/{change}/pruebas/"
+            },
+            "strict_schema_validation": {
+              "const": true
+            },
+            "git_adapter": {
+              "type": "string",
+              "minLength": 1
+            },
+            "execution_adapter": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pytest_adapter": {
+              "type": "string",
+              "minLength": 1
+            },
+            "workflow_adapter": {
+              "type": "string",
+              "minLength": 1
+            },
+            "cross_plan_reuse_adapter": {
+              "const": null
+            },
+            "runtime_adapter": {
+              "const": null
+            },
+            "ci_adapter": {
+              "const": null
+            }
+          },
+          "required": [
+            "enabled",
+            "skill_path",
+            "policy_path",
+            "execution_path",
+            "calibration_path",
+            "failure_modes_path",
+            "history_path",
+            "capabilities_path",
+            "helper_path",
+            "artifacts_pattern",
+            "strict_schema_validation",
+            "git_adapter",
+            "execution_adapter",
+            "pytest_adapter",
+            "workflow_adapter",
+            "cross_plan_reuse_adapter",
+            "runtime_adapter",
+            "ci_adapter"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "required_checks",
+        "no_checks_policy",
+        "runtime_policy",
+        "testing"
+      ],
+      "additionalProperties": false
+    },
+    "practices": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "required": [
+        "skills",
+        "agents",
+        "mcp",
+        "hooks"
+      ],
+      "properties": {
+        "skills": {
+          "type": "array"
+        },
+        "agents": {
+          "type": "array"
+        },
+        "mcp": {
+          "type": "array"
+        },
+        "hooks": {
+          "type": "array"
+        }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "owner",
+        "mode",
+        "remote",
+        "branch_prefix",
+        "auto_create_pr",
+        "allow_force_push",
+        "allow_merge",
+        "allow_deploy",
+        "pr_creation"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "owner": {
+          "const": "principal"
+        },
+        "mode": {
+          "const": "commit_push_provider_pr"
+        },
+        "remote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_prefix": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "protected_branches": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publish_approval": {
+          "const": "include_in_manual_archive_confirmation"
+        },
+        "allow_force_push": {
+          "const": false
+        },
+        "allow_merge": {
+          "const": false
+        },
+        "allow_deploy": {
+          "const": false
+        },
+        "auto_create_pr": {
+          "const": false
+        },
+        "delete_branch_automatically": {
+          "const": false
+        },
+        "web_repository_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pr_creation": {
+          "const": {
+            "azure_devops": "cli_after_explicit_approval",
+            "github": "manual_link",
+            "other": "manual_link"
+          }
+        }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "index_path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\\\:*?\\[\\]])[^\\r\\n]+$",
+          "minLength": 1
+        },
+        "common": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\\\:*?\\[\\]])[^\\r\\n]+$",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "layers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\\\:*?\\[\\]])[^\\r\\n]+$",
+            "minLength": 1
+          }
+        },
+        "capabilities": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\\\:*?\\[\\]])[^\\r\\n]+$",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "enabled",
+        "index_path",
+        "common",
+        "layers",
+        "capabilities"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

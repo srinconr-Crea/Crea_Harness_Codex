@@ -1,0 +1,52 @@
+{
+  "manual-project-rules": {
+    "implementation": [
+      "docs/constituciones/",
+      "docs/proyecto.schema.json",
+      "scripts/crea/transiciones.py:select_rules"
+    ],
+    "tests": [
+      "test_rules_select_only_declared_layer_and_capability_and_detect_missing",
+      "test_project_extensions_are_optional_and_conditions_are_closed"
+    ]
+  },
+  "manual-phase-contracts": {
+    "implementation": [
+      "docs/plantillas/handoff.schema.json",
+      "scripts/crea/transiciones.py",
+      "scripts/crea/testing/git_adapter.py",
+      "scripts/crea/testing/workflow.py",
+      ".agents/skills/Crea/crea-pruebas/scripts/contract.py"
+    ],
+    "tests": [
+      "test_content_v2.py",
+      "test_transiciones.py",
+      "test_testing_adapters.py"
+    ]
+  },
+  "manual-delivery-traceability": {
+    "implementation": [
+      "docs/plantillas/evidencia-hu.md",
+      "docs/plantillas/pr.md",
+      "docs/entrega-git.md",
+      "scripts/crea/testing/common.py:render_handoff",
+      "scripts/crea/transiciones.py:github_form/verify_pr"
+    ],
+    "tests": [
+      "test_object_schema_does_not_allow_deployment_without_evidence",
+      "test_pr_content_unicode_and_authority_are_provider_neutral",
+      "test_recording_resulting_commit_does_not_invalidate_approved_pr_content"
+    ]
+  },
+  "manual-kit-distribution": {
+    "implementation": [
+      "scripts/package_manual_015.py",
+      "scripts/crea/testing/kit_validation.py",
+      "README.md"
+    ],
+    "tests": [
+      "test_kit_validation.py",
+      "test_manual_015_packaging.py"
+    ]
+  }
+}

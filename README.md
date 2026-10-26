@@ -1,5 +1,18 @@
 # Crea Harness Codex MVP — kit manual 0.1.4
 
+## Candidato local 0.1.5
+
+La evolución de contratos está en [`artifacts/crea-manual-kit-0.1.5/`](artifacts/crea-manual-kit-0.1.5/).
+Añade reglas selectivas, handoffs comprobables, transiciones inicialmente informativas y
+trazabilidad de objetos/PR. La identidad `content-v2` se verifica como bloque independiente
+antes de integrar los roles; conserva las entradas Git que sean funcionales para los checks.
+Ver [guía de la candidata](artifacts/crea-manual-kit-0.1.5/LEEME-CREA.md).
+
+Es preparación local: no se publica una release ni se acreditan agentes nativos, Spark,
+Azure/GitHub reales o despliegues. La entrega 0.1.4 y sus ZIP/hashes se conservan intactos.
+La adopción combina personalizaciones mediante diff revisado y actualiza schema/herramientas
+juntos; no migra recibos o HU en curso silenciosamente. GitHub mantiene creación manual de PR.
+
 Kit de configuración para trabajar con Codex sobre repositorios de proyectos y clientes,
 con contexto explícito, roles especializados y un flujo de desarrollo guiado por OpenSpec.
 Está orientado a proyectos de datos y aplicaciones en Databricks, con entrega por GitHub

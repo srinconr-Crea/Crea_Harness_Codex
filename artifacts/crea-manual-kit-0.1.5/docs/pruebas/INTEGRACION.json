@@ -1,0 +1,12 @@
+{
+  "version": "0.1.5",
+  "source_package_version": "0.1.0",
+  "skill_copy": "Completa; agents/references/assets/scripts preservados.",
+  "adaptations": [
+    "contract.build_plan/evaluate aceptan procedencia y referencias required_check_ids opcionales deterministas",
+    "plan.schema incluye procedencia opcional",
+    "schemas execution/capabilities agregados",
+    "referencia de adaptadores locales añadida; upstream sin cambios",
+    "Proyección content-v2 y handoffs por transición con consumidor informativo; recibos históricos no se migran."
+  ]
+}

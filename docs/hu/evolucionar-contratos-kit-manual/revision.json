@@ -1,0 +1,59 @@
+{
+  "reviewer": "/root/revision_implementacion_015",
+  "mode": "read_only",
+  "critical": 0,
+  "important": 6,
+  "minor": 0,
+  "fixes": [
+    {
+      "id": 1,
+      "behavior": "índice completo y comprobación explícita pre-push",
+      "tests": [
+        "test_index_rejects_staged_files_outside_the_final_approval",
+        "test_pre_push_rejects_an_untested_commit_even_with_a_valid_current_gate"
+      ]
+    },
+    {
+      "id": 2,
+      "behavior": "bytes de derivados comprometidos contrastados",
+      "tests": [
+        "test_published_derived_bytes_must_match_the_reviewed_worktree"
+      ]
+    },
+    {
+      "id": 3,
+      "behavior": "historia congelada y predecesor con hash",
+      "tests": [
+        "test_initial_plan_freezes_same_context_handoff_bytes",
+        "test_second_attempt_requires_the_hash_of_its_real_predecessor"
+      ]
+    },
+    {
+      "id": 4,
+      "behavior": "referencias mediante mapa exacto tras Archive",
+      "tests": [
+        "test_archive_reference_uses_only_exact_hash_bound_movement"
+      ]
+    },
+    {
+      "id": 5,
+      "behavior": "intervalo cerrado del rol separado de cambios posteriores",
+      "tests": [
+        "test_later_writer_is_not_attributed_to_the_closed_role_interval"
+      ]
+    },
+    {
+      "id": 6,
+      "behavior": "HEAD/rama/índice observados según acciones",
+      "tests": [
+        "test_snapshot_reports_head_and_branch_actions_even_with_equal_files"
+      ]
+    }
+  ],
+  "limits": [
+    "No autenticación criptográfica de decisiones humanas",
+    "No aislamiento ni autoría garantizada",
+    "No ejecución real remota o nativa acreditada",
+    "Histórico fuera del alcance funcional"
+  ]
+}

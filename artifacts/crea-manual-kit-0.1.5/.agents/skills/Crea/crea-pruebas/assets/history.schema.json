@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "history",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "candidate_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rule_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt_digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "model_action": {
+            "enum": [
+              "pass",
+              "report",
+              "warn",
+              "block"
+            ]
+          },
+          "human_action": {
+            "enum": [
+              "pass",
+              "report",
+              "warn",
+              "block"
+            ]
+          },
+          "outcome": {
+            "enum": [
+              "agreement",
+              "false_positive",
+              "false_negative"
+            ]
+          },
+          "human_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lesson": {
+            "type": "string",
+            "minLength": 1
+          },
+          "regression_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "case_id",
+          "candidate_ref",
+          "rule_id",
+          "model",
+          "prompt_digest",
+          "model_action",
+          "human_action",
+          "outcome",
+          "human_ref",
+          "lesson",
+          "regression_ref"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "cases"
+  ],
+  "additionalProperties": false
+}

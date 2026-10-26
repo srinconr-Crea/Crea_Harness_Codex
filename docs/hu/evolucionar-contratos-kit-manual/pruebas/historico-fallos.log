@@ -1,0 +1,109 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+______________________ test_documented_fixtures_validate ______________________
+
+    def test_documented_fixtures_validate():
+        import hashlib
+        for name in ('alpha','beta'):
+            root=Path('tests/fixtures')/name
+            descriptor=load_document(root/'descriptor.json',Descriptor)
+            policy=load_document(root/'policy.json',Policy)
+            binding=load_document(root/'binding.json',Binding)
+            assert descriptor.client_id==policy.client_id==binding.client_id==name
+>           assert binding.policy_sha256==hashlib.sha256((root/'policy.json').read_bytes()).hexdigest()
+E           AssertionError: assert '4362c7845080...22847852deec7' == '9575911478b9...6395e96f04211'
+E             
+E             - 9575911478b90494e9899e6fde3dcfeb2a9ad89fe150dba9b546395e96f04211
+E             + 4362c78450804a1ca9f09d93a89030c63daa5375b49a8f9065522847852deec7
+
+tests\test_configuration.py:67: AssertionError
+_______________ test_clone_materializes_only_frozen_child_scope _______________
+
+client = {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/.test-data/bc96f..._MVP/harness/.test-data/bc96f31fa98b4831befb308924a027c0/binding.json'), 'origin': 'https://github.com/demo/alpha.git'}
+scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/.test-data/bc96f31fa98b4831befb308924a027c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000205B7633490>
+
+    def test_clone_materializes_only_frozen_child_scope(client,scratch,monkeypatch):
+        import subprocess
+        m=api(); data=supplied(client); source=client['target']; future=scratch/'cloned'
+        subprocess.run(['git','-C',str(source),'add','.harness/client.yaml'],check=True,capture_output=True)
+        subprocess.run(['git','-C',str(source),'-c','user.name=Test','-c','user.email=test@example.invalid','commit','-m','base'],check=True,capture_output=True)
+        data.update(clone=True)
+        data['binding']['target_path']=str(future); data['guided_request']['target_path']=str(future)
+        client['binding'].write_bytes(canonical(data['binding']))
+        actual=subprocess.run
+        def local_remote(args,**kwargs):
+            if 'clone' in args:
+                selected=list(args); selected[-2]=str(source)
+                output=actual(selected,**kwargs)
+                assert output.returncode==0,output.stderr
+                actual([args[0],'-C',str(future),'remote','set-url','origin',data['repository_url']],check=True,capture_output=True)
+                return output
+            return actual(args,**kwargs)
+        monkeypatch.setattr(subprocess,'run',local_remote)
+        parent=scratch/'parent-clone.json'
+        value,code=m.preview(data,probe_fn=ready,plan_out=parent); assert code==0
+>       output,code=m.apply(parent,value['plan']['plan_sha256'],probe_fn=ready)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_environment_setup.py:218: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\harness_local\environment_setup.py:56: in call
+    with using_tools(tools): return function(first,*args,**kwargs)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\harness_local\environment_setup.py:432: in apply
+    completed=subprocess.run([git,'-c','core.hooksPath='+str(state/'disabled-hooks'),'clone','--branch',
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = ['C:\\Users\\Stiveen Rincon Ruge\\AppData\\Local\\Programs\\Git\\cmd\\git.EXE', '-c', 'core.hooksPath=C:\\Users\\Stive...t-data\\bc96f31fa98b4831befb308924a027c0\\state\\alpha\\checkout\\disabled-hooks', 'clone', '--branch', 'develop', ...]
+kwargs = {'capture_output': True, 'timeout': 120}
+
+    def local_remote(args,**kwargs):
+        if 'clone' in args:
+            selected=list(args); selected[-2]=str(source)
+            output=actual(selected,**kwargs)
+>           assert output.returncode==0,output.stderr
+E           AssertionError: b"Cloning into 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\.test-data\\bc96f... not read from remote repository.
+E             
+E             Please make sure you have the correct access rights
+E             and the repository exists.
+E             "
+E           assert 128 == 0
+E            +  where 128 = CompletedProcess(args=['C:\\Users\\Stiveen Rincon Ruge\\AppData\\Local\\Programs\\Git\\cmd\\git.EXE', '-c', 'core.hook...not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n").returncode
+
+tests\test_environment_setup.py:211: AssertionError
+________________ test_git_status_never_executes_client_filter _________________
+
+client = {'target': WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/.test-data/4c428..._MVP/harness/.test-data/4c42863e95984303a9bf38a8f8a673a3/binding.json'), 'origin': 'https://github.com/demo/alpha.git'}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000205B76FFA80>
+
+    def test_git_status_never_executes_client_filter(client,monkeypatch):
+        p=client['target']
+        marker=p.parent/'filter-executed'
+        script=p/'filter.py'
+        script.write_text('from pathlib import Path\nPath('+repr(str(marker))+').touch()\nimport sys\nsys.stdout.write(sys.stdin.read())\n')
+        (p/'.gitattributes').write_text('tracked.txt filter=evil\n')
+        (p/'tracked.txt').write_text('before\n')
+        # Stage before registering the malicious driver.
+        subprocess.run(['git','-C',str(p),'add','.'],check=True,capture_output=True)
+        subprocess.run(['git','-C',str(p),'-c','user.name=Fixture','-c','user.email=fixture@example.invalid',
+                        'commit','-m','fixture'],check=True,capture_output=True)
+        command='"'+sys.executable+'" "'+str(script)+'"'
+        subprocess.run(['git','-C',str(p),'config','filter.evil.clean',command],check=True)
+        (p/'tracked.txt').write_text('after!\n')
+        import os,time
+        stamp=time.time()+5
+        os.utime(p/'tracked.txt',(stamp,stamp))
+        subprocess.run(['git','-C',str(p),'hash-object','--path=tracked.txt','tracked.txt'],check=True,capture_output=True)
+>       assert marker.exists(), 'Control positivo: Git debe ejecutar el filtro de la fixture'
+E       AssertionError: Control positivo: Git debe ejecutar el filtro de la fixture
+E       assert False
+E        +  where False = exists()
+E        +    where exists = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/.test-data/4c42863e95984303a9bf38a8f8a673a3/filter-executed').exists
+
+tests\test_local.py:173: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_configuration.py::test_documented_fixtures_validate - Asser...
+FAILED tests/test_environment_setup.py::test_clone_materializes_only_frozen_child_scope
+FAILED tests/test_local.py::test_git_status_never_executes_client_filter - As...
+3 failed in 9.61s

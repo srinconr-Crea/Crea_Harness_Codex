@@ -1,0 +1,22 @@
+[
+  {
+    "capability": "manual-delivery-traceability",
+    "requirements": 5,
+    "scenarios": 12
+  },
+  {
+    "capability": "manual-kit-distribution",
+    "requirements": 3,
+    "scenarios": 7
+  },
+  {
+    "capability": "manual-phase-contracts",
+    "requirements": 9,
+    "scenarios": 29
+  },
+  {
+    "capability": "manual-project-rules",
+    "requirements": 4,
+    "scenarios": 10
+  }
+]

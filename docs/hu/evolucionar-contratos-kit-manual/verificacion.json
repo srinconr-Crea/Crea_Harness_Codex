@@ -1,0 +1,85 @@
+{
+  "verified_on": "2026-10-26",
+  "change": "evolucionar-contratos-kit-manual",
+  "scope": "manual_kit_only",
+  "candidate": "artifacts/crea-manual-kit-0.1.5.zip",
+  "zip_sha256": "d9fcf8c4866a4287ae8cd233b920ee0a48ff13359c55874b371071c900493492",
+  "kit_tests": {
+    "status": "passed",
+    "count": 97,
+    "log": "pruebas/kit-final.log"
+  },
+  "packaging_tests": {
+    "status": "passed",
+    "count": 3,
+    "log": "pruebas/empaquetador.log"
+  },
+  "historical_suite": {
+    "status": "interrupted",
+    "used_as_kit_gate": false,
+    "observed_failures": 3,
+    "focused_reproduction": {
+      "status": "failed",
+      "count": 3,
+      "seconds": 9.61,
+      "log": "pruebas/historico-fallos.log"
+    },
+    "tests": [
+      "tests/test_configuration.py::test_documented_fixtures_validate",
+      "tests/test_environment_setup.py::test_clone_materializes_only_frozen_child_scope",
+      "tests/test_local.py::test_git_status_never_executes_client_filter"
+    ]
+  },
+  "review": {
+    "critical": 0,
+    "important_fixed": 6,
+    "minor_deferred": 0,
+    "reviewer": "/root/revision_implementacion_015"
+  },
+  "preservation": {
+    "files_checked_against_before": 504,
+    "changed": 0,
+    "manifest_entries": 497,
+    "upstream_and_licenses": 182
+  },
+  "sync": {
+    "capabilities": 4,
+    "requirements": 21,
+    "scenarios": 58,
+    "validation": "25 specs passed; four new specs strict passed"
+  },
+  "authorization": "Solicitud humana de esta conversación: continuar con openspec-apply-change, openspec-sync-specs y openspec-archive-change; solo alcance local.",
+  "delivery": {
+    "state": "local_candidate",
+    "commit": false,
+    "push": false,
+    "pr_created": false,
+    "merge": false,
+    "deployed": false,
+    "capture_stage": "before_publication"
+  },
+  "limits": [
+    "Piloto de cuatro roles nativos not_run",
+    "Proveedor real/Spark/Databricks not_run",
+    "Respuestas humanas se contrastan con la conversación, no autenticadas por JSON"
+  ],
+  "archive": {
+    "path": "openspec/changes/archive/2026-10-26-evolucionar-contratos-kit-manual",
+    "status": "archived_verified",
+    "files": 8,
+    "completed_tasks": 31,
+    "pending_tasks": 0
+  },
+  "publication_authorization": {
+    "actions": [
+      "commit",
+      "push"
+    ],
+    "branch": "Crea_Harness_Codex_MVP_Cons",
+    "remote": "origin",
+    "repository": "https://github.com/srinconr-Crea/Crea_Harness_Codex.git",
+    "pr_authorized": false,
+    "request": "Usuario: has el push a una nueva rama llamada Crea_Harness_Codex_MVP_Cons",
+    "scope": "Incremento local 0.1.5, specs sincronizadas, expediente archivado y evidencia; preservación de bytes mediante .gitattributes."
+  }
+}
