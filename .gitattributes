@@ -28,4 +28,5 @@ docs/evidence/distribution*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-
 artifacts/crea-manual-kit-0.1.3/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 artifacts/crea-manual-kit-0.1.4/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 artifacts/crea-manual-kit-0.1.5/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+artifacts/crea-manual-kit-0.1.5.zip* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 docs/hu/evolucionar-contratos-kit-manual/pruebas/*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
