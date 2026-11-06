@@ -1,3 +1,10 @@
+PROMPTS DEL KIT CREA 0.1.6
+
+Elige SOLO UNA de las dos secciones siguientes. Copia esa sección completa y rellena sus campos antes de usarla. No ejecutes ambas de forma consecutiva.
+
+SECCIÓN A — CONFIGURACIÓN INICIAL
+Para un proyecto que todavía no tiene el kit configurado. Si ya utilizas 0.1.5, usa exclusivamente la sección B y conserva tu setup.
+
 Configura el kit manual Crea en el proyecto indicado. Esto es preparación inicial, no una HU de negocio. Lee la guía del kit y la checklist Excel si la proporciono; valida recursos y alcance y continúa con el trabajo autorizado si no hay bloqueos.
 
 DATOS EDITABLES — reemplazar los corchetes antes de ejecutar
@@ -78,3 +85,50 @@ Los tres hooks oficiales están incluidos, inicialmente inactivos. Inspecciona s
 11. Si indiqué commit_local, revisa el diff, selecciona rutas explícitas y crea un commit del setup en la rama de preparación; verifica su SHA y el árbol limpio. No hagas push, PR, merge, deploy ni ejecución de jobs. Conserva la evidencia y no inventes handoffs/gates para el bootstrap. Para el flujo completo de HU, informa si aún falta publicar e integrar el setup en la base remota desde la que el kit crea las ramas.
 
 12. Entrega una tabla de archivos creados/modificados/conservados, versiones, modelos, comandos y resultados, rama/SHA local y pendientes. Distingue listo para planificar, validado localmente y listo para HU completa. Guarda la auditoría y evidencia. Pregunta solo por datos imprescindibles que no estén en estos campos ni en el repo; avanza lo independiente ya autorizado. No ejecutes comandos con placeholders sin resolver ni reutilices datos de otro cliente.
+
+
+SECCIÓN B — ACTUALIZACIÓN DE 0.1.5 A 0.1.6 SIN REPETIR EL SETUP
+Para un proyecto que ya utiliza el kit Crea 0.1.5. Esta sección es independiente: NO ejecutar los pasos de la sección A.
+
+Actualiza este proyecto del kit Crea 0.1.5 a 0.1.6 sin repetir el setup. Es mantenimiento del kit existente, no una nueva HU de negocio ni una autorización para cambiar su alcance.
+
+DATOS EDITABLES — reemplazar los corchetes antes de ejecutar
+
+Proyecto existente: [ruta_absoluta_del_repo_ya_configurado]
+Kit 0.1.6 extraído como referencia, fuera del proyecto: [ruta_absoluta]
+Kit original 0.1.5 de referencia: [ruta_absoluta_o_revision_exacta_disponible_o_no_disponible]
+Python de validación existente: [ruta_absoluta_o_buscar_y_reportar]
+Rama local de actualización: [codex/actualizar-kit-0.1.6_o_rama_de_trabajo_indicada]
+Versionado: [sin_commit/commit_local]
+Lectura Azure DevOps: [conservar_estado_actual/configurar_sin_habilitar/habilitar_para_planner_y_reviewer_con_destino_verificado]
+Hooks Databricks: [conservar_estado_actual_incluir_sin_activar/preparar_propuesta_de_activacion_por_proyecto_sin_aplicarla]
+Restricciones o personalizaciones conocidas: [lista_o_inferir_del_repo]
+
+EJECUCIÓN DE LA ACTUALIZACIÓN
+
+1. Lee las instrucciones y configuración reales del proyecto. Comprueba versión adoptada, estado Git, rama y HU en curso. Conserva todos los cambios previos; no hagas reset, stash, limpieza ni checkout que pueda perderlos. Crea la rama de actualización solo si es seguro y está dentro del alcance indicado. Actualiza entre fases de una HU o al terminarla; si la actualización invalidaría entradas de una fase activa, deja pendiente esa parte y continúa únicamente lo independiente.
+
+2. Inspecciona el kit 0.1.6 fuera del proyecto y verifica allí su distribución original con el Python existente: python <kit_016>/scripts/crea/validar-kit.py --root <kit_016> --original. Sustituye las rutas por argumentos reales correctamente citados. No clones otra vez el proyecto ni instales dependencias, hagas login o cambies configuración global. Si falta una herramienta, registra el pendiente sin inventar que la validación pasó.
+
+3. Realiza una comparación entre kit original 0.1.5, proyecto personalizado y kit 0.1.6. Clasifica cada archivo como nuevo, sin cambios locales, personalizado, conflicto o no aplicable. Si falta la referencia exacta 0.1.5, usa solamente antecedentes verificables de Git/procedencia; declara el límite y conserva cualquier personalización cuya autoría no pueda distinguirse. No ejecutes una copia masiva del kit encima del proyecto.
+
+4. Incorpora los recursos nuevos y reemplaza únicamente archivos genéricos sin cambios propios. Combina mediante diff revisado AGENTS.md, orquestador Crea, perfiles, guías y registros de skills. Actualiza schemas y utilidades con sus consumidores. Conserva modelos/esfuerzos, capacidad de hilos aprobada, política secuencial, rutas, conexiones, credenciales externas, rama base, entrega Git y contexto del cliente. No sustituyas docs/proyecto.json ni .codex/config.toml por las plantillas de distribución.
+
+5. Conserva constituciones/reglas activas, selección de capas/capacidades, política y catálogo de pruebas, thresholds, calibraciones, historial, adaptadores y skills propias. No restablezcas setup_complete ni los demás campos a valores de plantilla. No desactives gates ni cambies reglas para pasar validaciones. Si una obligación nueva exige una decisión del responsable, presenta el conflicto y conserva el trabajo válido.
+
+6. Actualiza las skills oficiales Databricks a la revisión fijada por 0.1.6, con licencias, procedencia, dependencias y una sola copia activa por nombre. Usa preview AITools para contrastar hashes y superficies observables; unknown no significa ausencia de duplicados. Si una skill upstream fue personalizada, conserva su antecedente y presenta el conflicto antes de sustituirla. Separa adaptaciones propias en Crea/Project con identidad y referencias revisadas; no falsees los hashes del lock para declarar una personalización como upstream intacto. No instales un plugin duplicado ni actualices globalmente AI Tools.
+
+7. Integra crea-azure-devops-cli, helper y contratos de solicitud/evidencia. Registra Planner/Reviewer y las instrucciones del principal para la entrega PR ya existente. Añade la sección opcional integrations.azure_devops_context sin alterar otros datos. Conserva el estado actual o la opción indicada arriba: para habilitar lectura exige organización, ID y nombre canónico de proyecto reconciliados. El work item principal se concreta por HU; no inventes una HU ni consultes Azure durante esta actualización sin petición expresa. Developer/Tester consumen snapshots. No habilites escrituras/comentarios Boards, consultas generales, pipelines, vínculos/transiciones de work items, merge o auto-complete.
+
+8. Incluye los tres hooks y sus recursos sin activarlos automáticamente. Inspecciona hooks JSON/TOML y confianza existentes, preserva grupos propios y ajenos y evita registro duplicado. Sigue docs/databricks-hooks.md; si solicité una propuesta, presenta configuración, intérprete, rutas y restauración revisables en archivos nuevos, sin aplicar configuración nativa ni conceder confianza. Informa incluido, configurado, autorizado y observado por separado.
+
+9. Conserva openspec/config.yaml, specs, cambios activos/archivados, HU, handoffs, snapshots, recibos y evidencia histórica. No ejecutes openspec init ni reconstruyas intentos antiguos. No mezcles nuevas reglas de consumo con planes ya aprobados sin reconciliación explícita. No modifiques constituciones o decisiones del cliente como parte implícita de esta actualización.
+
+10. Desde la raíz del proyecto, ejecuta con el intérprete existente la validación personalizada y preview, después de integrar sus utilidades:
+    python scripts/crea/validar-kit.py --root .
+    python scripts/crea/aitools.py preview --config docs/proyecto.json
+En el proyecto personalizado NO uses --original ni -OriginalDistribution. Conserva el manifiesto/procedencia del kit como referencia de distribución; no regeneres sus hashes para afirmar que todo el proyecto personalizado es idéntico al ZIP. Verifica JSON/TOML/YAML/referencias y las pruebas pertinentes a los archivos afectados. Registra comandos, resultados y límites reales, sin repetir baterías ajenas por rutina ni presentar fixtures como permisos/ejecución remota.
+
+11. Si indiqué commit_local y las comprobaciones pertinentes pasan, revisa el diff y versiona solo rutas de la actualización en la rama seleccionada, dejando fuera cambios ajenos. Si indiqué sin_commit, deja el diff revisable. Esta actualización no autoriza push, PR, merge, deploy, ejecución de jobs/pipelines, nuevas instalaciones ni login.
+
+12. Entrega tabla de archivos incorporados, actualizados, combinados, conservados y pendientes; versiones, hashes, diff, verificaciones, conflictos y ruta de evidencia de mantenimiento. Explica qué quedó disponible y qué requiere configuración o activación posterior. No inventes handoffs ni resultados de una HU de negocio. Pregunta solo por decisiones imprescindibles no resolubles con el repositorio; continúa lo independiente autorizado.

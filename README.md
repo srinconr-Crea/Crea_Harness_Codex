@@ -10,7 +10,7 @@ No requiere instalar el motor histórico Python `harness_local`.
 - [ZIP portable 0.1.6](artifacts/crea-manual-kit-0.1.6.zip?raw=true).
 - [SHA-256](artifacts/crea-manual-kit-0.1.6.zip.sha256) e [informe de empaquetado](artifacts/crea-manual-kit-0.1.6.zip.validation.json).
 - [Explorar el kit](artifacts/crea-manual-kit-0.1.6/) y [LEEME](artifacts/crea-manual-kit-0.1.6/LEEME-CREA.md).
-- [Prompt de configuración](artifacts/crea-manual-kit-0.1.6/Prompt_configurar-kit-proyecto.txt), derivado del prompt personalizado de 0.1.5.
+- [Prompt de configuración y actualización](artifacts/crea-manual-kit-0.1.6/Prompt_configurar-kit-proyecto.txt): sección A para setup inicial y sección B para migrar 0.1.5 → 0.1.6 sin repetirlo.
 - [Guía Windows/PowerShell](artifacts/crea-manual-kit-0.1.6/docs/configuracion-manual.md).
 
 1. Compara el SHA-256, extrae en una carpeta de preparación y verifica la distribución original.
@@ -24,6 +24,17 @@ No requiere instalar el motor histórico Python `harness_local`.
 El ZIP incluye recursos/utilidades del kit; Git, Python, OpenSpec, Azure CLI y Databricks CLI
 se preparan por separado según el proyecto. El setup no instala ni autentica herramientas
 sin autorización correspondiente, ni publica Git como efecto implícito.
+
+## Actualizar un proyecto que ya utiliza 0.1.5
+
+Extrae 0.1.6 fuera del repositorio cliente y utiliza **solo la sección B** del prompt.
+Compara kit original 0.1.5, proyecto personalizado y kit 0.1.6; incorpora novedades y
+combina configuración/perfiles mediante diff. Conserva contexto, modelos, conexiones,
+constituciones, pruebas, skills propias y todo el historial OpenSpec/HU.
+No vuelvas a clonar, ejecutar `openspec init` ni reemplazar la configuración completa.
+Los hooks se incluyen sin activación automática; Azure requiere destino verificado y
+la opción de habilitación elegida. Valida el proyecto personalizado sin `--original`.
+El prompt permite dejar el diff o un commit local; no autoriza publicación por sí mismo.
 
 ## Novedades 0.1.6
 
@@ -75,7 +86,7 @@ Ver [entrega Git](artifacts/crea-manual-kit-0.1.6/docs/entrega-git.md).
 | `resources/databricks-aitools/` | Hooks/recursos upstream pasivos. |
 | `docs/proyecto.json` y schema | Configuración opcional y referencias del cliente. |
 | `scripts/crea/` | Validación, pruebas, preview AITools y lectura Azure acotada. |
-| `Prompt_configurar-kit-proyecto.txt` | Preparación personalizable del cliente. |
+| `Prompt_configurar-kit-proyecto.txt` | Dos secciones independientes: configuración inicial o actualización 0.1.5 → 0.1.6. |
 | `kit-manifest.json` | Inventario de bytes originales del ZIP. |
 
 El [registro de validación](artifacts/crea-manual-kit-0.1.6/docs/VALIDACION-KIT.md) y la

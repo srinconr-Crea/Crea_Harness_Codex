@@ -2072,13 +2072,13 @@
     },
     {
       "path": "LEEME-CREA.md",
-      "bytes": 6119,
-      "sha256": "19325f51bba1d3a647ab3b809e969c1241fdc2c31aabd7b1c9f86f9be4d12d5a"
+      "bytes": 6471,
+      "sha256": "1400e69a54f90934a862126ddf02cfc79db46aeb6383b5b87e9c833dc255cdba"
     },
     {
       "path": "Prompt_configurar-kit-proyecto.txt",
-      "bytes": 11187,
-      "sha256": "1566914bb5193eafe3a17861711e043e6f9c50709cdc241602159709c0634171"
+      "bytes": 18856,
+      "sha256": "4d10ac660b91d03501b8a10a5089a4fbe7c30f002279d613f0748eb3f53dfd6f"
     },
     {
       "path": "requirements-validation.txt",

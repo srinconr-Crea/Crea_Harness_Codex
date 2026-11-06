@@ -1,6 +1,8 @@
 # Crea — kit manual 0.1.6
 
 ## 1. Empezar
+El archivo Prompt_configurar-kit-proyecto.txt tiene dos secciones independientes: A para configuracion inicial; B para actualizar un proyecto 0.1.5 sin repetir setup. Elige solo una. En una actualizacion conserva configuracion, reglas e historial y combina mediante diff; no ejecutes los pasos de inicio siguientes sobre un proyecto ya configurado.
+
 Lee docs/configuracion-manual.md. Descomprime primero en una carpeta de preparacion;
 clona o crea el repo y copia el contenido del kit en su raiz, incluyendo carpetas con punto.
 Inicializa OpenSpec alli, completa contexto/inventario y pruebas; prepara las constituciones
