@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "schemas_checked": 14,
+  "schema_paths": [
+    ".agents/skills/Crea/crea-pruebas/assets/calibration.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/capabilities.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/changes.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/execution.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/failure-modes.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/history.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/plan.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/policy.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/results.schema.json",
+    ".agents/skills/Crea/crea-pruebas/assets/review.schema.json",
+    "docs/plantillas/azure-context-receipt.schema.json",
+    "docs/plantillas/azure-context-request.schema.json",
+    "docs/plantillas/handoff.schema.json",
+    "docs/proyecto.schema.json"
+  ],
+  "toml_checked": 5,
+  "toml_paths": [
+    ".codex/agents/developer.toml",
+    ".codex/agents/planner.toml",
+    ".codex/agents/reviewer.toml",
+    ".codex/agents/tester.toml",
+    ".codex/config.toml"
+  ],
+  "prompt_original_preserved": "baseline hash checked separately",
+  "prompt_updated": true,
+  "native_hooks": "not_run",
+  "remote_azure_read": "not_run"
+}

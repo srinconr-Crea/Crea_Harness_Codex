@@ -1,0 +1,20 @@
+{
+  "status": "synced",
+  "capabilities": [
+    {
+      "capability": "azure-devops-cli-context",
+      "requirements_added": 6,
+      "target": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\specs\\azure-devops-cli-context\\spec.md"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "requirements_added": 3,
+      "target": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\specs\\manual-kit-distribution\\spec.md"
+    },
+    {
+      "capability": "portable-databricks-aitools",
+      "requirements_added": 5,
+      "target": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\specs\\portable-databricks-aitools\\spec.md"
+    }
+  ]
+}

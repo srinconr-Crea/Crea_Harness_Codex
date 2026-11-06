@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "changes",
+  "type": "object",
+  "properties": {
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "A",
+              "M",
+              "D",
+              "R",
+              "T",
+              "U"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "old_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "path",
+          "old_path"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "required_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "changes",
+    "required_criteria"
+  ],
+  "additionalProperties": false
+}

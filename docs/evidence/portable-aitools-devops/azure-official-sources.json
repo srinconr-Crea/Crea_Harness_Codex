@@ -1,0 +1,38 @@
+{
+  "observed_on": "2026-11-06",
+  "remote_azure_read": "not_run",
+  "metadata_source": {
+    "repository": "Azure/azure-devops-cli-extension",
+    "commit": "2ee443d1f35a93bffbfe478281577c8493eb4ad7",
+    "url": "https://raw.githubusercontent.com/Azure/azure-devops-cli-extension/2ee443d1f35a93bffbfe478281577c8493eb4ad7/azure-devops/azext_devops/tests/latest/integrationtests/recordings/test_invoke_command_basic.yaml",
+    "sha256": "e4b2e47691f1a959e502bffcc2acf834a4f755da1d217ebdd2fbdcc3a8f6ef0e",
+    "extract": {
+      "id": "608aac0a-32e1-4493-a863-b9cf4566d257",
+      "area": "wit",
+      "resourceName": "comments",
+      "routeTemplate": "{project}/_apis/wit/workItems/{workItemId}/comments/{commentId}",
+      "resourceVersion": 4,
+      "minVersion": "5.1",
+      "maxVersion": "7.2",
+      "releasedVersion": "0.0"
+    }
+  },
+  "installed_extension": "1.0.9",
+  "installed_invoke_sha256": "99bd816207bdee1daffed665ae0e86b1ed2770e0fdf9ec3cb4dbb924400d7906",
+  "installed_sdk_client_sha256": "99aa577e32e9a9f0084ef7884e40b92e7897a58a87e41a9a15cdf9c1c431956b",
+  "api_compatibility": {
+    "documented": "7.1-preview.4",
+    "cli_requested": "7.1-preview",
+    "reason": "invoke apiVersionToFloat rejects resource suffix; official version grammar permits omitted resource revision",
+    "resource_revision_observed": "unknown",
+    "sdk_does_not_append_suffix": true,
+    "remote_smoke": "not_run"
+  },
+  "official_references": [
+    "https://learn.microsoft.com/en-us/azure/devops/integrate/concepts/rest-api-versioning?view=azure-devops",
+    "https://learn.microsoft.com/en-us/rest/api/azure/devops/wit/comments/get-comments?view=azure-devops-rest-7.1",
+    "https://github.com/microsoft/azure-devops-node-api/blob/master/api/WorkItemTrackingApi.ts",
+    "https://github.com/microsoft/azure-devops-skills/blob/main/.github/skills/boards-work-item-summary/SKILL.md"
+  ],
+  "privacy": "Only public resource metadata extracted; original recording not retained"
+}

@@ -1,0 +1,28 @@
+{
+  "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+  "archive_url": "https://codeload.github.com/databricks/databricks-agent-skills/zip/ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+  "archive_sha256": "e02fac494135ab8de942581e4fb2e502a799cb56e2d773b127a639e558c756bf",
+  "skills": 28,
+  "files": 319,
+  "required_local_references_missing": 0,
+  "patches": [],
+  "tdd": {
+    "red": "3 failed before implementation; preservation contract red then corrected to verify original bytes",
+    "green": "4 passed in 0.40s",
+    "command": "../.integration-venv/Scripts/python.exe -m pytest tests/test_manual_016_vendor.py -q -p no:cacheprovider"
+  },
+  "cli": "Databricks CLI v1.21.0",
+  "download_transport": "Python urllib standard TLS verification; codeload archive by commit",
+  "not_run": [
+    "login",
+    "global install",
+    "native hook activation",
+    "private Databricks query"
+  ],
+  "tasks": [
+    "2.1",
+    "2.2",
+    "2.4 Databricks guide/provenance portion",
+    "3.1"
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "reviewed_on": "2026-11-06",
+  "skills": [
+    {
+      "name": "openspec-apply-change",
+      "origin": "OpenSpec generated integration",
+      "revision": "1.13.2",
+      "modified": false
+    },
+    {
+      "name": "openspec-archive-change",
+      "origin": "OpenSpec generated integration",
+      "revision": "1.13.2",
+      "modified": false
+    },
+    {
+      "name": "openspec-explore",
+      "origin": "OpenSpec generated integration",
+      "revision": "1.13.2",
+      "modified": false
+    },
+    {
+      "name": "openspec-propose",
+      "origin": "OpenSpec generated integration",
+      "revision": "1.13.2",
+      "modified": false
+    },
+    {
+      "name": "openspec-sync-specs",
+      "origin": "OpenSpec generated integration",
+      "revision": "1.13.2",
+      "modified": false
+    },
+    {
+      "name": "openspec-update-change",
+      "origin": "OpenSpec generated integration",
+      "revision": "1.13.2",
+      "modified": false
+    },
+    {
+      "name": "openspec-verify-change",
+      "origin": "OpenSpec generated integration",
+      "revision": "1.13.2",
+      "modified": false
+    },
+    {
+      "name": "Crea/creating-databricks-agents",
+      "origin": "installed-local-custom-skill",
+      "revision": "2026-10-16",
+      "modified": false
+    },
+    {
+      "name": "crea-pruebas",
+      "origin": "supplied-integration-package",
+      "revision": "0.1.0",
+      "modified": true,
+      "patches": [
+        {
+          "path": "scripts/contract.py",
+          "change": "Procedencia y referencias de checks opcionales, sin efectos de ejecucion."
+        },
+        {
+          "path": "assets/plan.schema.json",
+          "change": "Contrato aditivo de procedencia y required_check_ids."
+        },
+        {
+          "path": "SKILL.md",
+          "change": "Enlace a integracion-local.md; carpeta fuente conservada completa."
+        }
+      ],
+      "integration_version": "0.1.4",
+      "integration_inventory": "docs/pruebas/INTEGRACION.json"
+    },
+    {
+      "name": "databricks-ai-functions",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-ai-functions",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-aibi-dashboards",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-aibi-dashboards",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-app-design",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-app-design",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-apps",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-apps",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-apps-python",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-apps-python",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-core",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-core",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-dabs",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-dabs",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-data-discovery",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-data-discovery",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-dbsql",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-dbsql",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-docs",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-docs",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-execution-compute",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-execution-compute",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-genie-agents",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-genie-agents",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Reviewed workflow dependency",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-jobs",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-jobs",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-lakebase",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-lakebase",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-lakeflow-connect",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-lakeflow-connect",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-metric-views",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-metric-views",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-mlflow-evaluation",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-mlflow-evaluation",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-mlflow-tracing",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-mlflow-tracing",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-model-serving",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-model-serving",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-pipelines",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-pipelines",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-python-sdk",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-python-sdk",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-sandbox",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-sandbox",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Reviewed workflow dependency",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-serverless",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-serverless",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Reviewed workflow dependency",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-spark-structured-streaming",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-spark-structured-streaming",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-synthetic-data-gen",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-synthetic-data-gen",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-unity-catalog",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-unity-catalog",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Existing skill updated",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-unity-gateway",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-unity-gateway",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Design 2 selected capability",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    },
+    {
+      "name": "databricks-vector-search",
+      "origin": "https://github.com/databricks/databricks-agent-skills",
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "upstream_path": "plugins/databricks/codex/skills/databricks-vector-search",
+      "modified": false,
+      "patches": [],
+      "license": "Apache-2.0",
+      "reason": "Reviewed workflow dependency",
+      "file_inventory": "resources/databricks-aitools/upstream-lock.json"
+    }
+  ],
+  "note": "Databricks Codex bundle pinned to one revision; non-Databricks provenance preserved. Per-file original/distributed hashes and optional workflow classifications in lock. No Apps patch needed.",
+  "databricks_lock": "resources/databricks-aitools/upstream-lock.json"
+}

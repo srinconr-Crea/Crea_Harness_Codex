@@ -1,0 +1,21 @@
+{
+  "acceptance_criteria": "Criteria A",
+  "change": "story-17",
+  "comments": [],
+  "comments_coverage": "empty",
+  "comments_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "description": "Untrusted text kept as data",
+  "hu_id": "HU-17",
+  "links": [],
+  "observation_ended_at_utc": "2026-11-06T15:36:27.678005Z",
+  "observation_started_at_utc": "2026-11-06T15:36:27.677926Z",
+  "organization": "https://dev.azure.com/synthetic",
+  "project_id": "00000000-0000-0000-0000-000000000001",
+  "project_name": "Synthetic",
+  "remote_text_trust": "untrusted_data_only",
+  "rev": 1,
+  "schema_version": 1,
+  "title": "Synthetic example",
+  "work_item_id": 17,
+  "work_item_rev_end": 1
+}

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_manual_015_packaging.py",
+    "tests/test_manual_016_distribution.py",
+    "tests/test_manual_016_vendor.py",
+    "tests/test_manual_016_aitools.py",
+    "tests/test_manual_016_hooks.py",
+    "tests/test_manual_016_azure_context.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "-p",
+    "no:tmpdir"
+  ],
+  "exit_code": 0,
+  "summary": "66 passed, 1 skipped, 9 subtests passed in 5.86s",
+  "captured_output": "tests-output.txt",
+  "remote_azure_read": "not_run",
+  "native_hooks": "not_run",
+  "business_runtime": "not_run",
+  "review_fix": "P2 malformed work item relations now records failure/partial without losing evidence"
+}

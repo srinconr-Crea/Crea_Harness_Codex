@@ -1,0 +1,51 @@
+{
+  "fixture_only": true,
+  "receipt": {
+    "api_cli_requested": "7.1-preview",
+    "api_documented": "7.1-preview.4",
+    "api_resource_revision_observed": "unknown",
+    "attempt": 1,
+    "cli_versions": {
+      "azure_cli": "unknown",
+      "azure_devops": "unknown",
+      "reason": "test_double_no_local_cli_probe",
+      "status": "synthetic_transport"
+    },
+    "comments_coverage": "complete",
+    "comparison": {
+      "classification": "material_or_requires_human_review",
+      "comments_changed": true,
+      "fields_changed": [
+        "acceptance_criteria"
+      ],
+      "new_or_changed_comment_ids": [
+        1
+      ],
+      "removed_comment_ids": [],
+      "requires_reconciliation": true,
+      "semantic_classification": "heuristic_review_required"
+    },
+    "errors": [],
+    "hu": "HU-17",
+    "observation_ended_at_utc": "2026-11-06T15:36:27.715667Z",
+    "observation_started_at_utc": "2026-11-06T15:36:27.715594Z",
+    "observed_at_utc": "2026-11-06T15:36:27.715667Z",
+    "operation": "work_item_context_read",
+    "organization": "https://dev.azure.com/synthetic",
+    "page_count": 1,
+    "private_evidence": "local_only_requires_review_before_publication",
+    "project_id": "00000000-0000-0000-0000-000000000001",
+    "project_name": "Synthetic",
+    "request_ref": "docs/hu/story-17/inputs/azure-devops/revision-1.json",
+    "request_sha256": "a11a404881ac9daa9c712460ed03793a95be090cc357983daea004fb9bf7c083",
+    "role": "reviewer",
+    "schema_version": 1,
+    "snapshot_ref": "docs/hu/story-17/evidence/azure-devops/revision-1/snapshot.json",
+    "snapshot_sha256": "121f9496bafa84a6fcc8fb753908e118f04b0aac556f1854d9b77dbb839a541d",
+    "status": "complete",
+    "work_item_id": 17,
+    "work_item_rev": 2,
+    "work_item_rev_end": 2
+  },
+  "remote_execution": "not_run"
+}

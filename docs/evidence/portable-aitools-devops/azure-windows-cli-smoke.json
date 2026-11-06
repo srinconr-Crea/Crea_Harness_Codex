@@ -1,0 +1,52 @@
+{
+  "observed_on": "2026-11-06",
+  "remote_azure_read": "not_run",
+  "checks": [
+    {
+      "operation": "az version --output json",
+      "launcher": [
+        "C:\\Program Files\\Microsoft SDKs\\Azure\\CLI2\\python.exe",
+        "-IBm",
+        "azure.cli"
+      ],
+      "shell": false,
+      "exit_code": 0,
+      "help_has_expected": true,
+      "version": {
+        "azure-cli": "2.91.0",
+        "azure-cli-core": "2.91.0",
+        "azure-cli-telemetry": "1.1.0",
+        "extensions": {
+          "azure-devops": "1.0.9"
+        }
+      },
+      "diagnostic": "none"
+    },
+    {
+      "operation": "az boards work-item show --help",
+      "launcher": [
+        "C:\\Program Files\\Microsoft SDKs\\Azure\\CLI2\\python.exe",
+        "-IBm",
+        "azure.cli"
+      ],
+      "shell": false,
+      "exit_code": 0,
+      "help_has_expected": true,
+      "version": null,
+      "diagnostic": "none"
+    },
+    {
+      "operation": "az devops invoke --help",
+      "launcher": [
+        "C:\\Program Files\\Microsoft SDKs\\Azure\\CLI2\\python.exe",
+        "-IBm",
+        "azure.cli"
+      ],
+      "shell": false,
+      "exit_code": 0,
+      "help_has_expected": true,
+      "version": null,
+      "diagnostic": "none"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+...........................................................s... [ 94%]
+....                                                                     [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_manual_016_azure_context.py:196: Host does not permit creating symlinks
+66 passed, 1 skipped, 9 subtests passed in 5.86s

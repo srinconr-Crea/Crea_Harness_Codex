@@ -1,0 +1,78 @@
+{
+  "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+  "missing_local_links": [
+    {
+      "source": ".agents/skills/databricks-genie-agents/SKILL.md",
+      "line": 56,
+      "href": "../databricks-unstructured-pdf-generation/SKILL.md",
+      "classification": "optional_workflow",
+      "reason": "PDF generation is a separate workflow."
+    },
+    {
+      "source": ".agents/skills/databricks-genie-agents/SKILL.md",
+      "line": 57,
+      "href": "../databricks-ml-training/SKILL.md",
+      "classification": "optional_workflow",
+      "reason": "Training and custom model authoring are separate from endpoint operations and UC governance."
+    },
+    {
+      "source": ".agents/skills/databricks-genie-agents/references/legacy-ka-supervisor.md",
+      "line": 30,
+      "href": "../../databricks-unstructured-pdf-generation/SKILL.md",
+      "classification": "optional_workflow",
+      "reason": "PDF generation is a separate workflow."
+    },
+    {
+      "source": ".agents/skills/databricks-genie-agents/references/query-genie-agent.md",
+      "line": 123,
+      "href": "url",
+      "classification": "example_placeholder",
+      "reason": "Illustrative Markdown link in remote response example."
+    },
+    {
+      "source": ".agents/skills/databricks-model-serving/SKILL.md",
+      "line": 229,
+      "href": "../databricks-ml-training/SKILL.md",
+      "classification": "optional_workflow",
+      "reason": "Training and custom model authoring are separate from endpoint operations and UC governance."
+    },
+    {
+      "source": ".agents/skills/databricks-unity-catalog/SKILL.md",
+      "line": 226,
+      "href": "../databricks-iceberg/SKILL.md",
+      "classification": "optional_workflow",
+      "reason": "External engine Iceberg interoperability is a separate workflow."
+    },
+    {
+      "source": ".agents/skills/databricks-unity-catalog/SKILL.md",
+      "line": 227,
+      "href": "../databricks-ml-training/SKILL.md",
+      "classification": "optional_workflow",
+      "reason": "Training and custom model authoring are separate from endpoint operations and UC governance."
+    },
+    {
+      "source": ".agents/skills/databricks-vector-search/SKILL.md",
+      "line": 411,
+      "href": "../databricks-ml-training/SKILL.md",
+      "classification": "optional_workflow",
+      "reason": "Training and custom model authoring are separate from endpoint operations and UC governance."
+    },
+    {
+      "source": ".agents/skills/databricks-vector-search/SKILL.md",
+      "line": 413,
+      "href": "../databricks-unstructured-pdf-generation/SKILL.md",
+      "classification": "optional_workflow",
+      "reason": "PDF generation is a separate workflow."
+    },
+    {
+      "source": ".agents/skills/databricks-vector-search/references/end-to-end-rag.md",
+      "line": 195,
+      "href": "../../databricks-ml-training/references/genai-agents.md",
+      "classification": "optional_workflow",
+      "reason": "Training and custom model authoring are separate from endpoint operations and UC governance."
+    }
+  ],
+  "unresolved_required": 0,
+  "patches": [],
+  "windows_normalization": "resolve before exists; avoids false negatives on long paths with parent traversal"
+}

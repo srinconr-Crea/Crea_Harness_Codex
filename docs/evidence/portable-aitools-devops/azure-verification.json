@@ -1,0 +1,45 @@
+{
+  "command": "../.integration-venv/Scripts/python.exe -m pytest tests/test_manual_016_azure_context.py -q -p no:cacheprovider",
+  "coverage": [
+    "preview no transport or writes",
+    "Planner/Reviewer requests",
+    "role/phase/scope/UUID/identity checks",
+    "GET argv and Windows native Python launcher",
+    "pagination/count/token/limit/conflicts",
+    "403 timeout malformed response and partial preservation",
+    "snapshot hash and redaction",
+    "revision reread and comparison",
+    "occupied or outside output",
+    "link rejection via host independent double",
+    "backward compatible schema",
+    "malformed relations first/recheck produce valid failed/partial evidence"
+  ],
+  "exit_code": 0,
+  "limitations": [
+    "Physical symlink test skipped because host denies creation; rejection covered by independent double",
+    "Version probe and transport fixtures are local; no authentication or Azure project access asserted",
+    "Semantic comment classification is heuristic; human review remains required",
+    "CLI uses documented version grammar 7.1-preview due invoke 1.0.9 parser; exact server resource revision unobserved"
+  ],
+  "observed_on": "2026-11-06",
+  "output": "................................s.......                                 [100%]\n=========================== short test summary info ===========================\nSKIPPED [1] tests\\test_manual_016_azure_context.py:196: Host does not permit creating symlinks\n39 passed, 1 skipped in 0.91s\n",
+  "remote_azure_read": "not_run",
+  "tdd_red": [
+    {
+      "result": "collection error because owned module absent",
+      "stage": "initial"
+    },
+    {
+      "result": "TypeError unexpected version_probe, 30 passed 1 skipped 1 failed",
+      "stage": "version_probe"
+    },
+    {
+      "result": "3 failures exposed list phase, bool schema_version and malformed UUID accepted; fixed afterward",
+      "stage": "input robustness"
+    },
+    {
+      "stage": "review relations shape",
+      "result": "2 failures with TypeError first/recheck malformed relations; normalizer now validates list/entries, receipt JSON and comments preserved"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "python_executable": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "reviewed_policy_digest": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "max_evidence_age_seconds": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "junit_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assertion_tests": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "coverage_path": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "coverage_files": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "coverage_minimum": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "junit_path",
+          "assertion_tests",
+          "coverage_path",
+          "coverage_files",
+          "coverage_minimum"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "coverage_path": {
+                  "type": "string"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "coverage_minimum": {
+                  "type": "number"
+                },
+                "coverage_files": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "python_executable",
+    "reviewed_policy_digest",
+    "max_evidence_age_seconds",
+    "outputs",
+    "checks"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

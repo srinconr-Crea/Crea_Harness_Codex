@@ -1,0 +1,21 @@
+{
+  "status": "archived",
+  "change": "portable-aitools-and-devops-read-context",
+  "archive": "openspec/changes/archive/2026-11-06-portable-aitools-and-devops-read-context",
+  "tasks_complete": 26,
+  "tasks_total": 26,
+  "spec_sync": "completed_before_archive_and_verified",
+  "capabilities": [
+    "azure-devops-cli-context",
+    "manual-kit-distribution",
+    "portable-databricks-aitools"
+  ],
+  "main_specs_validation": "27 passed, 0 failed; inherited length warnings retained",
+  "readme_links_verified": 17,
+  "zip_sha256": "cbedfd3db9cc499fe01bf0d23887cec1ca40675b59f3a47fc619ba7a882446ce",
+  "baseline_files_preserved": 794,
+  "tests": "66 passed, 1 skipped, 9 subtests passed",
+  "remote_azure_read": "not_run",
+  "native_hooks": "not_run",
+  "git_publication": "not_performed"
+}

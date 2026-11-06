@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pruebas Crea"
+  short_description: "Selecciona pruebas y verifica evidencia por impacto"
+  default_prompt: "Usa $crea-pruebas para planificar y verificar las pruebas del cambio seleccionado."
