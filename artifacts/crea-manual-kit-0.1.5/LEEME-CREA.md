@@ -3,7 +3,8 @@
 ## 1. Empezar
 Lee docs/configuracion-manual.md. Descomprime primero en una carpeta de preparacion;
 clona o crea el repo y copia el contenido del kit en su raiz, incluyendo carpetas con punto.
-Inicializa OpenSpec alli, completa contexto/inventario y comprueba una HU pequena.
+Inicializa OpenSpec alli, completa contexto/inventario y pruebas; prepara las constituciones
+y contratos segun la seccion 5.1 de la guia y comprueba una HU pequena.
 
 Git remoto: GitHub o Azure DevOps / Azure Repos. La guia separa autenticacion y clonacion
 por proveedor; Azure Repos usa Git Credential Manager para Git y Azure CLI con azure-devops para crear el PR con aprobacion. Sin automatizaciones, Boards ni pipelines.
@@ -19,12 +20,14 @@ Modelos: gpt-6.1-sol, esfuerzo medium, editables. No se instala harness_local.
 AGENTS.md; config y cuatro perfiles; orquestador en Crea; Project vacio para tus skills;
 15 skills Databricks, skill propia creating-databricks-agents y siete skills OpenSpec;
 contexto explicativo, inventario JSON/schema, ocho documentos de practicas sintetizadas,
-plantillas de evidencia/handoff, guia, extensiones, fuentes y licencias.
+constituciones comunes, por capa y por capacidad; contratos JSON y vistas de evidencia/handoff/PR,
+validador informativo de transiciones, guia, extensiones, fuentes y licencias.
 OpenSpec crea openspec/ durante init; ese directorio no viene preinicializado en el ZIP.
 
 ## 4. Editar y conservar
 Editar principalmente docs/contexto-proyecto.md y docs/proyecto.json. Ajustar instrucciones,
-roles y configuracion nativa segun el cliente. Conservar upstream/licencias y extender con
+roles y configuracion nativa segun el cliente. Completar y aprobar las constituciones aplicables
+antes de habilitar `rules`; las capas se distribuyen como plantillas. Conservar upstream/licencias y extender con
 skills propias. No sobrescribir archivos de un cliente sin comparar su contenido.
 
 ## 5. Validacion y limites
@@ -45,7 +48,7 @@ y Azure DevOps Server, entregar formulario web y borrador para creacion manual.
 Sin Boards, pipelines, automatizaciones, auto-complete ni merge.
 La rama se prepara antes del trabajo y se conserva hasta completar el PR. Ver docs/entrega-git.md.
 
-## Pruebas en 0.1.4
+## Pruebas en 0.1.5
 
 Skill crea-pruebas completa y adaptadores Git/argv local/pytest/JUnit/coverage/
 Draft2020-12. Setup fail-closed: completar docs/pruebas/policy.json y execution.json

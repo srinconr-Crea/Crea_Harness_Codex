@@ -16,6 +16,34 @@ Jobs y pipelines son especialidades pendientes: no se distribuyen documentos vac
 Añadirlos cuando existan obligaciones justificadas y responsable. Nunca activar una plantilla
 como si contuviera reglas de cliente ya aprobadas.
 
+## Configurar la selección
+
+Primero completar las decisiones de cada capa necesaria, redactar sus reglas y obtener
+la revisión del responsable; solo entonces marcarla `Estado: active` y asignar su revisión.
+Revisar también comunes y capacidades. Los documentos activos no se consumen mientras
+`rules.enabled=false`. Cambiar ese booleano tampoco habilita adaptadores de ejecución.
+
+Ejemplo del bloque `rules` para un proyecto Silver/Spark **después** de completar y aprobar
+Silver y revisar comunes/Spark; sustituir el bloque correspondiente en docs/proyecto.json,
+sin reemplazar el resto de su configuración:
+
+```json
+{
+  "enabled": true,
+  "index_path": "docs/constituciones/README.md",
+  "common": ["docs/constituciones/comunes.md"],
+  "layers": {"silver": "docs/constituciones/capas/silver.md"},
+  "capabilities": {"spark": "docs/constituciones/capacidades/spark.md"}
+}
+```
+
+Las claves `silver` y `spark` deben coincidir con las declaradas en el contexto de la HU.
+El mapa del proyecto registra documentos disponibles; Planner selecciona los pertinentes
+para cada HU y congela sus referencias para los cuatro roles. No añadir capas sin completar
+ni activar todas las capacidades por defecto. Para el procedimiento completo, ver la sección
+5.1 de docs/configuracion-manual.md. La distribución conserva los mapas vacíos y reglas
+desactivadas hasta que el cliente haga esta revisión.
+
 Cada documento activo declara `Estado: active`, `Revisión: <revisión>` y encabezados
 `### <ID-estable>`. Cada regla incluye Aplicación, Obligación, Fundamento, Evidencia,
 Comprobación (`automatic`, `review`, `human_decision`) y Excepciones. Mantener IDs sin

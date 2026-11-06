@@ -1,4 +1,4 @@
-# Configuracion manual 0.1.4 — Windows / PowerShell
+# Configuracion manual 0.1.5 — Windows / PowerShell
 
 ## 1. Preparar la app y las herramientas
 
@@ -204,6 +204,7 @@ anterior actualiza integraciones, son operaciones diferentes.
 | .codex/config.toml | Modelo principal/defaults y MCP reales si hacen falta. |
 | .codex/agents/*.toml | Los cuatro perfiles (planner/developer/tester/reviewer) llevan gpt-6.1-sol y medium. Edita model/model_reasoning_effort y las instrucciones por rol si cambian sus alcances. |
 | docs/buenas-practicas/*.md | Revisa aplicabilidad por herramienta y documenta excepciones del proyecto. |
+| docs/constituciones/README.md y documentos referenciados | Revisa comunes y capacidades; completa con el responsable las capas que realmente aplican antes de activarlas. Sigue la seccion 5.1. |
 | .agents/skills/Project/ | Agrega skills propias reales y registralas en extensions. |
 
 Mantener las skills upstream sin editar; agregar reglas propias en Crea/Project.
@@ -211,6 +212,33 @@ El cliente no edita licencias, schema o manifest para personalizar negocio. El m
 No crear src/notebooks/tests/resources solo porque aparecen como ejemplos: ajusta inventario
 a tu estructura y crea carpetas cuando el trabajo lo necesite. Los MCP/hooks estan vacios
 por defecto; ver extensiones.md para agregarlos.
+
+### 5.1. Preparar las constituciones y los contratos de 0.1.5
+
+La distribucion deja `rules.enabled=false`, `rules.layers={}` y `rules.capabilities={}`.
+`Estado: active` dentro de un documento no activa por si solo su consumo por el proyecto.
+Revisa las reglas iniciales de comunes, SQL y Spark; Bronze, Silver y Gold son plantillas
+que necesitan decisiones reales, no reglas de cliente ya aprobadas. No basta cambiar su estado.
+
+1. Completa solo las capas necesarias con proposito, granularidad, transformaciones,
+   identidad, errores y conservacion acordados con el responsable. Redacta obligaciones
+   con ID estable, fundamento, evidencia, modo de comprobacion y excepciones; registra
+   la decision aplicable y marca `Estado: active` con su revision cuando esten aprobadas.
+2. Configura `rules.common`, `rules.layers` y `rules.capabilities` con las rutas revisadas,
+   siguiendo el ejemplo de docs/constituciones/README.md; activa `rules.enabled` despues
+   de esa revision. Mantenerlo desactivado conserva el flujo anterior y debe quedar explicito.
+   Habilitar reglas no habilita runtime Spark ni otros adaptadores pendientes.
+3. Conserva `workflow.transitions.mode="informative"` y `blocking_conditions=[]` para
+   el piloto. No cambies permisos nativos, gates existentes ni aprobaciones al configurar esto.
+4. Antes de la primera HU, revisa docs/plantillas/handoff.md y su schema: cada rol entrega
+   un JSON canonico en docs/hu/<change>/handoffs/<fase>-<intento>.json. El principal prepara
+   alcance, snapshots y contexto; Planner selecciona las reglas de las capas/capacidades
+   declaradas para esa HU, con ID, revision y hash. Los cuatro roles usan esa misma seleccion.
+   Las vistas humanas se derivan del JSON; no reconstruir intentos historicos.
+
+No es necesario completar todas las capas para iniciar una HU. Una HU Silver/Spark selecciona
+comunes, Silver y Spark pertinentes; no incorpora Gold, SQL, jobs o pipelines automaticamente.
+Para una HU sin capas ni capacidades se justifica la no aplicabilidad en el contrato.
 
 ## 6. Comprobar e iniciar la primera HU
 
@@ -291,6 +319,11 @@ omitirlo. La plantilla pasa estructura con setup pendiente y bloquea apply.
    tests, fixtures, dependencias/lockfiles, configuracion), assertions y reglas
    por rutas. Unknown o criterio sin prueba bloquea. No usar catch-all para
    ocultar rutas. required_checks en proyecto.json solo contiene IDs existentes.
+   Para cada check seleccionado, declarar tambien en `scope.git_inputs` del handoff
+   las entradas Git funcionales (`HEAD`, `branch`, `index`), o `[]` tras revisar su
+   independencia. Si consume otro estado que el adaptador no puede representar,
+   declarar el caso no soportado por la equivalencia; no conservar su aprobacion
+   solo por igualdad de archivos. `content-v2` no elimina estas dependencias.
 3. Completar **execution.json** con ruta absoluta del interprete elegido y
    reportes/IDs reales de tests. Los comandos se conservan solo en policy.json.
    Revisarlos como codigo; la lista JSON no constituye sandbox. Incluir config
@@ -312,7 +345,8 @@ omitirlo. La plantilla pasa estructura con setup pendiente y bloquea apply.
    execution.reviewed_policy_digest. Es constancia mecanica de revision,
    no firma ni aprobacion humana automatica. Volver a revisar si cambia.
 8. Activar project.setup_complete al completar contexto/inventario y pruebas;
-   verificar sin -OriginalDistribution y versionar setup como cambio separado.
+   revisar tambien constituciones/contratos segun 5.1, verificar sin -OriginalDistribution
+   y versionar setup como cambio separado.
 
 SHA canonico de la politica, desde raiz (sin ejecutar suites):
 
@@ -346,6 +380,26 @@ Contador workflow.max_fix_rounds global (2 por defecto), sin reinicio por rol.
 Passed tecnico no autoriza sync/archive/publicacion: faltan revision y
 confirmaciones Crea/OpenSpec. Publicacion conserva docs/entrega-git.md.
 
+### 9.1. Consumir las transiciones sin crear vetos nuevos
+
+El principal ejecuta `scripts/crea/transiciones.py check` sobre el handoff canonico,
+con `--repo . --handoff <ruta-json> --transition <transicion>`; consulta `--help` para
+las transiciones disponibles. Para `to_publish` debe distinguir `--operation commit`
+de `--operation push`, con sus comprobaciones respectivas. `render` produce la vista humana.
+El validador consume evidencia; no ejecuta las suites ni sustituye el gate de pruebas.
+
+En modo informativo no se interpreta cualquier codigo distinto de cero como detener toda
+la HU. Codigo 3 deja pendiente solo la continuacion que requiere una decision humana real;
+el principal puede avanzar trabajo independiente ya autorizado. Al resolver la duda o recibir
+el aval aplicable, registra la decision, contrasta su alcance vigente y reanuda conservando
+evidencia valida y sin repetir esa misma autorizacion. El aval no sustituye un check obligatorio.
+Codigo 4 o informe ilegible deja el resultado indeterminado y registra que no pudo comprobarse:
+no acredita validez ni introduce por si solo un veto nuevo. Las aprobaciones y gates que ya
+eran obligatorios mantienen sus detenciones y se comprueban mediante los mecanismos existentes.
+Codigo 0 tampoco constituye una aprobacion humana. En `enforcing`, codigo 2 corresponde a
+condiciones objetivas de bloqueo habilitadas expresamente; su promocion requiere decision
+del responsable y `promotion_ref`, no una activacion automatica durante el setup.
+
 ## 10. Herramientas condicionales y limites
 
 Git/argv local/pytest/JUnit/cobertura y Draft2020-12 estan implementados.
@@ -376,7 +430,7 @@ y runtime autorizado siguen pendientes hasta producir evidencia propia.
 
 Referencia oficial: [subagentes Codex](https://learn.chatgpt.com/docs/agent-configuration/subagents).
 
-## Adopción local de contratos 0.1.5
+## 12. Migrar desde 0.1.4 o revertir la adopcion
 Esta entrega candidata deriva de 0.1.4, conservada intacta. No requiere harness_local.
 Actualizar herramientas y schemas juntos antes de añadir rules/workflow.transitions:
 lectores antiguos estrictos no aceptan claves nuevas. Sin esas extensiones se conserva
