@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Principal request before phase dispatch; not final handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_id",
+    "hu_id",
+    "change",
+    "created_at_utc",
+    "organization",
+    "project_id",
+    "project_name",
+    "evidence_dir",
+    "schema_version",
+    "attempt",
+    "phase",
+    "executor_role",
+    "created_by",
+    "work_item_id",
+    "previous_snapshot_ref"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+    },
+    "hu_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+    },
+    "change": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+    },
+    "created_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(?:Z|\\+00:00)$"
+    },
+    "organization": {
+      "type": "string",
+      "pattern": "^https://(?:dev\\.azure\\.com/[A-Za-z0-9_.-]+/?|[A-Za-z0-9-]+\\.visualstudio\\.com/?)$"
+    },
+    "project_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "project_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_dir": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^docs/hu/[A-Za-z0-9][A-Za-z0-9_.-]*/evidence/azure-devops/(planificacion|revision)-[1-9][0-9]*$"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "phase": {
+      "enum": [
+        "planificacion",
+        "revision"
+      ]
+    },
+    "executor_role": {
+      "enum": [
+        "planner",
+        "reviewer"
+      ]
+    },
+    "created_by": {
+      "const": "principal"
+    },
+    "work_item_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "previous_snapshot_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "planificacion"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "executor_role": {
+            "const": "planner"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "executor_role": {
+            "const": "reviewer"
+          },
+          "previous_snapshot_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ],
+  "$comment": "Helper enforces dynamic destination, HU, canonical path and identity equality; fields do not prove principal authorship."
+}

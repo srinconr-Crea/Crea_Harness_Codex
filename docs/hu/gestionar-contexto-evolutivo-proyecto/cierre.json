@@ -1,0 +1,12 @@
+{
+  "change": "gestionar-contexto-evolutivo-proyecto",
+  "tasks": "17/17",
+  "archive": "openspec/changes/archive/2026-11-09-gestionar-contexto-evolutivo-proyecto",
+  "specs_synced": true,
+  "requirements": 11,
+  "scenarios": 24,
+  "main_spec_sha256": "a3714996c0b64fd4308f6769400c667dc29179955b16694de9f0c608dc452564",
+  "authorization": "Explicit user request Apply Verify Sync Archive, context only",
+  "publication": "not_run",
+  "tests_lifecycle": "not_applied"
+}

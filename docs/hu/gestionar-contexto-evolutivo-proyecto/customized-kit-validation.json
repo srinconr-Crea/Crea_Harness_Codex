@@ -1,0 +1,29 @@
+{
+  "kind": "customized_validation_receipt",
+  "validation": {
+    "status": "passed",
+    "version": "0.1.7",
+    "roles": 4,
+    "skills": 39,
+    "schemas": 11,
+    "instances": 6,
+    "local_links": 14,
+    "manifest_files": 0,
+    "setup_complete": false,
+    "business_tests_executed": false,
+    "native_agents_executed": false,
+    "context_management_enabled": true,
+    "context_pending": [],
+    "databricks_bundle": {
+      "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+      "skills": 28,
+      "locked_files": 319,
+      "native_hooks_observed": false
+    }
+  },
+  "custom_config": "customized-proyecto.json",
+  "custom_config_digest": "1d9986f62b440ade6e16288378a734e6ec19b0edc8c862752b1230f80238df4e",
+  "original_config_and_profiles_preserved": true,
+  "models_changed": false,
+  "real_client_adoption": false
+}

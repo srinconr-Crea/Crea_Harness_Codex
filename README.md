@@ -1,9 +1,38 @@
-# Crea Harness Codex MVP — kit portable 0.1.6
+# Crea Harness Codex MVP — candidato portable 0.1.8
 
 Kit para trabajar con Codex en repositorios de proyectos/clientes, con contexto explícito,
 roles Planner/Developer/Tester/Reviewer y desarrollo guiado por OpenSpec. Está orientado a
 ingeniería de datos y aplicaciones Databricks, con entrega por GitHub o Azure Repos.
 No requiere instalar el motor histórico Python `harness_local`.
+
+## Candidato local 0.1.8 — ciclo de vida de pruebas
+
+Entrega local sobre 0.1.7 que conserva contexto y añade descubrimiento estático,
+reconciliación del catálogo, selección por criterios, outputs por HU/intento e
+inclusión pytest observada del mismo proceso. Ambos cambios son opt-in e independientes.
+
+- [ZIP 0.1.8](artifacts/crea-manual-kit-0.1.8.zip?raw=true), [SHA-256](artifacts/crea-manual-kit-0.1.8.zip.sha256), [validación](artifacts/crea-manual-kit-0.1.8.zip.validation.json).
+- [Guía de adopción/reversión y operaciones](artifacts/crea-manual-kit-0.1.8/docs/pruebas/CICLO-VIDA.md).
+- [Evidencia y preservación histórica](docs/hu/gestionar-ciclo-vida-pruebas-proyecto/progress.md).
+
+No instala el motor histórico ni activa runtime, hooks o roles nativos. Conserva
+árboles/ZIP/hashes previos y evidencia; ninguna condición nueva se promueve por defecto.
+
+## Candidato local 0.1.7 — contexto evolutivo
+
+Nueva entrega local basada en el portable real 0.1.6. Añade selección de referencias por
+componente/rol/fase, impacto previsto y reconciliación documental en handoffs y controles
+locales acotados. `context_management.enabled=false`, transiciones `informative` y ninguna
+condición nueva promovida por defecto. No incorpora el cambio de ciclo de vida de pruebas.
+
+- [ZIP candidato 0.1.7](artifacts/crea-manual-kit-0.1.7.zip?raw=true), [SHA-256](artifacts/crea-manual-kit-0.1.7.zip.sha256) y [validación](artifacts/crea-manual-kit-0.1.7.zip.validation.json).
+- [Prompt de configuración/adopción](artifacts/crea-manual-kit-0.1.7/Prompt_configurar-kit-proyecto.txt), [guía Windows](artifacts/crea-manual-kit-0.1.7/docs/configuracion-manual.md) y [contrato/operaciones de contexto](artifacts/crea-manual-kit-0.1.7/scripts/crea/CONTEXTO.md).
+- [Evidencia y baseline](docs/hu/gestionar-contexto-evolutivo-proyecto/progress.md): árboles, ZIP y manifiestos históricos conservados; motor Python histórico independiente.
+
+Adoptar/revertir configuración, schema y consumidores juntos mediante diff revisado,
+conservando personalizaciones e historia. Es un candidato local; pruebas sintéticas y
+validación de bytes no acreditan piloto de agentes nativos, hooks activos ni ejecución remota.
+Las referencias siguientes describen la entrega 0.1.6 preservada como baseline.
 
 ## Descargar y configurar
 

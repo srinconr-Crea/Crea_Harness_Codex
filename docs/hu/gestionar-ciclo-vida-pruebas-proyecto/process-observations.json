@@ -1,0 +1,10 @@
+{
+  "plan_suite_calls": 0,
+  "gate_suite_calls": 0,
+  "policy_sha256_before": "4ab6899e2956fab24d5a6c1763f35576d97ed413f2f498ccff5144dde8bfda04",
+  "policy_sha256_after": "4ab6899e2956fab24d5a6c1763f35576d97ed413f2f498ccff5144dde8bfda04",
+  "execution_sha256_before": "d0e1d52fe214152b3ff59b17b3037947d7e7df1d454cc84291d971805ea53a3b",
+  "execution_sha256_after": "d0e1d52fe214152b3ff59b17b3037947d7e7df1d454cc84291d971805ea53a3b",
+  "first_plan": "458b0f50f25472286ba84e674ef42816c6d383437a75fe537bd9aee65fd11ab5",
+  "second_plan": "9d707772dc2b1d929667caf55027a83f2eafe2ad5f0f7f3eb38d9e8d8922ce8a"
+}

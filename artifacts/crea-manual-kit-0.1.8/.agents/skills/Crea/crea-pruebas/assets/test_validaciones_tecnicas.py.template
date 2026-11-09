@@ -1,0 +1,30 @@
+"""Validaciones técnicas aplicables; no acredita negocio ni runtime remoto."""
+import ast
+import json
+from pathlib import Path
+import re
+import tomllib
+import pytest
+
+FILES = __CREA_REVIEWED_FILES__
+
+@pytest.mark.parametrize('name', FILES)
+def test_formato_tecnico(name):
+    path=Path(name)
+    text=path.read_text(encoding='utf-8-sig')
+    if path.suffix=='.py':
+        ast.parse(text,filename=name)
+    elif path.suffix in ('.json','.ipynb'):
+        data=json.loads(text)
+        if path.suffix=='.ipynb':
+            assert data['nbformat']==4
+            assert isinstance(data['cells'],list)
+            for cell in data['cells']:
+                if cell['cell_type']=='code':
+                    assert not cell.get('outputs'), 'review notebook outputs/confidentiality'
+    elif path.suffix=='.toml':
+        tomllib.loads(text)
+    elif path.suffix=='.md':
+        for target in re.findall(r'\]\(([^)]+)\)',text):
+            if '://' in target or target.startswith('#') or any(c in target for c in '<>{}'): continue
+            assert (path.parent/target.split('#')[0]).exists(), target

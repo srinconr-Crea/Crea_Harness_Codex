@@ -1,0 +1,25 @@
+# Crea manual 0.1 — estructura nativa de Codex. Revisar soporte en la app instalada.
+# 1. MODELO PRINCIPAL: cambiar aquí; los subagentes tienen sus propios TOML.
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+
+# 2. DELEGACION: cuatro roles, ejecutados en secuencia para evitar escrituras simultaneas.
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 1
+default_subagent_model = "gpt-6.1-sol"
+default_subagent_reasoning_effort = "medium"
+
+# 3. EXTENSIONES MCP: agregar solo servidores reales configurados en la sesion padre.
+# Ejemplo desactivado; reemplazar nombre/url antes de descomentar:
+# [mcp_servers.mi_servidor]
+# url = "https://URL-REAL-DEL-SERVIDOR/mcp"
+
+# 4. SKILLS: agregar [[skills.config]] solo para desactivar una skill concreta.
+# No declarar agentes como [agents.planner] en este formato: se descubren en agents/*.toml.
+# 5. HOOKS: no se activan desde este archivo del kit. Ver docs/extensiones.md.
+# Permisos, confianza y conexiones siguen sujetos a la configuracion real de la app.
+
+# El cap de 1 limita threads de subagentes abiertos, excluye al principal.
+# No acredita ejecucion secuencial ni impide subdelegacion por si mismo.
+# El principal espera cada rol y mantiene la politica sin subdelegacion de AGENTS.

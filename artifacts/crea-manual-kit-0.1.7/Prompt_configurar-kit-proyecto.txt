@@ -1,0 +1,138 @@
+PROMPTS DEL KIT CREA 0.1.7
+
+Elige SOLO UNA de las dos secciones siguientes. Copia esa sección completa y rellena sus campos antes de usarla. No ejecutes ambas de forma consecutiva.
+
+SECCIÓN A — CONFIGURACIÓN INICIAL
+Para un proyecto que todavía no tiene el kit configurado. Si ya utilizas 0.1.6, usa exclusivamente la sección B y conserva tu setup.
+
+Configura el kit manual Crea en el proyecto indicado. Esto es preparación inicial, no una HU de negocio. Lee la guía del kit y la checklist Excel si la proporciono; valida recursos y alcance y continúa con el trabajo autorizado si no hay bloqueos.
+
+DATOS EDITABLES — reemplazar los corchetes antes de ejecutar
+
+Kit: [ruta_absoluta_del_kit_y_version]
+Checklist: [ruta_de_Archivos.xlsx_o_no_aplica]
+Carpeta destino: [ruta_absoluta_donde_debe_quedar_el_repo]
+Nombre y objetivo: [nombre_y_proposito_del_proyecto_o_inferir_del_repo]
+Proveedor Git: [github/azure_devops/otro]
+Repositorio: [url_https_de_tu_repo_sin_credenciales]
+Rama base: [develop/main/tu_rama_base]
+Rama de preparación: [codex/setup-kit-tu-proyecto]
+Identidad Git local: usuario [usuario_git], correo [correo_git]
+Azure DevOps, si aplica: organización [url_o_no_aplica], proyecto [nombre_o_id_o_no_aplica], repositorio [nombre_o_id_o_no_aplica]
+
+Herramientas ya instaladas: [sí/no]
+Instalaciones autorizadas: [ninguna_o_lista_explicita]
+Python de validación: [ruta_absoluta_del_python_del_entorno_existente_o_buscar_y_reportar]
+
+Databricks aplica: [sí/no]
+Perfil ya creado: [nombre_del_perfil_o_no_aplica]
+Host y cloud: [url_y_azure/aws/gcp_o_inferir_del_repo]
+Target: [dev/qa/otro_o_no_aplica]
+Catálogo/schema: [valores_o_inferir_del_repo_o_por_dominio_o_no_aplica]
+Warehouse y versiones DBR/Spark/Python remoto: [valores_conocidos_o_null_no_verificado]
+
+Principal: modelo [tu_modelo_principal], razonamiento [low/medium/high]
+Planner: modelo [tu_modelo_planner], razonamiento [low/medium/high]
+Developer: modelo [tu_modelo_developer], razonamiento [low/medium/high]
+Tester: modelo [tu_modelo_tester], razonamiento [low/medium/high]
+Reviewer: modelo [tu_modelo_reviewer], razonamiento [low/medium/high]
+Hilos de subagente abiertos por sesión, sin contar al principal: [5_u_otro_entero_positivo]
+Roles trabajando simultáneamente: 1. Mantener el flujo secuencial del kit.
+
+Contexto adicional: [dominios_fuentes_consumidores_restricciones_o_inferir_del_repo]
+Pruebas existentes: [rutas_y_comandos_o_inferir_del_repo]
+Checks obligatorios: [IDs_o_definir_desde_el_catalogo_existente]
+Riesgos y criterios especiales: [datos_o_inferir_del_repo_sin_inventar_reglas]
+Cobertura exigida: [umbral_aprobado_o_no_exigir_porcentaje]
+Calibración/revisión: [reglas_umbrales_y_referencias_de_promocion_reales_o_sin_reglas]
+Historial de revisión existente: [ruta_o_vacío_sin_decisiones_previas]
+Skills propias: [ninguna_o_rutas_y_nombres_reales]
+MCP/hooks: [ninguno_nuevo_o_conexiones_reales_y_alcance_autorizado]
+Hooks Databricks: [incluir_inactivos/solicitar_activacion_nativa_por_proyecto_tras_preview]
+Lectura Azure DevOps de HU: [deshabilitada/habilitada_para_planner_y_reviewer]
+Proyecto Azure canonico: nombre [nombre_o_no_aplica], ID [id_o_no_aplica]
+Work item: [se_define_en_cada_HU_no_consultar_durante_bootstrap]
+Versionado: [commit_local/sin_commit]
+
+Ejemplo de modelos usados en un proyecto de referencia: principal/planner/developer gpt-6.1-sol medium; tester gpt-6.1-terra high; reviewer gpt-6.1-terra medium. Son un ejemplo: respeta los valores que complete arriba y verifica que estén soportados.
+
+EJECUCIÓN
+
+1. Lee las instrucciones del proyecto y la guía del kit. Inspecciona la carpeta destino antes de actuar. Clona el repo en esa raíz desde la rama indicada; si ya existe un checkout, verifica origen, rama y cambios previos. No borres .git, no hagas reset/stash ni sobrescribas cambios ajenos. Trabaja en la rama de preparación, separada de la base protegida.
+
+2. Si las herramientas ya están instaladas, comprueba versiones y requisitos, sin actualizarlas ni instalar paquetes. Verifica dependencias en el intérprete elegido: no presupongas que el Python del sistema tiene pytest/jsonschema. Si falta algo y no está autorizado instalarlo, informa el pendiente y continúa lo independiente. Conserva identidad Git en configuración local. No cambies configuración global ni hagas login por mí.
+
+Databricks ya forma parte del kit portable 0.1.7, con selección/revisión fijada en docs/skills-procedencia.json. Consulta databricks --version y databricks aitools install --help para conocer la versión real. Ejecuta scripts/crea/aitools.py preview --config docs/proyecto.json según su ayuda y compara nombres, rutas, revisiones, hashes y dependencias con el cliente. Conserva personalizaciones y evita copias activas duplicadas o un plugin paralelo. No actualices a otra revisión durante setup sin presentar y autorizar sus diferencias; no ejecutes aitools install global implícitamente. Si se requiere extracción controlada, usa las opciones reales --skills/--path solo tras comprobar su ayuda y procedencia. No modifiques el flujo del harness ni instales herramientas sin aprobación.
+
+Los tres hooks oficiales están incluidos, inicialmente inactivos. Inspecciona soporte nativo, shell/intérprete, rutas con espacios, configuración y hooks previos siguiendo docs/databricks-hooks.md. Presenta una activación concreta por proyecto solo si la solicité; verifica la confianza requerida en el host y conserva/restaura configuración propia sin tocar hooks ajenos. No instales un plugin duplicado ni simules hooks con agent_step. Informa por separado incluido, configurado, autorizado y observado; un fixture no es ejecución nativa. No inicies login por un aviso de autenticación ni sustituyas el orquestador.
+
+3. Copia el contenido del kit, incluidas carpetas con punto. Combina AGENTS.md y la configuración existente. Reconcílialo con el .gitignore del cliente. No copies LEEME-CREA.md. En .agents/skills añade únicamente las skills ausentes; compara nombres/rutas/versiones y conserva las existentes. No personalices internamente skills upstream. Conserva licencias, procedencia, schemas, contratos y manifest originales; el manifest describe la distribución, no los bytes personalizados.
+
+4. Inicializa OpenSpec para Codex y español. Antes inspecciona archivos legacy/prompts que init pudiera retirar y conserva respaldos. Preserva specs y cambios existentes. Si config.yaml ya existe y el CLI rechaza --language, conserva el archivo y declara español en su contexto. Comprueba propose, explore, update, apply, verify, sync y archive. No modifiques preferencias globales de OpenSpec sin autorización ni inventes una primera HU.
+
+5. Completa el paso 5 con hechos del repo: docs/contexto-proyecto.md, docs/proyecto.json, openspec/config.yaml, AGENTS.md, .gitignore, .codex/config.toml, los cuatro perfiles y la aplicabilidad de docs/buenas-practicas/*.md. Registra proveedor/base/delivery, rutas reales y exists, extensiones, entornos y conexiones. Los campos remotos desconocidos quedan null/no verificado. Si configuré lectura Azure, completa integrations.azure_devops_context con organización/proyecto canónico y límites; consulta az --help y ayuda de cada comando real necesario, complementada con Microsoft Learn y las skills oficiales Microsoft como referencia. La lectura del work item principal y sus comentarios corresponde solo a Planner/Reviewer con solicitud local por HU/fase/intento y recibo/snapshot en su evidencia; Developer/Tester consumen esos snapshots. No fabriques una HU ni leas work items durante este bootstrap sin petición concreta. No habilites escrituras/comentarios Boards, queries generales, pipelines o vínculos PR por conocer sus comandos. Si Databricks aplica, usa exclusivamente el perfil indicado, verifica identidad/host y valida el bundle del target si existe, sin deploy, jobs ni cambios a datos/permisos.
+
+6. Configura modelos y esfuerzos por rol. Separa capacidad de hilos abiertos de roles activos: el TOML usa la capacidad indicada; workflow.max_active_agents sigue en 1. Si kit_validation.py fija otra capacidad nativa, adapta únicamente esa comprobación a la capacidad aprobada y documenta/prueba la excepción local. Mantén el schema y las comprobaciones de un solo rol activo, las aprobaciones y los handoffs. El JSON y los perfiles no constituyen aislamiento técnico ni demuestran ejecución real de agentes.
+
+7. Revisa todos los archivos del Excel, además de la guía. Para cada fila registra si se creó, personalizó, conservó, no aplica o queda pendiente, con evidencia. No es obligatorio editar un archivo que ya cumple. Incluye docs/proyecto.schema.json, docs/pruebas/README.md, plantillas, adaptadores, validadores, requirements-validation.txt y licencias. Los opcionales con dependencias se conservan salvo decisión explícita; no rompas referencias. No sustituyas placeholders de plantillas por datos de una HU inexistente.
+
+8. Configura docs/pruebas/policy.json, execution.json y failure-modes.json con comandos, entradas, timeouts, criterios, esperados y assertions reales; required_checks contiene solo IDs del catálogo. Revisa calibration.json (puede quedar sin reglas), review-history.json (puede quedar vacío) y capabilities.json (conserva bloqueos reales). No inventes promociones, historia o pruebas pasadas. Revisa el catálogo y calcula reviewed_policy_digest. Usa rutas nuevas exactas de evidencia por intento; no sobrescribas recibos. No habilites adaptadores pendientes cambiando booleanos. Marca setup_complete solo al cumplir los requisitos aplicables.
+
+9. Las constituciones las incorporaré yo: no crees reglas de negocio ni completes/actives sus documentos. En una adopción nueva conserva desactivadas las reglas y las plantillas/índice requeridos. Si el repo ya tiene reglas activas, consérvalas y no las desactives sin mi indicación. Mantén transiciones informativas sin autopromover a enforcing. Si no declaré skills propias, no inventes ninguna; conserva las existentes del cliente.
+
+10. Ejecuta verificaciones proporcionales: integridad original antes de personalizar cuando proceda; después, validador sin --OriginalDistribution, JSON/TOML/YAML/referencias, modelos, capacidad nativa y política secuencial, pruebas pertinentes e IDs/reportes reales. Distingue validación normal y estricta de OpenSpec; registra avisos heredados sin cambiar contratos para pasar. Una validación de bundle no prueba ejecución Spark. No declares un piloto de roles o gate ejecutado solo por tener archivos válidos.
+
+11. Si indiqué commit_local, revisa el diff, selecciona rutas explícitas y crea un commit del setup en la rama de preparación; verifica su SHA y el árbol limpio. No hagas push, PR, merge, deploy ni ejecución de jobs. Conserva la evidencia y no inventes handoffs/gates para el bootstrap. Para el flujo completo de HU, informa si aún falta publicar e integrar el setup en la base remota desde la que el kit crea las ramas.
+
+12. Entrega una tabla de archivos creados/modificados/conservados, versiones, modelos, comandos y resultados, rama/SHA local y pendientes. Distingue listo para planificar, validado localmente y listo para HU completa. Guarda la auditoría y evidencia. Pregunta solo por datos imprescindibles que no estén en estos campos ni en el repo; avanza lo independiente ya autorizado. No ejecutes comandos con placeholders sin resolver ni reutilices datos de otro cliente.
+
+
+SECCIÓN B — ACTUALIZACIÓN DE 0.1.6 A 0.1.7 SIN REPETIR EL SETUP
+Para un proyecto que ya utiliza el kit Crea 0.1.6. Esta sección es independiente: NO ejecutar los pasos de la sección A.
+
+Actualiza este proyecto del kit Crea 0.1.6 a 0.1.7 sin repetir el setup. Es mantenimiento del kit existente, no una nueva HU de negocio ni una autorización para cambiar su alcance.
+
+DATOS EDITABLES — reemplazar los corchetes antes de ejecutar
+
+Proyecto existente: [ruta_absoluta_del_repo_ya_configurado]
+Kit 0.1.7 extraído como referencia, fuera del proyecto: [ruta_absoluta]
+Kit original 0.1.6 de referencia: [ruta_absoluta_o_revision_exacta_disponible_o_no_disponible]
+Python de validación existente: [ruta_absoluta_o_buscar_y_reportar]
+Rama local de actualización: [codex/actualizar-kit-0.1.7_o_rama_de_trabajo_indicada]
+Versionado: [sin_commit/commit_local]
+Lectura Azure DevOps: [conservar_estado_actual/configurar_sin_habilitar/habilitar_para_planner_y_reviewer_con_destino_verificado]
+Hooks Databricks: [conservar_estado_actual_incluir_sin_activar/preparar_propuesta_de_activacion_por_proyecto_sin_aplicarla]
+Restricciones o personalizaciones conocidas: [lista_o_inferir_del_repo]
+
+EJECUCIÓN DE LA ACTUALIZACIÓN
+
+1. Lee las instrucciones y configuración reales del proyecto. Comprueba versión adoptada, estado Git, rama y HU en curso. Conserva todos los cambios previos; no hagas reset, stash, limpieza ni checkout que pueda perderlos. Crea la rama de actualización solo si es seguro y está dentro del alcance indicado. Actualiza entre fases de una HU o al terminarla; si la actualización invalidaría entradas de una fase activa, deja pendiente esa parte y continúa únicamente lo independiente.
+
+2. Inspecciona el kit 0.1.7 fuera del proyecto y verifica allí su distribución original con el Python existente: python <kit_017>/scripts/crea/validar-kit.py --root <kit_017> --original. Sustituye las rutas por argumentos reales correctamente citados. No clones otra vez el proyecto ni instales dependencias, hagas login o cambies configuración global. Si falta una herramienta, registra el pendiente sin inventar que la validación pasó.
+
+3. Realiza una comparación entre kit original 0.1.6, proyecto personalizado y kit 0.1.7. Clasifica cada archivo como nuevo, sin cambios locales, personalizado, conflicto o no aplicable. Si falta la referencia exacta 0.1.6, usa solamente antecedentes verificables de Git/procedencia; declara el límite y conserva cualquier personalización cuya autoría no pueda distinguirse. No ejecutes una copia masiva del kit encima del proyecto.
+
+4. Incorpora los recursos nuevos y reemplaza únicamente archivos genéricos sin cambios propios. Combina mediante diff revisado AGENTS.md, orquestador Crea, perfiles, guías y registros de skills. Actualiza schemas y utilidades con sus consumidores. Conserva modelos/esfuerzos, capacidad de hilos aprobada, política secuencial, rutas, conexiones, credenciales externas, rama base, entrega Git y contexto del cliente. No sustituyas docs/proyecto.json ni .codex/config.toml por las plantillas de distribución.
+
+5. Conserva constituciones/reglas activas, selección de capas/capacidades, política y catálogo de pruebas, thresholds, calibraciones, historial, adaptadores y skills propias. No restablezcas setup_complete ni los demás campos a valores de plantilla. No desactives gates ni cambies reglas para pasar validaciones. Si una obligación nueva exige una decisión del responsable, presenta el conflicto y conserva el trabajo válido.
+
+6. Conserva las skills oficiales Databricks en la revisión heredada de 0.1.6, con licencias, procedencia, dependencias y una sola copia activa por nombre. Usa preview AITools para contrastar hashes y superficies observables; unknown no significa ausencia de duplicados. Si una skill upstream fue personalizada, conserva su antecedente y presenta el conflicto antes de sustituirla. Separa adaptaciones propias en Crea/Project con identidad y referencias revisadas; no falsees los hashes del lock para declarar una personalización como upstream intacto. No instales un plugin duplicado ni actualices globalmente AI Tools.
+
+7. Integra crea-azure-devops-cli, helper y contratos de solicitud/evidencia. Registra Planner/Reviewer y las instrucciones del principal para la entrega PR ya existente. Añade la sección opcional integrations.azure_devops_context sin alterar otros datos. Conserva el estado actual o la opción indicada arriba: para habilitar lectura exige organización, ID y nombre canónico de proyecto reconciliados. El work item principal se concreta por HU; no inventes una HU ni consultes Azure durante esta actualización sin petición expresa. Developer/Tester consumen snapshots. No habilites escrituras/comentarios Boards, consultas generales, pipelines, vínculos/transiciones de work items, merge o auto-complete.
+
+8. Incluye los tres hooks y sus recursos sin activarlos automáticamente. Inspecciona hooks JSON/TOML y confianza existentes, preserva grupos propios y ajenos y evita registro duplicado. Sigue docs/databricks-hooks.md; si solicité una propuesta, presenta configuración, intérprete, rutas y restauración revisables en archivos nuevos, sin aplicar configuración nativa ni conceder confianza. Informa incluido, configurado, autorizado y observado por separado.
+
+9. Conserva openspec/config.yaml, specs, cambios activos/archivados, HU, handoffs, snapshots, recibos y evidencia histórica. No ejecutes openspec init ni reconstruyas intentos antiguos. No mezcles nuevas reglas de consumo con planes ya aprobados sin reconciliación explícita. No modifiques constituciones o decisiones del cliente como parte implícita de esta actualización.
+
+10. Desde la raíz del proyecto, ejecuta con el intérprete existente la validación personalizada y preview, después de integrar sus utilidades:
+    python scripts/crea/validar-kit.py --root .
+    python scripts/crea/aitools.py preview --config docs/proyecto.json
+En el proyecto personalizado NO uses --original ni -OriginalDistribution. Conserva el manifiesto/procedencia del kit como referencia de distribución; no regeneres sus hashes para afirmar que todo el proyecto personalizado es idéntico al ZIP. Verifica JSON/TOML/YAML/referencias y las pruebas pertinentes a los archivos afectados. Registra comandos, resultados y límites reales, sin repetir baterías ajenas por rutina ni presentar fixtures como permisos/ejecución remota.
+
+11. Si indiqué commit_local y las comprobaciones pertinentes pasan, revisa el diff y versiona solo rutas de la actualización en la rama seleccionada, dejando fuera cambios ajenos. Si indiqué sin_commit, deja el diff revisable. Esta actualización no autoriza push, PR, merge, deploy, ejecución de jobs/pipelines, nuevas instalaciones ni login.
+
+12. Entrega tabla de archivos incorporados, actualizados, combinados, conservados y pendientes; versiones, hashes, diff, verificaciones, conflictos y ruta de evidencia de mantenimiento. Explica qué quedó disponible y qué requiere configuración o activación posterior. No inventes handoffs ni resultados de una HU de negocio. Pregunta solo por decisiones imprescindibles no resolubles con el repositorio; continúa lo independiente autorizado.
+
+
+## Contexto opcional 0.1.7
+Revisar scripts/crea/CONTEXTO.md. Proponer context_management solo con componentes, dependencias y documentos reales existentes o pendientes declarados. Mantener enabled=false hasta combinar conjuntamente configuración/schema/helpers mediante diff revisado; informative y blocking_conditions=[] al adoptar. Conservar contenido manual, perfiles/modelos, reglas y decisiones del cliente. Revertir juntos configuración/schema/herramientas sin reescribir HU ni recibos. No instalar ni habilitar remoto como consecuencia. Validar kit personalizado sin --original; --original comprueba bytes de la distribución intacta.

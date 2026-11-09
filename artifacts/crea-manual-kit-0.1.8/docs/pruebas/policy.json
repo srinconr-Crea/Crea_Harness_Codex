@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "crea-project-testing",
+  "version": "0.1.0",
+  "setup_complete": false,
+  "checks": [],
+  "rules": []
+}

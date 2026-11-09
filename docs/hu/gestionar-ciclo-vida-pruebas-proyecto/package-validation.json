@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "version": "0.1.8",
+  "roles": 4,
+  "skills": 39,
+  "schemas": 12,
+  "instances": 6,
+  "local_links": 16,
+  "manifest_files": 464,
+  "setup_complete": false,
+  "business_tests_executed": false,
+  "native_agents_executed": false,
+  "context_management_enabled": false,
+  "context_pending": [],
+  "databricks_bundle": {
+    "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+    "skills": 28,
+    "locked_files": 319,
+    "native_hooks_observed": false
+  },
+  "source_preserved": true,
+  "baseline_files_verified": 2082,
+  "zip_entries": 465,
+  "zip_bytes": 1677557,
+  "zip_sha256": "623aa722ae22f0c18b4326d11a3a542458e75cdbe00bff9a056927d089d951cc",
+  "tree_zip_equivalent": true,
+  "remote_azure_read": "not_run",
+  "native_hooks": "not_run",
+  "runtime": "not_run",
+  "four_role_pilot": "not_run",
+  "neutrality": "not_certified_for_updated_upstream"
+}

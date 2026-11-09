@@ -1,0 +1,68 @@
+{
+  "kind": "synthetic_context_inspection_receipt",
+  "source_version": "0.1.6",
+  "candidate_version": "0.1.7",
+  "metrics": {
+    "files_read": 2,
+    "bytes_read": 47,
+    "git_processes": 9,
+    "suite_processes": 0,
+    "remote_processes": 0,
+    "duration_seconds": 0.81316
+  },
+  "actual_process_executables": [
+    "git",
+    "git",
+    "git",
+    "git",
+    "git",
+    "git",
+    "git",
+    "git",
+    "git"
+  ],
+  "actual_context_read_paths": [
+    "docs/app.md",
+    "docs/shared.md"
+  ],
+  "unrelated_documents": 200,
+  "unrelated_bytes": 819200,
+  "changed_secret_detected_by_git": true,
+  "changed_paths_observed": 206,
+  "sources": [
+    {
+      "path": "docs/app.md",
+      "kind": "technical",
+      "reasons": [
+        "component:app"
+      ],
+      "phase": "implementacion",
+      "exists": true,
+      "observed_sha256": "c984303973b5514b00e22d0d6d671448cb8dba6605cc8a8359cccd7907484f60"
+    },
+    {
+      "path": "docs/shared.md",
+      "kind": "technical",
+      "reasons": [
+        "component:shared"
+      ],
+      "phase": "implementacion",
+      "exists": true,
+      "observed_sha256": "5b2d7dd2fd7912f78daa0566070b5767c70eecc866d7e3523da3a29c539cd37c"
+    }
+  ],
+  "impact": [
+    {
+      "path": "docs/app.md",
+      "rule": "paths",
+      "reason": "Conservar referencias del componente",
+      "owner": "developer"
+    }
+  ],
+  "suite_processes_observed": 0,
+  "remote_processes_observed": 0,
+  "runtime_required_inactive": "blocked (covered by test_silver_required_inactive_runtime_stays_blocked_without_process)",
+  "native_agents": "not_run",
+  "remote_pilot": "not_run",
+  "universal_time_claim": false
+}

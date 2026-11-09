@@ -1,0 +1,123 @@
+{
+  "reports": [
+    {
+      "path": "red.xml",
+      "aggregate_tests": 42,
+      "testcase_elements": 32,
+      "failures": 2,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 58.818,
+      "status": "failed"
+    },
+    {
+      "path": "green-initial.xml",
+      "aggregate_tests": 8,
+      "testcase_elements": 8,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 37.553,
+      "status": "passed"
+    },
+    {
+      "path": "green-lifecycle.xml",
+      "aggregate_tests": 12,
+      "testcase_elements": 12,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 56.333,
+      "status": "passed"
+    },
+    {
+      "path": "green-integration.xml",
+      "aggregate_tests": 16,
+      "testcase_elements": 16,
+      "failures": 4,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 109.269,
+      "status": "failed"
+    },
+    {
+      "path": "green-expanded.xml",
+      "aggregate_tests": 19,
+      "testcase_elements": 19,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 145.764,
+      "status": "failed"
+    },
+    {
+      "path": "final-lifecycle.xml",
+      "aggregate_tests": 21,
+      "testcase_elements": 21,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 232.709,
+      "status": "failed"
+    },
+    {
+      "path": "final-regressions.xml",
+      "aggregate_tests": 127,
+      "testcase_elements": 117,
+      "failures": 3,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 304.605,
+      "status": "failed"
+    },
+    {
+      "path": "final-corrected.xml",
+      "aggregate_tests": 69,
+      "testcase_elements": 69,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 229.364,
+      "status": "passed"
+    },
+    {
+      "path": "retirement-review.xml",
+      "aggregate_tests": 1,
+      "testcase_elements": 1,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 5.942,
+      "status": "passed"
+    },
+    {
+      "path": "final-package-tests.xml",
+      "aggregate_tests": 5,
+      "testcase_elements": 5,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 2.548,
+      "status": "passed"
+    },
+    {
+      "path": "final-cli-and-receipts.xml",
+      "aggregate_tests": 3,
+      "testcase_elements": 3,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 29.223,
+      "status": "passed"
+    }
+  ],
+  "latest_unique_case_elements": 144,
+  "latest_case_states": {
+    "passed": 144
+  },
+  "limits": [
+    "JUnit aggregate includes pytest-subtests; testcase elements reported separately",
+    "Historical failed XML preserved; filename is not a pass claim",
+    "No native role/runtime/remote certification"
+  ]
+}

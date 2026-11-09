@@ -1,0 +1,13 @@
+{
+  "change": "gestionar-ciclo-vida-pruebas-proyecto",
+  "tasks": "23/23",
+  "archive": "openspec/changes/archive/2026-11-09-gestionar-ciclo-vida-pruebas-proyecto",
+  "specs_synced": true,
+  "requirements": 13,
+  "scenarios": 32,
+  "main_spec_sha256": "7d3cedc35b4d439100d8160b6a43c4b51eeb7ac15b912f7694a8e8411d04684d",
+  "authorization": "Explicit user request Apply Verify Sync Archive and continue after interruption",
+  "publication": "not_run",
+  "remote_runtime": "not_run",
+  "candidate_version": "0.1.8"
+}

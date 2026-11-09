@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="21" time="232.709" timestamp="2026-11-09T14:58:25.775168-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_archived_retirement_reference_keeps_gate_and_tamper_blocks" time="16.139" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_attempt_occupied_report_rejected_before_plan_and_source_change_invalidates" time="11.424" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_attempts_two_hu_unchanged_configuration_real_run_gate" time="60.375" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_baseline_applicability_without_business_or_runtime" time="0.011" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_cli_discover_before_setup_and_reconcile" time="6.046" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_criteria_selects_unchanged_and_unknown_still_blocks" time="1.651" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_discover_has_no_import_or_suite_process_and_no_write" time="1.972" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_inventory_expectations_are_functional_handoff_context" time="0.639" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_materialized_baseline_real_execution_and_no_empty_suite" time="3.195" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_real_plugin_parametrization_custom_root_and_foreign_junit" time="4.561" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_real_plugin_skip_failure_setup_error_and_collection_error" time="13.897" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_reconcile_does_not_read_unaffected_suite_body_and_tracks_rename_delete" time="5.299" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_reconcile_full_git_and_changed_association_expected" time="9.361" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_required_nodeid_excluded_even_same_file_other_test_passes" time="37.973" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_resolved_content_commit_keeps_gate_and_expected_metadata_invalidates" time="35.956" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_schema_and_retirement_historical_definition" time="1.486" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_template_grammar_and_traversal" time="6.146" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_testing_lifecycle.LifecycleTests" name="test_transition_conditions_informative_promoted_and_dependency_error" time="11.623" /><testcase classname="artifacts.crea-manual-kit-0.1.8.tests.crea.test_catalog.CatalogTests" name="test_surfaces_sensitive_installed_and_bodies_not_opened" time="0.007"><failure message="PermissionError: [WinError 5] Access is denied: 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.8\\.test-work\\tmp14yzmrzl'">self = &lt;test_catalog.CatalogTests testMethod=test_surfaces_sensitive_installed_and_bodies_not_opened&gt;
+
+    def test_surfaces_sensitive_installed_and_bodies_not_opened(self):
+        with tempfile.TemporaryDirectory(dir=KIT/'.test-work') as directory:
+            root=Path(directory)
+            for name in ['qa/test_own.py','tests/crea/test_kit.py','evals/test_agent.py','.venv/test_installed.py','qa/test_secret.py']:
+&gt;               p=root/name; p.parent.mkdir(parents=True,exist_ok=True); p.write_text('raise RuntimeError("must not import")\n',encoding='utf-8')
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.8\tests\crea\test_catalog.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/artifacts/crea-manual-kit-0.1.8/.test-work/tmp14yzmrzl/qa')
+mode = 511, parents = True, exist_ok = True
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           PermissionError: [WinError 5] Access is denied: 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.8\\.test-work\\tmp14yzmrzl\\qa'
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:722: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+top = 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.8\\.test-work\\tmp14yzmrzl'
+topdown = False
+onerror = &lt;function _rmtree_unsafe.&lt;locals&gt;.onerror at 0x000002539192D120&gt;
+followlinks = &lt;object object at 0x000002538DF901F0&gt;
+
+&gt;   ???
+E   PermissionError: [WinError 5] Access is denied: 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.8\\.test-work\\tmp14yzmrzl'
+
+&lt;frozen os&gt;:369: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_catalog.CatalogTests testMethod=test_surfaces_sensitive_installed_and_bodies_not_opened&gt;
+
+    def test_surfaces_sensitive_installed_and_bodies_not_opened(self):
+&gt;       with tempfile.TemporaryDirectory(dir=KIT/'.test-work') as directory:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.8\tests\crea\test_catalog.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\tempfile.py:951: in __exit__
+    self.cleanup()
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\tempfile.py:955: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\tempfile.py:935: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\shutil.py:613: in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+&lt;frozen os&gt;:372: in walk
+    ???
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\shutil.py:611: in onerror
+    onexc(os.scandir, err.filename, err)
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\tempfile.py:907: in onexc
+    _resetperms(path)
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\tempfile.py:283: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.8\\.test-work\\tmp14yzmrzl'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] Access is denied: 'C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.8\\.test-work\\tmp14yzmrzl'
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\tempfile.py:272: PermissionError</failure></testcase><testcase classname="tests.test_manual_018_distribution.DistributionTests" name="test_historical_baseline_is_unchanged" time="3.434" /><testcase classname="tests.test_manual_018_distribution.DistributionTests" name="test_packager_rejects_every_historical_target" time="0.013" /></testsuite></testsuites>

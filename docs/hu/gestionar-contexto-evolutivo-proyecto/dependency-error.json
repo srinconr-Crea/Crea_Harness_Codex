@@ -1,0 +1,26 @@
+{
+  "command": [
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+    "-S",
+    "-B",
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.7\\scripts\\crea\\contexto.py",
+    "select",
+    "--repo",
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness",
+    "--change",
+    "synthetic",
+    "--role",
+    "planner",
+    "--phase",
+    "planificacion"
+  ],
+  "exit_code": 4,
+  "report": {
+    "check_status": "validator_error",
+    "reason": "DEPENDENCY_UNAVAILABLE",
+    "exit_code": 4
+  },
+  "packages_installed": false,
+  "suites_executed": false,
+  "remote_executed": false
+}

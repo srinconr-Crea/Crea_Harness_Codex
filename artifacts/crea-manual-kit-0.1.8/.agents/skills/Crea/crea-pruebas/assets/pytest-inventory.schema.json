@@ -1,0 +1,94 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "producer": {
+      "const": "crea.pytest_inventory"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exitstatus": {
+      "type": "integer"
+    },
+    "collection_errors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nodeid": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "deselected": {
+            "type": "boolean"
+          },
+          "phases": {
+            "type": "object",
+            "properties": {
+              "setup": {
+                "enum": [
+                  "passed",
+                  "failed",
+                  "skipped"
+                ]
+              },
+              "call": {
+                "enum": [
+                  "passed",
+                  "failed",
+                  "skipped"
+                ]
+              },
+              "teardown": {
+                "enum": [
+                  "passed",
+                  "failed",
+                  "skipped"
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "nodeid",
+          "path",
+          "deselected",
+          "phases"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "producer",
+    "run_id",
+    "root",
+    "exitstatus",
+    "collection_errors",
+    "items"
+  ],
+  "additionalProperties": false
+}

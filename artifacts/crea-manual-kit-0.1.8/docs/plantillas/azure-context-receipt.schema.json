@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Azure context receipt, local private evidence",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "hu",
+    "attempt",
+    "role",
+    "organization",
+    "project_id",
+    "project_name",
+    "work_item_id",
+    "work_item_rev",
+    "observed_at_utc",
+    "operation",
+    "status",
+    "comments_coverage",
+    "page_count",
+    "snapshot_ref",
+    "snapshot_sha256",
+    "request_ref",
+    "request_sha256",
+    "cli_versions",
+    "errors"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "failed",
+        "unstable"
+      ]
+    },
+    "comments_coverage": {
+      "enum": [
+        "complete",
+        "empty",
+        "partial",
+        "failed",
+        "unavailable"
+      ]
+    },
+    "snapshot_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

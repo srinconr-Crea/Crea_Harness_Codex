@@ -35,3 +35,11 @@ artifacts/crea-manual-kit-0.1.6/** -text whitespace=-blank-at-eol,-blank-at-eof,
 artifacts/crea-manual-kit-0.1.6.zip* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 docs/evidence/portable-aitools-devops/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 docs/hu/evolucionar-contratos-kit-manual/pruebas/*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
+# Preserve the audited context/testing kit bytes and their portable evidence.
+artifacts/crea-manual-kit-0.1.7/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+artifacts/crea-manual-kit-0.1.7.zip* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+artifacts/crea-manual-kit-0.1.8/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+artifacts/crea-manual-kit-0.1.8.zip* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+docs/hu/gestionar-contexto-evolutivo-proyecto/* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+docs/hu/gestionar-ciclo-vida-pruebas-proyecto/* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

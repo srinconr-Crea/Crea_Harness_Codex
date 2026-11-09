@@ -1,0 +1,15 @@
+{
+  "fixture": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\docs\\hu\\gestionar-ciclo-vida-pruebas-proyecto\\fixtures\\reviewable-f47f4568",
+  "plan": "docs/hu/reviewer/pruebas/attempt-1/plan.json",
+  "results": "docs/hu/reviewer/pruebas/attempt-1/resultados.json",
+  "gate": "docs/hu/reviewer/pruebas/attempt-1/gate.json",
+  "plan_id": "3397b2d85227066d67ec47aa1b7f844970f3eea301672dac7e0c4e41e4fe6e51",
+  "status": "passed",
+  "suite_calls_from_gate": 0,
+  "cli_gate_exit": 0,
+  "cli_gate": {
+    "status": "passed",
+    "plan_id": "3397b2d85227066d67ec47aa1b7f844970f3eea301672dac7e0c4e41e4fe6e51",
+    "blockers": []
+  }
+}

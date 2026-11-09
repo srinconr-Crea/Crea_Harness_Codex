@@ -1,0 +1,15 @@
+{
+  "kind": "independent_primary_gate",
+  "status": "passed",
+  "plan_id": "a794247c86e39e18a0e80566af583643cc31092e618e175dea743938f25ca321",
+  "suite_processes": 0,
+  "verdict": {
+    "schema_version": "1.0",
+    "plan_id": "a794247c86e39e18a0e80566af583643cc31092e618e175dea743938f25ca321",
+    "status": "passed",
+    "blockers": [],
+    "scope": "technical_test_evidence_only",
+    "allows_deploy": false,
+    "allows_archive": false
+  }
+}

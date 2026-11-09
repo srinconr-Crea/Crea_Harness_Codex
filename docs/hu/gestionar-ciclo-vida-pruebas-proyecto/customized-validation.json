@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "version": "0.1.8",
+  "roles": 4,
+  "skills": 39,
+  "schemas": 12,
+  "instances": 6,
+  "local_links": 16,
+  "manifest_files": 0,
+  "setup_complete": false,
+  "business_tests_executed": false,
+  "native_agents_executed": false,
+  "context_management_enabled": false,
+  "context_pending": [],
+  "databricks_bundle": {
+    "revision": "ddf785ffc6afc805e4fc6e48835d8da6f912b402",
+    "skills": 28,
+    "locked_files": 319,
+    "native_hooks_observed": false
+  },
+  "custom_lifecycle_enabled": true,
+  "context_block_absent": true
+}
