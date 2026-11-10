@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="22.204" timestamp="2026-11-10T09:23:09.345768-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_dependency_review_can_resolve_advisory_without_erasing_impact" time="10.380"><failure message="AssertionError: 'requires_review' != 'compatible'&#10;- requires_review&#10;+ compatible">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_dependency_review_can_resolve_advisory_without_erasing_impact&gt;
+
+    def test_dependency_review_can_resolve_advisory_without_erasing_impact(self):
+        p,h,s=self.graph(dependent=True);sim=self.simulation(h,s)
+        first=compatibilidad.inspect(self.root,p,h,s,simulation=sim)
+        result=compatibilidad.inspect(self.root,p,h,s,simulation=sim,semantic_review=self.review(first))
+&gt;       self.assertEqual(result['outcome'],'compatible')
+E       AssertionError: 'requires_review' != 'compatible'
+E       - requires_review
+E       + compatible
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:138: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_head_simulation_does_not_certify_uncommitted_functional_candidate" time="11.010"><failure message="AssertionError: 'compatible' == 'compatible'">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_head_simulation_does_not_certify_uncommitted_functional_candidate&gt;
+
+    def test_head_simulation_does_not_certify_uncommitted_functional_candidate(self):
+        p,h,s=self.graph();sim=self.simulation(h,s)
+        self.write('src/b.py','uncommitted incompatible behavior\n')
+        first=compatibilidad.inspect(self.root,p,h,s,simulation=sim)
+        result=compatibilidad.inspect(self.root,p,h,s,simulation=sim,semantic_review=self.review(first))
+&gt;       self.assertNotEqual(result['outcome'],'compatible')
+E       AssertionError: 'compatible' == 'compatible'
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:130: AssertionError</failure></testcase></testsuite></testsuites>

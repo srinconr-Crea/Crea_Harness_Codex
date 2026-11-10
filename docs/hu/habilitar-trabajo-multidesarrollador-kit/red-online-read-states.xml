@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="6" time="0.894" timestamp="2026-11-10T09:49:19.074454-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_developer_preparation.DeveloperPreparationTests" name="test_online_read_distinguishes_denial_connection_and_unverifiable_response" time="0.223"><failure message="AssertionError: 'unverified' != 'access_denied'&#10;- unverified&#10;+ access_denied">self = &lt;test_developer_preparation.DeveloperPreparationTests testMethod=test_online_read_distinguishes_denial_connection_and_unverifiable_response&gt;
+
+    def test_online_read_distinguishes_denial_connection_and_unverifiable_response(self):
+        from subprocess import TimeoutExpired
+        for response,expected in [(subprocess.CompletedProcess([],1,b'',b'HTTP 403 permission denied'),'access_denied'),
+                                  (subprocess.CompletedProcess([],1,b'',b'could not resolve host'),'connection_error'),
+                                  (subprocess.CompletedProcess([],1,b'',b'unknown error'),'unverified'),
+                                  (TimeoutExpired(['az'],1),'connection_error'),(OSError('unavailable'),'unverified')]:
+            kwargs={'side_effect':response} if isinstance(response,Exception) else {'return_value':response}
+            with self.subTest(expected=expected),patch.object(preparation,'process',**kwargs) as called:
+                result=preparation.checked_read(['az','repos','show'],self.root,'azure_repository')
+&gt;               self.assertEqual(result['status'],expected)
+E               AssertionError: 'unverified' != 'access_denied'
+E               - unverified
+E               + access_denied
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_developer_preparation.py:109: AssertionError</failure><failure message="AssertionError: 'unverified' != 'connection_error'&#10;- unverified&#10;+ connection_error">self = &lt;test_developer_preparation.DeveloperPreparationTests testMethod=test_online_read_distinguishes_denial_connection_and_unverifiable_response&gt;
+
+    def test_online_read_distinguishes_denial_connection_and_unverifiable_response(self):
+        from subprocess import TimeoutExpired
+        for response,expected in [(subprocess.CompletedProcess([],1,b'',b'HTTP 403 permission denied'),'access_denied'),
+                                  (subprocess.CompletedProcess([],1,b'',b'could not resolve host'),'connection_error'),
+                                  (subprocess.CompletedProcess([],1,b'',b'unknown error'),'unverified'),
+                                  (TimeoutExpired(['az'],1),'connection_error'),(OSError('unavailable'),'unverified')]:
+            kwargs={'side_effect':response} if isinstance(response,Exception) else {'return_value':response}
+            with self.subTest(expected=expected),patch.object(preparation,'process',**kwargs) as called:
+                result=preparation.checked_read(['az','repos','show'],self.root,'azure_repository')
+&gt;               self.assertEqual(result['status'],expected)
+E               AssertionError: 'unverified' != 'connection_error'
+E               - unverified
+E               + connection_error
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_developer_preparation.py:109: AssertionError</failure><failure message="AssertionError: 'unverified' != 'connection_error'&#10;- unverified&#10;+ connection_error">self = &lt;test_developer_preparation.DeveloperPreparationTests testMethod=test_online_read_distinguishes_denial_connection_and_unverifiable_response&gt;
+
+    def test_online_read_distinguishes_denial_connection_and_unverifiable_response(self):
+        from subprocess import TimeoutExpired
+        for response,expected in [(subprocess.CompletedProcess([],1,b'',b'HTTP 403 permission denied'),'access_denied'),
+                                  (subprocess.CompletedProcess([],1,b'',b'could not resolve host'),'connection_error'),
+                                  (subprocess.CompletedProcess([],1,b'',b'unknown error'),'unverified'),
+                                  (TimeoutExpired(['az'],1),'connection_error'),(OSError('unavailable'),'unverified')]:
+            kwargs={'side_effect':response} if isinstance(response,Exception) else {'return_value':response}
+            with self.subTest(expected=expected),patch.object(preparation,'process',**kwargs) as called:
+                result=preparation.checked_read(['az','repos','show'],self.root,'azure_repository')
+&gt;               self.assertEqual(result['status'],expected)
+E               AssertionError: 'unverified' != 'connection_error'
+E               - unverified
+E               + connection_error
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_developer_preparation.py:109: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="8" skipped="0" tests="9" time="0.371" timestamp="2026-11-10T08:22:47.971364-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_A_independent_stories_continue_with_current_bounded_evidence" time="0.003"><failure message="AssertionError: unexpectedly None : Compatibility inspector is missing">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_A_independent_stories_continue_with_current_bounded_evidence&gt;
+
+    def test_A_independent_stories_continue_with_current_bounded_evidence(self):
+&gt;       p,h,s=self.graph()
+              ^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:26: in graph
+    self.assertIsNotNone(compatibilidad,'Compatibility inspector is missing')
+E   AssertionError: unexpectedly None : Compatibility inspector is missing</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_B_changed_producer_identifies_consumer_and_check" time="0.002"><failure message="AssertionError: unexpectedly None : Compatibility inspector is missing">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_B_changed_producer_identifies_consumer_and_check&gt;
+
+    def test_B_changed_producer_identifies_consumer_and_check(self):
+&gt;       p,h,s=self.graph(dependent=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:26: in graph
+    self.assertIsNotNone(compatibilidad,'Compatibility inspector is missing')
+E   AssertionError: unexpectedly None : Compatibility inspector is missing</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_C_same_rule_incompatible_and_D_clean_git_contradiction" time="0.015"><failure message="AssertionError: unexpectedly None : Compatibility inspector is missing">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_C_same_rule_incompatible_and_D_clean_git_contradiction&gt;
+
+    def test_C_same_rule_incompatible_and_D_clean_git_contradiction(self):
+        for shared in [True,False]:
+            with self.subTest(shared=shared):
+                # Each scenario uses its own graph; never reuse a simulation directory.
+&gt;               if shared: p,h,s=self.graph(shared=True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+                else:
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:26: in graph
+    self.assertIsNotNone(compatibilidad,'Compatibility inspector is missing')
+E   AssertionError: unexpectedly None : Compatibility inspector is missing</failure><failure message="AssertionError: unexpectedly None : Compatibility inspector is missing">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_C_same_rule_incompatible_and_D_clean_git_contradiction&gt;
+
+    def test_C_same_rule_incompatible_and_D_clean_git_contradiction(self):
+        for shared in [True,False]:
+            with self.subTest(shared=shared):
+                # Each scenario uses its own graph; never reuse a simulation directory.
+                if shared: p,h,s=self.graph(shared=True)
+                else:
+                    # Preserve the first graph; use a nested independent fixture for D.
+                    self.root=self.scratch/('semantic-'+self.root.name);self.root.mkdir()
+&gt;                   p,h,s=self.graph(dependent=True)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:26: in graph
+    self.assertIsNotNone(compatibilidad,'Compatibility inspector is missing')
+E   AssertionError: unexpectedly None : Compatibility inspector is missing</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_E_target_move_invalidates_observation_without_mutating_story" time="0.002"><failure message="AssertionError: unexpectedly None : Compatibility inspector is missing">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_E_target_move_invalidates_observation_without_mutating_story&gt;
+
+    def test_E_target_move_invalidates_observation_without_mutating_story(self):
+&gt;       p,h,s=self.graph();head=self.git('rev-parse','HEAD')
+              ^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:26: in graph
+    self.assertIsNotNone(compatibilidad,'Compatibility inspector is missing')
+E   AssertionError: unexpectedly None : Compatibility inspector is missing</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_F_missing_or_unverifiable_target_is_not_compatible" time="0.002"><failure message="AssertionError: unexpectedly None : Compatibility inspector is missing">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_F_missing_or_unverifiable_target_is_not_compatible&gt;
+
+    def test_F_missing_or_unverifiable_target_is_not_compatible(self):
+&gt;       p,h,s=self.graph()
+              ^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:26: in graph
+    self.assertIsNotNone(compatibilidad,'Compatibility inspector is missing')
+E   AssertionError: unexpectedly None : Compatibility inspector is missing</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_simulation_does_not_change_user_index_refs_or_worktree" time="0.002"><failure message="AssertionError: unexpectedly None : Compatibility inspector is missing">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_simulation_does_not_change_user_index_refs_or_worktree&gt;
+
+    def test_simulation_does_not_change_user_index_refs_or_worktree(self):
+&gt;       p,h,s=self.graph(shared=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:26: in graph
+    self.assertIsNotNone(compatibilidad,'Compatibility inspector is missing')
+E   AssertionError: unexpectedly None : Compatibility inspector is missing</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_snapshot_fetches_exact_remote_ref_without_touching_heads" time="0.003"><failure message="AssertionError: unexpectedly None : Compatibility inspector is missing">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_snapshot_fetches_exact_remote_ref_without_touching_heads&gt;
+
+    def test_snapshot_fetches_exact_remote_ref_without_touching_heads(self):
+&gt;       p,h,s=self.graph()
+              ^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:26: in graph
+    self.assertIsNotNone(compatibilidad,'Compatibility inspector is missing')
+E   AssertionError: unexpectedly None : Compatibility inspector is missing</failure></testcase></testsuite></testsuites>

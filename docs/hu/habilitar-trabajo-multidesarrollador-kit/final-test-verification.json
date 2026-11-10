@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "plan_id": "88de0660db071f4eb95f6002bb12c57b84cd595581ad65e4823f8d50dd2c3a27",
+  "candidate_digest": "1fd9c525c5f3a6920a4fc5606fb427f7a904a2e76a628f4f66dc30bef2281ccb",
+  "cases": 242,
+  "parent_tests": 200,
+  "subcases": 42,
+  "failures": 0,
+  "skipped": 0,
+  "assertions": {
+    "CA01": "passed",
+    "CA02": "passed",
+    "CA03": "passed",
+    "CA04": "passed",
+    "CA05": "passed",
+    "CA06": "passed",
+    "CA07": "passed",
+    "CA08": "passed"
+  },
+  "source_files_verified": 492,
+  "primary_outputs_verified": 8,
+  "receipt_sha256": "a90f49e3b20572e6dc04b756c584ff71bf98f7d4c54bbf029a6443fc6cbe17c6",
+  "source_root": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.test-data\\v019-fcdd6eaa",
+  "handoff": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/pruebas-1.json",
+  "gate_current_after_handoff": true,
+  "limits": [
+    "Post-execution handoff; no native phase interval certification",
+    "Auxiliary credits interrupted final report; principal completed final process",
+    "Native roles/hooks, two actual developers, real remote/runtime not_run",
+    "Technical gate does not authorize Archive/deploy; explicit human request authorizes OpenSpec closure"
+  ]
+}

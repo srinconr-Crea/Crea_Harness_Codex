@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="0.357" timestamp="2026-11-10T09:54:56.331153-05:00" hostname="SRINCONR"><testcase classname="docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks" name="test_fail" time="0.232" /><testcase classname="docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks" name="test_fail[crea-subcase-1]" time="0.000" /><testcase classname="docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks" name="test_fail[crea-subcase-2]" time="0.000"><failure message="AssertionError: 2 != 1">self = &lt;emitter-probe.Checks testMethod=test_fail&gt;
+
+    def test_fail(self):
+     for n in [1,2]:
+&gt;     with self.subTest(n=n):self.assertEqual(n,1)
+                             ^^^^^^^^^^^^^^^^^^^^^
+E     AssertionError: 2 != 1
+
+docs\hu\habilitar-trabajo-multidesarrollador-kit\emitter-probe.py:8: AssertionError</failure></testcase><testcase classname="docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks" name="test_pass" time="0.006" /><testcase classname="docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks" name="test_pass[crea-subcase-1]" time="0.000" /><testcase classname="docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks" name="test_pass[crea-subcase-2]" time="0.000" /></testsuite></testsuites>

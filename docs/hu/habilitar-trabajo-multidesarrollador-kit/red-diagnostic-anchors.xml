@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="15.386" timestamp="2026-11-10T09:57:21.867446-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_developer_preparation.DeveloperPreparationTests" name="test_offline_diagnostic_identifies_configuration_and_local_remote_without_network" time="2.664"><failure message="KeyError: 'configuration_sha256'">self = &lt;test_developer_preparation.DeveloperPreparationTests testMethod=test_offline_diagnostic_identifies_configuration_and_local_remote_without_network&gt;
+
+    def test_offline_diagnostic_identifies_configuration_and_local_remote_without_network(self):
+        self.init_git();project=read(KIT/'docs/proyecto.json')
+        project['project']['repository']['url']=str(self.root)
+        self.git('remote','add','origin',str(self.root))
+        config=self.write('docs/proyecto.json',json.dumps(project))
+        with patch.object(preparation,'online_checks',side_effect=AssertionError('network')):
+            result=preparation.inspect_environment(self.root)
+&gt;       self.assertEqual(result['configuration_sha256'],file_hash(config))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'configuration_sha256'
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_developer_preparation.py:120: KeyError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_A_independent_stories_continue_with_current_bounded_evidence" time="11.848"><failure message="KeyError: 'source_branch'">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_A_independent_stories_continue_with_current_bounded_evidence&gt;
+
+    def test_A_independent_stories_continue_with_current_bounded_evidence(self):
+        p,h,s=self.graph()
+        simulation=self.simulation(h,s)
+        first=compatibilidad.inspect(self.root,p,h,s,simulation=simulation)
+        result=compatibilidad.inspect(self.root,p,h,s,simulation=simulation,semantic_review=self.review(first))
+        self.assertEqual(result['outcome'],'compatible')
+        self.assertEqual(result['freshness'],'current')
+        self.assertEqual(result['affected_consumers'],[])
+&gt;       self.assertEqual(result['source_branch'],'feature/HU002')
+                         ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'source_branch'
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:78: KeyError</failure></testcase></testsuite></testsuites>

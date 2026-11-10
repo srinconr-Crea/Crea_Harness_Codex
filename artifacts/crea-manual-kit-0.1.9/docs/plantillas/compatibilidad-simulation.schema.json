@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "git_integration_simulation"
+    },
+    "change": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "source_sha": {
+      "type": "string",
+      "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+    },
+    "target_sha": {
+      "type": "string",
+      "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+    },
+    "status": {
+      "enum": [
+        "clean",
+        "conflict",
+        "undetermined"
+      ]
+    },
+    "conflict_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "combined_tests_executed": {
+      "const": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "change",
+    "source_sha",
+    "target_sha",
+    "status",
+    "conflict_paths",
+    "limits",
+    "combined_tests_executed"
+  ],
+  "additionalProperties": false
+}

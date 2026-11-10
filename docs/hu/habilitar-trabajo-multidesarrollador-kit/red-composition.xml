@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="0.312" timestamp="2026-11-10T08:41:43.203623-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_client_composition.ClientCompositionTests" name="test_client_has_local_entry_without_distribution_prompts" time="0.003"><failure message="AssertionError: unexpectedly None : Composition helper is missing">self = &lt;test_client_composition.ClientCompositionTests testMethod=test_client_has_local_entry_without_distribution_prompts&gt;
+
+    def test_client_has_local_entry_without_distribution_prompts(self):
+&gt;       self.fixture();result=composicion.select(self.root)
+        ^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_client_composition.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_client_composition.py:22: in fixture
+    self.assertIsNotNone(composicion,'Composition helper is missing')
+E   AssertionError: unexpectedly None : Composition helper is missing</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_client_composition.ClientCompositionTests" name="test_local_binding_is_not_selected_or_read" time="0.003"><failure message="AssertionError: unexpectedly None : Composition helper is missing">self = &lt;test_client_composition.ClientCompositionTests testMethod=test_local_binding_is_not_selected_or_read&gt;
+
+    def test_local_binding_is_not_selected_or_read(self):
+&gt;       self.fixture();self.write('.crea/local.json','not JSON; never load personal values\n')
+        ^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_client_composition.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_client_composition.py:22: in fixture
+    self.assertIsNotNone(composicion,'Composition helper is missing')
+E   AssertionError: unexpectedly None : Composition helper is missing</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_client_composition.ClientCompositionTests" name="test_unclassified_and_ambiguous_files_are_rejected" time="0.002"><failure message="AssertionError: unexpectedly None : Composition helper is missing">self = &lt;test_client_composition.ClientCompositionTests testMethod=test_unclassified_and_ambiguous_files_are_rejected&gt;
+
+    def test_unclassified_and_ambiguous_files_are_rejected(self):
+&gt;       self.fixture();self.write('unknown.bin','unknown\n')
+        ^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_client_composition.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_client_composition.py:22: in fixture
+    self.assertIsNotNone(composicion,'Composition helper is missing')
+E   AssertionError: unexpectedly None : Composition helper is missing</failure></testcase></testsuite></testsuites>

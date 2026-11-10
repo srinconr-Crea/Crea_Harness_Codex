@@ -1,0 +1,30 @@
+{
+  "items": [
+    {
+      "id": "manual-phase-contracts",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 12
+    }
+  ],
+  "summary": {
+    "totals": {
+      "items": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "byType": {
+      "spec": {
+        "items": 1,
+        "passed": 1,
+        "failed": 0
+      }
+    }
+  },
+  "version": "1.0",
+  "root": {
+    "path": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness",
+    "source": "nearest"
+  }
+}

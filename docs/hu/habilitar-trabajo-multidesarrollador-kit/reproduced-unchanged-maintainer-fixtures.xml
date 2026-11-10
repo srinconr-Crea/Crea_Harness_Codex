@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.414" timestamp="2026-11-10T09:41:27.805054-05:00" hostname="SRINCONR"><testcase classname="tests.test_configuration" name="test_documented_fixtures_validate" time="0.015"><failure message="AssertionError: assert '4362c7845080...22847852deec7' == '9575911478b9...6395e96f04211'&#10;  &#10;  - 9575911478b90494e9899e6fde3dcfeb2a9ad89fe150dba9b546395e96f04211&#10;  + 4362c78450804a1ca9f09d93a89030c63daa5375b49a8f9065522847852deec7">def test_documented_fixtures_validate():
+        import hashlib
+        for name in ('alpha','beta'):
+            root=Path('tests/fixtures')/name
+            descriptor=load_document(root/'descriptor.json',Descriptor)
+            policy=load_document(root/'policy.json',Policy)
+            binding=load_document(root/'binding.json',Binding)
+            assert descriptor.client_id==policy.client_id==binding.client_id==name
+&gt;           assert binding.policy_sha256==hashlib.sha256((root/'policy.json').read_bytes()).hexdigest()
+E           AssertionError: assert '4362c7845080...22847852deec7' == '9575911478b9...6395e96f04211'
+E             
+E             - 9575911478b90494e9899e6fde3dcfeb2a9ad89fe150dba9b546395e96f04211
+E             + 4362c78450804a1ca9f09d93a89030c63daa5375b49a8f9065522847852deec7
+
+tests\test_configuration.py:67: AssertionError</failure></testcase></testsuite></testsuites>

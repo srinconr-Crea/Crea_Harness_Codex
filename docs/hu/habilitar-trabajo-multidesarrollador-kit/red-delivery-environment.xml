@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="8" skipped="0" tests="8" time="0.987" timestamp="2026-11-10T08:13:49.422980-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_delivery.TeamDeliveryTests" name="test_independent_target_and_legacy_fallback" time="0.002"><failure message="AssertionError: unexpectedly None : Delivery resolver is missing">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_independent_target_and_legacy_fallback&gt;
+
+    def test_independent_target_and_legacy_fallback(self):
+&gt;       self.assertIsNotNone(entrega, 'Delivery resolver is missing')
+E       AssertionError: unexpectedly None : Delivery resolver is missing
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:30: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_delivery.TeamDeliveryTests" name="test_inherited_work_is_not_attributed_to_story" time="0.002"><failure message="AssertionError: unexpectedly None">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_inherited_work_is_not_attributed_to_story&gt;
+
+    def test_inherited_work_is_not_attributed_to_story(self):
+&gt;       self.assertIsNotNone(entrega)
+E       AssertionError: unexpectedly None
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:48: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_delivery.TeamDeliveryTests" name="test_local_check_preserves_checkout_and_detects_wrong_branch" time="0.003"><failure message="AssertionError: unexpectedly None">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_local_check_preserves_checkout_and_detects_wrong_branch&gt;
+
+    def test_local_check_preserves_checkout_and_detects_wrong_branch(self):
+&gt;       self.assertIsNotNone(entrega)
+E       AssertionError: unexpectedly None
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:62: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_delivery.TeamDeliveryTests" name="test_protected_and_invalid_feature_names_are_rejected" time="0.002"><failure message="AssertionError: unexpectedly None">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_protected_and_invalid_feature_names_are_rejected&gt;
+
+    def test_protected_and_invalid_feature_names_are_rejected(self):
+&gt;       self.assertIsNotNone(entrega)
+E       AssertionError: unexpectedly None
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:40: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_local_environment.LocalEnvironmentTests" name="test_binding_resolves_without_changing_shared_settings" time="0.002"><failure message="AssertionError: unexpectedly None : Local resolver is missing">self = &lt;test_local_environment.LocalEnvironmentTests testMethod=test_binding_resolves_without_changing_shared_settings&gt;
+
+    def test_binding_resolves_without_changing_shared_settings(self):
+&gt;       self.assertIsNotNone(entorno_local, 'Local resolver is missing')
+E       AssertionError: unexpectedly None : Local resolver is missing
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_local_environment.py:26: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_local_environment.LocalEnvironmentTests" name="test_legacy_resolution_is_unchanged" time="0.002"><failure message="AssertionError: unexpectedly None">self = &lt;test_local_environment.LocalEnvironmentTests testMethod=test_legacy_resolution_is_unchanged&gt;
+
+    def test_legacy_resolution_is_unchanged(self):
+&gt;       self.assertIsNotNone(entorno_local)
+E       AssertionError: unexpectedly None
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_local_environment.py:45: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_local_environment.LocalEnvironmentTests" name="test_policy_overrides_and_conflicting_sources_are_rejected" time="0.002"><failure message="AssertionError: unexpectedly None">self = &lt;test_local_environment.LocalEnvironmentTests testMethod=test_policy_overrides_and_conflicting_sources_are_rejected&gt;
+
+    def test_policy_overrides_and_conflicting_sources_are_rejected(self):
+&gt;       self.assertIsNotNone(entorno_local)
+E       AssertionError: unexpectedly None
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_local_environment.py:36: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_local_environment.LocalEnvironmentTests" name="test_shared_binding_plan_is_rebuilt_and_alias_does_not_change_python_identity" time="0.679"><failure message="ValueError: SCHEMA_INVALID: :additionalProperties">self = &lt;test_local_environment.LocalEnvironmentTests testMethod=test_shared_binding_plan_is_rebuilt_and_alias_does_not_change_python_identity&gt;
+
+    def test_shared_binding_plan_is_rebuilt_and_alias_does_not_change_python_identity(self):
+        base, policy, execution, outputs = self.local_setup()
+        self.write('.gitignore', '.crea/local.json\n')
+        self.git('add', '--', '.gitignore'); self.git('commit', '-m', 'local exclusions')
+        settings = read(execution)
+        settings['python_executable'] = None
+        settings['local_environment_path'] = '.crea/local.json'
+        write(execution, settings)
+        self.write('.crea/local.json', json.dumps({'schema_version':'1.0', 'python_executable':sys.executable}))
+&gt;       plan = workflow.make_plan(self.root, policy, execution, base, ['CA01'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_local_environment.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\scripts\crea\testing\workflow.py:67: in make_plan
+    policy, settings = load(policy_path, settings_path)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+artifacts\crea-manual-kit-0.1.9\scripts\crea\testing\workflow.py:13: in load
+    settings = schemas.validate('execution', read(settings_path))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+artifacts\crea-manual-kit-0.1.9\scripts\crea\testing\schemas.py:29: in validate
+    return validate_schema(read(path), instance)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+schema = {'type': 'object', 'properties': {'schema_version': {'const': '1.0'}, 'python_executable': {'type': ['string', 'null']...table', 'reviewed_policy_digest', 'max_evidence_age_seconds', 'outputs', 'checks'], 'additionalProperties': False, ...}
+instance = {'schema_version': '1.0', 'python_executable': None, 'reviewed_policy_digest': '3db0e5973aeb8123a884c84929c1cf589fe685bbc17e452c31954ba4d413d6e7', 'max_evidence_age_seconds': 3600, ...}
+
+    def validate_schema(schema, instance):
+        Draft202012Validator.check_schema(schema)
+        checker = FormatChecker()
+        if 'date-time' not in checker.checkers:
+            raise ValueError('SCHEMA_DATETIME_DEPENDENCY_MISSING_INSTALL_REQUIREMENTS')
+        validator = Draft202012Validator(schema, format_checker=checker,
+                                         registry=Registry(retrieve=no_remote))
+        errors = sorted(validator.iter_errors(instance), key=lambda e: str(list(e.path)))
+        if errors:
+            e = errors[0]
+            # Do not copy values of rejected configuration into logs.
+&gt;           raise ValueError('SCHEMA_INVALID: ' + '/'.join(map(str, e.path)) + ':' + str(e.validator))
+E           ValueError: SCHEMA_INVALID: :additionalProperties
+
+artifacts\crea-manual-kit-0.1.9\scripts\crea\testing\schemas.py:23: ValueError</failure></testcase></testsuite></testsuites>

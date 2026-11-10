@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="5.332" timestamp="2026-11-10T08:30:08.511820-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_content_v3.ContentV3Tests" name="test_exact_late_observation_preserves_identity_but_code_does_not" time="1.037"><failure message="ValueError: PROJECTION_VERSION_UNSUPPORTED">self = &lt;test_content_v3.ContentV3Tests testMethod=test_exact_late_observation_preserves_identity_but_code_does_not&gt;
+
+    def test_exact_late_observation_preserves_identity_but_code_does_not(self):
+        base,name,p,data=self.fixture()
+&gt;       before=git_adapter.content_view(self.root,base,[],p)['input_digest']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_content_v3.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/artifacts/crea-manual-kit-0.1.9/.test-work/3a1082c384d24f5f95185297b101f798')
+base = '0cc12d690e806b6f55ddbbe0ec470622915f77a7', outputs = []
+projection = {'version': 'content-v3', 'change': 'synthetic', 'context': {}, 'moves': [], ...}
+check_inputs = ()
+
+    def content_view(root, base, outputs, projection, check_inputs=()):
+        root = Path(root).resolve()
+        if projection.get('version') != 'content-v2':
+&gt;           raise ValueError('PROJECTION_VERSION_UNSUPPORTED')
+E           ValueError: PROJECTION_VERSION_UNSUPPORTED
+
+artifacts\crea-manual-kit-0.1.9\scripts\crea\testing\git_adapter.py:302: ValueError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_content_v3.ContentV3Tests" name="test_legacy_view_keeps_new_observation_as_functional_input" time="2.350" /><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_content_v3.ContentV3Tests" name="test_malformed_or_historical_observation_cannot_be_hidden" time="1.473" /></testsuite></testsuites>

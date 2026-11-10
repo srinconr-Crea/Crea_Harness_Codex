@@ -1,0 +1,110 @@
+{
+  "changeName": "habilitar-trabajo-multidesarrollador-kit",
+  "schemaName": "spec-driven",
+  "planningHome": {
+    "kind": "repo",
+    "root": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness",
+    "changesDir": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes",
+    "defaultSchema": "spec-driven"
+  },
+  "changeRoot": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit",
+  "artifactPaths": {
+    "proposal": {
+      "outputPath": "proposal.md",
+      "resolvedOutputPath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\proposal.md",
+      "existingOutputPaths": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\proposal.md"
+      ]
+    },
+    "specs": {
+      "outputPath": "specs/**/*.md",
+      "resolvedOutputPath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\**\\*.md",
+      "existingOutputPaths": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\developer-local-preparation\\spec.md",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\hu-target-compatibility\\spec.md",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-delivery-traceability\\spec.md",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-kit-distribution\\spec.md",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-phase-contracts\\spec.md",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\project-context-lifecycle\\spec.md",
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\project-testing-lifecycle\\spec.md"
+      ]
+    },
+    "design": {
+      "outputPath": "design.md",
+      "resolvedOutputPath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\design.md",
+      "existingOutputPaths": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\design.md"
+      ]
+    },
+    "tasks": {
+      "outputPath": "tasks.md",
+      "resolvedOutputPath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "existingOutputPaths": [
+        "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md"
+      ]
+    }
+  },
+  "isPlanningComplete": true,
+  "isComplete": true,
+  "applyRequires": [
+    "tasks"
+  ],
+  "nextSteps": [
+    "All planning artifacts are complete. Run openspec instructions apply --change \"habilitar-trabajo-multidesarrollador-kit\" --json to inspect implementation progress."
+  ],
+  "actionContext": {
+    "mode": "repo-local",
+    "sourceOfTruth": "repo",
+    "planningArtifacts": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "linkedContext": [],
+    "allowedEditRoots": [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness"
+    ],
+    "requiresAffectedAreaSelection": false,
+    "constraints": [
+      "Repo-local change artifacts and implementation edits are scoped to this project."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "proposal",
+      "outputPath": "proposal.md",
+      "status": "done",
+      "requires": []
+    },
+    {
+      "id": "specs",
+      "outputPath": "specs/**/*.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "design",
+      "outputPath": "design.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "tasks",
+      "outputPath": "tasks.md",
+      "status": "done",
+      "requires": [
+        "specs",
+        "design"
+      ]
+    }
+  ],
+  "root": {
+    "path": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness",
+    "source": "nearest"
+  }
+}

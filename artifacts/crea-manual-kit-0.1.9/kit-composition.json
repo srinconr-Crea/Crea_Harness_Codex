@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "client_required": [
+    ".agents/**",
+    ".codex/**",
+    "AGENTS.md",
+    ".gitignore",
+    "docs/**",
+    "scripts/**",
+    "tests/crea/**",
+    "resources/**",
+    "requirements-validation.txt",
+    "kit-manifest.json",
+    "kit-composition.json"
+  ],
+  "distribution_only": [
+    "LEEME-CREA.md",
+    "Prompt_configurar-kit-proyecto.txt"
+  ],
+  "local_only": [
+    ".crea/local.json",
+    ".crea/local.json.new",
+    ".crea/diagnosticos/**",
+    ".crea/tmp/**",
+    ".env",
+    ".env.*",
+    ".databrickscfg",
+    ".databricks/**"
+  ],
+  "reasons": {
+    "client_required": "Operación, configuración, pruebas internas y procedencia necesarias",
+    "distribution_only": "Preparación/actualización desde staging; C tiene entrada local",
+    "local_only": "Identidad personal, secretos o temporales; no distribuir ni versionar"
+  }
+}

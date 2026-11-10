@@ -1,0 +1,3038 @@
+{
+  "requirements": [
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Existing checkout and shared readiness",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "inspect_environment: setup/catalog/resources",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Second developer clones approved configuration",
+        "Shared setup is incomplete or inconsistent"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Persistent entry point independent of distribution prompt",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "AGENTS → skill → guía C",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Clone without packaging prompt"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Bounded personal environment binding",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "binding/resolve allowlist",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Different interpreter locations",
+        "Local override attempts to change required checks"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Applicable tools and authorized preparation",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "tool/dependency probes; no installer",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Missing validation dependency without installation permission",
+        "Tool already satisfies project requirements"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Personal authentication and interactive authority",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "online_checks/checked_read; personal intervention",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Authentication requires MFA",
+        "Project does not use Databricks"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Safe connection checks",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "online_checks verified destination/read_only",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Azure repository can be read",
+        "Read permission does not establish publish permission"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Preserve configured project resources",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "inspect/bind preserve shared files",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Existing skill differs from distribution"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Repeatable Windows preparation",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "bind equivalent bytes; Windows .cmd/-B",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Second identical preparation",
+        "PowerShell script wrappers are blocked"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Local diagnostic record and honest status",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "exclusive diagnostic; structured status",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Explicit diagnostic output"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "developer-local-preparation",
+      "requirement": "Side effect free default inspection",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/preparar-desarrollador.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md",
+        "artifacts/crea-manual-kit-0.1.9/AGENTS.md"
+      ],
+      "entry": "offline inspect + explicit online/out/bind",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "scenarios": [
+        "Offline inspection"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Optional target compatibility observation",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "inspect opt-in; informative default",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "Legacy project omits compatibility",
+        "Divergence alone"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Exact source and target anchors",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "snapshot/ranges B/V/H/Q + source_branch",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "Stale tracking reference",
+        "No common history or incomplete history"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Separate story target and inherited changes",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "ranges story/target/inherited",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "Sprint contains unrelated work absent from quality"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Dependency and consumer impact",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "contexto.consumer_impact + recommendations",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "A independent concurrent stories",
+        "B changed consumed component"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Semantic review independent of textual conflicts",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "semantic_review refs/scope_digest + bounded reads",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "C incompatible edits of one rule",
+        "D contradictory contracts in different files",
+        "Same file with compatible changes"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Isolated textual integration inspection",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "simulate isolated bare Git; HEAD-only limit",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "Textual conflict is observed",
+        "Simulation capability is unavailable"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Actionable compatibility report",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "outcome/coverage/freshness independent",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "Known conflict with incomplete component mapping",
+        "Missing semantic coverage"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Target freshness at PR preparation and creation",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "freshness + transiciones.check_compatibility",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "E target changes after first inspection",
+        "Target changes after creation"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Missing and unverifiable target handling",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "remote_sha statuses; no fallback",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "F target is missing",
+        "F target cannot be accessed or verified"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Preserve valid evidence without cross plan adoption",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "content-v3 + scoped binding + gate unchanged",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "Unrelated target update",
+        "Combined behavior needs testing"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Human reconciliation and integration boundary",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "actions + equipo human integration boundary",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "Developer manually resolves a conflict"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "requirement": "Bounded inspection and immutable report export",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/compatibilidad.schema.json"
+      ],
+      "entry": "inspect pure; hu_export exclusive",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "scenarios": [
+        "Pure inspection",
+        "Existing output path"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-delivery-traceability",
+      "requirement": "Independent feature origin and PR target",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/entrega-git.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/pr.md"
+      ],
+      "entry": "resolve independent source/target fallback",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "scenarios": [
+        "Sprint source and quality target",
+        "Legacy destination fallback"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-delivery-traceability",
+      "requirement": "Verified Git delivery provenance",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/entrega-git.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/pr.md"
+      ],
+      "entry": "repository_key/verified_remote/exact refs; principal branch procedure",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "scenarios": [
+        "Feature name collision",
+        "Custom fetch refspec"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-delivery-traceability",
+      "requirement": "Protected development and publication branches",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/entrega-git.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/pr.md"
+      ],
+      "entry": "validate_feature + delivery source checks",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "scenarios": [
+        "Requested feature equals protected target",
+        "Branch changes before push"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-delivery-traceability",
+      "requirement": "Reviewed effective PR scope",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/entrega-git.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/pr.md"
+      ],
+      "entry": "ranges/check_scope explicit inherited commit approval",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "scenarios": [
+        "Base is ahead of target",
+        "Approved independent story only"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-delivery-traceability",
+      "requirement": "Canonical target bound authorization",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entrega.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/entrega-git.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/plantillas/pr.md"
+      ],
+      "entry": "delivery_digest target + authorization context",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "scenarios": [
+        "Target changed after human approval",
+        "Existing provider policies"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "requirement": "Portable tooling release preserves customized source",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/composicion.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/kit_validation.py",
+        "artifacts/crea-manual-kit-0.1.9/kit-composition.json",
+        "artifacts/crea-manual-kit-0.1.9/docs/composicion-kit.md",
+        "artifacts/crea-manual-kit-0.1.9/Prompt_configurar-kit-proyecto.txt",
+        "artifacts/crea-manual-kit-0.1.9/docs/VALIDACION-KIT.md"
+      ],
+      "entry": "package_manual_019 baseline + new candidate only",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "scenarios": [
+        "Source differs from published manifest",
+        "One new candidate for the whole change"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "requirement": "Consistent portable setup documentation",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/composicion.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/kit_validation.py",
+        "artifacts/crea-manual-kit-0.1.9/kit-composition.json",
+        "artifacts/crea-manual-kit-0.1.9/docs/composicion-kit.md",
+        "artifacts/crea-manual-kit-0.1.9/Prompt_configurar-kit-proyecto.txt",
+        "artifacts/crea-manual-kit-0.1.9/docs/VALIDACION-KIT.md"
+      ],
+      "entry": "README/LEEME/prompt A/B/C + erratas",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "scenarios": [
+        "Configure project from bundled prompt",
+        "Repository README links the candidate",
+        "Update an existing project with section B",
+        "Prepare another developer with section C",
+        "Correct stale 0.1.8 version references"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "requirement": "Explicit client installation composition",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/composicion.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/kit_validation.py",
+        "artifacts/crea-manual-kit-0.1.9/kit-composition.json",
+        "artifacts/crea-manual-kit-0.1.9/docs/composicion-kit.md",
+        "artifacts/crea-manual-kit-0.1.9/Prompt_configurar-kit-proyecto.txt",
+        "artifacts/crea-manual-kit-0.1.9/docs/VALIDACION-KIT.md"
+      ],
+      "entry": "composition configuration/classify/select + client mode",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "scenarios": [
+        "Copy clean operational kit",
+        "Existing project already tracks distribution files"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "requirement": "Preserve validation and provenance surfaces",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/composicion.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/kit_validation.py",
+        "artifacts/crea-manual-kit-0.1.9/kit-composition.json",
+        "artifacts/crea-manual-kit-0.1.9/docs/composicion-kit.md",
+        "artifacts/crea-manual-kit-0.1.9/Prompt_configurar-kit-proyecto.txt",
+        "artifacts/crea-manual-kit-0.1.9/docs/VALIDACION-KIT.md"
+      ],
+      "entry": "normal vs original validator; manifest provenance",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "scenarios": [
+        "Personalized project validation",
+        "Internal tests remain available"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "requirement": "Initial local exclusions without hidden changes",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/composicion.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/kit_validation.py",
+        "artifacts/crea-manual-kit-0.1.9/kit-composition.json",
+        "artifacts/crea-manual-kit-0.1.9/docs/composicion-kit.md",
+        "artifacts/crea-manual-kit-0.1.9/Prompt_configurar-kit-proyecto.txt",
+        "artifacts/crea-manual-kit-0.1.9/docs/VALIDACION-KIT.md"
+      ],
+      "entry": "gitignore combined by A; evidence preserved",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "scenarios": [
+        "First clone after onboarding",
+        "Required evidence uses log files"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "requirement": "Separate copy context ignore and publication controls",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/composicion.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/kit_validation.py",
+        "artifacts/crea-manual-kit-0.1.9/kit-composition.json",
+        "artifacts/crea-manual-kit-0.1.9/docs/composicion-kit.md",
+        "artifacts/crea-manual-kit-0.1.9/Prompt_configurar-kit-proyecto.txt",
+        "artifacts/crea-manual-kit-0.1.9/docs/VALIDACION-KIT.md"
+      ],
+      "entry": "copy/context/ignore/publication separate",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "scenarios": [
+        "Already tracked local file",
+        "Excluded contextual content changes"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "requirement": "Compatible reviewed team adoption and rollback",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/composicion.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/kit_validation.py",
+        "artifacts/crea-manual-kit-0.1.9/kit-composition.json",
+        "artifacts/crea-manual-kit-0.1.9/docs/composicion-kit.md",
+        "artifacts/crea-manual-kit-0.1.9/Prompt_configurar-kit-proyecto.txt",
+        "artifacts/crea-manual-kit-0.1.9/docs/VALIDACION-KIT.md"
+      ],
+      "entry": "B three-way diff + offline consumer contracts + rollback",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "scenarios": [
+        "Older reader accepts an unknown project field",
+        "Rollback after new HU evidence exists"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-phase-contracts",
+      "requirement": "Session scoped sequential roles",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/common.py"
+      ],
+      "entry": "AGENTS/orchestrator/profiles max_active_agents=1 per checkout",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "scenarios": [
+        "Independent developers work concurrently"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-phase-contracts",
+      "requirement": "Canonical compatibility reference",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/common.py"
+      ],
+      "entry": "validate_handoff refs/hash + render_handoff",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "scenarios": [
+        "New target observation after a handoff"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-phase-contracts",
+      "requirement": "Informative compatibility transition consumption",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/common.py"
+      ],
+      "entry": "check_compatibility + consume 0/2/3/4, human pending",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "scenarios": [
+        "Informative inspection error",
+        "Critical contradiction needs a decision",
+        "Missing real destination"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-phase-contracts",
+      "requirement": "Scoped invalidation and unchanged approvals",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/common.py"
+      ],
+      "entry": "handoff_context/delivery digest + freshness separate",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "scenarios": [
+        "Only target snapshot changes independently",
+        "Functional candidate changes during reconciliation"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "manual-phase-contracts",
+      "requirement": "Non circular compatibility evidence binding",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/transiciones.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/common.py"
+      ],
+      "entry": "projection_for content-v3 exact artifacts/history/functional obligations",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "scenarios": [
+        "Informational report added after testing",
+        "Report introduces a new required check"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "project-context-lifecycle",
+      "requirement": "Shared versioned context across independent checkouts",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/contexto.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/CONTEXTO.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md"
+      ],
+      "entry": "Git-shared configs + target config observed, not adopted",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "scenarios": [
+        "Developer uses an older feature checkout"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "project-context-lifecycle",
+      "requirement": "Reverse consumer impact from existing component mappings",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/contexto.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/CONTEXTO.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md"
+      ],
+      "entry": "consumer_impact reverse closure, cycles, stable sort",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "scenarios": [
+        "Producer changes in target",
+        "Cyclic dependencies"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "project-context-lifecycle",
+      "requirement": "Reference scoped cross revision reading",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/contexto.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/CONTEXTO.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md"
+      ],
+      "entry": "blob/worktree_document + exclusions and cumulative budget",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "scenarios": [
+        "Shared specification changes on target",
+        "Excluded target path changes"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "project-context-lifecycle",
+      "requirement": "Useful compatibility without context activation",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/contexto.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/compatibilidad.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/CONTEXTO.md",
+        "artifacts/crea-manual-kit-0.1.9/docs/equipo.md"
+      ],
+      "entry": "disabled mapping stays disabled; unknown coverage explicit",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "scenarios": [
+        "Context extension disabled"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "project-testing-lifecycle",
+      "requirement": "Optional local execution environment resolution",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/pruebas.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/pruebas/README.md"
+      ],
+      "entry": "load/environment_provenance/resolved_settings/attempts",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "scenarios": [
+        "Two machines share one execution configuration",
+        "Local interpreter changes after planning",
+        "Legacy absolute interpreter"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "project-testing-lifecycle",
+      "requirement": "Catalog based target impact recommendations",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/pruebas.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/pruebas/README.md"
+      ],
+      "entry": "catalog IDs/input/consumer rules; unknown check pending",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "scenarios": [
+        "Changed dependency affects an unchanged test",
+        "Target references an unknown check"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "project-testing-lifecycle",
+      "requirement": "Distinct feature and combined candidate evidence",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/pruebas.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/pruebas/README.md"
+      ],
+      "entry": "source/combined evidence distinct; new plans required",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "scenarios": [
+        "Local feature passed before provider contract changed",
+        "New plan after manual integration"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    },
+    {
+      "capability": "project-testing-lifecycle",
+      "requirement": "Selective rechecking within existing guarantees",
+      "implementation": [
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/entorno_local.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/workflow.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/testing/git_adapter.py",
+        "artifacts/crea-manual-kit-0.1.9/scripts/crea/pruebas.py",
+        "artifacts/crea-manual-kit-0.1.9/docs/pruebas/README.md"
+      ],
+      "entry": "content-v3 observations vs functional changes; inactive adapter blocked",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "scenarios": [
+        "Informational report reference corrected",
+        "Required runtime remains inactive"
+      ],
+      "evidence_kind": "code/docs review plus local regression; no native certification"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "developer-local-preparation:1:1",
+      "capability": "developer-local-preparation",
+      "requirement": "Existing checkout and shared readiness",
+      "scenario": "Second developer clones approved configuration",
+      "entry": "inspect_environment: setup/catalog/resources",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:1:2",
+      "capability": "developer-local-preparation",
+      "requirement": "Existing checkout and shared readiness",
+      "scenario": "Shared setup is incomplete or inconsistent",
+      "entry": "inspect_environment: setup/catalog/resources",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:2:3",
+      "capability": "developer-local-preparation",
+      "requirement": "Persistent entry point independent of distribution prompt",
+      "scenario": "Clone without packaging prompt",
+      "entry": "AGENTS → skill → guía C",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:3:4",
+      "capability": "developer-local-preparation",
+      "requirement": "Bounded personal environment binding",
+      "scenario": "Different interpreter locations",
+      "entry": "binding/resolve allowlist",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:3:5",
+      "capability": "developer-local-preparation",
+      "requirement": "Bounded personal environment binding",
+      "scenario": "Local override attempts to change required checks",
+      "entry": "binding/resolve allowlist",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:4:6",
+      "capability": "developer-local-preparation",
+      "requirement": "Applicable tools and authorized preparation",
+      "scenario": "Missing validation dependency without installation permission",
+      "entry": "tool/dependency probes; no installer",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:4:7",
+      "capability": "developer-local-preparation",
+      "requirement": "Applicable tools and authorized preparation",
+      "scenario": "Tool already satisfies project requirements",
+      "entry": "tool/dependency probes; no installer",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:5:8",
+      "capability": "developer-local-preparation",
+      "requirement": "Personal authentication and interactive authority",
+      "scenario": "Authentication requires MFA",
+      "entry": "online_checks/checked_read; personal intervention",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:5:9",
+      "capability": "developer-local-preparation",
+      "requirement": "Personal authentication and interactive authority",
+      "scenario": "Project does not use Databricks",
+      "entry": "online_checks/checked_read; personal intervention",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:6:10",
+      "capability": "developer-local-preparation",
+      "requirement": "Safe connection checks",
+      "scenario": "Azure repository can be read",
+      "entry": "online_checks verified destination/read_only",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:6:11",
+      "capability": "developer-local-preparation",
+      "requirement": "Safe connection checks",
+      "scenario": "Read permission does not establish publish permission",
+      "entry": "online_checks verified destination/read_only",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:7:12",
+      "capability": "developer-local-preparation",
+      "requirement": "Preserve configured project resources",
+      "scenario": "Existing skill differs from distribution",
+      "entry": "inspect/bind preserve shared files",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:8:13",
+      "capability": "developer-local-preparation",
+      "requirement": "Repeatable Windows preparation",
+      "scenario": "Second identical preparation",
+      "entry": "bind equivalent bytes; Windows .cmd/-B",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:8:14",
+      "capability": "developer-local-preparation",
+      "requirement": "Repeatable Windows preparation",
+      "scenario": "PowerShell script wrappers are blocked",
+      "entry": "bind equivalent bytes; Windows .cmd/-B",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:9:15",
+      "capability": "developer-local-preparation",
+      "requirement": "Local diagnostic record and honest status",
+      "scenario": "Explicit diagnostic output",
+      "entry": "exclusive diagnostic; structured status",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "developer-local-preparation:10:16",
+      "capability": "developer-local-preparation",
+      "requirement": "Side effect free default inspection",
+      "scenario": "Offline inspection",
+      "entry": "offline inspect + explicit online/out/bind",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_developer_preparation",
+        "test_local_environment",
+        "test_kit_validation",
+        "test_client_composition"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:1:1",
+      "capability": "hu-target-compatibility",
+      "requirement": "Optional target compatibility observation",
+      "scenario": "Legacy project omits compatibility",
+      "entry": "inspect opt-in; informative default",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:1:2",
+      "capability": "hu-target-compatibility",
+      "requirement": "Optional target compatibility observation",
+      "scenario": "Divergence alone",
+      "entry": "inspect opt-in; informative default",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:2:3",
+      "capability": "hu-target-compatibility",
+      "requirement": "Exact source and target anchors",
+      "scenario": "Stale tracking reference",
+      "entry": "snapshot/ranges B/V/H/Q + source_branch",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:2:4",
+      "capability": "hu-target-compatibility",
+      "requirement": "Exact source and target anchors",
+      "scenario": "No common history or incomplete history",
+      "entry": "snapshot/ranges B/V/H/Q + source_branch",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:3:5",
+      "capability": "hu-target-compatibility",
+      "requirement": "Separate story target and inherited changes",
+      "scenario": "Sprint contains unrelated work absent from quality",
+      "entry": "ranges story/target/inherited",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:4:6",
+      "capability": "hu-target-compatibility",
+      "requirement": "Dependency and consumer impact",
+      "scenario": "A independent concurrent stories",
+      "entry": "contexto.consumer_impact + recommendations",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:4:7",
+      "capability": "hu-target-compatibility",
+      "requirement": "Dependency and consumer impact",
+      "scenario": "B changed consumed component",
+      "entry": "contexto.consumer_impact + recommendations",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:5:8",
+      "capability": "hu-target-compatibility",
+      "requirement": "Semantic review independent of textual conflicts",
+      "scenario": "C incompatible edits of one rule",
+      "entry": "semantic_review refs/scope_digest + bounded reads",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:5:9",
+      "capability": "hu-target-compatibility",
+      "requirement": "Semantic review independent of textual conflicts",
+      "scenario": "D contradictory contracts in different files",
+      "entry": "semantic_review refs/scope_digest + bounded reads",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:5:10",
+      "capability": "hu-target-compatibility",
+      "requirement": "Semantic review independent of textual conflicts",
+      "scenario": "Same file with compatible changes",
+      "entry": "semantic_review refs/scope_digest + bounded reads",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:6:11",
+      "capability": "hu-target-compatibility",
+      "requirement": "Isolated textual integration inspection",
+      "scenario": "Textual conflict is observed",
+      "entry": "simulate isolated bare Git; HEAD-only limit",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:6:12",
+      "capability": "hu-target-compatibility",
+      "requirement": "Isolated textual integration inspection",
+      "scenario": "Simulation capability is unavailable",
+      "entry": "simulate isolated bare Git; HEAD-only limit",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:7:13",
+      "capability": "hu-target-compatibility",
+      "requirement": "Actionable compatibility report",
+      "scenario": "Known conflict with incomplete component mapping",
+      "entry": "outcome/coverage/freshness independent",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:7:14",
+      "capability": "hu-target-compatibility",
+      "requirement": "Actionable compatibility report",
+      "scenario": "Missing semantic coverage",
+      "entry": "outcome/coverage/freshness independent",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:8:15",
+      "capability": "hu-target-compatibility",
+      "requirement": "Target freshness at PR preparation and creation",
+      "scenario": "E target changes after first inspection",
+      "entry": "freshness + transiciones.check_compatibility",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:8:16",
+      "capability": "hu-target-compatibility",
+      "requirement": "Target freshness at PR preparation and creation",
+      "scenario": "Target changes after creation",
+      "entry": "freshness + transiciones.check_compatibility",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:9:17",
+      "capability": "hu-target-compatibility",
+      "requirement": "Missing and unverifiable target handling",
+      "scenario": "F target is missing",
+      "entry": "remote_sha statuses; no fallback",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:9:18",
+      "capability": "hu-target-compatibility",
+      "requirement": "Missing and unverifiable target handling",
+      "scenario": "F target cannot be accessed or verified",
+      "entry": "remote_sha statuses; no fallback",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:10:19",
+      "capability": "hu-target-compatibility",
+      "requirement": "Preserve valid evidence without cross plan adoption",
+      "scenario": "Unrelated target update",
+      "entry": "content-v3 + scoped binding + gate unchanged",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:10:20",
+      "capability": "hu-target-compatibility",
+      "requirement": "Preserve valid evidence without cross plan adoption",
+      "scenario": "Combined behavior needs testing",
+      "entry": "content-v3 + scoped binding + gate unchanged",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:11:21",
+      "capability": "hu-target-compatibility",
+      "requirement": "Human reconciliation and integration boundary",
+      "scenario": "Developer manually resolves a conflict",
+      "entry": "actions + equipo human integration boundary",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:12:22",
+      "capability": "hu-target-compatibility",
+      "requirement": "Bounded inspection and immutable report export",
+      "scenario": "Pure inspection",
+      "entry": "inspect pure; hu_export exclusive",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "hu-target-compatibility:12:23",
+      "capability": "hu-target-compatibility",
+      "requirement": "Bounded inspection and immutable report export",
+      "scenario": "Existing output path",
+      "entry": "inspect pure; hu_export exclusive",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_target_compatibility",
+        "test_team_boundary_cases",
+        "test_team_offline_guards",
+        "test_content_v3",
+        "test_team_transitions"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:1:1",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Independent feature origin and PR target",
+      "scenario": "Sprint source and quality target",
+      "entry": "resolve independent source/target fallback",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:1:2",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Independent feature origin and PR target",
+      "scenario": "Legacy destination fallback",
+      "entry": "resolve independent source/target fallback",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:2:3",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Verified Git delivery provenance",
+      "scenario": "Feature name collision",
+      "entry": "repository_key/verified_remote/exact refs; principal branch procedure",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:2:4",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Verified Git delivery provenance",
+      "scenario": "Custom fetch refspec",
+      "entry": "repository_key/verified_remote/exact refs; principal branch procedure",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:3:5",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Protected development and publication branches",
+      "scenario": "Requested feature equals protected target",
+      "entry": "validate_feature + delivery source checks",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:3:6",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Protected development and publication branches",
+      "scenario": "Branch changes before push",
+      "entry": "validate_feature + delivery source checks",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:4:7",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Reviewed effective PR scope",
+      "scenario": "Base is ahead of target",
+      "entry": "ranges/check_scope explicit inherited commit approval",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:4:8",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Reviewed effective PR scope",
+      "scenario": "Approved independent story only",
+      "entry": "ranges/check_scope explicit inherited commit approval",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:5:9",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Canonical target bound authorization",
+      "scenario": "Target changed after human approval",
+      "entry": "delivery_digest target + authorization context",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-delivery-traceability:5:10",
+      "capability": "manual-delivery-traceability",
+      "requirement": "Canonical target bound authorization",
+      "scenario": "Existing provider policies",
+      "entry": "delivery_digest target + authorization context",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_team_delivery",
+        "test_team_transitions",
+        "test_transiciones",
+        "test_content_v2",
+        "test_content_v3"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:1:1",
+      "capability": "manual-kit-distribution",
+      "requirement": "Portable tooling release preserves customized source",
+      "scenario": "Source differs from published manifest",
+      "entry": "package_manual_019 baseline + new candidate only",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:1:2",
+      "capability": "manual-kit-distribution",
+      "requirement": "Portable tooling release preserves customized source",
+      "scenario": "One new candidate for the whole change",
+      "entry": "package_manual_019 baseline + new candidate only",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:2:3",
+      "capability": "manual-kit-distribution",
+      "requirement": "Consistent portable setup documentation",
+      "scenario": "Configure project from bundled prompt",
+      "entry": "README/LEEME/prompt A/B/C + erratas",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:2:4",
+      "capability": "manual-kit-distribution",
+      "requirement": "Consistent portable setup documentation",
+      "scenario": "Repository README links the candidate",
+      "entry": "README/LEEME/prompt A/B/C + erratas",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:2:5",
+      "capability": "manual-kit-distribution",
+      "requirement": "Consistent portable setup documentation",
+      "scenario": "Update an existing project with section B",
+      "entry": "README/LEEME/prompt A/B/C + erratas",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:2:6",
+      "capability": "manual-kit-distribution",
+      "requirement": "Consistent portable setup documentation",
+      "scenario": "Prepare another developer with section C",
+      "entry": "README/LEEME/prompt A/B/C + erratas",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:2:7",
+      "capability": "manual-kit-distribution",
+      "requirement": "Consistent portable setup documentation",
+      "scenario": "Correct stale 0.1.8 version references",
+      "entry": "README/LEEME/prompt A/B/C + erratas",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:3:8",
+      "capability": "manual-kit-distribution",
+      "requirement": "Explicit client installation composition",
+      "scenario": "Copy clean operational kit",
+      "entry": "composition configuration/classify/select + client mode",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:3:9",
+      "capability": "manual-kit-distribution",
+      "requirement": "Explicit client installation composition",
+      "scenario": "Existing project already tracks distribution files",
+      "entry": "composition configuration/classify/select + client mode",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:4:10",
+      "capability": "manual-kit-distribution",
+      "requirement": "Preserve validation and provenance surfaces",
+      "scenario": "Personalized project validation",
+      "entry": "normal vs original validator; manifest provenance",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:4:11",
+      "capability": "manual-kit-distribution",
+      "requirement": "Preserve validation and provenance surfaces",
+      "scenario": "Internal tests remain available",
+      "entry": "normal vs original validator; manifest provenance",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:5:12",
+      "capability": "manual-kit-distribution",
+      "requirement": "Initial local exclusions without hidden changes",
+      "scenario": "First clone after onboarding",
+      "entry": "gitignore combined by A; evidence preserved",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:5:13",
+      "capability": "manual-kit-distribution",
+      "requirement": "Initial local exclusions without hidden changes",
+      "scenario": "Required evidence uses log files",
+      "entry": "gitignore combined by A; evidence preserved",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:6:14",
+      "capability": "manual-kit-distribution",
+      "requirement": "Separate copy context ignore and publication controls",
+      "scenario": "Already tracked local file",
+      "entry": "copy/context/ignore/publication separate",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:6:15",
+      "capability": "manual-kit-distribution",
+      "requirement": "Separate copy context ignore and publication controls",
+      "scenario": "Excluded contextual content changes",
+      "entry": "copy/context/ignore/publication separate",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:7:16",
+      "capability": "manual-kit-distribution",
+      "requirement": "Compatible reviewed team adoption and rollback",
+      "scenario": "Older reader accepts an unknown project field",
+      "entry": "B three-way diff + offline consumer contracts + rollback",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-kit-distribution:7:17",
+      "capability": "manual-kit-distribution",
+      "requirement": "Compatible reviewed team adoption and rollback",
+      "scenario": "Rollback after new HU evidence exists",
+      "entry": "B three-way diff + offline consumer contracts + rollback",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_client_composition",
+        "test_kit_validation",
+        "test_neutrality"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:1:1",
+      "capability": "manual-phase-contracts",
+      "requirement": "Session scoped sequential roles",
+      "scenario": "Independent developers work concurrently",
+      "entry": "AGENTS/orchestrator/profiles max_active_agents=1 per checkout",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:2:2",
+      "capability": "manual-phase-contracts",
+      "requirement": "Canonical compatibility reference",
+      "scenario": "New target observation after a handoff",
+      "entry": "validate_handoff refs/hash + render_handoff",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:3:3",
+      "capability": "manual-phase-contracts",
+      "requirement": "Informative compatibility transition consumption",
+      "scenario": "Informative inspection error",
+      "entry": "check_compatibility + consume 0/2/3/4, human pending",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:3:4",
+      "capability": "manual-phase-contracts",
+      "requirement": "Informative compatibility transition consumption",
+      "scenario": "Critical contradiction needs a decision",
+      "entry": "check_compatibility + consume 0/2/3/4, human pending",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:3:5",
+      "capability": "manual-phase-contracts",
+      "requirement": "Informative compatibility transition consumption",
+      "scenario": "Missing real destination",
+      "entry": "check_compatibility + consume 0/2/3/4, human pending",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:4:6",
+      "capability": "manual-phase-contracts",
+      "requirement": "Scoped invalidation and unchanged approvals",
+      "scenario": "Only target snapshot changes independently",
+      "entry": "handoff_context/delivery digest + freshness separate",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:4:7",
+      "capability": "manual-phase-contracts",
+      "requirement": "Scoped invalidation and unchanged approvals",
+      "scenario": "Functional candidate changes during reconciliation",
+      "entry": "handoff_context/delivery digest + freshness separate",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:5:8",
+      "capability": "manual-phase-contracts",
+      "requirement": "Non circular compatibility evidence binding",
+      "scenario": "Informational report added after testing",
+      "entry": "projection_for content-v3 exact artifacts/history/functional obligations",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "manual-phase-contracts:5:9",
+      "capability": "manual-phase-contracts",
+      "requirement": "Non circular compatibility evidence binding",
+      "scenario": "Report introduces a new required check",
+      "entry": "projection_for content-v3 exact artifacts/history/functional obligations",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_transiciones",
+        "test_team_transitions",
+        "test_content_v2",
+        "test_content_v3",
+        "test_team_offline_guards"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-context-lifecycle:1:1",
+      "capability": "project-context-lifecycle",
+      "requirement": "Shared versioned context across independent checkouts",
+      "scenario": "Developer uses an older feature checkout",
+      "entry": "Git-shared configs + target config observed, not adopted",
+      "validation": "protocol/doc inspection + guard regression",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-context-lifecycle:2:2",
+      "capability": "project-context-lifecycle",
+      "requirement": "Reverse consumer impact from existing component mappings",
+      "scenario": "Producer changes in target",
+      "entry": "consumer_impact reverse closure, cycles, stable sort",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-context-lifecycle:2:3",
+      "capability": "project-context-lifecycle",
+      "requirement": "Reverse consumer impact from existing component mappings",
+      "scenario": "Cyclic dependencies",
+      "entry": "consumer_impact reverse closure, cycles, stable sort",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-context-lifecycle:3:4",
+      "capability": "project-context-lifecycle",
+      "requirement": "Reference scoped cross revision reading",
+      "scenario": "Shared specification changes on target",
+      "entry": "blob/worktree_document + exclusions and cumulative budget",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-context-lifecycle:3:5",
+      "capability": "project-context-lifecycle",
+      "requirement": "Reference scoped cross revision reading",
+      "scenario": "Excluded target path changes",
+      "entry": "blob/worktree_document + exclusions and cumulative budget",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-context-lifecycle:4:6",
+      "capability": "project-context-lifecycle",
+      "requirement": "Useful compatibility without context activation",
+      "scenario": "Context extension disabled",
+      "entry": "disabled mapping stays disabled; unknown coverage explicit",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_contexto",
+        "test_contexto_adoption",
+        "test_target_compatibility",
+        "test_team_boundary_cases"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:1:1",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Optional local execution environment resolution",
+      "scenario": "Two machines share one execution configuration",
+      "entry": "load/environment_provenance/resolved_settings/attempts",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:1:2",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Optional local execution environment resolution",
+      "scenario": "Local interpreter changes after planning",
+      "entry": "load/environment_provenance/resolved_settings/attempts",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:1:3",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Optional local execution environment resolution",
+      "scenario": "Legacy absolute interpreter",
+      "entry": "load/environment_provenance/resolved_settings/attempts",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:2:4",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Catalog based target impact recommendations",
+      "scenario": "Changed dependency affects an unchanged test",
+      "entry": "catalog IDs/input/consumer rules; unknown check pending",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:2:5",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Catalog based target impact recommendations",
+      "scenario": "Target references an unknown check",
+      "entry": "catalog IDs/input/consumer rules; unknown check pending",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:3:6",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Distinct feature and combined candidate evidence",
+      "scenario": "Local feature passed before provider contract changed",
+      "entry": "source/combined evidence distinct; new plans required",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:3:7",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Distinct feature and combined candidate evidence",
+      "scenario": "New plan after manual integration",
+      "entry": "source/combined evidence distinct; new plans required",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:4:8",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Selective rechecking within existing guarantees",
+      "scenario": "Informational report reference corrected",
+      "entry": "content-v3 observations vs functional changes; inactive adapter blocked",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    },
+    {
+      "id": "project-testing-lifecycle:4:9",
+      "capability": "project-testing-lifecycle",
+      "requirement": "Selective rechecking within existing guarantees",
+      "scenario": "Required runtime remains inactive",
+      "entry": "content-v3 observations vs functional changes; inactive adapter blocked",
+      "validation": "local fixture/regression + code inspection",
+      "regression_modules": [
+        "test_local_environment",
+        "test_testing_adapters",
+        "test_testing_lifecycle",
+        "test_contract",
+        "test_content_v2",
+        "test_content_v3",
+        "test_target_compatibility"
+      ],
+      "additional_evidence": [
+        "edge_checks.py",
+        "supplemental-edges.xml",
+        "two-checkout-bindings.xml",
+        "supplemental-snapshot-online.xml"
+      ],
+      "limit": "No actual two-person/native/remote pilot; mocks/local Git identified separately"
+    }
+  ]
+}

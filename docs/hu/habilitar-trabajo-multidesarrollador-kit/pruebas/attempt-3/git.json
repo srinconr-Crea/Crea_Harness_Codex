@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "base_sha": "56e56797cd28c1e2a4e0363b51aaf49907bc2232",
+  "head_sha": "56e56797cd28c1e2a4e0363b51aaf49907bc2232",
+  "layers": {
+    "head": [],
+    "staged": [],
+    "unstaged": [],
+    "untracked": [
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-1-entrada.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-1.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-2-entrada.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-2.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-3-entrada.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-3.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/plan.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "validation-intent.md",
+        "old_path": null
+      }
+    ],
+    "conflicts": []
+  },
+  "changes": [
+    {
+      "status": "A",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-1-entrada.json",
+      "old_path": null
+    },
+    {
+      "status": "A",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-1.json",
+      "old_path": null
+    },
+    {
+      "status": "A",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-2-entrada.json",
+      "old_path": null
+    },
+    {
+      "status": "A",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-2.json",
+      "old_path": null
+    },
+    {
+      "status": "A",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-3-entrada.json",
+      "old_path": null
+    },
+    {
+      "status": "A",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-3.json",
+      "old_path": null
+    },
+    {
+      "status": "A",
+      "path": "validation-intent.md",
+      "old_path": null
+    }
+  ],
+  "excluded": [
+    {
+      "layer": "untracked",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/plan.json",
+      "sha256": "8abde8cd812c373e97c85a81f3d2a3599cf21734b366a24e1409802497f9baa1",
+      "reason": "declared_generated_test_output"
+    }
+  ],
+  "outputs": [
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/gate.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/git.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/junit-kit-regression.xml",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/plan.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/receipt-kit-regression.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/resultados.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/stderr-kit-regression.log",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-3/stdout-kit-regression.log"
+  ],
+  "input_digest": "9e58b0b96cfcddf5f8f2f101ae8da04eaf57544dca3ee4bc2fa1324ae19decb4"
+}

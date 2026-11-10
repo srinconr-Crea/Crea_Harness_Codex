@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "source_files_unchanged": 492,
+  "diagnostic_statuses": [
+    "blocked",
+    "blocked"
+  ],
+  "diagnostic_remote_statuses": [
+    "not_run",
+    "not_run"
+  ],
+  "observed_explicit_tool_processes": [
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+      "-I",
+      "-B",
+      "-c",
+      "import importlib.util,json,sys; print(json.dumps({\"version\":sys.version,\"missing\":[m for m in [\"yaml\",\"jsonschema\",\"pytest\",\"rfc3339_validator\"] if importlib.util.find_spec(m) is None]}))"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\AppData\\Local\\Programs\\Git\\cmd\\git.EXE",
+      "--version"
+    ],
+    [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "--version"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\AppData\\Roaming\\npm\\openspec.cmd",
+      "--version"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.9\\scripts\\crea\\entrega.py",
+      "--describe-contracts"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.9\\scripts\\crea\\compatibilidad.py",
+      "--describe-contracts"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.9\\scripts\\crea\\preparar-desarrollador.py",
+      "--describe-contracts"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+      "-I",
+      "-B",
+      "-c",
+      "import importlib.util,json,sys; print(json.dumps({\"version\":sys.version,\"missing\":[m for m in [\"yaml\",\"jsonschema\",\"pytest\",\"rfc3339_validator\"] if importlib.util.find_spec(m) is None]}))"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\AppData\\Local\\Programs\\Git\\cmd\\git.EXE",
+      "--version"
+    ],
+    [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "--version"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\AppData\\Roaming\\npm\\openspec.cmd",
+      "--version"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.9\\scripts\\crea\\entrega.py",
+      "--describe-contracts"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.9\\scripts\\crea\\compatibilidad.py",
+      "--describe-contracts"
+    ],
+    [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\.integration-venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\artifacts\\crea-manual-kit-0.1.9\\scripts\\crea\\preparar-desarrollador.py",
+      "--describe-contracts"
+    ]
+  ],
+  "implicit_online_calls": 0,
+  "ignored_local_paths": [
+    "candidate/.crea/local.json",
+    "candidate/.crea/diagnosticos/new.json",
+    "candidate/.crea/tmp/temp.json"
+  ],
+  "operational_evidence_visible": [
+    "candidate/AGENTS.md",
+    "candidate/.agents/skills/Crea/preparar-desarrollador/SKILL.md",
+    "candidate/.codex/agents/developer.toml",
+    "candidate/docs/hu/one/pruebas/stdout-check.log"
+  ],
+  "limits": [
+    "Observed source bytes and direct process boundary; not a global sandbox/native pilot proof",
+    "Template kit is unconfigured: blocked diagnostic is expected"
+  ]
+}

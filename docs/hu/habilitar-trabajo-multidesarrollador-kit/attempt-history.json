@@ -1,0 +1,54 @@
+{
+  "change": "habilitar-trabajo-multidesarrollador-kit",
+  "max_fix_rounds": 2,
+  "global_correction_rounds_used": 2,
+  "attempts": [
+    {
+      "id": 1,
+      "status": "blocked",
+      "reason": "JUNIT_COUNTER_MISMATCH; original frozen candidate, no receipt rewritten"
+    },
+    {
+      "id": 2,
+      "status": "not_run",
+      "reason": "superseded before run to support primary JUnit subcases"
+    },
+    {
+      "id": 3,
+      "status": "not_run",
+      "reason": "superseded before run while closing diagnostic anchors"
+    },
+    {
+      "id": 4,
+      "status": "passed_for_previous_source",
+      "reason": "242 cases/8 assertions passed; selector subsequently bounded to current HU"
+    },
+    {
+      "id": 5,
+      "status": "passed",
+      "reason": "final frozen source; complete new plan, no receipt adoption"
+    }
+  ],
+  "corrections": [
+    {
+      "round": 1,
+      "items": [
+        "online read states",
+        "diagnostic anchors",
+        "validation-only JUnit emitter"
+      ]
+    },
+    {
+      "round": 2,
+      "items": [
+        "bound automatic OpenSpec contract reading to current HU specs; keep all Git paths visible"
+      ]
+    }
+  ],
+  "limits": [
+    "Auxiliary Tester credit limit interrupted final report; primary continues final authorized process and declares fallback",
+    "No native roles/hooks, real remote or two-person pilot"
+  ],
+  "final_attempt": 5,
+  "final_status": "passed"
+}

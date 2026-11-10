@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="0" tests="12" time="8.856" timestamp="2026-11-10T09:00:31.348759-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_delivery.TeamDeliveryTests" name="test_invalid_target_does_not_silently_fall_back" time="1.860"><failure message="AssertionError: ValueError not raised">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_invalid_target_does_not_silently_fall_back&gt;
+
+    def test_invalid_target_does_not_silently_fall_back(self):
+        p=self.config()
+        for value in ['',False,4,'bad..branch','--option']:
+            p['delivery']['pr_target_branch']=value
+&gt;           with self.subTest(value=value),self.assertRaises(ValueError):entrega.resolve(p)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: ValueError not raised
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:43: AssertionError</failure><failure message="AssertionError: ValueError not raised">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_invalid_target_does_not_silently_fall_back&gt;
+
+    def test_invalid_target_does_not_silently_fall_back(self):
+        p=self.config()
+        for value in ['',False,4,'bad..branch','--option']:
+            p['delivery']['pr_target_branch']=value
+&gt;           with self.subTest(value=value),self.assertRaises(ValueError):entrega.resolve(p)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: ValueError not raised
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:43: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_delivery.TeamDeliveryTests" name="test_equivalent_azure_remote_forms_and_nested_remote_name" time="0.400"><failure message="ValueError: CREDENTIALS_IN_REPOSITORY_URL">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_equivalent_azure_remote_forms_and_nested_remote_name&gt;
+
+    def test_equivalent_azure_remote_forms_and_nested_remote_name(self):
+        expected=('azure','org','proj','repo')
+        for value in ['https://dev.azure.com/org/proj/_git/repo','https://org@dev.azure.com/org/proj/_git/repo',
+                      'https://org.visualstudio.com/proj/_git/repo','git@ssh.dev.azure.com:v3/org/proj/repo']:
+&gt;           with self.subTest(value=value):self.assertEqual(entrega.repository_key(value),expected)
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = 'https://org@dev.azure.com/org/proj/_git/repo'
+
+    def repository_key(value):
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError('REPOSITORY_URL_REQUIRED')
+        if any(c in value for c in '\r\n\0'):
+            raise ValueError('REPOSITORY_URL_INVALID')
+        if re.match(r'^[^/@:]+@[^/:]+:', value):
+            host, path = value.split('@', 1)[1].split(':', 1)
+        elif '://' in value:
+            parsed = urlsplit(value)
+            if parsed.password or (parsed.username and parsed.scheme != 'ssh') or parsed.query or parsed.fragment:
+&gt;               raise ValueError('CREDENTIALS_IN_REPOSITORY_URL')
+E               ValueError: CREDENTIALS_IN_REPOSITORY_URL
+
+artifacts\crea-manual-kit-0.1.9\scripts\crea\entrega.py:53: ValueError</failure><failure message="AssertionError: Tuples differ: ('org.visualstudio.com', 'proj/_git/repo') != ('azure', 'org', 'proj', 'repo')&#10;&#10;First differing element 0:&#10;'org.visualstudio.com'&#10;'azure'&#10;&#10;Second tuple contains 2 additional elements.&#10;First extra element 2:&#10;'proj'&#10;&#10;- ('org.visualstudio.com', 'proj/_git/repo')&#10;+ ('azure', 'org', 'proj', 'repo')">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_equivalent_azure_remote_forms_and_nested_remote_name&gt;
+
+    def test_equivalent_azure_remote_forms_and_nested_remote_name(self):
+        expected=('azure','org','proj','repo')
+        for value in ['https://dev.azure.com/org/proj/_git/repo','https://org@dev.azure.com/org/proj/_git/repo',
+                      'https://org.visualstudio.com/proj/_git/repo','git@ssh.dev.azure.com:v3/org/proj/repo']:
+&gt;           with self.subTest(value=value):self.assertEqual(entrega.repository_key(value),expected)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: Tuples differ: ('org.visualstudio.com', 'proj/_git/repo') != ('azure', 'org', 'proj', 'repo')
+E           
+E           First differing element 0:
+E           'org.visualstudio.com'
+E           'azure'
+E           
+E           Second tuple contains 2 additional elements.
+E           First extra element 2:
+E           'proj'
+E           
+E           - ('org.visualstudio.com', 'proj/_git/repo')
+E           + ('azure', 'org', 'proj', 'repo')
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:49: AssertionError</failure><failure message="ValueError: REMOTE_NAME_INVALID">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_equivalent_azure_remote_forms_and_nested_remote_name&gt;
+
+    def test_equivalent_azure_remote_forms_and_nested_remote_name(self):
+        expected=('azure','org','proj','repo')
+        for value in ['https://dev.azure.com/org/proj/_git/repo','https://org@dev.azure.com/org/proj/_git/repo',
+                      'https://org.visualstudio.com/proj/_git/repo','git@ssh.dev.azure.com:v3/org/proj/repo']:
+            with self.subTest(value=value):self.assertEqual(entrega.repository_key(value),expected)
+        p=self.config();p['delivery']['remote']='team/origin'
+&gt;       self.assertEqual(entrega.resolve(p)['remote'],'team/origin')
+                         ^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+project = {'$schema': './proyecto.schema.json', 'schema_version': 1, 'project': {'name': 'EDITAR-nombre-proyecto', 'description'...l']}], 'exclude_from_context': ['.git/', '.venv/', 'node_modules/', '.env', '.databrickscfg', 'dist/', ...], ...}, ...}
+
+    def resolve(project):
+        delivery = project['delivery']
+        base = branch(project['project']['base_branch'])
+        target = branch(delivery.get('pr_target_branch') or base)
+        remote = delivery['remote']
+        if not isinstance(remote, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+', remote) or remote.startswith('-'):
+&gt;           raise ValueError('REMOTE_NAME_INVALID')
+E           ValueError: REMOTE_NAME_INVALID
+
+artifacts\crea-manual-kit-0.1.9\scripts\crea\entrega.py:27: ValueError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_developer_preparation.DeveloperPreparationTests" name="test_tracked_personal_file_is_reported_without_removing_it" time="5.664"><failure message="AssertionError: 'PERSONAL_FILE_TRACKED' not found in ['PROJECT_SETUP_INCOMPLETE', 'TESTING_CONFIGURATION_MISSING', 'OPENSPEC_NOT_CONFIGURED', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_VALIDATION_NOT_SATISFIED', 'CONSUMER_CONTRACT_NOT_VERIFIED', 'CONSUMER_CONTRACT_NOT_VERIFIED', 'CONSUMER_CONTRACT_NOT_VERIFIED']">self = &lt;test_developer_preparation.DeveloperPreparationTests testMethod=test_tracked_personal_file_is_reported_without_removing_it&gt;
+
+    def test_tracked_personal_file_is_reported_without_removing_it(self):
+        self.init_git();self.write('docs/proyecto.json',json.dumps(read(KIT/'docs/proyecto.json')))
+        self.write('.crea/local.json',json.dumps({'schema_version':'1.0','python_executable':sys.executable}))
+        self.git('add','--','.crea/local.json');self.git('commit','-m','previously tracked personal state')
+        self.write('.gitignore','.crea/local.json\n')
+        result=preparation.inspect_environment(self.root)
+&gt;       self.assertIn('PERSONAL_FILE_TRACKED',[x['code'] for x in result['pending']])
+E       AssertionError: 'PERSONAL_FILE_TRACKED' not found in ['PROJECT_SETUP_INCOMPLETE', 'TESTING_CONFIGURATION_MISSING', 'OPENSPEC_NOT_CONFIGURED', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_RESOURCE_MISSING', 'SHARED_VALIDATION_NOT_SATISFIED', 'CONSUMER_CONTRACT_NOT_VERIFIED', 'CONSUMER_CONTRACT_NOT_VERIFIED', 'CONSUMER_CONTRACT_NOT_VERIFIED']
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_developer_preparation.py:97: AssertionError</failure></testcase></testsuite></testsuites>

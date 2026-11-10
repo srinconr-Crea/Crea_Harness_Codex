@@ -1,0 +1,19 @@
+{
+  "expected_failure_exit": 1,
+  "report": {
+    "collected": 6,
+    "executed": 6,
+    "failed": 1,
+    "skipped": 0,
+    "assertions": {},
+    "test_ids": [
+      "docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks::test_fail",
+      "docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks::test_fail[crea-subcase-1]",
+      "docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks::test_fail[crea-subcase-2]",
+      "docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks::test_pass",
+      "docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks::test_pass[crea-subcase-1]",
+      "docs.hu.habilitar-trabajo-multidesarrollador-kit.emitter-probe.Checks::test_pass[crea-subcase-2]"
+    ]
+  },
+  "contract": "strict parser unchanged; all 2 parent + 4 subcases emitted; failure retained"
+}

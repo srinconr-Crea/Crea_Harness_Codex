@@ -1,0 +1,264 @@
+{
+  "items": [
+    {
+      "id": "agent-evaluation",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 15
+    },
+    {
+      "id": "azure-devops-cli-context",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 7
+    },
+    {
+      "id": "candidate-validation",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 4
+    },
+    {
+      "id": "client-configuration",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 3
+    },
+    {
+      "id": "conversational-hu-entrypoint",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 1
+    },
+    {
+      "id": "desktop-integration",
+      "type": "spec",
+      "valid": true,
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[4]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "durationMs": 1
+    },
+    {
+      "id": "developer-local-preparation",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 5
+    },
+    {
+      "id": "development-observability",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 4
+    },
+    {
+      "id": "development-practice-pack",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 3
+    },
+    {
+      "id": "evaluation-catalog",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 2
+    },
+    {
+      "id": "guided-client-onboarding",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 1
+    },
+    {
+      "id": "guided-environment-setup",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 0
+    },
+    {
+      "id": "harness-distribution",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 6
+    },
+    {
+      "id": "harness-installation-entrypoint",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 5
+    },
+    {
+      "id": "hu-lifecycle",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 4
+    },
+    {
+      "id": "hu-target-compatibility",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 3
+    },
+    {
+      "id": "local-activity-ledger",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 3
+    },
+    {
+      "id": "local-diagnostics",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 1
+    },
+    {
+      "id": "manual-delivery-traceability",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 6
+    },
+    {
+      "id": "manual-kit-distribution",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 5
+    },
+    {
+      "id": "manual-phase-contracts",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 4
+    },
+    {
+      "id": "manual-project-rules",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 4
+    },
+    {
+      "id": "onboarding-application",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 3
+    },
+    {
+      "id": "onboarding-preview",
+      "type": "spec",
+      "valid": true,
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[3]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "durationMs": 2
+    },
+    {
+      "id": "onboarding-recovery",
+      "type": "spec",
+      "valid": true,
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[2]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "durationMs": 4
+    },
+    {
+      "id": "pilot-certification",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 3
+    },
+    {
+      "id": "portable-databricks-aitools",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 2
+    },
+    {
+      "id": "project-context-lifecycle",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 2
+    },
+    {
+      "id": "project-testing-lifecycle",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 1
+    },
+    {
+      "id": "role-tool-catalog",
+      "type": "spec",
+      "valid": true,
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[3]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "durationMs": 1
+    },
+    {
+      "id": "story-pr-integration",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 2
+    }
+  ],
+  "summary": {
+    "totals": {
+      "items": 31,
+      "passed": 31,
+      "failed": 0
+    },
+    "byType": {
+      "spec": {
+        "items": 31,
+        "passed": 31,
+        "failed": 0
+      }
+    }
+  },
+  "version": "1.0",
+  "root": {
+    "path": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness",
+    "source": "nearest"
+  }
+}

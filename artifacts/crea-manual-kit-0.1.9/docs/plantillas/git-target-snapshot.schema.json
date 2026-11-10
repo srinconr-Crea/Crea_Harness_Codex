@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "git_target_snapshot"
+    },
+    "change": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "attempt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "remote": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_sha": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "verified",
+        "missing",
+        "access_denied",
+        "connection_error",
+        "unverified"
+      ]
+    },
+    "objects_available": {
+      "type": "boolean"
+    },
+    "git_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "change",
+    "attempt",
+    "repository",
+    "remote",
+    "base_branch",
+    "target_branch",
+    "target_sha",
+    "observed_at",
+    "status",
+    "objects_available",
+    "git_version",
+    "limits"
+  ],
+  "additionalProperties": false
+}

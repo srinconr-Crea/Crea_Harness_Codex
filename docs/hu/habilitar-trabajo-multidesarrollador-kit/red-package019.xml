@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="0.201" timestamp="2026-11-10T08:47:11.216905-05:00" hostname="SRINCONR"><testcase classname="tests.test_manual_019_distribution" name="test_packager_only_accepts_new_candidate" time="0.001"><failure message="AssertionError: New candidate packager is missing&#10;assert False&#10; +  where False = is_file()&#10; +    where is_file = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/scripts/package_manual_019.py').is_file">def test_packager_only_accepts_new_candidate():
+        import pytest
+&gt;       p=module()
+          ^^^^^^^^
+
+tests\test_manual_019_distribution.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def module():
+&gt;       assert PACK.is_file(),'New candidate packager is missing'
+E       AssertionError: New candidate packager is missing
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/scripts/package_manual_019.py').is_file
+
+tests\test_manual_019_distribution.py:14: AssertionError</failure></testcase><testcase classname="tests.test_manual_019_distribution" name="test_baseline_preserves_historical_artifacts_and_detects_change" time="0.012"><failure message="AssertionError: New candidate packager is missing&#10;assert False&#10; +  where False = is_file()&#10; +    where is_file = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/scripts/package_manual_019.py').is_file">scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/.test-data/6b64f347c35a49769224b4ae13d2168c')
+
+    def test_baseline_preserves_historical_artifacts_and_detects_change(scratch):
+        import pytest
+&gt;       p=module()
+          ^^^^^^^^
+
+tests\test_manual_019_distribution.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def module():
+&gt;       assert PACK.is_file(),'New candidate packager is missing'
+E       AssertionError: New candidate packager is missing
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/scripts/package_manual_019.py').is_file
+
+tests\test_manual_019_distribution.py:14: AssertionError</failure></testcase><testcase classname="tests.test_manual_019_distribution" name="test_client_selection_operates_without_long_prompt_or_leeme" time="0.003"><failure message="AssertionError: New candidate packager is missing&#10;assert False&#10; +  where False = is_file()&#10; +    where is_file = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/scripts/package_manual_019.py').is_file">scratch = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/.test-data/81fcc7ba8a544c289b227bdef09b5f0b')
+
+    def test_client_selection_operates_without_long_prompt_or_leeme(scratch):
+&gt;       p=module();target=scratch/'client';target.mkdir()
+          ^^^^^^^^
+
+tests\test_manual_019_distribution.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def module():
+&gt;       assert PACK.is_file(),'New candidate packager is missing'
+E       AssertionError: New candidate packager is missing
+E       assert False
+E        +  where False = is_file()
+E        +    where is_file = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/scripts/package_manual_019.py').is_file
+
+tests\test_manual_019_distribution.py:14: AssertionError</failure></testcase></testsuite></testsuites>

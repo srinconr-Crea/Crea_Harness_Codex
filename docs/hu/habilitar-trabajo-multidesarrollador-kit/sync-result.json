@@ -1,0 +1,242 @@
+{
+  "status": "synced_and_verified",
+  "capabilities": [
+    {
+      "capability": "developer-local-preparation",
+      "delta": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/developer-local-preparation/spec.md",
+      "main": "openspec/specs/developer-local-preparation/spec.md",
+      "before_sha256": null,
+      "preview": "docs/hu/habilitar-trabajo-multidesarrollador-kit/specs-preview/developer-local-preparation/spec.md",
+      "after_sha256": "1f57760c8928f2f4220c2d8c91176a70b88d12600816b94daeadeae842e5cd94",
+      "added": [
+        "Existing checkout and shared readiness",
+        "Persistent entry point independent of distribution prompt",
+        "Bounded personal environment binding",
+        "Applicable tools and authorized preparation",
+        "Personal authentication and interactive authority",
+        "Safe connection checks",
+        "Preserve configured project resources",
+        "Repeatable Windows preparation",
+        "Local diagnostic record and honest status",
+        "Side effect free default inspection"
+      ],
+      "modified": [],
+      "preserved_unmentioned_requirements": []
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "delta": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/hu-target-compatibility/spec.md",
+      "main": "openspec/specs/hu-target-compatibility/spec.md",
+      "before_sha256": null,
+      "preview": "docs/hu/habilitar-trabajo-multidesarrollador-kit/specs-preview/hu-target-compatibility/spec.md",
+      "after_sha256": "0250fb04ef24e13057e4b10b6253164d8411c45ae58ae577bb178f5750282f16",
+      "added": [
+        "Optional target compatibility observation",
+        "Exact source and target anchors",
+        "Separate story target and inherited changes",
+        "Dependency and consumer impact",
+        "Semantic review independent of textual conflicts",
+        "Isolated textual integration inspection",
+        "Actionable compatibility report",
+        "Target freshness at PR preparation and creation",
+        "Missing and unverifiable target handling",
+        "Preserve valid evidence without cross plan adoption",
+        "Human reconciliation and integration boundary",
+        "Bounded inspection and immutable report export"
+      ],
+      "modified": [],
+      "preserved_unmentioned_requirements": []
+    },
+    {
+      "capability": "manual-delivery-traceability",
+      "delta": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/manual-delivery-traceability/spec.md",
+      "main": "openspec/specs/manual-delivery-traceability/spec.md",
+      "before_sha256": "eac23ae82385fc3f5b6f688fb50a83d038e0ea6e2b1218414fea91c1342a660e",
+      "preview": "docs/hu/habilitar-trabajo-multidesarrollador-kit/specs-preview/manual-delivery-traceability/spec.md",
+      "after_sha256": "c85724a4d388785e9880c3b6219bf5cd1eeb0c84e4b680acbfb80e007d32b050",
+      "added": [
+        "Independent feature origin and PR target",
+        "Verified Git delivery provenance",
+        "Protected development and publication branches",
+        "Reviewed effective PR scope",
+        "Canonical target bound authorization"
+      ],
+      "modified": [],
+      "preserved_unmentioned_requirements": [
+        "Canonical provider neutral PR content",
+        "Explicit delivery states and authority",
+        "Object delivery inventory",
+        "One human summary source",
+        "Stable specs and archived case remain distinct"
+      ]
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "delta": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/manual-kit-distribution/spec.md",
+      "main": "openspec/specs/manual-kit-distribution/spec.md",
+      "before_sha256": "448e581d1ce778735349add438f691b73a32659244c4a9c58b9787772f79051c",
+      "preview": "docs/hu/habilitar-trabajo-multidesarrollador-kit/specs-preview/manual-kit-distribution/spec.md",
+      "after_sha256": "d6a57da9f685731bb00e4657338ebc3dfa6d6153ee67ea62b837c045a5e75629",
+      "added": [
+        "Explicit client installation composition",
+        "Preserve validation and provenance surfaces",
+        "Initial local exclusions without hidden changes",
+        "Separate copy context ignore and publication controls",
+        "Compatible reviewed team adoption and rollback"
+      ],
+      "modified": [
+        "Portable tooling release preserves customized source",
+        "Consistent portable setup documentation"
+      ],
+      "preserved_unmentioned_requirements": [
+        "Proportionate local verification and honest limits",
+        "Reviewed compatible adoption",
+        "Separate versioned manual kit candidate",
+        "Verify tooling changes without remote mutation"
+      ]
+    },
+    {
+      "capability": "manual-phase-contracts",
+      "delta": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/manual-phase-contracts/spec.md",
+      "main": "openspec/specs/manual-phase-contracts/spec.md",
+      "before_sha256": "9e723aba6ec58f46b0e1d20d1d096c9aa09d439342ec34eeedff1ec7604030c0",
+      "preview": "docs/hu/habilitar-trabajo-multidesarrollador-kit/specs-preview/manual-phase-contracts/spec.md",
+      "after_sha256": "8e45c00022cf59b67ad6555370a59a83a934cae20ec6b28d730df90e76566ea3",
+      "added": [
+        "Session scoped sequential roles",
+        "Canonical compatibility reference",
+        "Informative compatibility transition consumption",
+        "Scoped invalidation and unchanged approvals",
+        "Non circular compatibility evidence binding"
+      ],
+      "modified": [],
+      "preserved_unmentioned_requirements": [
+        "Actionable distinct outcomes",
+        "Deterministic transition inspection",
+        "Gradual explicit enforcement",
+        "Local corrections preserve valid work",
+        "Non circular evidence and approval binding",
+        "One phase aware handoff contract",
+        "Phase specific stopping conditions",
+        "Role and HU specific write scope",
+        "Tested and published content equivalence"
+      ]
+    },
+    {
+      "capability": "project-context-lifecycle",
+      "delta": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/project-context-lifecycle/spec.md",
+      "main": "openspec/specs/project-context-lifecycle/spec.md",
+      "before_sha256": "a3714996c0b64fd4308f6769400c667dc29179955b16694de9f0c608dc452564",
+      "preview": "docs/hu/habilitar-trabajo-multidesarrollador-kit/specs-preview/project-context-lifecycle/spec.md",
+      "after_sha256": "1b73568a2e40967e83e51b92bff8b7e28a1f0d19bf47af15918d32436dfe9f9e",
+      "added": [
+        "Shared versioned context across independent checkouts",
+        "Reverse consumer impact from existing component mappings",
+        "Reference scoped cross revision reading",
+        "Useful compatibility without context activation"
+      ],
+      "modified": [],
+      "preserved_unmentioned_requirements": [
+        "Canonical context responsibilities",
+        "Compatible portable evolution",
+        "Configure once with explicit component mappings",
+        "Evidence continuity without circularity",
+        "Final impact reconciliation",
+        "Informative adoption and scoped blocking",
+        "Planned documentary impact",
+        "Proportionate local checking",
+        "Reproducible role specific selection",
+        "Safe bounded context reading",
+        "Side effect free inspection"
+      ]
+    },
+    {
+      "capability": "project-testing-lifecycle",
+      "delta": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/project-testing-lifecycle/spec.md",
+      "main": "openspec/specs/project-testing-lifecycle/spec.md",
+      "before_sha256": "7d3cedc35b4d439100d8160b6a43c4b51eeb7ac15b912f7694a8e8411d04684d",
+      "preview": "docs/hu/habilitar-trabajo-multidesarrollador-kit/specs-preview/project-testing-lifecycle/spec.md",
+      "after_sha256": "0a57ebe5cfd37f6c8f8111f84dc791346cb00ffe4a6f8045ad60df835bf1c06d",
+      "added": [
+        "Optional local execution environment resolution",
+        "Catalog based target impact recommendations",
+        "Distinct feature and combined candidate evidence",
+        "Selective rechecking within existing guarantees"
+      ],
+      "modified": [],
+      "preserved_unmentioned_requirements": [
+        "Applicable technical baseline",
+        "Compatible independent adoption",
+        "Configure outputs once and resolve per attempt",
+        "Deterministic impact and criteria selection",
+        "Final test inventory reconciliation",
+        "Honest runtime and effect boundaries",
+        "Non executing onboarding discovery",
+        "Observed inclusion in executed suites",
+        "One catalog and persistent placement conventions",
+        "Preserve existing execution guarantees",
+        "Proportionate informative lifecycle controls",
+        "Reviewed retirement and replacement",
+        "Safe discovery and planning boundaries"
+      ]
+    }
+  ],
+  "rules_snapshot": "specs-instructions-snapshot.json",
+  "selected_delta_paths": [
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\developer-local-preparation\\spec.md",
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\hu-target-compatibility\\spec.md",
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-delivery-traceability\\spec.md",
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-kit-distribution\\spec.md",
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-phase-contracts\\spec.md",
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\project-context-lifecycle\\spec.md",
+    "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\project-testing-lifecycle\\spec.md"
+  ],
+  "source_of_selection": "status.artifactPaths.specs.existingOutputPaths",
+  "all_already_synced": true,
+  "unrelated_strict_warnings": [
+    {
+      "spec": "desktop-integration",
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[4]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "unchanged_from_HEAD": true
+    },
+    {
+      "spec": "onboarding-preview",
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[3]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "unchanged_from_HEAD": true
+    },
+    {
+      "spec": "onboarding-recovery",
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[2]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "unchanged_from_HEAD": true
+    },
+    {
+      "spec": "role-tool-catalog",
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[3]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "unchanged_from_HEAD": true
+    }
+  ]
+}

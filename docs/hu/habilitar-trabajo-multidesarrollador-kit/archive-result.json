@@ -1,0 +1,29 @@
+{
+  "status": "archived",
+  "change": "habilitar-trabajo-multidesarrollador-kit",
+  "schema": "spec-driven",
+  "archive": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit",
+  "archive_files_verified": 12,
+  "metadata_preserved": true,
+  "tasks_completed": 74,
+  "tasks_total": 74,
+  "specs_synced_and_strict_valid": 7,
+  "requirements_delta_verified": 47,
+  "scenarios_reviewed": 90,
+  "final_junit_cases": 242,
+  "final_gate": "passed",
+  "original_baseline_files_preserved": 2176,
+  "candidate_zip": "artifacts/crea-manual-kit-0.1.9.zip",
+  "candidate_sha256": "4f8eb72d26367f074f98113267a04a4509c9298cc0f570d89cfc68995e19b00c",
+  "git_head_unchanged": true,
+  "commit_push_pr_performed": false,
+  "warnings": [
+    "General maintainer suite has inherited CRLF hash failure; original fixtures intact",
+    "4 unrelated main specs have inherited strict length warnings; normal31specs and selected strict7pass"
+  ],
+  "not_verified": [
+    "Native agents/hooks pilot",
+    "Two actual developers",
+    "Real Azure/Databricks/Spark runtime"
+  ]
+}

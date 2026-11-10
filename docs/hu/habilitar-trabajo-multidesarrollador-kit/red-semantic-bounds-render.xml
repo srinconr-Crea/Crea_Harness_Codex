@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="15.425" timestamp="2026-11-10T09:26:42.327436-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_semantic_references_obey_total_budget_and_relevant_paths" time="13.816"><failure message="AssertionError: &quot;SEMANTIC_REFERENCE_OUTSIDE_SCOPE&quot; does not match &quot;SEMANTIC_REFERENCE_CHANGED&quot;">ValueError: SEMANTIC_REFERENCE_CHANGED
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_semantic_references_obey_total_budget_and_relevant_paths&gt;
+
+    def test_semantic_references_obey_total_budget_and_relevant_paths(self):
+        p,h,s=self.graph();first=compatibilidad.inspect(self.root,p,h,s)
+        review=self.review(first,'conflict_detected',[{'type':'functional','reason':'review','owner':'reviewer',
+                    'references':[{'path':'docs/regla.md','revision':s['target_sha'],'sha256':'0'*64}]}])
+&gt;       with self.assertRaisesRegex(ValueError,'SEMANTIC_REFERENCE_OUTSIDE_SCOPE'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: "SEMANTIC_REFERENCE_OUTSIDE_SCOPE" does not match "SEMANTIC_REFERENCE_CHANGED"
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:145: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_offline_guards.OfflineGuardsTests" name="test_render_includes_canonical_compatibility_refs_and_hashes" time="0.063"><failure message="AssertionError: 'docs/hu/synthetic/compatibilidad/attempt-1/report.json' not found in '&lt;!-- derived_from: handoff.json sha256: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc --&gt;\nHU y fase: local-synthetic / synthetic / planificacion\nResultado: ready\nAlcance/candidato: Aclarar una guía / None\nReglas y evidencia:\n- criteria.md\nBloqueos/pendientes: {&quot;blockers&quot;: [], &quot;exceptions&quot;: [], &quot;questions&quot;: [], &quot;warnings&quot;: []}\nDecisión requerida: null\nSiguiente paso: Esperar nueva solicitud de Apply\nContrato canónico: handoff.json\n'">self = &lt;test_team_offline_guards.OfflineGuardsTests testMethod=test_render_includes_canonical_compatibility_refs_and_hashes&gt;
+
+    def test_render_includes_canonical_compatibility_refs_and_hashes(self):
+        from test_transiciones import handoff
+        from testing.common import render_handoff
+        value=handoff()
+        value['evidence']['compatibility']={'path':'docs/hu/synthetic/compatibilidad/attempt-1/report.json','sha256':'a'*64}
+        value['evidence']['target_snapshot']={'path':'docs/hu/synthetic/compatibilidad/attempt-1/target.json','sha256':'b'*64}
+        output=render_handoff(value,'handoff.json','c'*64)
+        for ref in [value['evidence']['compatibility'],value['evidence']['target_snapshot']]:
+&gt;           self.assertIn(ref['path'],output);self.assertIn(ref['sha256'],output)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 'docs/hu/synthetic/compatibilidad/attempt-1/report.json' not found in '&lt;!-- derived_from: handoff.json sha256: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc --&gt;\nHU y fase: local-synthetic / synthetic / planificacion\nResultado: ready\nAlcance/candidato: Aclarar una guía / None\nReglas y evidencia:\n- criteria.md\nBloqueos/pendientes: {"blockers": [], "exceptions": [], "questions": [], "warnings": []}\nDecisión requerida: null\nSiguiente paso: Esperar nueva solicitud de Apply\nContrato canónico: handoff.json\n'
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_offline_guards.py:48: AssertionError</failure></testcase></testsuite></testsuites>

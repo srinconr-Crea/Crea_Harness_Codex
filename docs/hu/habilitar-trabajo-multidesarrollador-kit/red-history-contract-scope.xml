@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="14.783" timestamp="2026-11-10T10:04:45.060332-05:00" hostname="SRINCONR"><testcase classname="docs.hu.habilitar-trabajo-multidesarrollador-kit.edge_checks.AdditionalChecks" name="test_changed_history_is_visible_in_git_but_not_loaded_as_contract" time="13.292"><failure message="AssertionError: 'openspec/changes/other/proposal.md' unexpectedly found in {'openspec/changes/archive/2026-01-01-old/specs/private/spec.md', 'openspec/changes/other/proposal.md', 'openspec/changes/HU002/specs/local/spec.md'}">self = &lt;edge_checks.AdditionalChecks testMethod=test_changed_history_is_visible_in_git_but_not_loaded_as_contract&gt;
+
+    def test_changed_history_is_visible_in_git_but_not_loaded_as_contract(self):
+        p,h,s=self.graph()
+        own='openspec/changes/HU002/specs/local/spec.md'
+        unrelated='openspec/changes/other/proposal.md'
+        archived='openspec/changes/archive/2026-01-01-old/specs/private/spec.md'
+        for name in [own,unrelated,archived]:self.write(name,'bounded contract or unrelated history\n')
+        report=compatibilidad.inspect(self.root,p,h,s)
+        paths={row['path'] for row in report['document_refs']}
+        self.assertIn(own,paths)
+&gt;       self.assertNotIn(unrelated,paths);self.assertNotIn(archived,paths)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: 'openspec/changes/other/proposal.md' unexpectedly found in {'openspec/changes/archive/2026-01-01-old/specs/private/spec.md', 'openspec/changes/other/proposal.md', 'openspec/changes/HU002/specs/local/spec.md'}
+
+docs\hu\habilitar-trabajo-multidesarrollador-kit\edge_checks.py:164: AssertionError</failure></testcase></testsuite></testsuites>

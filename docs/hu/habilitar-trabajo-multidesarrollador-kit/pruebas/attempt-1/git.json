@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "base_sha": "2c4bf3d4353cce806f8093653d5fedc90848cb57",
+  "head_sha": "2c4bf3d4353cce806f8093653d5fedc90848cb57",
+  "layers": {
+    "head": [],
+    "staged": [],
+    "unstaged": [],
+    "untracked": [
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-1-entrada.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-1.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/plan.json",
+        "old_path": null
+      },
+      {
+        "status": "A",
+        "path": "validation-intent.md",
+        "old_path": null
+      }
+    ],
+    "conflicts": []
+  },
+  "changes": [
+    {
+      "status": "A",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-1-entrada.json",
+      "old_path": null
+    },
+    {
+      "status": "A",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/handoffs/planificacion-1.json",
+      "old_path": null
+    },
+    {
+      "status": "A",
+      "path": "validation-intent.md",
+      "old_path": null
+    }
+  ],
+  "excluded": [
+    {
+      "layer": "untracked",
+      "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/plan.json",
+      "sha256": "6a8f235f42f0c5d189a5342cc4525a5d582d07ff0c39ceee1b720b9d1fd791a3",
+      "reason": "declared_generated_test_output"
+    }
+  ],
+  "outputs": [
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/gate.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/git.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/junit-kit-regression.xml",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/plan.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/receipt-kit-regression.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/resultados.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/stderr-kit-regression.log",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/stdout-kit-regression.log"
+  ],
+  "input_digest": "d03e55db11f825e47ae9c6cb574600cad5ca0a4156c145e862042ead4360db40"
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.838" timestamp="2026-11-10T09:24:50.314714-05:00" hostname="SRINCONR"><testcase classname="" name="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_offline_guards" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\Stiveen Rincon Ruge\Documents\ChatGPT\Crea_Harness_Codex_MVP\harness\artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_offline_guards.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_offline_guards.py:5: in &lt;module&gt;
+    import entrega
+E   ModuleNotFoundError: No module named 'entrega'</error></testcase></testsuite></testsuites>

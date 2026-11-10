@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="11.731" timestamp="2026-11-10T09:29:01.242362-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_unknown_recommended_check_remains_pending_without_command" time="9.997"><failure message="AssertionError: False is not true">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_unknown_recommended_check_remains_pending_without_command&gt;
+
+    def test_unknown_recommended_check_remains_pending_without_command(self):
+        p,h,s=self.graph()
+        self.write('docs/pruebas/policy.json',json.dumps({'checks':[],'rules':[
+            {'id':'missing-consumer','paths':['src/a.py'],'checks':['absent-check'],'reason':'review needed'}]}))
+        result=compatibilidad.inspect(self.root,p,h,s)
+&gt;       self.assertTrue(any('UNKNOWN_RECOMMENDED_CHECK' in row['reason'] for row in result['findings']))
+E       AssertionError: False is not true
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:153: AssertionError</failure></testcase></testsuite></testsuites>

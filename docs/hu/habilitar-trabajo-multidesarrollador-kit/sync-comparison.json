@@ -1,0 +1,103 @@
+{
+  "status": "passed_for_selected_scope",
+  "all_already_synced": true,
+  "capabilities": [
+    {
+      "capability": "developer-local-preparation",
+      "already_synced": true,
+      "requirements_checked": 10,
+      "unmentioned_preserved": 0,
+      "sha256": "1f57760c8928f2f4220c2d8c91176a70b88d12600816b94daeadeae842e5cd94"
+    },
+    {
+      "capability": "hu-target-compatibility",
+      "already_synced": true,
+      "requirements_checked": 12,
+      "unmentioned_preserved": 0,
+      "sha256": "0250fb04ef24e13057e4b10b6253164d8411c45ae58ae577bb178f5750282f16"
+    },
+    {
+      "capability": "manual-delivery-traceability",
+      "already_synced": true,
+      "requirements_checked": 5,
+      "unmentioned_preserved": 5,
+      "sha256": "c85724a4d388785e9880c3b6219bf5cd1eeb0c84e4b680acbfb80e007d32b050"
+    },
+    {
+      "capability": "manual-kit-distribution",
+      "already_synced": true,
+      "requirements_checked": 7,
+      "unmentioned_preserved": 4,
+      "sha256": "d6a57da9f685731bb00e4657338ebc3dfa6d6153ee67ea62b837c045a5e75629"
+    },
+    {
+      "capability": "manual-phase-contracts",
+      "already_synced": true,
+      "requirements_checked": 5,
+      "unmentioned_preserved": 9,
+      "sha256": "8e45c00022cf59b67ad6555370a59a83a934cae20ec6b28d730df90e76566ea3"
+    },
+    {
+      "capability": "project-context-lifecycle",
+      "already_synced": true,
+      "requirements_checked": 4,
+      "unmentioned_preserved": 11,
+      "sha256": "1b73568a2e40967e83e51b92bff8b7e28a1f0d19bf47af15918d32436dfe9f9e"
+    },
+    {
+      "capability": "project-testing-lifecycle",
+      "already_synced": true,
+      "requirements_checked": 4,
+      "unmentioned_preserved": 13,
+      "sha256": "0a57ebe5cfd37f6c8f8111f84dc791346cb00ffe4a6f8045ad60df835bf1c06d"
+    }
+  ],
+  "normal_repository_validation": "31 passed with inherited warnings",
+  "selected_strict_validation": "7 passed",
+  "unrelated_strict_warnings": [
+    {
+      "spec": "desktop-integration",
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[4]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "unchanged_from_HEAD": true
+    },
+    {
+      "spec": "onboarding-preview",
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[3]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "unchanged_from_HEAD": true
+    },
+    {
+      "spec": "onboarding-recovery",
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[2]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "unchanged_from_HEAD": true
+    },
+    {
+      "spec": "role-tool-catalog",
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "requirements[3]",
+          "message": "Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "unchanged_from_HEAD": true
+    }
+  ]
+}

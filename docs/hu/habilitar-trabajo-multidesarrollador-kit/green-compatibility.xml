@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="9" time="48.119" timestamp="2026-11-10T08:26:44.388897-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_A_independent_stories_continue_with_current_bounded_evidence" time="7.381" /><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_B_changed_producer_identifies_consumer_and_check" time="7.303" /><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_C_same_rule_incompatible_and_D_clean_git_contradiction" time="19.185"><failure message="ValueError: SEMANTIC_REFERENCE_CHANGED">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_C_same_rule_incompatible_and_D_clean_git_contradiction&gt;
+
+    def test_C_same_rule_incompatible_and_D_clean_git_contradiction(self):
+        for shared in [True,False]:
+            with self.subTest(shared=shared):
+                # Each scenario uses its own graph; never reuse a simulation directory.
+                if shared: p,h,s=self.graph(shared=True)
+                else:
+                    # Preserve the first graph; use a nested independent fixture for D.
+                    self.root=self.scratch/('semantic-'+self.root.name);self.root.mkdir()
+                    p,h,s=self.graph(dependent=True)
+                sim=self.simulation(h,s)
+                first=compatibilidad.inspect(self.root,p,h,s,simulation=sim)
+                finding={'id':'RULE-UNIT','type':'functional','reason':'Productor en centavos y contrato incompatible',
+                         'owner':'reviewer','references':[{'path':'src/a.py','revision':s['target_sha'],
+                         'sha256':hashlib.sha256(self.git('show',s['target_sha']+':src/a.py').encode()+b'\n').hexdigest()}]}
+                review=self.review(first,'conflict_detected',[finding])
+&gt;               result=compatibilidad.inspect(self.root,p,h,s,simulation=sim,semantic_review=review)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/artifacts/crea-manual-kit-0.1.9/.test-work/1654b6e2bb754724a5bd5027e3defb2c')
+project = {'$schema': './proyecto.schema.json', 'schema_version': 1, 'project': {'name': 'EDITAR-nombre-proyecto', 'description'...eneral']}], 'exclude_from_context': ['.git/', '.venv/', 'node_modules/', '.env', '.databrickscfg', 'dist/'], ...}, ...}
+handoff = {'identity': {'change': 'HU002'}, 'scope': {'base': '3b852ae17bd6d24a1c27854bbf22443613002a53', 'head': 'c352e25717176...se_branch': 'fixture-base', 'source_branch': 'feature/HU002', 'remote': 'origin'}, ...}, 'context': {}, 'evidence': {}}
+snapshot = {'schema_version': '1.0', 'kind': 'git_target_snapshot', 'change': 'HU002', 'attempt': '1', ...}
+simulation = {'schema_version': '1.0', 'kind': 'git_integration_simulation', 'change': 'HU002', 'source_sha': 'c352e2571717676f663ad052409c1ba2e990c36f', ...}
+semantic_review = {'schema_version': '1.0', 'kind': 'target_semantic_review', 'change': 'HU002', 'source_sha': 'c352e2571717676f663ad052409c1ba2e990c36f', ...}
+current_target = None
+
+    def inspect(root, project, handoff, snapshot, simulation=None, semantic_review=None, current_target=None):
+        change=identity(handoff['identity']['change']);settings=entrega.resolve(project)
+        head=git(root,'rev-parse','HEAD');birth=handoff['scope'].get('git_delivery',{}).get('branch_start_sha') or handoff['scope']['base']
+        report={'schema_version':'1.0','kind':'target_compatibility_report','change':change,'observed_at':utc(),
+                'source_sha':head,'branch_start_sha':birth,'validation_base':handoff['scope']['base'],
+                'target_sha':snapshot.get('target_sha'),'candidate_digest':handoff['scope'].get('candidate_digest'),
+                'outcome':'undetermined','coverage':'partial','freshness':'unverified','dimensions':{},
+                'findings':[],'limitations':[],'affected_consumers':[],'recommended_checks':[],
+                'review_paths':[],'document_refs':[],'scope_digest':'','combined_tests_executed':False,
+                'functional_obligations':[],'preserved_evidence':['Local plan/receipts remain subject to their existing gate'],
+                'actions':[]}
+        if not project['delivery'].get('compatibility',{}).get('enabled'):
+            report['limitations'].append('COMPATIBILITY_NOT_ADOPTED');report['scope_digest']=digest({'disabled':True});return report
+        if (snapshot.get('change')!=change or snapshot.get('target_branch')!=settings['target_branch']
+            or snapshot.get('remote')!=settings['remote']
+            or snapshot.get('repository')!=list(entrega.repository_key(project['project']['repository']['url']))):
+            raise ValueError('TARGET_SNAPSHOT_IDENTITY_MISMATCH')
+        if snapshot.get('status')!='verified' or not snapshot.get('objects_available'):
+            report['limitations'].append('TARGET_'+snapshot.get('status','unverified').upper())
+            report['scope_digest']=digest(snapshot);report['actions']=['Comprobar destino sin crearlo o sustituirlo'];return report
+        report['freshness']='current'
+        if current_target:
+            report['freshness']='unverified' if current_target.get('status')!='verified' else 'current' if current_target.get('target_sha')==snapshot['target_sha'] else 'stale'
+        try:
+            ranges=entrega.ranges(root,birth,head,snapshot['target_sha'])
+            local=git_adapter.collect(root,birth,[])['changes']
+        except ValueError as exc:
+            report['limitations'].append(str(exc));report['scope_digest']=digest(snapshot);return report
+        report['ranges']=ranges
+        names=lambda rows:sorted({n for row in rows for n in (row['path'],row['old_path']) if n})
+        own=names(local);target=names(ranges['target_changes'])
+        definitions={x['path'] for x in handoff['scope'].get('compatibility_artifacts',[])}
+        own=[n for n in own if n not in definitions]
+        impact=consumer_impact(project,target,own);report['impact']=impact
+        # Target-side architecture is observed, never silently adopted into the feature.
+        try:
+            payload=blob(root,snapshot['target_sha'],'docs/proyecto.json',project,[0])
+            target_project=json.loads(payload)
+            if target_project.get('context_management')!=project.get('context_management'):
+                target_impact=consumer_impact(target_project,target,own)
+                report['target_context_impact']=target_impact
+                impact['affected_consumers']=sorted(set(impact['affected_consumers']+target_impact['affected_consumers']))
+                report['limitations'].append('TARGET_CONTEXT_CONFIGURATION_CHANGED')
+        except ValueError as exc:
+            if str(exc)!='DOCUMENT_NOT_PRESENT_AT_REVISION':report['limitations'].append(str(exc))
+        report['affected_consumers']=impact['affected_consumers']
+        refs,limits=referenced_documents(root,project,own,target,head,snapshot['target_sha'])
+        report['document_refs']=refs;report['limitations']+=limits
+        try: policy=read(safe_path(root,project['validation']['testing']['policy_path']))
+        except (ValueError,OSError):policy={'checks':[],'rules':[]};report['limitations'].append('CATALOG_NOT_AVAILABLE')
+        components={c['id']:c for c in project.get('context_management',{}).get('components',[])}
+        consumer_paths=[p for key in impact['affected_consumers'] for p in components.get(key,{}).get('paths',[])]
+        for check in policy['checks']:
+            reasons=[]
+            if any(fnmatchcase(name,pattern) for name in target for pattern in check['inputs']):reasons.append('target-input-changed')
+            if any(fnmatchcase(name,p) or fnmatchcase(p,name) for name in consumer_paths for p in check['inputs']):reasons.append('affected-consumer')
+            if any(check['id'] in rule.get('checks',[]) and any(fnmatchcase(name,p) for name in target for p in rule['paths']) for rule in policy.get('rules',[])):
+                reasons.append('target-path-rule')
+            if reasons:report['recommended_checks'].append({'check_id':check['id'],'reasons':sorted(set(reasons))})
+        report['review_paths']=sorted(set(own+target+[r['path'] for r in refs]))
+        report['scope_digest']=digest({'birth':birth,'source':head,'target':snapshot['target_sha'],
+                                      'local':local_identity(root,handoff),'project':project,'policy':policy,
+                                      'impact':impact,'document_refs':refs})
+        report['dimensions']={'git':'partial','dependencies':'complete' if impact['known'] and not impact['unknown_paths'] else 'partial',
+                              'contracts':'not_run','documentation':'partial' if limits else 'complete','test_impact':'complete' if 'CATALOG_NOT_AVAILABLE' not in report['limitations'] else 'partial'}
+        textual_conflict=False
+        if simulation:
+            if any(simulation.get(k)!=v for k,v in simulation_identity(head,snapshot['target_sha']).items()):raise ValueError('SIMULATION_IDENTITY_MISMATCH')
+            textual_conflict=simulation['status']=='conflict'
+            report['dimensions']['git']='complete' if simulation['status'] in ('clean','conflict') and not simulation['limits'] else 'partial'
+            report['limitations']+=simulation['limits']
+            if textual_conflict:report['findings'].append({'type':'git','reason':'TEXTUAL_CONFLICT','paths':simulation['conflict_paths'],'owner':'developer'})
+        if ranges['inherited_commits']:
+            report['findings'].append({'type':'scope','reason':'INHERITED_WORK_OUTSIDE_TARGET','owner':'principal','commits':ranges['inherited_commits']})
+        if impact['affected_consumers'] or impact['shared_components'] or set(own)&amp;set(target):
+            report['findings'].append({'type':'impact','reason':'CONTRACT_OR_CONSUMER_REVIEW_REQUIRED','owner':'reviewer'})
+        semantic_status=None
+        if semantic_review:
+            if (semantic_review.get('kind')!='target_semantic_review' or semantic_review.get('change')!=change
+                or semantic_review.get('source_sha')!=head or semantic_review.get('target_sha')!=snapshot['target_sha']
+                or semantic_review.get('scope_digest')!=report['scope_digest']
+                or not set(report['review_paths']).issubset(semantic_review.get('reviewed_paths',[]))):
+                raise ValueError('SEMANTIC_REVIEW_IDENTITY_OR_SCOPE')
+            if semantic_review.get('status') not in ('compatible','requires_review','conflict_detected','undetermined'):
+                raise ValueError('SEMANTIC_REVIEW_STATUS')
+            for finding in semantic_review['findings']:
+                if finding.get('type')=='functional' and not finding.get('references'):raise ValueError('SEMANTIC_EVIDENCE_REQUIRED')
+                for ref in finding.get('references',[]):
+                    if ref['revision'] not in (head,snapshot['target_sha']):raise ValueError('SEMANTIC_REFERENCE_REVISION')
+                    payload=blob(root,ref['revision'],ref['path'],project,[0])
+&gt;                   if hashlib.sha256(payload).hexdigest()!=ref['sha256']:raise ValueError('SEMANTIC_REFERENCE_CHANGED')
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E                   ValueError: SEMANTIC_REFERENCE_CHANGED
+
+artifacts\crea-manual-kit-0.1.9\scripts\crea\compatibilidad.py:249: ValueError</failure><failure message="ValueError: SEMANTIC_REFERENCE_CHANGED">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_C_same_rule_incompatible_and_D_clean_git_contradiction&gt;
+
+    def test_C_same_rule_incompatible_and_D_clean_git_contradiction(self):
+        for shared in [True,False]:
+            with self.subTest(shared=shared):
+                # Each scenario uses its own graph; never reuse a simulation directory.
+                if shared: p,h,s=self.graph(shared=True)
+                else:
+                    # Preserve the first graph; use a nested independent fixture for D.
+                    self.root=self.scratch/('semantic-'+self.root.name);self.root.mkdir()
+                    p,h,s=self.graph(dependent=True)
+                sim=self.simulation(h,s)
+                first=compatibilidad.inspect(self.root,p,h,s,simulation=sim)
+                finding={'id':'RULE-UNIT','type':'functional','reason':'Productor en centavos y contrato incompatible',
+                         'owner':'reviewer','references':[{'path':'src/a.py','revision':s['target_sha'],
+                         'sha256':hashlib.sha256(self.git('show',s['target_sha']+':src/a.py').encode()+b'\n').hexdigest()}]}
+                review=self.review(first,'conflict_detected',[finding])
+&gt;               result=compatibilidad.inspect(self.root,p,h,s,simulation=sim,semantic_review=review)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/Stiveen Rincon Ruge/Documents/ChatGPT/Crea_Harness_Codex_MVP/harness/artifacts/crea-manual-kit-0.1.9/.test-work/semantic-1654b6e2bb754724a5bd5027e3defb2c')
+project = {'$schema': './proyecto.schema.json', 'schema_version': 1, 'project': {'name': 'EDITAR-nombre-proyecto', 'description'...eneral']}], 'exclude_from_context': ['.git/', '.venv/', 'node_modules/', '.env', '.databrickscfg', 'dist/'], ...}, ...}
+handoff = {'identity': {'change': 'HU002'}, 'scope': {'base': '909696a99dd4ac862d6c058d408d7217720b76f8', 'head': 'f4388b7dc1e2f...se_branch': 'fixture-base', 'source_branch': 'feature/HU002', 'remote': 'origin'}, ...}, 'context': {}, 'evidence': {}}
+snapshot = {'schema_version': '1.0', 'kind': 'git_target_snapshot', 'change': 'HU002', 'attempt': '1', ...}
+simulation = {'schema_version': '1.0', 'kind': 'git_integration_simulation', 'change': 'HU002', 'source_sha': 'f4388b7dc1e2fb50c514fa9f7c74ba6032412e53', ...}
+semantic_review = {'schema_version': '1.0', 'kind': 'target_semantic_review', 'change': 'HU002', 'source_sha': 'f4388b7dc1e2fb50c514fa9f7c74ba6032412e53', ...}
+current_target = None
+
+    def inspect(root, project, handoff, snapshot, simulation=None, semantic_review=None, current_target=None):
+        change=identity(handoff['identity']['change']);settings=entrega.resolve(project)
+        head=git(root,'rev-parse','HEAD');birth=handoff['scope'].get('git_delivery',{}).get('branch_start_sha') or handoff['scope']['base']
+        report={'schema_version':'1.0','kind':'target_compatibility_report','change':change,'observed_at':utc(),
+                'source_sha':head,'branch_start_sha':birth,'validation_base':handoff['scope']['base'],
+                'target_sha':snapshot.get('target_sha'),'candidate_digest':handoff['scope'].get('candidate_digest'),
+                'outcome':'undetermined','coverage':'partial','freshness':'unverified','dimensions':{},
+                'findings':[],'limitations':[],'affected_consumers':[],'recommended_checks':[],
+                'review_paths':[],'document_refs':[],'scope_digest':'','combined_tests_executed':False,
+                'functional_obligations':[],'preserved_evidence':['Local plan/receipts remain subject to their existing gate'],
+                'actions':[]}
+        if not project['delivery'].get('compatibility',{}).get('enabled'):
+            report['limitations'].append('COMPATIBILITY_NOT_ADOPTED');report['scope_digest']=digest({'disabled':True});return report
+        if (snapshot.get('change')!=change or snapshot.get('target_branch')!=settings['target_branch']
+            or snapshot.get('remote')!=settings['remote']
+            or snapshot.get('repository')!=list(entrega.repository_key(project['project']['repository']['url']))):
+            raise ValueError('TARGET_SNAPSHOT_IDENTITY_MISMATCH')
+        if snapshot.get('status')!='verified' or not snapshot.get('objects_available'):
+            report['limitations'].append('TARGET_'+snapshot.get('status','unverified').upper())
+            report['scope_digest']=digest(snapshot);report['actions']=['Comprobar destino sin crearlo o sustituirlo'];return report
+        report['freshness']='current'
+        if current_target:
+            report['freshness']='unverified' if current_target.get('status')!='verified' else 'current' if current_target.get('target_sha')==snapshot['target_sha'] else 'stale'
+        try:
+            ranges=entrega.ranges(root,birth,head,snapshot['target_sha'])
+            local=git_adapter.collect(root,birth,[])['changes']
+        except ValueError as exc:
+            report['limitations'].append(str(exc));report['scope_digest']=digest(snapshot);return report
+        report['ranges']=ranges
+        names=lambda rows:sorted({n for row in rows for n in (row['path'],row['old_path']) if n})
+        own=names(local);target=names(ranges['target_changes'])
+        definitions={x['path'] for x in handoff['scope'].get('compatibility_artifacts',[])}
+        own=[n for n in own if n not in definitions]
+        impact=consumer_impact(project,target,own);report['impact']=impact
+        # Target-side architecture is observed, never silently adopted into the feature.
+        try:
+            payload=blob(root,snapshot['target_sha'],'docs/proyecto.json',project,[0])
+            target_project=json.loads(payload)
+            if target_project.get('context_management')!=project.get('context_management'):
+                target_impact=consumer_impact(target_project,target,own)
+                report['target_context_impact']=target_impact
+                impact['affected_consumers']=sorted(set(impact['affected_consumers']+target_impact['affected_consumers']))
+                report['limitations'].append('TARGET_CONTEXT_CONFIGURATION_CHANGED')
+        except ValueError as exc:
+            if str(exc)!='DOCUMENT_NOT_PRESENT_AT_REVISION':report['limitations'].append(str(exc))
+        report['affected_consumers']=impact['affected_consumers']
+        refs,limits=referenced_documents(root,project,own,target,head,snapshot['target_sha'])
+        report['document_refs']=refs;report['limitations']+=limits
+        try: policy=read(safe_path(root,project['validation']['testing']['policy_path']))
+        except (ValueError,OSError):policy={'checks':[],'rules':[]};report['limitations'].append('CATALOG_NOT_AVAILABLE')
+        components={c['id']:c for c in project.get('context_management',{}).get('components',[])}
+        consumer_paths=[p for key in impact['affected_consumers'] for p in components.get(key,{}).get('paths',[])]
+        for check in policy['checks']:
+            reasons=[]
+            if any(fnmatchcase(name,pattern) for name in target for pattern in check['inputs']):reasons.append('target-input-changed')
+            if any(fnmatchcase(name,p) or fnmatchcase(p,name) for name in consumer_paths for p in check['inputs']):reasons.append('affected-consumer')
+            if any(check['id'] in rule.get('checks',[]) and any(fnmatchcase(name,p) for name in target for p in rule['paths']) for rule in policy.get('rules',[])):
+                reasons.append('target-path-rule')
+            if reasons:report['recommended_checks'].append({'check_id':check['id'],'reasons':sorted(set(reasons))})
+        report['review_paths']=sorted(set(own+target+[r['path'] for r in refs]))
+        report['scope_digest']=digest({'birth':birth,'source':head,'target':snapshot['target_sha'],
+                                      'local':local_identity(root,handoff),'project':project,'policy':policy,
+                                      'impact':impact,'document_refs':refs})
+        report['dimensions']={'git':'partial','dependencies':'complete' if impact['known'] and not impact['unknown_paths'] else 'partial',
+                              'contracts':'not_run','documentation':'partial' if limits else 'complete','test_impact':'complete' if 'CATALOG_NOT_AVAILABLE' not in report['limitations'] else 'partial'}
+        textual_conflict=False
+        if simulation:
+            if any(simulation.get(k)!=v for k,v in simulation_identity(head,snapshot['target_sha']).items()):raise ValueError('SIMULATION_IDENTITY_MISMATCH')
+            textual_conflict=simulation['status']=='conflict'
+            report['dimensions']['git']='complete' if simulation['status'] in ('clean','conflict') and not simulation['limits'] else 'partial'
+            report['limitations']+=simulation['limits']
+            if textual_conflict:report['findings'].append({'type':'git','reason':'TEXTUAL_CONFLICT','paths':simulation['conflict_paths'],'owner':'developer'})
+        if ranges['inherited_commits']:
+            report['findings'].append({'type':'scope','reason':'INHERITED_WORK_OUTSIDE_TARGET','owner':'principal','commits':ranges['inherited_commits']})
+        if impact['affected_consumers'] or impact['shared_components'] or set(own)&amp;set(target):
+            report['findings'].append({'type':'impact','reason':'CONTRACT_OR_CONSUMER_REVIEW_REQUIRED','owner':'reviewer'})
+        semantic_status=None
+        if semantic_review:
+            if (semantic_review.get('kind')!='target_semantic_review' or semantic_review.get('change')!=change
+                or semantic_review.get('source_sha')!=head or semantic_review.get('target_sha')!=snapshot['target_sha']
+                or semantic_review.get('scope_digest')!=report['scope_digest']
+                or not set(report['review_paths']).issubset(semantic_review.get('reviewed_paths',[]))):
+                raise ValueError('SEMANTIC_REVIEW_IDENTITY_OR_SCOPE')
+            if semantic_review.get('status') not in ('compatible','requires_review','conflict_detected','undetermined'):
+                raise ValueError('SEMANTIC_REVIEW_STATUS')
+            for finding in semantic_review['findings']:
+                if finding.get('type')=='functional' and not finding.get('references'):raise ValueError('SEMANTIC_EVIDENCE_REQUIRED')
+                for ref in finding.get('references',[]):
+                    if ref['revision'] not in (head,snapshot['target_sha']):raise ValueError('SEMANTIC_REFERENCE_REVISION')
+                    payload=blob(root,ref['revision'],ref['path'],project,[0])
+&gt;                   if hashlib.sha256(payload).hexdigest()!=ref['sha256']:raise ValueError('SEMANTIC_REFERENCE_CHANGED')
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E                   ValueError: SEMANTIC_REFERENCE_CHANGED
+
+artifacts\crea-manual-kit-0.1.9\scripts\crea\compatibilidad.py:249: ValueError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_E_target_move_invalidates_observation_without_mutating_story" time="4.075" /><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_F_missing_or_unverifiable_target_is_not_compatible" time="2.888" /><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_simulation_does_not_change_user_index_refs_or_worktree" time="3.663" /><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_snapshot_fetches_exact_remote_ref_without_touching_heads" time="3.248"><failure message="AssertionError:       0 [main] sh (21288) C:\Users\Stiveen Rincon Ruge\AppData\Local\Programs\Git\usr\bin\sh.exe: *** fatal error - couldn't create signal pipe, Win32 error 5&#10;fatal: Could not read from remote repository.&#10;&#10;Please make sure you have the correct access rights&#10;and the repository exists.">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_snapshot_fetches_exact_remote_ref_without_touching_heads&gt;
+
+    def test_snapshot_fetches_exact_remote_ref_without_touching_heads(self):
+        p,h,s=self.graph()
+        remote=self.root/'remote.git'
+        self.git('init','--bare',str(remote)); self.git('remote','add','origin',str(remote))
+&gt;       self.git('push','origin','quality:refs/heads/quality')
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_testing_adapters.py:51: in git
+    self.fail(r.stderr)
+E   AssertionError:       0 [main] sh (21288) C:\Users\Stiveen Rincon Ruge\AppData\Local\Programs\Git\usr\bin\sh.exe: *** fatal error - couldn't create signal pipe, Win32 error 5
+E   fatal: Could not read from remote repository.
+E   
+E   Please make sure you have the correct access rights
+E   and the repository exists.</failure></testcase></testsuite></testsuites>

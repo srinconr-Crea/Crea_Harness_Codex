@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="3.007" timestamp="2026-11-10T08:34:20.402816-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_transitions.TeamTransitionTests" name="test_changed_target_does_not_reuse_old_delivery_authorization" time="1.881"><failure message="AssertionError: 'DELIVERY_TARGET_MISMATCH' not found in ['APPLY_AUTHORIZATION_MISSING']">self = &lt;test_team_transitions.TeamTransitionTests testMethod=test_changed_target_does_not_reuse_old_delivery_authorization&gt;
+
+    def test_changed_target_does_not_reuse_old_delivery_authorization(self):
+        h,name=self.setup_handoff();p=read(self.root/'docs/proyecto.json')
+        p['delivery']['pr_target_branch']='quality';write(self.root/'docs/proyecto.json',p)
+        h['evidence']['delivery']={'title':'approved title','body':'approved body','repository':'https://github.com/example/repo',
+            'source_branch':'feature/HU001','target_branch':'main','head_sha':self.git('rev-parse','HEAD'),'status':'draft'}
+        write(self.root/name,h)
+        result=transiciones.check(self.root,name,'to_apply')
+&gt;       self.assertIn('DELIVERY_TARGET_MISMATCH',result['existing_constraints'])
+E       AssertionError: 'DELIVERY_TARGET_MISMATCH' not found in ['APPLY_AUTHORIZATION_MISSING']
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_transitions.py:31: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_transitions.TeamTransitionTests" name="test_stale_compatibility_is_advisory_until_explicit_promotion" time="0.008"><failure message="AssertionError: False is not true : Compatibility consumer is missing">self = &lt;test_team_transitions.TeamTransitionTests testMethod=test_stale_compatibility_is_advisory_until_explicit_promotion&gt;
+
+    def test_stale_compatibility_is_advisory_until_explicit_promotion(self):
+&gt;       self.assertTrue(hasattr(transiciones,'check_compatibility'),'Compatibility consumer is missing')
+E       AssertionError: False is not true : Compatibility consumer is missing
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_transitions.py:34: AssertionError</failure></testcase></testsuite></testsuites>

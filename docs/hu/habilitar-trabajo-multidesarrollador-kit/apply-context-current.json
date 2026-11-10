@@ -1,0 +1,558 @@
+{
+  "changeName": "habilitar-trabajo-multidesarrollador-kit",
+  "changeDir": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit",
+  "schemaName": "spec-driven",
+  "contextFiles": {
+    "proposal": [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\proposal.md"
+    ],
+    "specs": [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\developer-local-preparation\\spec.md",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\hu-target-compatibility\\spec.md",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-delivery-traceability\\spec.md",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-kit-distribution\\spec.md",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\manual-phase-contracts\\spec.md",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\project-context-lifecycle\\spec.md",
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\specs\\project-testing-lifecycle\\spec.md"
+    ],
+    "design": [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\design.md"
+    ],
+    "tasks": [
+      "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md"
+    ]
+  },
+  "progress": {
+    "total": 74,
+    "complete": 62,
+    "remaining": 12
+  },
+  "tasks": [
+    {
+      "id": "1",
+      "description": "1.1 Confirmar rama/revisión, estado previo y ausencia de colisión de 0.1.9; verificar mediante registro de Git y lista explícita de archivos ajenos conservados, sin reset/stash o publicación.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 7
+    },
+    {
+      "id": "2",
+      "description": "1.2 Capturar baseline por bytes de 0.1.3-0.1.8, ZIP/hashes/manifests y fuente personalizada real; verificar hashes antes de crear el staging y una prueba negativa que detecte una alteración sintética.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 8
+    },
+    {
+      "id": "3",
+      "description": "1.3 Preparar exclusivamente el staging nuevo 0.1.9 desde la fuente 0.1.8 verificada; verificar comparación de origen, preservación de personalizaciones y cero modificaciones a árboles históricos.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 9
+    },
+    {
+      "id": "4",
+      "description": "1.4 Concretar criterios, rutas read/write/approved, reglas aplicables, snapshots y contratos Planner de esta HU; verificar handoff canónico sin IDs de agentes inventados ni resultados futuros de Tester.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 10
+    },
+    {
+      "id": "5",
+      "description": "1.5 Definir catálogo/fixtures de validación de este incremento reutilizando el mecanismo existente; verificar que required_checks contiene IDs reales y no comandos duplicados, sin activar adaptadores inactivos.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 11
+    },
+    {
+      "id": "6",
+      "description": "1.6 Registrar decisiones D1-D14 y orden 2→5→6→7, 3→4, 8→9 y 10→11; verificar que A/B/C y la migración usan un solo candidato y no autorizan merge/deploy o nuevas escrituras remotas.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 12
+    },
+    {
+      "id": "7",
+      "description": "2.1 Añadir pr_target_branch opcional y perfil de equipo al schema/config del staging; verificar tests de ausencia, null, sprint→quality, valores inválidos y fallback legacy sin nuevas exigencias retroactivas.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 16
+    },
+    {
+      "id": "8",
+      "description": "2.2 Implementar resolución común en entrega.py de repo/remoto/refs/SHA; verificar fixtures de remoto incorrecto, nombres ambiguos, espacios, ramas con slash y refspec que no actualiza tracking ref.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 17
+    },
+    {
+      "id": "9",
+      "description": "2.3 Incorporar comprobación de base/destino/protegidas y reservas quality/test del perfil de equipo antes de escritura/publicación; verificar rechazo de rama actual o ref de push distintas de la feature aprobada sin modificar el checkout.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 18
+    },
+    {
+      "id": "10",
+      "description": "2.4 Añadir procedencia opcional scope.git_delivery conservando B y V; verificar schema, reanudación de HU propia, colisión de rama ajena y rechazo de base no ancestral sin sustituirla por quality.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 19
+    },
+    {
+      "id": "11",
+      "description": "2.5 Mostrar alcance heredado y efectivo hacia destino; verificar fixture donde sprint incluye commits ajenos ausentes de quality y el verificador no los atribuye a la HU ni amplía publication_paths.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 20
+    },
+    {
+      "id": "12",
+      "description": "2.6 Contrastar destino efectivo con evidence.delivery y autorización/digest en transiciones; verificar cambio de destino posterior a aprobación, permiso solo archive, solo push y permiso completo vigente sin confirmaciones repetidas.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 21
+    },
+    {
+      "id": "13",
+      "description": "2.7 Adaptar orquestador, AGENTS, entrega-git y plantilla PR; verificar recorrido documentado desde base a feature y PR quality conservando GitHub manual, Azure Services CLI y Server manual.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 22
+    },
+    {
+      "id": "14",
+      "description": "2.8 Añadir regresiones de índice completo, todos los commits publicables y SHA remoto, preservando verify_commit; verificar mediante dobles/fixtures que no hay force-push, merge, borrado automático o comandos de proveedor adicionales.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 23
+    },
+    {
+      "id": "15",
+      "description": "3.1 Añadir entorno-local.schema.json y resolver entorno_local.py con allowlist Python/perfil; verificar rechazo de secretos, claves desconocidas, rutas relativas de ejecutable, enlaces/junctions y overrides de política/ramas/modelos.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 27
+    },
+    {
+      "id": "16",
+      "description": "3.2 Añadir execution.local_environment_path opcional y exclusividad con python_executable; verificar legacy absoluto, binding ausente, ambas fuentes activas y plantilla sin setup sin instalaciones implícitas.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 28
+    },
+    {
+      "id": "17",
+      "description": "3.3 Integrar resolución única en load/make_plan/resolved_settings/current/run/gate y attempts; verificar que reconstruir el mismo plan produce idéntica configuración efectiva, digest fuente y resolución.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 29
+    },
+    {
+      "id": "18",
+      "description": "3.4 Mantener fingerprint de intérprete/ubicación/paquetes y consumo de campos pertinentes; verificar invalidación tras cambio efectivo de Python/dependencias y ausencia de invalidación por alias remoto no consumido en pruebas Python locales.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 30
+    },
+    {
+      "id": "19",
+      "description": "3.5 Añadir fixtures de dos máquinas/rutas con la misma policy/execution versionadas; verificar plan/run/gate propios y rechazo de recibos trasplantados entre entornos o planes, sin editar configuración compartida.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 31
+    },
+    {
+      "id": "20",
+      "description": "3.6 Integrar validación estructural y consumidores CLI/helpers con identificación offline de versión/contratos; verificar que opción nueva no se declara soportada solo por schema permisivo y que configuración ausente/desactivada conserva la vía legacy.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 32
+    },
+    {
+      "id": "21",
+      "description": "3.7 Documentar resolución, revisión del entorno, límites históricos y rollback; verificar ejemplos de Windows con intérprete explícito sin Activate o cambio de ExecutionPolicy y sin catálogo duplicado.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 33
+    },
+    {
+      "id": "22",
+      "description": "4.1 Crear skill crea-preparar-desarrollador, registro, guía local y entrada en AGENTS; verificar descubrimiento/referencias en un clon que no contiene el prompt de distribución.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 37
+    },
+    {
+      "id": "23",
+      "description": "4.2 Implementar diagnóstico offline de raíz/revisión/remoto/setup/catálogo/OpenSpec/recursos/herramientas; verificar estados ready/partial/blocked y dependencia ausente con salida estructurada en vez de instalación o traceback no manejado.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 38
+    },
+    {
+      "id": "24",
+      "description": "4.3 Implementar operación bind limitada y exportación exclusiva de diagnóstico; verificar diff explícito, binding equivalente sin cambio de bytes, rechazo de colisiones/enlaces/escapes y sanitización de resultados.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 39
+    },
+    {
+      "id": "25",
+      "description": "4.4 Añadir comprobación online explícita mediante operaciones de lectura permitidas y destino concreto; verificar con dobles acceso correcto/denegado/red/no realizado y que lectura no se informa como permiso de push/PR.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 40
+    },
+    {
+      "id": "26",
+      "description": "4.5 Documentar instalaciones por alcance y autenticación personal/MFA/confianza; verificar que faltantes sin autorización quedan pendientes y no hay login, cambios globales o instalación automática desde inspect.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 41
+    },
+    {
+      "id": "27",
+      "description": "4.6 Preservar OpenSpec/skills/modelos/perfiles/reglas/catálogo/configuración; verificar hashes de esos archivos antes/después de dos ejecuciones C y de fallos de preparación.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 42
+    },
+    {
+      "id": "28",
+      "description": "4.7 Conservar integración Azure y Databricks por aplicabilidad y perfil elegido; verificar con dobles que C no lee Boards sin HU, consulta pipelines, crea PR, ejecuta jobs o activa hooks/runtime/MCP.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 43
+    },
+    {
+      "id": "29",
+      "description": "4.8 Documentar y probar rutas con espacios, wrappers cmd e intérpretes explícitos; verificar funcionamiento sin Activate, cambio de ExecutionPolicy ni reutilización de credenciales de otra persona.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 44
+    },
+    {
+      "id": "30",
+      "description": "5.1 Definir schema de snapshot, versionado y rutas exactas por HU/intento; verificar representación de SHA/null, fecha, versión, cobertura y resultados verified/missing/access_denied/connection_error/unverified.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 48
+    },
+    {
+      "id": "31",
+      "description": "5.2 Implementar adquisición explícita del destino por principal en entrega.py; verificar mediante remotos locales y dobles refs exactas, fetch auxiliar acotado y contraste con respuesta remota, sin actualizar ramas de trabajo.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 49
+    },
+    {
+      "id": "32",
+      "description": "5.3 Distinguir rama ausente de fallo/ambigüedad/caché; verificar F en sus variantes y cambio durante adquisición sin fallback a otra rama, login, instalación o reintentos automáticos indefinidos.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 50
+    },
+    {
+      "id": "33",
+      "description": "5.4 Implementar simulate con almacenamiento temporal aislado y ayuda explícita; verificar que refs/index/worktree usuario conservan bytes, no se ejecutan drivers/código no revisados y no hay merge/rebase como fallback.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 51
+    },
+    {
+      "id": "34",
+      "description": "5.5 Añadir fixtures de conflictos modify/delete/rename, historias múltiples/shallow/no relacionadas y capacidad Git ausente; verificar resultado textual y límites sin forzar ancestros o permitir unrelated histories.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 52
+    },
+    {
+      "id": "35",
+      "description": "5.6 Documentar separación snapshot/inspect/simulate y propiedad de temporales; verificar guardas de rutas absolutas, enlaces/junctions, exportación exclusiva y ausencia de artefactos temporales en el alcance de publicación.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 53
+    },
+    {
+      "id": "36",
+      "description": "6.1 Implementar delivery.compatibility opt-in deshabilitado en plantilla, inspector puro y schema de informe con B/V/H/Q, outcome/coverage/freshness y dimensiones; verificar ausencia/desactivación legacy, stdout sin escritura/red/suites y errores estructurados sin fabricar compatible.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 57
+    },
+    {
+      "id": "37",
+      "description": "6.2 Reutilizar inventario Git para separar HU/destino/herencia y ambas rutas de renombres/bajas; verificar fixtures con HEAD/index/worktree/untracked y rechazo de usar Q divergente como base de collect.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 58
+    },
+    {
+      "id": "38",
+      "description": "6.3 Añadir recorrido inverso de consumidores sobre el mapa existente; verificar ciclos, orden estable, motivos/dirección, relaciones cambiadas entre revisiones y preservación de components_for legacy.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 59
+    },
+    {
+      "id": "39",
+      "description": "6.4 Vincular specs/reglas/documentos pertinentes y revisión semántica referenciada; verificar casos C/D, mismo archivo sin contradicción y conflicto conocido con cobertura parcial, sin inferir significado de un hash.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 60
+    },
+    {
+      "id": "40",
+      "description": "6.5 Proponer checks por inputs/criterios/consumidores del catálogo único; verificar caso B, check desconocido, prueba sin archivo modificado y required runtime inactivo sin materializar suites o modificar policy.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 61
+    },
+    {
+      "id": "41",
+      "description": "6.6 Completar fixtures A y ausencia de mapa: verificar independencia sustentada sin bloqueo por divergencia y cobertura limitada honesta sin activar context_management o suponer independencia por desconocimiento.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 62
+    },
+    {
+      "id": "42",
+      "description": "6.7 Aplicar límites y exclusiones a ambas revisiones; verificar que no se lee historia ajena o secretos y que rutas excluidas permanecen visibles al control Git, con diagnóstico parcial ante budget o fuente ausente.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 63
+    },
+    {
+      "id": "43",
+      "description": "6.8 Documentar outcome/cobertura/vigencia, escenarios A-F y acciones al equipo; verificar recomendaciones concretas y que ninguna prueba sobre H se presenta como ejecución del árbol combinado.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 64
+    },
+    {
+      "id": "44",
+      "description": "7.1 Añadir evidence.compatibility opcional y validación de referencias/anclas/hashes; verificar preservación de informes previos, intento nuevo y rechazo de informe alterado, prestado de otra HU o candidato.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 68
+    },
+    {
+      "id": "45",
+      "description": "7.2 Implementar content-v3 opt-in para planes nuevos con regla exacta de derivados observacionales; verificar que content-v2/planes legacy mantienen semántica y no adoptan automáticamente la nueva proyección.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 69
+    },
+    {
+      "id": "46",
+      "description": "7.3 Mantener equivalencia de contenido probado/publicado y entradas Git consumidas; verificar informe previsto sin invalidación técnica, publicación de bytes distintos rechazada y cambio funcional escondido en informe detectado.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 70
+    },
+    {
+      "id": "47",
+      "description": "7.4 Separar observación derivada de nueva obligación funcional; verificar que agregar un requisito/check aceptado reconcilia el plan y no se esconde en metadata ni usa recibos entre planes.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 71
+    },
+    {
+      "id": "48",
+      "description": "7.5 Consumir compatibilidad en transiciones, con TARGET_COMPATIBILITY_CURRENT inicialmente sin promoción; verificar códigos/modos 0/2/3/4 y que aviso/error no crea veto global o passed y gates previos siguen vigentes.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 72
+    },
+    {
+      "id": "49",
+      "description": "7.6 Integrar refresco final por principal antes de PR/formulario; verificar E con Q1→Q2 independiente, dependiente, force-update y cambio posterior a creación, sin prometer atomicidad o seguimiento continuo.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 73
+    },
+    {
+      "id": "50",
+      "description": "7.7 Preservar autorizaciones y max_fix_rounds cuando no cambian entradas/acciones/paquete; verificar reanudación tras decisión humana y nuevo candidato manual con V ancestral explícita, sin resetear rondas o relajar verify_commit.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 74
+    },
+    {
+      "id": "51",
+      "description": "7.8 Actualizar orquestador, perfiles pertinentes y guías de handoff/transiciones; verificar un escritor por checkout, ausencia de subdelegación y ausencia de coordinador/lock global entre desarrolladores.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 75
+    },
+    {
+      "id": "52",
+      "description": "8.1 Crear kit-composition.json/schema con grupos cliente/distribución/local y motivos; verificar cobertura de cada entrada empaquetada, dependencia cerrada y rechazo de grupos/rutas ambiguos.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 79
+    },
+    {
+      "id": "53",
+      "description": "8.2 Adaptar copia A y validación cliente para prescindir del prompt/LEEME; verificar clon sintético con AGENTS, entrada C, schemas, recursos, licencias y referencias locales completas sin depender de harness_local.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 80
+    },
+    {
+      "id": "54",
+      "description": "8.3 Conservar manifest como procedencia, VALIDACION útil y tests/crea separado; verificar original solo en paquete intacto, personalizado sin original y no inclusión automática de tests internos en catálogo de negocio.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 81
+    },
+    {
+      "id": "55",
+      "description": "8.4 Incorporar y combinar .gitignore/exclusiones de contexto desde A; verificar git check-ignore para binding/diagnóstico/temporales y no exclusión de AGENTS, skills, perfiles, schemas, specs, catálogo o evidencia obligatoria.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 82
+    },
+    {
+      "id": "56",
+      "description": "8.5 Verificar diferencias entre copia/contexto/ignore/publicación con un fixture rastreado y untracked; demostrar que .gitignore no retira lo rastreado, el contexto no oculta cambios y git add usa solo rutas aprobadas.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 83
+    },
+    {
+      "id": "57",
+      "description": "8.6 Documentar migración B por archivo ya rastreado, consumidores e inventario; verificar que no se elimina prompt/tests/evidencia ni se ejecuta git rm por adoptar nuevas exclusiones.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 84
+    },
+    {
+      "id": "58",
+      "description": "9.1 Crear fe de erratas 0.1.8 en el mantenedor y corregir encabezados del staging nuevo; verificar que LEEME/configuración/VALIDACION/pruebas distinguen versión vigente, introducción y evidencia histórica sin alterar 0.1.8.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 88
+    },
+    {
+      "id": "59",
+      "description": "9.2 Reescribir B para origen detectado→0.1.9 y añadir C independiente; verificar comparación de tres vías con baseline ausente, campos de A preservados y prohibición de repetir setup o modificar modelos desde C.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 89
+    },
+    {
+      "id": "60",
+      "description": "9.3 Alinear README, inventario, extensiones, catálogo de skills, guías de adopción/reversión y contenido PR; verificar enlaces, ausencia de referencias operativas obsoletas y conservación de source_version/upstream/cifras históricas correctas.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 90
+    },
+    {
+      "id": "61",
+      "description": "9.4 Implementar empaquetador 019 dirigido al staging nuevo, baseline, manifest y equivalencia ZIP/árbol; verificar rechazo de targets históricos, links, archivos locales y salidas fuera de alcance sin ejecutar empaquetadores antiguos.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 91
+    },
+    {
+      "id": "62",
+      "description": "9.5 Añadir pruebas de distribución y adopción 019; verificar cliente nuevo, cliente 0.1.8 con opcionales ausentes/activos, preservación de personalizaciones y rollback conjunto sin reescribir HU/recibos.",
+      "done": true,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 92
+    },
+    {
+      "id": "63",
+      "description": "10.1 Principal reconciliar Git completo, criterios, inventario, alcance y catálogo finales antes de Tester; verificar plan canónico con outputs nuevos y sin cambios funcionales ocultos como evidencia.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 96
+    },
+    {
+      "id": "64",
+      "description": "10.2 Tester ejecutar la selección de entrega/entorno/preparación con herramientas ya autorizadas; verificar recibos primarios, IDs reales, assertions, ambiente, huellas y ausencia de cambios a producción durante su fase.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 97
+    },
+    {
+      "id": "65",
+      "description": "10.3 Tester ejecutar casos A-F y variantes Git/semánticas/configuración con fixtures locales y dobles; verificar esperado por caso en resultados y diferenciar simulación de piloto real.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 98
+    },
+    {
+      "id": "66",
+      "description": "10.4 Tester ejecutar regresiones pertinentes de test_contract, test_transiciones, test_content_v2, test_contexto/adoption, test_testing_adapters/lifecycle y test_kit_validation del candidato; verificar bloqueos previos, TTL, inclusión real y no adopción cruzada.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 99
+    },
+    {
+      "id": "67",
+      "description": "10.5 Tester verificar ausencia de efectos de inspect/plan/gate y preparación repetida, además de límites de snapshot/simulate explícitos; registrar procesos/archivos/red observados sin afirmar aislamiento técnico por instrucciones solamente.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 100
+    },
+    {
+      "id": "68",
+      "description": "10.6 Tester validar original, composición instalada y personalización con contexto/lifecycle presentes y ausentes; verificar schemas/JSON/TOML/referencias e inventario de tests sin ejecutar suites cliente desde validación estructural.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 101
+    },
+    {
+      "id": "69",
+      "description": "10.7 Tester ejecutar controles de integridad árbol/ZIP y preservación de baseline 0.1.3-0.1.8; verificar hashes/manifests y distinguir checks de empaquetado de resultados funcionales.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 102
+    },
+    {
+      "id": "70",
+      "description": "10.8 Tester conservar intentos y handoff ready_for_review o diagnóstico real; verificar recibos completos, limitaciones/not_run de piloto nativo/hooks/remoto y contador global de correcciones sin reescribir resultados.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 103
+    },
+    {
+      "id": "71",
+      "description": "11.1 Reviewer revisar independientemente código, contratos y casos A-F contra esta propuesta; verificar matriz de cobertura completa y gates vigentes sin relanzar suites salvo invalidación o regla justificada enviada a Tester.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 107
+    },
+    {
+      "id": "72",
+      "description": "11.2 Reviewer ejecutar Verify de OpenSpec y contrastar specs/código/docs, compatibilidad legacy, licencias/upstream y límites Azure/Databricks; verificar resultados y registrar hallazgos sin editar contratos para aprobar.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 108
+    },
+    {
+      "id": "73",
+      "description": "11.3 Reviewer preparar Sync solo tras revisión/pruebas favorables y presentar su diff; verificar que cambios funcionales/documentales seleccionados reconcilian el plan y que el mapa de Archive futuro es exacto, sin ejecutar Archive todavía.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 109
+    },
+    {
+      "id": "74",
+      "description": "11.4 Principal presentar alcance final, candidato, evidencia, pendientes y decisiones de cierre aplicables; verificar que no se declara release/piloto/PR creado ni se ejecuta commit/push/PR por el mero fin de implementación.",
+      "done": false,
+      "sourcePath": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit\\tasks.md",
+      "line": 110
+    }
+  ],
+  "taskTrackingConfigured": true,
+  "state": "ready",
+  "instruction": "Read context files, work through pending tasks, mark complete as you go.\nPause if you hit blockers or need clarification.",
+  "context": "Local-Harness es un producto genérico para desarrollo supervisado desde Codex\nDesktop en Windows. La arquitectura de referencia está documentada en\ndocs/propuesta-harness-local-codex.md. El incremento bootstrap-codex-local-core\nimplementa contratos, diagnóstico local y preview; consultar su evidencia.\napply-client-onboarding añade init apply/export, journal/lock Windows y\nrecuperación conservadora; ambos cambios están archivados y verificados.\nLa revisión del 9 de octubre define ocho cambios numerados y dependientes\nen docs/planning/roadmap.md: calidad/evals, roles/herramientas Desktop,\nonboarding guiado, HU/gates, validación Databricks, observabilidad/evals,\nhistorias/PR y piloto/distribución. 01 implementa contratos y recursos de calidad;\n02 entrega roles pasivos e integración reversible local con evidencia en\ndocs/evidence/desktop-integration.md; Desktop observa conflicto de sandbox en\ndocs/evidence/desktop-runtime-2026-10-09. Adaptación supervisada aprobada en\nplanificación e implementada/verificada para uso supervisado; 03 habilitado\núnicamente para onboarding preparado.\nPreparación supervisada aceptada y certificación estricta son resultados separados;\nun conflicto conserva certified=false y bloquea fases que requieran esa capacidad.\n03 entrega onboarding guiado preparado, verificado y archivado el 13 de octubre,\ncon evidencia en docs/evidence/guided-onboarding-verification.md.\n04 entrega HU/gates locales implementados y verificados el 13 de octubre,\ncon 340 pruebas, smoke instalado y evidencia en docs/evidence/hu-lifecycle-verification.md.\n05 entrega validación por impacto, workers seleccionados y evidencia ligada al\ncandidato, verificados el 13 de octubre con 398 pruebas y smoke instalado.\nEvidencia en docs/evidence/candidate-validation-verification.md.\nSmoke remoto blocked por falta de sandbox seleccionado por el usuario;\nDocker/Spark genuine blocked. No hay certificación remota nueva.\n06 entrega infraestructura local de observabilidad/importación manual y gates;\nver docs/evidence/observability-evals-verification.md. Sus specs están sincronizadas.\nEl usuario eligió Luna/medium en ambos perfiles; 126 ejecuciones manuales siguen\nnot_run, cero capturas reales, promoción blocked. 2.4/3.3 siguen pendientes.\n06 archivado el 13 de octubre con esas dos tareas pendientes por autorización\nexpresa del usuario. El archivo no satisface el criterio de salida.\nEl usuario autorizó después una excepción documentada en los artefactos de 07:\nimplementación local habilitada sobre infraestructura verificada de 06 para\ncontratos, lectura, preview y pruebas con dobles. Promoción/publicación bloqueadas\nmientras falten gates/evals requeridos; smoke de escritura real también bloqueado.\nLa excepción no aprueba evals, no altera evidencia histórica de 06 ni habilita 08.\n07 entrega contratos, lectura seleccionada, preview, publicación/reconciliación\ncon gates y pruebas con dobles; evidencia en docs/evidence/story-pr-verification.md.\n507 pruebas aprobadas, smoke instalado y specs sincronizadas. 2.3/2.5/3.3\nsiguen pendientes: smoke de escritura real y evaluaciones E21/E22/E23.\nEl usuario autorizó archivar 07 con esos pendientes el 13 de octubre.\nEl protocolo 07 conserva 144 ejecuciones Luna/medium not_run (126 de 06 y\n18 nuevas), cero capturas reales. Publicación y aceptación de 08 permanecen bloqueadas.\nEl usuario autorizó desarrollo local anticipado de 08 el 13 de octubre.\n08 entrega candidato, bootstrap/launcher y update/recover locales, verificados\nel 14 de octubre con 52 pruebas propias y smoke de wheel instalado.\nOcho de trece tareas completas; 3.1–3.4 y 4.3 pendientes. El usuario autorizó\narchivar 08 con pendientes el 14 de octubre para realizar la prueba real y\ngestionar defectos/mejoras mediante nuevos cambios. El archivo administrativo\nno satisface aceptación; mantiene los gates bloqueados. Specs sincronizadas;\ncertified=false y release_allowed=false. Evidencia en\ndocs/evidence/distribution-verification.md. No hay nueva aceptación remota.\nNo inferir certificación desde pytest/matriz ni desde archivo/push de código.\nE05/E06/E08/E19 permanecen not_run; ready_to_publish sintético no autoriza publicación.\nE01/E02/E24 manuales permanecen not_run, sin certificación Desktop o remota nueva.\ndocs/planning/quality contiene catálogos/fixtures de diseño not_run.\nresources/vendor contiene Skills oficiales fijadas por commit/hash,\ncon licencia/NOTICE conservados, empaquetadas como datos pasivos por 01, sin instalación ni activación global.\nRedactar artefactos en español; conservar encabezados estructurales y las\npalabras SHALL/MUST en inglés según las plantillas OpenSpec.\nCodex mantiene la conversación, herramientas y delegación. El núcleo Python\naporta contratos, validadores y evidencias propias, sin duplicar el motor LLM.\nSeparar producto, repositorios cliente y estado local. No incluir reglas,\ncredenciales ni recursos reales de NaturaPet en el núcleo genérico.\nBaseline implementada: estructura del paquete, descriptor/política/binding de\ncliente, harness doctor local y harness init --dry-run. El dry-run no instala,\nclona, autentica, modifica el target ni registra bindings persistentes.\ninit apply solo crea recursos ausentes autorizados; integración de AGENTS\npersonalizado/TOML requiere contratos separados en nuevos incrementos.\nInstaller/plugin, ejecución remota, gates de PR,\nhooks y agentes operativos pertenecen a incrementos posteriores.\nLas instrucciones y Skills orientan al agente; no son fronteras de seguridad.\nNo prometer control exacto de tokens, contexto interno o costos de Codex.\nLos cambios de planificación no autorizan aplicar código ni publicar GitHub.\n",
+  "root": {
+    "path": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness",
+    "source": "nearest"
+  }
+}

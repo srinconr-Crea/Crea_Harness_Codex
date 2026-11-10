@@ -1,0 +1,609 @@
+--- openspec/specs/developer-local-preparation/spec.md (before)
++++ openspec/specs/developer-local-preparation/spec.md (proposed)
+@@ -0,0 +1,111 @@
++# developer-local-preparation Specification
++
++## Purpose
++
++Preparar una máquina y una identidad personal para trabajar sobre un proyecto ya configurado, reutilizando el onboarding compartido sin sobrescribirlo ni conceder permisos nuevos.
++
++## Requirements
++
++### Requirement: Existing checkout and shared readiness
++
++La preparación SHALL identificar raíz, revisión, remoto y configuración del checkout. SHALL comprobar onboarding, catálogo, referencias y OpenSpec existentes, diferenciando preparación compartida de preparación personal. MUST NOT marcar completo un onboarding incompleto ni modificarlo para permitir una HU.
++
++#### Scenario: Second developer clones approved configuration
++- **WHEN** otra persona abre un clon con onboarding completo y referencias coherentes
++- **THEN** reutiliza sus reglas, perfiles, specs y catálogo y evalúa únicamente la preparación local pendiente
++
++#### Scenario: Shared setup is incomplete or inconsistent
++- **WHEN** falta configuración requerida o setup_complete contradice el catálogo o las referencias
++- **THEN** informa la discrepancia al responsable, conserva los archivos y no declara listo el desarrollo dependiente
++
++### Requirement: Persistent entry point independent of distribution prompt
++
++El proyecto configurado SHALL contener una entrada de preparación local y su guía, descubribles desde las instrucciones del proyecto. La sección C del prompt SHALL invocar esa misma capacidad sin ejecutar A o B. MUST NOT exigir conservar el prompt extenso de distribución en el repositorio cliente.
++
++#### Scenario: Clone without packaging prompt
++- **WHEN** el clon no contiene Prompt_configurar-kit-proyecto.txt pero sí los recursos operativos instalados
++- **THEN** la persona puede iniciar y completar su preparación desde la entrada local documentada
++
++### Requirement: Bounded personal environment binding
++
++La preparación SHALL separar intérprete y alias personales de la configuración versionada mediante un binding local opcional con schema y claves permitidas. MUST NOT aceptar credenciales ni overrides de comandos, política, ramas, permisos, modelos, reglas o capacidades. El camino legacy sin binding SHALL conservar su comportamiento.
++
++#### Scenario: Different interpreter locations
++- **WHEN** dos desarrolladores tienen Python en rutas absolutas diferentes
++- **THEN** cada uno registra su entorno local sin editar la configuración compartida y los planes identifican el intérprete efectivo de cada ejecución
++
++#### Scenario: Local override attempts to change required checks
++- **WHEN** el binding intenta redefinir catálogo, required_checks o destino del PR
++- **THEN** se rechaza antes de ejecutar o escribir configuración y se conserva el estado anterior
++
++### Requirement: Applicable tools and authorized preparation
++
++La preparación SHALL detectar sistema operativo, herramientas, versiones y dependencias aplicables antes de proponer instalaciones. SHALL instalar o actualizar solo dentro de un alcance explícitamente autorizado. Una herramienta ausente SHALL dejar un pendiente concreto sin impedir diagnóstico independiente ni activar capacidades.
++
++#### Scenario: Missing validation dependency without installation permission
++- **WHEN** falta una dependencia de validación y no está autorizada su instalación
++- **THEN** registra su nombre y efecto, no instala y continúa las inspecciones independientes posibles
++
++#### Scenario: Tool already satisfies project requirements
++- **WHEN** una herramienta existente cumple los requisitos vigentes
++- **THEN** la conserva sin reinstalarla o actualizarla por rutina
++
++### Requirement: Personal authentication and interactive authority
++
++La preparación SHALL guiar las autenticaciones personales aplicables de Git/GCM, Azure y Databricks. Credenciales, MFA, confianza y decisiones de permisos SHALL permanecer bajo intervención de la persona. MUST NOT copiar sesiones ajenas, iniciar login implícito ni guardar secretos en informes o Git.
++
++#### Scenario: Authentication requires MFA
++- **WHEN** una comprobación requiere autenticación interactiva
++- **THEN** indica el paso personal y espera esa intervención para la continuación dependiente, manteniendo diagnóstico independiente
++
++#### Scenario: Project does not use Databricks
++- **WHEN** Databricks no aplica o su integración está inactiva
++- **THEN** no exige su login, no instala sus herramientas ni activa su integración como consecuencia de preparar la máquina
++
++### Requirement: Safe connection checks
++
++Las comprobaciones de conexión SHALL usar operaciones de lectura acotadas, destinos explícitos y credenciales ya disponibles. SHALL distinguir lectura comprobada, acceso denegado, fallo de conexión y operación no realizada. MUST NOT usar escrituras de prueba ni consultar Boards sin la HU y fase autorizadas.
++
++#### Scenario: Azure repository can be read
++- **WHEN** se solicita comprobar el repositorio Azure configurado y hay identidad disponible
++- **THEN** contrasta el repositorio mediante lectura explícita sin PR, pipelines, cambios de permisos ni consultas generales de Boards
++
++#### Scenario: Read permission does not establish publish permission
++- **WHEN** una lectura del remoto resulta correcta
++- **THEN** acredita solo esa operación y no afirma permisos de push, creación de PR, merge o despliegue no comprobados
++
++### Requirement: Preserve configured project resources
++
++La preparación C MUST NOT reinicializar OpenSpec, reinstalar skills existentes ni sobrescribir configuración compartida, perfiles, modelos, constituciones, reglas, catálogos, specs o evidencia. Las incompatibilidades SHALL quedar como pendientes de mantenimiento separado.
++
++#### Scenario: Existing skill differs from distribution
++- **WHEN** una skill o perfil personalizado difiere de la distribución
++- **THEN** conserva los bytes, registra la diferencia pertinente y no ejecuta una actualización de kit dentro de C
++
++### Requirement: Repeatable Windows preparation
++
++La preparación SHALL ser repetible y funcionar con Windows/PowerShell y rutas con espacios sin exigir activar un virtualenv ni cambiar ExecutionPolicy. SHALL conservar un binding equivalente sin escrituras innecesarias y no cambiar configuración global implícitamente.
++
++#### Scenario: Second identical preparation
++- **WHEN** se repite C con el mismo checkout, herramientas y binding
++- **THEN** confirma el diagnóstico sin editar archivos compartidos, repetir instalaciones o reescribir el binding equivalente
++
++#### Scenario: PowerShell script wrappers are blocked
++- **WHEN** la política local bloquea wrappers ps1
++- **THEN** usa las entradas ejecutables o cmd soportadas y el intérprete explícito, o informa el límite sin cambiar la política
++
++### Requirement: Local diagnostic record and honest status
++
++El diagnóstico SHALL informar revisión/configuración observadas, herramientas, operaciones comprobadas, pendientes y estado ready, partial o blocked con motivos. Su persistencia SHALL ser local, sanitizada y explícita; MUST NOT certificar agentes nativos, hooks, runtime o permisos no observados.
++
++#### Scenario: Explicit diagnostic output
++- **WHEN** se solicita un informe en una ruta local permitida nueva
++- **THEN** lo crea sin secretos, identifica las comprobaciones no realizadas y no sobrescribe un informe anterior
++
++### Requirement: Side effect free default inspection
++
++La inspección por defecto SHALL devolver diagnóstico sin escribir, instalar, autenticar, ejecutar suites, cambiar ramas ni contactar servicios. La lectura online, exportación y modificación del binding SHALL ser operaciones explícitas separadas. MUST NOT tratar inspeccionar como autorización para preparar herramientas.
++
++#### Scenario: Offline inspection
++- **WHEN** se invoca inspección sin opciones de lectura online ni salida
++- **THEN** no modifica el checkout o estado global ni realiza llamadas remotas y declara esas comprobaciones no realizadas
+--- openspec/specs/hu-target-compatibility/spec.md (before)
++++ openspec/specs/hu-target-compatibility/spec.md (proposed)
+@@ -0,0 +1,147 @@
++# hu-target-compatibility Specification
++
++## Purpose
++
++Informar cómo afectan los cambios del destino del PR a una HU concurrente mediante evidencia Git y revisión funcional proporcionadas, manteniendo las decisiones de reconciliación e integración en el equipo.
++
++## Requirements
++
++### Requirement: Optional target compatibility observation
++
++La compatibilidad SHALL ser opt-in y usar el destino efectivo del PR. Ausente o deshabilitada SHALL conservar el flujo anterior sin fabricar evidencia. Adoptada SHALL comenzar informativa y MUST NOT bloquear por mera divergencia ni activar condiciones de enforcement automáticamente.
++
++#### Scenario: Legacy project omits compatibility
++- **WHEN** un proyecto no configura esta capacidad
++- **THEN** mantiene su flujo vigente y no exige informes retroactivos a sus HU
++
++#### Scenario: Divergence alone
++- **WHEN** quality contiene commits adicionales independientes de la HU
++- **THEN** informa la divergencia sin convertir su existencia en conflicto o veto automático
++
++### Requirement: Exact source and target anchors
++
++La observación SHALL identificar repositorio, remoto, feature, base de nacimiento, candidato y SHA verificado del destino, conservando origen y base técnica por separado. SHALL distinguir una observación remota actual de una referencia local almacenada. MUST NOT resolver nombres ambiguos ni inventar ancestros.
++
++#### Scenario: Stale tracking reference
++- **WHEN** la referencia local apunta a Q1 y el destino remoto verificable apunta a Q2
++- **THEN** no acredita compatibilidad actual con Q1 y solicita obtener o analizar el snapshot de Q2
++
++#### Scenario: No common history or incomplete history
++- **WHEN** no puede establecer la relación de historia necesaria por clon parcial, ancestros ausentes o historias no relacionadas
++- **THEN** informa el análisis de historia como indeterminado y la recuperación concreta sin cambiar ramas ni forzar una base
++
++### Requirement: Separate story target and inherited changes
++
++El informe SHALL separar cambios propios de la HU, cambios relevantes del destino y cambios heredados de la rama base ausentes del destino. SHALL conservar bajas, renombres, conflictos y rutas compartidas. MUST NOT presentar todo el alcance del PR como autoría o autorización de la HU.
++
++#### Scenario: Sprint contains unrelated work absent from quality
++- **WHEN** la feature nace de una base con commits que quality todavía no contiene
++- **THEN** enumera el alcance heredado y requiere decidir su inclusión antes de afirmar que el PR corresponde solo a la HU
++
++### Requirement: Dependency and consumer impact
++
++La observación SHALL relacionar las rutas afectadas con componentes, dependencias, consumidores, contratos, documentos y checks declarados disponibles. SHALL señalar huecos y límites sin inventar arquitectura. MUST NOT considerar independencia por la sola ausencia de archivos compartidos.
++
++#### Scenario: A independent concurrent stories
++- **WHEN** HU001 se integra primero en quality y HU002 modifica otro componente sin relación declarada o funcional afectada dentro del alcance revisado
++- **THEN** HU002 puede obtener compatible y continuar sin exigir repetir pruebas por la mera divergencia
++
++#### Scenario: B changed consumed component
++- **WHEN** HU001 cambia un componente que consume HU002
++- **THEN** identifica el consumidor, los contratos y checks que requieren revisión o nueva validación y conserva resultados locales que no acreditan esa combinación como tales
++
++### Requirement: Semantic review independent of textual conflicts
++
++La observación SHALL separar conflictos Git de contradicciones funcionales. Los hallazgos semánticos SHALL referenciar requisitos, reglas u oráculos y decisiones contrastables; Reviewer SHALL revisar los pertinentes. MUST NOT inferir compatibilidad funcional de un merge textual limpio o de hashes diferentes.
++
++#### Scenario: C incompatible edits of one rule
++- **WHEN** las HU cambian una misma especificación o regla con resultados incompatibles
++- **THEN** registra conflicto funcional, referencias de ambos estados y reconciliación humana necesaria
++
++#### Scenario: D contradictory contracts in different files
++- **WHEN** productor y consumidor quedan con unidades o contratos incompatibles aunque Git pueda integrarlos sin conflicto
++- **THEN** informa la contradicción funcional y no declara compatible basándose en la integración textual
++
++#### Scenario: Same file with compatible changes
++- **WHEN** ambas HU modifican un documento en partes independientes sin contradicción sustentada
++- **THEN** registra el solapamiento para revisión proporcional sin etiquetarlo automáticamente como conflicto funcional
++
++### Requirement: Isolated textual integration inspection
++
++La comprobación textual SHALL usar los SHA observados y separar cálculo de integración de integración efectiva. MUST NOT modificar feature, destino, índice o árbol de trabajo del usuario, ejecutar código cliente ni resolver conflictos. Artefactos temporales SHALL permanecer aislados y fuera de publicación.
++
++#### Scenario: Textual conflict is observed
++- **WHEN** el cálculo aislado encuentra un conflicto de modificación, borrado o renombre
++- **THEN** informa sus rutas y tipo, conserva el checkout del usuario y propone resolución humana
++
++#### Scenario: Simulation capability is unavailable
++- **WHEN** Git no soporta el mecanismo o no puede producir un resultado comprobable
++- **THEN** declara esa dimensión indeterminada sin ejecutar un merge real como fallback
++
++### Requirement: Actionable compatibility report
++
++El informe SHALL separar outcome compatible, requires_review, conflict_detected o undetermined de coverage y freshness. SHALL incluir anclas, motivos, responsables, límites, checks propuestos y evidencia conservada. MUST NOT ocultar un conflicto conocido por otras comprobaciones incompletas ni equiparar compatible a garantía de corrección total.
++
++#### Scenario: Known conflict with incomplete component mapping
++- **WHEN** existe un conflicto Git comprobado pero parte del mapa está incompleta
++- **THEN** conserva conflict_detected e informa cobertura parcial y análisis no completados
++
++#### Scenario: Missing semantic coverage
++- **WHEN** falta información material para decidir la compatibilidad funcional
++- **THEN** informa undetermined o requires_review según la decisión identificable y no presenta una garantía funcional
++
++### Requirement: Target freshness at PR preparation and creation
++
++El principal SHALL contrastar el destino antes de presentar el PR y justo antes de crearlo o preparar su formulario. Un SHA cambiado SHALL marcar obsoleta la observación y exigir recalcular su impacto, sin invalidar automáticamente pruebas locales intactas. MUST NOT prometer actualidad posterior al instante observado.
++
++#### Scenario: E target changes after first inspection
++- **WHEN** el informe usa Q1 y antes del PR se observa Q2
++- **THEN** marca stale, analiza Q2 y conserva evidencia/aprobaciones no afectadas, solicitando nueva decisión solo si cambian su contenido o alcance aplicables
++
++#### Scenario: Target changes after creation
++- **WHEN** quality avanza después de crear el PR
++- **THEN** el recibo conserva su SHA y momento observados y deja revisión final y merge al proceso del equipo sin afirmar compatibilidad continua
++
++### Requirement: Missing and unverifiable target handling
++
++La adquisición SHALL distinguir rama inexistente, acceso denegado, error de red, respuesta ambigua y objetos no disponibles. Tales resultados SHALL producir indeterminación de lo no comprobado. MUST NOT crear quality, cambiar destino, equiparar error a ausencia ni usar caché como verificación remota actual.
++
++#### Scenario: F target is missing
++- **WHEN** una consulta correcta confirma que la rama destino no existe
++- **THEN** informa destino ausente y acción al responsable sin crear la rama ni seleccionar otra
++
++#### Scenario: F target cannot be accessed or verified
++- **WHEN** falla la consulta por red, autenticación o permisos
++- **THEN** informa verificación no realizada con su causa y permite trabajo local independiente autorizado sin declarar compatible
++
++### Requirement: Preserve valid evidence without cross plan adoption
++
++Los cambios del destino SHALL afectar primero a la observación de compatibilidad. Si alteran entradas, criterios o candidato, SHALL aplicarse la invalidación existente y un plan nuevo cuando corresponda. MUST NOT importar recibos entre planes, máquinas o árboles diferentes ni ejecutar suites desde el inspector.
++
++#### Scenario: Unrelated target update
++- **WHEN** Q2 no altera entradas ni contratos de la HU y su plan sigue vigente
++- **THEN** renueva la observación sin relanzar suites o repetir autorizaciones intactas
++
++#### Scenario: Combined behavior needs testing
++- **WHEN** una dependencia cambiada exige comprobar código combinado
++- **THEN** identifica checks y candidato necesario, sin afirmar que las pruebas ejecutadas solo en la feature validaron esa combinación
++
++### Requirement: Human reconciliation and integration boundary
++
++La salida SHALL proponer acciones concretas y conservar pendientes por continuación. MUST NOT ejecutar merge, rebase, cherry-pick, actualización resolutiva de ramas, auto-complete, deploy o promoción a test. Una actualización manual de la feature SHALL exigir reconciliar candidato, procedencia y evidencia sin reescribir intentos históricos.
++
++#### Scenario: Developer manually resolves a conflict
++- **WHEN** el equipo aporta una feature actualizada mediante una decisión externa al inspector
++- **THEN** registra la nueva observación y contrasta base técnica, contenido, checks y autorizaciones afectados sin asumir equivalencia con el candidato anterior
++
++### Requirement: Bounded inspection and immutable report export
++
++El inspector SHALL operar sobre snapshots locales comprobables y devolver stdout sin escritura por defecto. Una exportación SHALL exigir destino nuevo permitido en la HU y rechazar enlaces, escapes o colisiones. Adquirir datos remotos o crear temporales para simulación SHALL ser operaciones explícitas separadas de la inspección pura.
++
++#### Scenario: Pure inspection
++- **WHEN** se inspeccionan snapshots existentes sin salida ni simulación
++- **THEN** no escribe, contacta servicios, instala herramientas o ejecuta pruebas
++
++#### Scenario: Existing output path
++- **WHEN** el informe solicitado ya existe o apunta a evidencia primaria
++- **THEN** rechaza la exportación y conserva los bytes existentes
+--- openspec/specs/manual-delivery-traceability/spec.md (before)
++++ openspec/specs/manual-delivery-traceability/spec.md (proposed)
+@@ -73,3 +73,63 @@
+ #### Scenario: New behavior during close
+ - **WHEN** el expediente final añade comportamiento que no estaba en el candidato revisado
+ - **THEN** detiene el cierre/publicación y solicita revisión y autorización aplicables
++
++### Requirement: Independent feature origin and PR target
++
++La entrega SHALL crear features desde project.base_branch y resolver el destino mediante delivery.pr_target_branch opcional. Ausente o null SHALL usar project.base_branch como antes. SHALL conservar el remoto configurado y la política por proveedor. MUST NOT inferir un destino distinto desde defaults globales.
++
++#### Scenario: Sprint source and quality target
++- **WHEN** la base es sprint/XX y el destino separado es quality
++- **THEN** prepara la feature desde el SHA remoto de sprint/XX y presenta o crea el PR autorizado hacia quality
++
++#### Scenario: Legacy destination fallback
++- **WHEN** no se declara destino separado
++- **THEN** conserva project.base_branch como origen de feature y destino del PR sin exigir migración de HU históricas
++
++### Requirement: Verified Git delivery provenance
++
++La entrega SHALL validar nombres, repositorio, remoto, referencias exactas y SHA reales antes de crear la feature y publicar. SHALL conservar base de nacimiento y base técnica sin confundirlas con el destino. MUST NOT usar referencias ambiguas, caché no verificada o errores remotos como evidencia de rama libre.
++
++#### Scenario: Feature name collision
++- **WHEN** la feature propuesta ya existe local o remotamente y no pertenece a la HU reanudada
++- **THEN** no la reutiliza ni sobrescribe y propone otro nombre identificable antes de escribir
++
++#### Scenario: Custom fetch refspec
++- **WHEN** el fetch no actualiza la referencia de seguimiento esperada
++- **THEN** resuelve y contrasta la referencia correcta y su SHA antes de crear la feature sin asumir que el nombre local está vigente
++
++### Requirement: Protected development and publication branches
++
++El perfil de equipo SHALL impedir desarrollo o push de HU directamente sobre la base, el destino del PR, quality, test y las ramas protegidas configuradas. SHALL comprobar rama actual y ref de push efectiva. MUST NOT cambiar protecciones del servidor ni usar force-push para resolver colisiones.
++
++#### Scenario: Requested feature equals protected target
++- **WHEN** el nombre de la feature coincide con quality, test, la base o una rama protegida
++- **THEN** rechaza preparar o publicar esa rama e informa la alternativa de feature
++
++#### Scenario: Branch changes before push
++- **WHEN** la rama actual o destino efectivo difiere de la feature autorizada
++- **THEN** no ejecuta el push y conserva el trabajo local sin switch, reset o stash automático
++
++### Requirement: Reviewed effective PR scope
++
++La entrega SHALL distinguir los commits propios desde la base y el alcance efectivo hacia el destino. Los cambios heredados ausentes del destino SHALL presentarse para decisión antes de autorizar su inclusión. MUST NOT ampliar publication_paths ni atribuir commits ajenos a la HU para satisfacer un verificador.
++
++#### Scenario: Base is ahead of target
++- **WHEN** sprint/XX contiene trabajo adicional que quality no contiene
++- **THEN** presenta ese alcance separado y mantiene pendiente su publicación como parte de la HU hasta resolver la autorización aplicable
++
++#### Scenario: Approved independent story only
++- **WHEN** el destino contiene la base y el rango publicable pertenece a la HU aprobada
++- **THEN** publica solo el alcance revisado sin bloquear por otros commits independientes presentes en el destino
++
++### Requirement: Canonical target bound authorization
++
++El destino resuelto SHALL contrastarse con evidence.delivery.target_branch, el contenido presentado, su digest y la lectura posterior del PR. Cambiar destino, contenido o alcance aprobados SHALL requerir la autorización afectada. MUST NOT repetir una autorización completa vigente ni ampliar por esta opción las operaciones del proveedor.
++
++#### Scenario: Target changed after human approval
++- **WHEN** la configuración cambia el destino del PR aprobado de quality a otra rama
++- **THEN** no crea ese PR usando la aprobación anterior y presenta el nuevo destino y contenido para decisión
++
++#### Scenario: Existing provider policies
++- **WHEN** se entrega una HU con destino independiente y aprobaciones vigentes
++- **THEN** Azure DevOps Services usa su CLI autorizada y verificación posterior; GitHub y Server conservan formulario/borrador, sin merge, auto-complete, pipelines o promoción
+--- openspec/specs/manual-kit-distribution/spec.md (before)
++++ openspec/specs/manual-kit-distribution/spec.md (proposed)
+@@ -48,23 +48,39 @@
+ 
+ ### Requirement: Portable tooling release preserves customized source
+ 
+-La nueva distribución SHALL derivar del árbol vigente 0.1.5 conservando su prompt y cambios locales previamente existentes. SHALL registrar los hashes de entrada y mantener intactos árboles, ZIP, manifiestos y hashes anteriores. MUST NOT regenerar versiones históricas para producir la nueva entrega.
++La nueva distribución SHALL derivar del árbol vigente 0.1.8 conservando su contexto y ciclo de pruebas, prompt y personalizaciones verificadas. SHALL registrar hashes de entrada y mantener intactos árboles, ZIP, manifiestos y hashes anteriores. MUST NOT regenerar versiones históricas para producir la entrega nueva.
+ 
+ #### Scenario: Source differs from published manifest
+-- **WHEN** 0.1.5 tiene modificaciones locales o un prompt nuevo respecto a su manifiesto original
+-- **THEN** registra esa diferencia como baseline de entrada, incorpora su contenido en el nuevo candidato y comprueba que no alteró esos bytes de origen
++- **WHEN** la fuente 0.1.8 tiene modificaciones locales respecto a su manifiesto original
++- **THEN** registra esa diferencia como baseline de entrada, conserva las personalizaciones y comprueba que no alteró los bytes de origen
++
++#### Scenario: One new candidate for the whole change
++- **WHEN** se implementan los incrementos internos de este cambio
++- **THEN** todos se incorporan a un candidato nuevo identificado, con comprobación de preservación histórica y sin candidatos paralelos por cada mejora
+ 
+ ### Requirement: Consistent portable setup documentation
+ 
+-README, guía de inicio, prompt de configuración, inventario y documentación de extensiones SHALL describir la misma selección Databricks, estados de hooks y matriz Azure DevOps. El prompt SHALL comprobar versiones/ayuda y duplicados sin reinstalación global implícita ni ampliar alcance remoto. SHALL formar parte del manifiesto de la nueva entrega.
++README, LEEME, guías, prompt e inventario SHALL distinguir versión vigente, origen e historia y describir coherentemente A inicial, B actualización y C preparación personal. SHALL conservar selección Databricks, hooks opcionales y límites Azure. El prompt SHALL integrar el manifiesto de distribución, aunque no se copie al cliente.
+ 
+ #### Scenario: Configure project from bundled prompt
+-- **WHEN** se usa el prompt de configuración de la nueva versión
+-- **THEN** conserva los campos y restricciones vigentes e identifica selección portable, activación opcional de hooks y lecturas Boards exclusivas de Planner/Reviewer
++- **WHEN** se usa la sección A de la nueva distribución
++- **THEN** conserva campos y restricciones, identifica selección portable y hooks opcionales y configura el proyecto sin ejecutar B o C como onboarding adicional
+ 
+ #### Scenario: Repository README links the candidate
+ - **WHEN** se entrega el candidato nuevo
+-- **THEN** README raíz y LEEME identifican su versión, prompt y límites reales sin presentar la planificación o los hooks incluidos como implementación o activación comprobadas
++- **THEN** README y LEEME identifican versión, prompt y límites reales sin presentar planificación o hooks incluidos como implementación o activación comprobadas
++
++#### Scenario: Update an existing project with section B
++- **WHEN** se actualiza un proyecto anterior hacia el candidato nuevo
++- **THEN** B identifica versión origen y destino, compara distribución/proyecto/fuente verificable y preserva setup, modelos, reglas, catálogo, specs y evidencia mediante diff
++
++#### Scenario: Prepare another developer with section C
++- **WHEN** la persona elige C sobre un clon configurado
++- **THEN** ejecuta la entrada local equivalente sin repetir A, actualizar el kit ni reinicializar OpenSpec
++
++#### Scenario: Correct stale 0.1.8 version references
++- **WHEN** se corrigen encabezados o la sección B heredada de 0.1.8
++- **THEN** publica fe de erratas y contenido corregido en el candidato nuevo sin alterar hashes históricos ni renombrar revisiones upstream o cifras de pruebas anteriores
+ 
+ ### Requirement: Verify tooling changes without remote mutation
+ 
+@@ -77,3 +93,63 @@
+ #### Scenario: Preview distribution adoption
+ - **WHEN** se inspecciona adoptar la distribución sin salida de informe explícita
+ - **THEN** no modifica cliente, fuentes históricas, sistemas remotos ni configuración global
++
++### Requirement: Explicit client installation composition
++
++La distribución SHALL declarar qué se copia al cliente, qué queda solo en distribución y qué se conserva localmente, con motivos y consumidores comprobados. SHALL preservar recursos operativos, licencias, procedencia y validación. MUST NOT eliminar archivos solo para reducir volumen ni depender del motor histórico para operar el kit.
++
++#### Scenario: Copy clean operational kit
++- **WHEN** el onboarding instala el kit en un proyecto nuevo
++- **THEN** usa la composición revisada, conserva AGENTS, skills, perfiles, schemas, guías, scripts y recursos necesarios, y no copia archivos reservados al empaquetador
++
++#### Scenario: Existing project already tracks distribution files
++- **WHEN** un cliente antiguo versiona archivos que la composición nueva deja fuera
++- **THEN** propone una migración explícita por archivo, referencias e inventario sin borrarlos ni retirarlos del índice automáticamente
++
++### Requirement: Preserve validation and provenance surfaces
++
++El perfil cliente inicial SHALL conservar tests/crea, manifest original como procedencia y una guía de validación con alcance real. SHALL distinguir pruebas internas de pruebas de negocio. MUST NOT regenerar el manifest para declarar idéntico al ZIP un proyecto personalizado ni ejecutar pruebas internas como suite de negocio por defecto.
++
++#### Scenario: Personalized project validation
++- **WHEN** se valida un proyecto configurado
++- **THEN** usa validación personalizada sin original, conserva procedencia y no exige que sus bytes coincidan con toda la distribución
++
++#### Scenario: Internal tests remain available
++- **WHEN** se requiere verificar una adaptación local de herramientas del kit
++- **THEN** las regresiones internas permanecen disponibles y separadas del catálogo de negocio salvo incorporación explícita revisada
++
++### Requirement: Initial local exclusions without hidden changes
++
++El onboarding SHALL combinar exclusiones de entornos, cachés, secretos, binding personal, diagnósticos y temporales desde la instalación inicial. SHALL preservar reglas existentes y excepciones pertinentes. MUST NOT ignorar globalmente archivos operativos, documentación funcional, OpenSpec o expedientes de evidencia requeridos.
++
++#### Scenario: First clone after onboarding
++- **WHEN** otra persona crea su entorno, binding y diagnóstico locales
++- **THEN** las exclusiones versionadas ya impiden su incorporación accidental sin pedir configurar manualmente nuevos patrones
++
++#### Scenario: Required evidence uses log files
++- **WHEN** una HU produce logs declarados como recibos obligatorios
++- **THEN** las exclusiones no los descartan por una regla global de extensión y se conserva su revisión y publicación aplicables
++
++### Requirement: Separate copy context ignore and publication controls
++
++La composición, .gitignore, exclusiones de contexto y alcance explícito de publicación SHALL tener efectos distintos documentados y comprobables. Un archivo excluido del contexto SHALL seguir visible al control Git si cambia. MUST NOT usar gitignore para retirar archivos ya rastreados ni git add general para publicar.
++
++#### Scenario: Already tracked local file
++- **WHEN** una ruta personal ya versionada coincide con una exclusión nueva
++- **THEN** advierte que sigue rastreada y propone retirada revisada sin ejecutar git rm automáticamente
++
++#### Scenario: Excluded contextual content changes
++- **WHEN** cambia un archivo que no debe leerse como contexto
++- **THEN** conserva su detección para alcance y publicación sin leer o incorporar su contenido por esa coincidencia
++
++### Requirement: Compatible reviewed team adoption and rollback
++
++La adopción SHALL actualizar conjuntamente schemas, configuración y consumidores en un punto acordado, preservando modelos, reglas, context/lifecycle y expedientes. SHALL admitir omisión de opciones nuevas y reversión conjunta con historia conservada. MUST NOT habilitar servicios, capacidades, pipelines o permisos al actualizar.
++
++#### Scenario: Older reader accepts an unknown project field
++- **WHEN** un schema antiguo permite una propiedad que su consumidor no implementa
++- **THEN** la preparación no declara soporte por validación sintáctica y exige verificar consumidores compatibles antes de usar la opción
++
++#### Scenario: Rollback after new HU evidence exists
++- **WHEN** se revierte la adopción al conjunto anterior
++- **THEN** restaura herramientas/configuración compatibles, conserva evidencia nueva como historia no consumida y no migra recibos hacia atrás ni desactiva gates para aprobar
+--- openspec/specs/manual-phase-contracts/spec.md (before)
++++ openspec/specs/manual-phase-contracts/spec.md (proposed)
+@@ -157,3 +157,59 @@
+ #### Scenario: Human approval does not replace technical evidence
+ - **WHEN** llega un aval humano pero continúa ausente o inválida una comprobación técnica previamente obligatoria
+ - **THEN** mantiene pendiente la continuación que depende de esa evidencia y permite el trabajo independiente ya autorizado
++
++### Requirement: Session scoped sequential roles
++
++El flujo de equipo SHALL mantener roles secuenciales y un escritor por archivo dentro de cada checkout/HU. Las sesiones independientes SHALL compartir contexto por revisiones Git sin un coordinador central ni bloqueos globales. MUST NOT afirmar coordinación o autoría entre máquinas que la evidencia local no acredita.
++
++#### Scenario: Independent developers work concurrently
++- **WHEN** dos personas ejecutan HU diferentes en checkouts independientes
++- **THEN** cada sesión conserva su secuencia y expedientes sin esperar un turno global ni modificar la sesión de la otra persona
++
++### Requirement: Canonical compatibility reference
++
++Los handoffs adoptados SHALL referenciar el informe de compatibilidad con identidad y hash comprobables, conservando informes e intentos anteriores. Las vistas humanas SHALL derivar de esa referencia. MUST NOT duplicar su estado, modificar un informe para aparentar vigencia ni tratar documentos funcionales como metadata descartable.
++
++#### Scenario: New target observation after a handoff
++- **WHEN** se produce otra observación del destino sin cambio funcional de la HU
++- **THEN** un intento nuevo referencia el nuevo informe y conserva los anteriores y la evidencia técnica que sigue vigente
++
++### Requirement: Informative compatibility transition consumption
++
++Las transiciones SHALL consumir resultado, cobertura y vigencia sin convertir divergencia, aviso o error del inspector en veto global. SHALL conservar gates y aprobaciones previos, y representar reconciliaciones necesarias como decisiones humanas por continuación. Un bloqueo nuevo SHALL requerir promoción explícita y casos comprobados.
++
++#### Scenario: Informative inspection error
++- **WHEN** el inspector no puede completar una dimensión y las restricciones previas están satisfechas
++- **THEN** registra indeterminación y acciones sin inventar passed o detener automáticamente todo el trabajo independiente
++
++#### Scenario: Critical contradiction needs a decision
++- **WHEN** el PR depende de reconciliar una regla funcional contradictoria
++- **THEN** registra la decisión pendiente y su responsable mediante el mecanismo existente sin interpretar una repetición de pruebas como esa decisión
++
++#### Scenario: Missing real destination
++- **WHEN** el destino no existe o no puede acreditarse para crear el PR
++- **THEN** conserva el pendiente de entrega por destino no comprobado, aunque la inspección informativa no agregue un veto nuevo al trabajo local
++
++### Requirement: Scoped invalidation and unchanged approvals
++
++Las transiciones SHALL distinguir una nueva observación del destino de un cambio en candidato, criterios, política, entorno o paquete autorizado. SHALL conservar evidencia y autorizaciones intactas y revalidar solo lo afectado mediante contratos existentes. MUST NOT reiniciar max_fix_rounds, reetiquetar recibos o pedir permisos por cada transferencia.
++
++#### Scenario: Only target snapshot changes independently
++- **WHEN** cambia el snapshot de quality pero no el contenido, alcance ni las entradas de la HU
++- **THEN** actualiza compatibilidad en un nuevo intento y revalida referencias sin relanzar suites ni pedir la misma aprobación
++
++#### Scenario: Functional candidate changes during reconciliation
++- **WHEN** resolver una incompatibilidad modifica código, reglas, criterios o entradas funcionales
++- **THEN** conserva los intentos previos y remite candidato y autorizaciones afectados a planificación, pruebas y revisión aplicables
++
++### Requirement: Non circular compatibility evidence binding
++
++La incorporación de informes de compatibilidad SHALL usar una equivalencia explícita y acotada para derivados, sin debilitar el candidato técnico ni permitir publicar bytes distintos de los revisados. Un informe que añada requisitos u obligaciones funcionales SHALL requerir reconciliar el plan. MUST NOT excluir una carpeta completa del gate para evitar circularidad.
++
++#### Scenario: Informational report added after testing
++- **WHEN** se añade un informe previsto que solo observa el destino y no cambia obligaciones funcionales
++- **THEN** conserva la identidad técnica mediante la regla exacta adoptada y comprueba por separado sus bytes publicables y referencias
++
++#### Scenario: Report introduces a new required check
++- **WHEN** el análisis requiere una nueva obligación técnica aceptada para el candidato
++- **THEN** reconcilia el plan mediante el mecanismo existente y no la oculta como actualización de metadata
+--- openspec/specs/project-context-lifecycle/spec.md (before)
++++ openspec/specs/project-context-lifecycle/spec.md (proposed)
+@@ -145,3 +145,43 @@
+ #### Scenario: New portable release
+ - **WHEN** se prepara una distribución que incorpora esta capacidad
+ - **THEN** usa un candidato versionado nuevo y acredita integridad y regresión local sin afirmar piloto nativo o validación remota
++
++### Requirement: Shared versioned context across independent checkouts
++
++El kit SHALL reutilizar las fuentes canónicas versionadas de configuración, reglas, specs y documentación en cada checkout. SHALL identificar la revisión de las fuentes observadas y conservar contenido manual. MUST NOT duplicar contexto en un servicio central ni prometer sincronización automática de sesiones o ramas.
++
++#### Scenario: Developer uses an older feature checkout
++- **WHEN** la feature conserva una revisión anterior a la configuración incorporada al destino
++- **THEN** identifica las revisiones y cambios pertinentes al analizar compatibilidad sin reemplazar automáticamente el contexto de la feature
++
++### Requirement: Reverse consumer impact from existing component mappings
++
++Cuando esté adoptado el mapa de contexto, el análisis entre HU SHALL reutilizar sus componentes y dependencias para identificar también consumidores afectados por cambios del destino. SHALL conservar dirección y motivo de cada relación, resolver ciclos y señalar desconocidos. MUST NOT alterar la selección legacy ni exigir un mapa duplicado.
++
++#### Scenario: Producer changes in target
++- **WHEN** el destino cambia un componente del que depende otro afectado por la HU
++- **THEN** identifica el consumidor y sus documentos pertinentes usando las relaciones existentes sin requerir una segunda declaración de arquitectura
++
++#### Scenario: Cyclic dependencies
++- **WHEN** dos componentes dependen entre sí
++- **THEN** el recorrido termina con selección estable, sin duplicados y con las relaciones relevantes identificadas
++
++### Requirement: Reference scoped cross revision reading
++
++La lectura de contexto entre revisiones SHALL respetar exclusiones, límites e identidad de fuentes en ambos estados. SHALL comparar solo documentos pertinentes y conservar las rutas excluidas en la observación Git. MUST NOT cargar historia ajena, secretos o documentación completa por disponibilidad.
++
++#### Scenario: Shared specification changes on target
++- **WHEN** el destino modifica una spec pertinente a la HU
++- **THEN** referencia los estados de esa spec y requisitos afectados sin cargar todos los expedientes ni copiar sus requisitos al inventario
++
++#### Scenario: Excluded target path changes
++- **WHEN** cambia una ruta excluida de lectura contextual
++- **THEN** conserva su presencia en el diff y registra el límite sin leer su contenido para intentar completar la inspección
++
++### Requirement: Useful compatibility without context activation
++
++El análisis SHALL funcionar con Git, catálogo y referencias disponibles cuando context_management esté ausente o desactivado, declarando la cobertura limitada de componentes y semántica. MUST NOT habilitar la extensión, completar un mapa ficticio ni interpretar falta de relaciones como independencia demostrada.
++
++#### Scenario: Context extension disabled
++- **WHEN** se solicita compatibilidad en un proyecto sin mapa adoptado
++- **THEN** informa solapamientos, contratos y checks comprobables, declara relaciones no verificadas y conserva la configuración desactivada
+--- openspec/specs/project-testing-lifecycle/spec.md (before)
++++ openspec/specs/project-testing-lifecycle/spec.md (proposed)
+@@ -185,3 +185,55 @@
+ #### Scenario: Context extension is absent
+ - **WHEN** se adopta el ciclo de vida de pruebas sin el cambio de contexto
+ - **THEN** usa rutas, criterios, inputs y handoffs existentes sin depender de un mapa documental nuevo
++
++### Requirement: Optional local execution environment resolution
++
++El catálogo y configuración permanente SHALL poder compartirse sin rutas personales de intérprete cuando se adopte el binding local. Plan, run y gate SHALL resolver el mismo entorno efectivo y conservar huellas de intérprete y dependencias. MUST NOT aceptar cambios locales de comandos, assertions, obligaciones o salidas revisadas.
++
++#### Scenario: Two machines share one execution configuration
++- **WHEN** dos checkouts usan la misma configuración versionada y bindings de Python diferentes
++- **THEN** cada uno planifica y ejecuta con su intérprete comprobado sin editar execution.json y obtiene evidencia ligada a su entorno efectivo
++
++#### Scenario: Local interpreter changes after planning
++- **WHEN** cambia el intérprete efectivo o una dependencia funcional del entorno
++- **THEN** el gate detecta la invalidación aplicable y no conserva passed por igualdad de código
++
++#### Scenario: Legacy absolute interpreter
++- **WHEN** no se adopta binding y existe un intérprete absoluto configurado
++- **THEN** conserva la resolución y comprobaciones anteriores sin exigir configuración personal nueva
++
++### Requirement: Catalog based target impact recommendations
++
++El análisis del destino SHALL proponer checks del catálogo vigente mediante relaciones de inputs, criterios, contratos y consumidores, con motivo y procedencia. MUST NOT crear un catálogo paralelo, ejecutar suites al inspeccionar ni registrar automáticamente requisitos nuevos para aprobar la HU.
++
++#### Scenario: Changed dependency affects an unchanged test
++- **WHEN** un cambio del destino altera una entrada declarada de un check consumidor de la HU
++- **THEN** identifica ese check y la entrada afectada aunque el archivo de prueba permanezca igual
++
++#### Scenario: Target references an unknown check
++- **WHEN** una recomendación depende de un check que no existe en el catálogo vigente de la feature
++- **THEN** informa mantenimiento o decisión pendiente sin inventar un comando ni declarar la validación realizada
++
++### Requirement: Distinct feature and combined candidate evidence
++
++Los resultados SHALL identificar el candidato realmente ejecutado. Pruebas de la feature MUST NOT acreditar un árbol combinado con el destino que no se ejecutó. Una nueva validación SHALL reutilizar plan/run/gate sobre un candidato autorizado, conservando intentos previos sin adopción cruzada.
++
++#### Scenario: Local feature passed before provider contract changed
++- **WHEN** las pruebas de HU002 pasaron en su feature y quality cambió el contrato que consume
++- **THEN** conserva ese resultado histórico y solicita los checks pertinentes sobre el candidato adecuado sin afirmarlos pasados contra quality
++
++#### Scenario: New plan after manual integration
++- **WHEN** el equipo prepara manualmente otro candidato para validar la combinación
++- **THEN** registra su base técnica y procedencia reales y produce plan y recibos nuevos sin reutilizar los del candidato anterior
++
++### Requirement: Selective rechecking within existing guarantees
++
++Una observación del destino sin cambio en entradas locales SHALL conservar pruebas vigentes y limitarse a revisar compatibilidad. Cambios funcionales SHALL usar la invalidación y selección existentes, sin relajar su identidad global ni activar reutilización entre planes. Reviewer MUST NOT repetir suites por rutina.
++
++#### Scenario: Informational report reference corrected
++- **WHEN** se corrige una referencia de compatibilidad sin cambiar obligaciones ni entradas funcionales
++- **THEN** revalida el contrato y conserva recibos vigentes sin ejecutar pruebas
++
++#### Scenario: Required runtime remains inactive
++- **WHEN** una incompatibilidad requiere ejecución Spark o remota sin adaptador activo autorizado
++- **THEN** conserva blocked y no sustituye esa ejecución por mocks, simulación Git o sintaxis

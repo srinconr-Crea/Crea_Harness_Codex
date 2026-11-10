@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.589" timestamp="2026-11-10T09:09:06.240008-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_delivery.TeamDeliveryTests" name="test_independent_target_requires_verified_scope_even_without_compatibility" time="0.005"><failure message="AssertionError: False is not true : Delivery scope consumer is missing">self = &lt;test_team_delivery.TeamDeliveryTests testMethod=test_independent_target_requires_verified_scope_even_without_compatibility&gt;
+
+    def test_independent_target_requires_verified_scope_even_without_compatibility(self):
+&gt;       self.assertTrue(hasattr(entrega,'check_scope'),'Delivery scope consumer is missing')
+E       AssertionError: False is not true : Delivery scope consumer is missing
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_delivery.py:89: AssertionError</failure></testcase></testsuite></testsuites>

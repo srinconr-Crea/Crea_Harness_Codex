@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "plan_id": "88de0660db071f4eb95f6002bb12c57b84cd595581ad65e4823f8d50dd2c3a27",
+  "candidate_digest": "1fd9c525c5f3a6920a4fc5606fb427f7a904a2e76a628f4f66dc30bef2281ccb",
+  "records": [
+    {
+      "check_id": "kit-regression",
+      "input_digest": "5510aa959c72950b86f49233e3638ca367fba159bbc168a409c7284d2de25890",
+      "status": "passed",
+      "exit_code": 0,
+      "collected": 242,
+      "executed": 242,
+      "failed": 0,
+      "skipped": 0,
+      "assertions": {
+        "CA01": "passed",
+        "CA02": "passed",
+        "CA03": "passed",
+        "CA04": "passed",
+        "CA05": "passed",
+        "CA06": "passed",
+        "CA07": "passed",
+        "CA08": "passed"
+      },
+      "evidence": [
+        {
+          "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-5/junit-kit-regression.xml",
+          "sha256": "7ab7b73ff550f976c8f24bdc7792422a1277ad36effc08b1088e7d1eab9cf9dd"
+        },
+        {
+          "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-5/stdout-kit-regression.log",
+          "sha256": "a7cc7927f6268d1f1bba217e4fb5493ecd00862f1917070a00d7392b3d137e85"
+        },
+        {
+          "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-5/stderr-kit-regression.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-5/receipt-kit-regression.json",
+          "sha256": "a90f49e3b20572e6dc04b756c584ff71bf98f7d4c54bbf029a6443fc6cbe17c6"
+        }
+      ],
+      "started_at": "2026-11-10T19:11:48.874788+00:00",
+      "finished_at": "2026-11-10T19:20:30.633829+00:00",
+      "environment_id": "3b08527e38f11d9e01b617579faf1a8bf23063d2994335143c7ced565a02d1dd",
+      "authorization_ref": null,
+      "reason": "STRUCTURED_LOCAL_REPORT"
+    }
+  ]
+}

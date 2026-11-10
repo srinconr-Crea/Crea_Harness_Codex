@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "source_preserved": true,
+  "baseline_files_verified": 2176,
+  "archive_sha256": "4f8eb72d26367f074f98113267a04a4509c9298cc0f570d89cfc68995e19b00c",
+  "tree_zip_entries": 492,
+  "tree_zip_byte_equivalence": true,
+  "model_profiles_preserved": [
+    ".codex/agents/developer.toml",
+    ".codex/agents/planner.toml",
+    ".codex/agents/reviewer.toml",
+    ".codex/agents/tester.toml"
+  ],
+  "source_019_matches_final_fixture": true
+}

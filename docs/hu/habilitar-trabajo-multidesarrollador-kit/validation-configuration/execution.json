@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "python_executable": null,
+  "local_environment_path": ".crea/local.json",
+  "reviewed_policy_digest": "607169eac39ca71c0bd58a785b71ceb24673e75d9dc9b53a8242a58bf74fbf9d",
+  "max_evidence_age_seconds": 7200,
+  "outputs": [
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/plan.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/git.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/resultados.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/gate.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/junit-kit-regression.xml",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/receipt-kit-regression.json",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/stdout-kit-regression.log",
+    "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/stderr-kit-regression.log"
+  ],
+  "checks": {
+    "kit-regression": {
+      "junit_path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-1/junit-kit-regression.xml",
+      "assertion_tests": {
+        "CA01": [
+          "candidate.tests.crea.test_team_delivery.TeamDeliveryTests::test_independent_target_and_legacy_fallback"
+        ],
+        "CA02": [
+          "candidate.tests.crea.test_local_environment.LocalEnvironmentTests::test_shared_binding_plan_is_rebuilt_and_alias_does_not_change_python_identity"
+        ],
+        "CA03": [
+          "candidate.tests.crea.test_developer_preparation.DeveloperPreparationTests::test_bind_preview_and_repeat_are_local_and_idempotent"
+        ],
+        "CA04": [
+          "candidate.tests.crea.test_target_compatibility.TargetCompatibilityTests::test_A_independent_stories_continue_with_current_bounded_evidence"
+        ],
+        "CA05": [
+          "candidate.tests.crea.test_target_compatibility.TargetCompatibilityTests::test_C_same_rule_incompatible_and_D_clean_git_contradiction"
+        ],
+        "CA06": [
+          "candidate.tests.crea.test_content_v3.ContentV3Tests::test_real_plan_run_gate_remains_current_after_declared_observation"
+        ],
+        "CA07": [
+          "candidate.tests.crea.test_client_composition.ClientCompositionTests::test_client_has_local_entry_without_distribution_prompts"
+        ]
+      },
+      "coverage_path": null,
+      "coverage_files": [],
+      "coverage_minimum": null
+    }
+  }
+}

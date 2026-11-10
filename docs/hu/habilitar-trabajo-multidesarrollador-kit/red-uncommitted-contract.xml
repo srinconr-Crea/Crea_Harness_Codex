@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="7.296" timestamp="2026-11-10T09:14:29.653797-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_uncommitted_contract_is_read_from_candidate_not_old_head" time="6.486"><failure message="AssertionError: 0 != 1">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_uncommitted_contract_is_read_from_candidate_not_old_head&gt;
+
+    def test_uncommitted_contract_is_read_from_candidate_not_old_head(self):
+        p,h,s=self.graph()
+        changed=self.write('docs/regla.md','nueva regla todavía sin commit\n')
+        result=compatibilidad.inspect(self.root,p,h,s)
+        refs=[r for r in result['document_refs'] if r['path']=='docs/regla.md' and r['revision']==h['scope']['head']]
+&gt;       self.assertEqual(len(refs),1)
+E       AssertionError: 0 != 1
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:120: AssertionError</failure></testcase></testsuite></testsuites>

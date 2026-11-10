@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "plan_id": "89182ef399a18d4a37eaffa316a9128f4b03c073018939b03cb2f3652b184666",
+  "status": "blocked",
+  "blockers": [
+    "CHECK_NOT_PASSED: kit-regression",
+    "EMPTY_OR_INCONSISTENT_SUITE: kit-regression",
+    "INVALID_OR_UNAVAILABLE_LOCAL_RECEIPT: kit-regression",
+    "REQUIRED_ASSERTION_MISSING_OR_FAILED: kit-regression"
+  ],
+  "scope": "technical_test_evidence_only",
+  "allows_deploy": false,
+  "allows_archive": false
+}

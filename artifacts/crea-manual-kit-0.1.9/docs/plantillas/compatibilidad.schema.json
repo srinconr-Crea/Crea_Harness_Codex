@@ -1,0 +1,423 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "target_compatibility_report"
+    },
+    "change": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_sha": {
+      "type": "string",
+      "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+    },
+    "branch_start_sha": {
+      "type": "string",
+      "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+    },
+    "validation_base": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "target_sha": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "candidate_digest": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "outcome": {
+      "enum": [
+        "compatible",
+        "requires_review",
+        "conflict_detected",
+        "undetermined"
+      ]
+    },
+    "coverage": {
+      "enum": [
+        "complete",
+        "partial"
+      ]
+    },
+    "freshness": {
+      "enum": [
+        "current",
+        "stale",
+        "unverified"
+      ]
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "complete",
+          "partial",
+          "not_run"
+        ]
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "functional",
+              "git",
+              "scope",
+              "impact"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "revision": {
+                  "type": "string",
+                  "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "observation": {
+                  "enum": [
+                    "git",
+                    "worktree"
+                  ]
+                }
+              },
+              "required": [
+                "path",
+                "revision",
+                "sha256"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "commits": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "type",
+          "reason",
+          "owner"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "path",
+              "revision",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "affected_consumers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "recommended_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "check_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "check_id",
+          "reasons"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "review_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "document_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "observation": {
+            "enum": [
+              "git",
+              "worktree"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "revision",
+          "sha256"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "scope_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "combined_tests_executed": {
+      "const": false
+    },
+    "functional_obligations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "preserved_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "ranges": {
+      "type": "object"
+    },
+    "impact": {
+      "type": "object"
+    },
+    "target_context_impact": {
+      "type": "object"
+    },
+    "target_snapshot_ref": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "simulation_ref": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "semantic_review_ref": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "current_target_ref": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "source_branch": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "change",
+    "observed_at",
+    "source_sha",
+    "branch_start_sha",
+    "validation_base",
+    "target_sha",
+    "candidate_digest",
+    "outcome",
+    "coverage",
+    "freshness",
+    "dimensions",
+    "findings",
+    "limitations",
+    "affected_consumers",
+    "recommended_checks",
+    "review_paths",
+    "document_refs",
+    "scope_digest",
+    "combined_tests_executed",
+    "functional_obligations",
+    "preserved_evidence",
+    "actions"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "plan_id": "88de0660db071f4eb95f6002bb12c57b84cd595581ad65e4823f8d50dd2c3a27",
+  "status": "passed",
+  "blockers": [],
+  "scope": "technical_test_evidence_only",
+  "allows_deploy": false,
+  "allows_archive": false
+}

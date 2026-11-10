@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="6" time="4.676" timestamp="2026-11-10T09:25:02.653043-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_offline_guards.OfflineGuardsTests" name="test_git_observers_disable_fsmonitor_and_implicit_lazy_fetch" time="0.003"><failure message="AssertionError: 'core.fsmonitor=false' not found in ['git', '-c', 'core.quotepath=false', 'status', '--porcelain']">self = &lt;test_team_offline_guards.OfflineGuardsTests testMethod=test_git_observers_disable_fsmonitor_and_implicit_lazy_fetch&gt;
+
+    def test_git_observers_disable_fsmonitor_and_implicit_lazy_fetch(self):
+        response=subprocess.CompletedProcess([],0,b'ok',b'')
+        with patch('subprocess.run',return_value=response) as launched:
+            git_adapter.git(KIT,'status','--porcelain')
+            args,kwargs=launched.call_args
+&gt;           self.assertIn('core.fsmonitor=false',args[0])
+E           AssertionError: 'core.fsmonitor=false' not found in ['git', '-c', 'core.quotepath=false', 'status', '--porcelain']
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_offline_guards.py:28: AssertionError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_offline_guards.OfflineGuardsTests" name="test_positional_repository_identity_allows_equal_segments" time="3.228"><failure message="ValueError: SCHEMA_INVALID: repository:uniqueItems">self = &lt;test_team_offline_guards.OfflineGuardsTests testMethod=test_positional_repository_identity_allows_equal_segments&gt;
+
+    def test_positional_repository_identity_allows_equal_segments(self):
+        import test_target_compatibility as fixtures
+        fixture=fixtures.TargetCompatibilityTests()
+        fixture.setUp()
+        try:
+            _,_,snapshot=fixture.graph()
+            snapshot['repository']=['azure','org','pets','pets']
+&gt;           schemas.validate_schema(read(KIT/'docs/plantillas/git-target-snapshot.schema.json'),snapshot)
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_team_offline_guards.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+schema = {'$schema': 'https://json-schema.org/draft/2020-12/schema', 'type': 'object', 'properties': {'schema_version': {'const..., 'minLength': 1}, ...}, 'required': ['schema_version', 'kind', 'change', 'attempt', 'repository', 'remote', ...], ...}
+instance = {'schema_version': '1.0', 'kind': 'git_target_snapshot', 'change': 'HU002', 'attempt': '1', ...}
+
+    def validate_schema(schema, instance):
+        Draft202012Validator.check_schema(schema)
+        checker = FormatChecker()
+        if 'date-time' not in checker.checkers:
+            raise ValueError('SCHEMA_DATETIME_DEPENDENCY_MISSING_INSTALL_REQUIREMENTS')
+        validator = Draft202012Validator(schema, format_checker=checker,
+                                         registry=Registry(retrieve=no_remote))
+        errors = sorted(validator.iter_errors(instance), key=lambda e: str(list(e.path)))
+        if errors:
+            e = errors[0]
+            # Do not copy values of rejected configuration into logs.
+&gt;           raise ValueError('SCHEMA_INVALID: ' + '/'.join(map(str, e.path)) + ':' + str(e.validator))
+E           ValueError: SCHEMA_INVALID: repository:uniqueItems
+
+artifacts\crea-manual-kit-0.1.9\scripts\crea\testing\schemas.py:23: ValueError</failure></testcase><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_team_offline_guards.OfflineGuardsTests" name="test_remote_statuses_are_not_branch_creation_authority" time="0.407" /></testsuite></testsuites>

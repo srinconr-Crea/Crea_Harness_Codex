@@ -1,0 +1,22 @@
+[
+  {
+    "fixture": "alpha",
+    "declared": "4362c78450804a1ca9f09d93a89030c63daa5375b49a8f9065522847852deec7",
+    "worktree_sha256": "9575911478b90494e9899e6fde3dcfeb2a9ad89fe150dba9b546395e96f04211",
+    "git_blob_sha256": "4362c78450804a1ca9f09d93a89030c63daa5375b49a8f9065522847852deec7",
+    "lf_sha256": "4362c78450804a1ca9f09d93a89030c63daa5375b49a8f9065522847852deec7",
+    "worktree_CRLF": 1,
+    "git_blob_CRLF": 0,
+    "unchanged_tracked_files": true
+  },
+  {
+    "fixture": "beta",
+    "declared": "da060d6338c6896e500d2e0af82f4fc31f4f864dce906061fc2f6dc1501a20db",
+    "worktree_sha256": "e582b07c098cb9f19b6d26684b7714d9252bc014aabccc183872f6e00c49120e",
+    "git_blob_sha256": "da060d6338c6896e500d2e0af82f4fc31f4f864dce906061fc2f6dc1501a20db",
+    "lf_sha256": "da060d6338c6896e500d2e0af82f4fc31f4f864dce906061fc2f6dc1501a20db",
+    "worktree_CRLF": 1,
+    "git_blob_CRLF": 0,
+    "unchanged_tracked_files": true
+  }
+]

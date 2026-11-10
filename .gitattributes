@@ -43,3 +43,16 @@ artifacts/crea-manual-kit-0.1.8/** -text whitespace=-blank-at-eol,-blank-at-eof,
 artifacts/crea-manual-kit-0.1.8.zip* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 docs/hu/gestionar-contexto-evolutivo-proyecto/* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 docs/hu/gestionar-ciclo-vida-pruebas-proyecto/* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
+# Preserve the multi-developer kit and its audited evidence across checkouts.
+artifacts/crea-manual-kit-0.1.9/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+artifacts/crea-manual-kit-0.1.9.zip* -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+docs/hu/habilitar-trabajo-multidesarrollador-kit/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+openspec/specs/developer-local-preparation/spec.md -text whitespace=cr-at-eol
+openspec/specs/hu-target-compatibility/spec.md -text whitespace=cr-at-eol
+openspec/specs/manual-delivery-traceability/spec.md -text whitespace=cr-at-eol
+openspec/specs/manual-kit-distribution/spec.md -text whitespace=cr-at-eol
+openspec/specs/manual-phase-contracts/spec.md -text whitespace=cr-at-eol
+openspec/specs/project-context-lifecycle/spec.md -text whitespace=cr-at-eol
+openspec/specs/project-testing-lifecycle/spec.md -text whitespace=cr-at-eol

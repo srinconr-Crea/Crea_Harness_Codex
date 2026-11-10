@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="7.528" timestamp="2026-11-10T09:15:00.822767-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_target_compatibility.TargetCompatibilityTests" name="test_uncommitted_contract_is_read_from_candidate_not_old_head" time="6.899"><failure message="AssertionError: '8f17c8b20dfe5efc0f202d431bf7aee5853bdc9039199f4582af29c4f75c20c1' != '19af0f5e9da65d27069dfaa4d52f7cf1b867d0f6c838f76b2ac623af86fec61a'&#10;- 8f17c8b20dfe5efc0f202d431bf7aee5853bdc9039199f4582af29c4f75c20c1&#10;+ 19af0f5e9da65d27069dfaa4d52f7cf1b867d0f6c838f76b2ac623af86fec61a">self = &lt;test_target_compatibility.TargetCompatibilityTests testMethod=test_uncommitted_contract_is_read_from_candidate_not_old_head&gt;
+
+    def test_uncommitted_contract_is_read_from_candidate_not_old_head(self):
+        p,h,s=self.graph()
+        p['context_management']['components'][1]['documents']=[{'path':'docs/regla.md','kind':'technical','roles':['reviewer'],'phases':['revision']}]
+        changed=self.write('docs/regla.md','nueva regla todavía sin commit\n')
+        result=compatibilidad.inspect(self.root,p,h,s)
+        refs=[r for r in result['document_refs'] if r['path']=='docs/regla.md' and r['revision']==h['scope']['head']]
+        self.assertEqual(len(refs),1)
+&gt;       self.assertEqual(refs[0]['sha256'],hashlib.sha256(changed.read_bytes()).hexdigest())
+E       AssertionError: '8f17c8b20dfe5efc0f202d431bf7aee5853bdc9039199f4582af29c4f75c20c1' != '19af0f5e9da65d27069dfaa4d52f7cf1b867d0f6c838f76b2ac623af86fec61a'
+E       - 8f17c8b20dfe5efc0f202d431bf7aee5853bdc9039199f4582af29c4f75c20c1
+E       + 19af0f5e9da65d27069dfaa4d52f7cf1b867d0f6c838f76b2ac623af86fec61a
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_target_compatibility.py:122: AssertionError</failure></testcase></testsuite></testsuites>

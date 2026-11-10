@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="2.665" timestamp="2026-11-10T08:37:48.479673-05:00" hostname="SRINCONR"><testcase classname="artifacts.crea-manual-kit-0.1.9.tests.crea.test_developer_preparation.DeveloperPreparationTests" name="test_dependencies_are_checked_in_selected_python_not_only_the_host" time="1.853"><failure message="KeyError: 'selected_python'">self = &lt;test_developer_preparation.DeveloperPreparationTests testMethod=test_dependencies_are_checked_in_selected_python_not_only_the_host&gt;
+
+    def test_dependencies_are_checked_in_selected_python_not_only_the_host(self):
+        self.assertIsNotNone(preparation)
+        self.init_git();project=read(KIT/'docs/proyecto.json')
+        self.write('docs/proyecto.json',json.dumps(project))
+        settings=read(KIT/'docs/pruebas/execution.json')
+        settings['local_environment_path']='.crea/local.json'
+        self.write('docs/pruebas/execution.json',json.dumps(settings))
+        self.write('docs/pruebas/policy.json',json.dumps(read(KIT/'docs/pruebas/policy.json')))
+        selected=Path(sys.base_prefix)/('python.exe' if sys.platform=='win32' else 'bin/python')
+        self.write('.crea/local.json',json.dumps({'schema_version':'1.0','python_executable':str(selected)}))
+        report=preparation.inspect_environment(self.root)
+&gt;       self.assertEqual(report['selected_python'],str(selected))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'selected_python'
+
+artifacts\crea-manual-kit-0.1.9\tests\crea\test_developer_preparation.py:88: KeyError</failure></testcase></testsuite></testsuites>

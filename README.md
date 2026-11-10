@@ -1,4 +1,20 @@
-# Crea Harness Codex MVP — candidato portable 0.1.8
+# Crea Harness Codex MVP — candidato portable 0.1.9
+
+## Candidato local 0.1.9 — trabajo de equipo
+
+Un onboarding compartido y preparación personal desde cada clon; feature y destino PR
+independientes; compatibilidad informativa con quality reutilizando contexto y pruebas.
+Sin coordinador central, merge, auto-complete, deploy o promoción automática a test.
+
+- [Kit 0.1.9](artifacts/crea-manual-kit-0.1.9/LEEME-CREA.md), [ZIP](artifacts/crea-manual-kit-0.1.9.zip), [SHA-256](artifacts/crea-manual-kit-0.1.9.zip.sha256).
+- [Equipo y flujo HU](artifacts/crea-manual-kit-0.1.9/docs/equipo.md), [preparación C](artifacts/crea-manual-kit-0.1.9/docs/preparar-desarrollador.md), [compatibilidad](artifacts/crea-manual-kit-0.1.9/docs/compatibilidad.md).
+- [Composición](artifacts/crea-manual-kit-0.1.9/docs/composicion-kit.md), [erratas documentales 0.1.8](docs/erratas-kit-0.1.8.md).
+
+Candidato local, no release publicado ni certificación remota/nativa. Contexto 0.1.7 y
+lifecycle 0.1.8 permanecen opcionales; historia y personalizaciones se preservan.
+
+## Distribuciones anteriores preservadas
+
 
 Kit para trabajar con Codex en repositorios de proyectos/clientes, con contexto explícito,
 roles Planner/Developer/Tester/Reviewer y desarrollo guiado por OpenSpec. Está orientado a

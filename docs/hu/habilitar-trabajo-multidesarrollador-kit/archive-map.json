@@ -1,0 +1,82 @@
+{
+  "source": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\habilitar-trabajo-multidesarrollador-kit",
+  "target": "C:\\Users\\Stiveen Rincon Ruge\\Documents\\ChatGPT\\Crea_Harness_Codex_MVP\\harness\\openspec\\changes\\archive\\2026-11-10-habilitar-trabajo-multidesarrollador-kit",
+  "requested_by_user": true,
+  "moves": [
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/.openspec.yaml",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/.openspec.yaml",
+      "sha256": "309e6764c826c3fc6250bcce33b56b7e44adebafc76c7df25f058663d6de4299",
+      "bytes": 40
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/design.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/design.md",
+      "sha256": "811b27be4c4657ff153d19f49f741f7db563aa597df642585e1407ba38e93d00",
+      "bytes": 42482
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/proposal.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/proposal.md",
+      "sha256": "20736ab336539ff578cfbb04057c76a77aedf89a0ec580500884db6e2f25ca22",
+      "bytes": 4526
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/developer-local-preparation/spec.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/specs/developer-local-preparation/spec.md",
+      "sha256": "ade7b0601c80e1fca7727fe9d285fe9e8f26ef026a5275ede7f9553f93372d33",
+      "bytes": 7871
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/hu-target-compatibility/spec.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/specs/hu-target-compatibility/spec.md",
+      "sha256": "fa7c295deb4cd9109e523ccf28510dd2fb60d6e37634833f926cc0fb7f5e3de7",
+      "bytes": 10449
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/manual-delivery-traceability/spec.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/specs/manual-delivery-traceability/spec.md",
+      "sha256": "46681a3426ded782c615ad424e71baceb0c558df9c1373b325f4d476dae09d20",
+      "bytes": 4305
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/manual-kit-distribution/spec.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/specs/manual-kit-distribution/spec.md",
+      "sha256": "5d3f05d1d2ca931138f4eebb3b5c1766860c9f25a875d5c2fe6e0f93231b684b",
+      "bytes": 7368
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/manual-phase-contracts/spec.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/specs/manual-phase-contracts/spec.md",
+      "sha256": "3af819ac3c632778143c5d9574454146c70991ce276b49a51bb5a910dfb24bc7",
+      "bytes": 4547
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/project-context-lifecycle/spec.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/specs/project-context-lifecycle/spec.md",
+      "sha256": "cd65df54fa35ecf98058ade3f553b587295f3f86b934b72234eb10b460bf5058",
+      "bytes": 3124
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/specs/project-testing-lifecycle/spec.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/specs/project-testing-lifecycle/spec.md",
+      "sha256": "73503de4b27d4d66691d13c6cb7320ef1a5084da058252c5a42bc8ba4daa791a",
+      "bytes": 3915
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/tasks.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/tasks.md",
+      "sha256": "b66d23842ac0dc1c881b8a9d391844640e4efe0689132e36b43b1a8cbb928d2c",
+      "bytes": 19274
+    },
+    {
+      "from": "openspec/changes/habilitar-trabajo-multidesarrollador-kit/validation.md",
+      "to": "openspec/changes/archive/2026-11-10-habilitar-trabajo-multidesarrollador-kit/validation.md",
+      "sha256": "4dd466d6db2504dc748ac6b7cca02416f2c4084907b87e97ae7cc67430eac308",
+      "bytes": 14702
+    }
+  ],
+  "specs_already_synced": true,
+  "tasks_complete": 74,
+  "schema": "spec-driven"
+}

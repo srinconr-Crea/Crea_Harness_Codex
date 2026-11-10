@@ -1,0 +1,7 @@
+# Entorno local de setup/autoría; no instalación global durante una HU.
+jsonschema==4.26.0
+rfc3339-validator==0.1.4
+PyYAML==6.0.3
+# Solo para pruebas del adaptador local y fixtures de autoría.
+pytest==9.1.1
+coverage==7.16.2

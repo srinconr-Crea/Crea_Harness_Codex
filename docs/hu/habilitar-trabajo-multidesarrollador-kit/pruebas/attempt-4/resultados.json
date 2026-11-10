@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "plan_id": "40346b8f653751fe7c7cb266a62d4b22815548480b4005d2c8cdf43b8237abb5",
+  "candidate_digest": "120316db4de91340d42d22211244c78a65bdf96e16d941015f232e406e2c24fc",
+  "records": [
+    {
+      "check_id": "kit-regression",
+      "input_digest": "05e45de763151f391a53d682a763ba5aa225deb5a09857c3c26eef96097b8436",
+      "status": "passed",
+      "exit_code": 0,
+      "collected": 242,
+      "executed": 242,
+      "failed": 0,
+      "skipped": 0,
+      "assertions": {
+        "CA01": "passed",
+        "CA02": "passed",
+        "CA03": "passed",
+        "CA04": "passed",
+        "CA05": "passed",
+        "CA06": "passed",
+        "CA07": "passed",
+        "CA08": "passed"
+      },
+      "evidence": [
+        {
+          "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-4/junit-kit-regression.xml",
+          "sha256": "079d6a970a78de57bcb041f9399a51bc83f79a3baf8acf52d4c0c840260143cd"
+        },
+        {
+          "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-4/stdout-kit-regression.log",
+          "sha256": "b8d13321323230a1655eb025884d453fbcc9d789258da84e3fe490c93b8602a8"
+        },
+        {
+          "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-4/stderr-kit-regression.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/hu/habilitar-trabajo-multidesarrollador-kit/pruebas/attempt-4/receipt-kit-regression.json",
+          "sha256": "4df8070409d139032827eed4f9fcef4085ef1a563898fe9dc8a74190bef82037"
+        }
+      ],
+      "started_at": "2026-11-10T15:01:52.231274+00:00",
+      "finished_at": "2026-11-10T15:14:10.228336+00:00",
+      "environment_id": "3b08527e38f11d9e01b617579faf1a8bf23063d2994335143c7ced565a02d1dd",
+      "authorization_ref": null,
+      "reason": "STRUCTURED_LOCAL_REPORT"
+    }
+  ]
+}
